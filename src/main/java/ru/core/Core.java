@@ -7,7 +7,6 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.core.board.BoardManager;
-import ru.core.command.Aliases;
 import ru.core.command.AlertCommand;
 import ru.core.command.CoreCommand;
 import ru.core.command.LangCommand;
@@ -37,8 +36,6 @@ import ru.core.storage.Storage;
 import java.util.Locale;
 
 public final class Core extends JavaPlugin {
-
-    private static final String[] MENU_ALIASES = {"ver", "version"};
 
     private Configs configs;
     private Placeholders placeholders;
@@ -106,11 +103,6 @@ public final class Core extends JavaPlugin {
         TimeCommand time = new TimeCommand(this);
         register("time", time, time);
 
-        PluginCommand command = getCommand("core");
-        if (command != null) {
-            Aliases.force(this, command, MENU_ALIASES);
-        }
-
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new CoreExpansion(this).register();
             placeholders.hook(true);
@@ -125,10 +117,6 @@ public final class Core extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        PluginCommand command = getCommand("core");
-        if (command != null) {
-            Aliases.release(this, command, MENU_ALIASES);
-        }
         stopModules();
         if (boards != null) {
             boards.clear();
