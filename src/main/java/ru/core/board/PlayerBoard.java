@@ -48,9 +48,9 @@ public final class PlayerBoard {
     public void sidebar(String title, List<String> content, boolean hideNumbers) {
         if (sidebar == null) {
             sidebar = scoreboard.registerNewObjective("CORE_SIDEBAR", Criteria.DUMMY, cut(title, 128));
-            sidebar.setDisplaySlot(DisplaySlot.SIDEBAR);
             this.title = title;
             updateNumberFormat(hideNumbers);
+            sidebar.setDisplaySlot(DisplaySlot.SIDEBAR);
         } else if (numbersHidden != hideNumbers) {
             updateNumberFormat(hideNumbers);
         }
