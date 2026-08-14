@@ -5,12 +5,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 import ru.core.Core;
 import ru.core.board.PlayerBoard;
+import ru.core.performance.PlayerBatch;
 
 import java.util.List;
 
 public final class ScoreboardModule {
 
     private final Core plugin;
+    private final PlayerBatch batch = new PlayerBatch();
     private BukkitTask task;
     private int frame;
 
@@ -19,6 +21,7 @@ public final class ScoreboardModule {
     }
 
     public void start() {
+        batch.reset();
         if (!plugin.configs().config().getBoolean("SCOREBOARD.ENABLED", false)) {
             return;
         }
@@ -32,9 +35,18 @@ public final class ScoreboardModule {
             task = null;
         }
         frame = 0;
+        batch.reset();
         for (PlayerBoard board : plugin.boards().all()) {
             board.removeSidebar();
         }
+    }
+
+    private boolean hideNumbers() {
+        return plugin.configs().config().getBoolean("SCOREBOARD.NUMBERS.HIDDEN", true);
+    }
+
+    private int playersPerUpdate() {
+        return Math.max(1, plugin.configs().config().getInt("SCOREBOARD.PERFORMANCE.PLAYERS-PER-UPDATE", 100));
     }
 
     private void update() {
@@ -48,12 +60,12 @@ public final class ScoreboardModule {
         if (frame >= titles.size()) {
             frame = 0;
         }
-        for (Player player : Bukkit.getOnlinePlayers()) {
+        for (Player player : batch.next(Bukkit.getOnlinePlayers(), playersPerUpdate())) {
             PlayerBoard board = plugin.boards().get(player);
             if (board == null) {
                 continue;
             }
-            board.sidebar(plugin.placeholders().apply(player, title), plugin.placeholders().apply(player, content));
+            board.sidebar(plugin.placeholders().apply(player, title), plugin.placeholders().apply(player, content), hideNumbers());
         }
     }
 }

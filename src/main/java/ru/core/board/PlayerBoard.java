@@ -10,6 +10,7 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
+import ru.core.packet.scoreboard.ScoreboardNumberPackets;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +24,7 @@ public final class PlayerBoard {
 
     private final Player player;
     private final Scoreboard scoreboard;
+    private final ScoreboardNumberPackets numberPackets;
     private final List<String> lines = new ArrayList<>();
     private final Map<String, Integer> tracked = new HashMap<>();
     private Objective sidebar;
@@ -30,23 +32,29 @@ public final class PlayerBoard {
     private String title = "";
     private String display = "";
     private boolean health;
+    private boolean numbersHidden;
 
-    public PlayerBoard(Player player) {
+    public PlayerBoard(Player player, ScoreboardNumberPackets numberPackets) {
         ScoreboardManager manager = Bukkit.getScoreboardManager();
         this.player = player;
         this.scoreboard = manager.getNewScoreboard();
+        this.numberPackets = numberPackets;
     }
 
     public Scoreboard scoreboard() {
         return scoreboard;
     }
 
-    public void sidebar(String title, List<String> content) {
+    public void sidebar(String title, List<String> content, boolean hideNumbers) {
         if (sidebar == null) {
             sidebar = scoreboard.registerNewObjective("CORE_SIDEBAR", Criteria.DUMMY, cut(title, 128));
             sidebar.setDisplaySlot(DisplaySlot.SIDEBAR);
             this.title = title;
-        } else if (!this.title.equals(title)) {
+            updateNumberFormat(hideNumbers);
+        } else if (numbersHidden != hideNumbers) {
+            updateNumberFormat(hideNumbers);
+        }
+        if (!this.title.equals(title)) {
             sidebar.setDisplayName(cut(title, 128));
             this.title = title;
         }
@@ -97,6 +105,7 @@ public final class PlayerBoard {
             sidebar = null;
         }
         title = "";
+        numbersHidden = false;
     }
 
     public void below(String display, boolean health) {
@@ -156,6 +165,11 @@ public final class PlayerBoard {
         if (player.isOnline()) {
             player.setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
         }
+    }
+
+    private void updateNumberFormat(boolean hideNumbers) {
+        numberPackets.apply(sidebar, hideNumbers);
+        numbersHidden = hideNumbers;
     }
 
     private void write(Team team, String text) {

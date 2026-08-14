@@ -17,6 +17,7 @@ public final class Messenger {
     public static final String STAFF = "STAFF";
 
     private final Core plugin;
+    private volatile long session;
     private String server = "server-1";
     private long lastId;
     private int polls;
@@ -27,16 +28,21 @@ public final class Messenger {
     }
 
     public void start() {
+        stop();
+        long currentSession = ++session;
+        polls = 0;
         server = plugin.configs().config().getString("SERVER", "server-1");
         if (!plugin.storage().network()) {
             return;
         }
-        plugin.data().async(() -> lastId = plugin.storage().lastId());
+        plugin.data().async(() -> initialize(currentSession));
         long period = Math.max(20L, plugin.configs().config().getLong("DATABASE.SYNC-INTERVAL", 40L));
-        task = Bukkit.getScheduler().runTaskTimer(plugin, () -> plugin.data().async(this::poll), period, period);
+        task = Bukkit.getScheduler().runTaskTimer(plugin,
+                () -> plugin.data().async(() -> poll(currentSession)), period, period);
     }
 
     public void stop() {
+        session++;
         if (task != null) {
             task.cancel();
             task = null;
@@ -52,14 +58,31 @@ public final class Messenger {
         if (!plugin.storage().network()) {
             return;
         }
-        plugin.data().async(() -> plugin.storage().publish(server, type, sender, message));
+        String target = server;
+        plugin.data().async(() -> plugin.storage().publish(target, type, sender, message));
     }
 
-    private void poll() {
-        List<NetworkMessage> messages = plugin.storage().poll(lastId, server);
-        if (++polls >= 50) {
+    private void initialize(long currentSession) {
+        if (!active(currentSession)) {
+            return;
+        }
+        long id = plugin.storage().lastId();
+        if (active(currentSession)) {
+            lastId = id;
+        }
+    }
+
+    private void poll(long currentSession) {
+        if (!active(currentSession)) {
+            return;
+        }
+        List<NetworkMessage> messages = plugin.storage().poll(lastId, server, messagesPerPoll());
+        if (!active(currentSession)) {
+            return;
+        }
+        if (++polls >= cleanupEveryPolls()) {
             polls = 0;
-            plugin.storage().cleanup(System.currentTimeMillis() - 120000L);
+            plugin.storage().cleanup(System.currentTimeMillis() - retentionMillis());
         }
         if (messages.isEmpty()) {
             return;
@@ -69,14 +92,31 @@ public final class Messenger {
                 lastId = message.id();
             }
         }
-        if (!plugin.isEnabled()) {
-            return;
-        }
         Bukkit.getScheduler().runTask(plugin, () -> {
+            if (!active(currentSession)) {
+                return;
+            }
             for (NetworkMessage message : messages) {
                 deliver(message.type(), message.sender(), message.payload());
             }
         });
+    }
+
+    private boolean active(long currentSession) {
+        return plugin.isEnabled() && session == currentSession;
+    }
+
+    private int messagesPerPoll() {
+        return Math.max(1, plugin.configs().config().getInt("DATABASE.SYNC.MESSAGES-PER-POLL", 100));
+    }
+
+    private int cleanupEveryPolls() {
+        return Math.max(1, plugin.configs().config().getInt("DATABASE.SYNC.CLEANUP-EVERY-POLLS", 50));
+    }
+
+    private long retentionMillis() {
+        long seconds = Math.max(60L, plugin.configs().config().getLong("DATABASE.SYNC.RETENTION-SECONDS", 120L));
+        return seconds * 1000L;
     }
 
     private void deliver(String type, String sender, String message) {

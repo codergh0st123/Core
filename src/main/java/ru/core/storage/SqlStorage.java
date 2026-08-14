@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -83,17 +84,74 @@ public abstract class SqlStorage implements Storage {
 
     @Override
     public synchronized void save(Profile profile) {
-        try (PreparedStatement statement = connection().prepareStatement(upsert())) {
-            statement.setString(1, profile.uuid().toString());
-            statement.setString(2, profile.name());
-            statement.setInt(3, profile.kills());
-            statement.setInt(4, profile.deaths());
-            statement.setLong(5, profile.playtime());
-            statement.setString(6, profile.language());
-            statement.setLong(7, System.currentTimeMillis());
-            statement.executeUpdate();
+        if (profile == null) {
+            return;
+        }
+        saveAll(List.of(profile));
+    }
+
+    @Override
+    public synchronized void saveAll(Collection<Profile> profiles) {
+        if (profiles.isEmpty()) {
+            return;
+        }
+        Connection current = null;
+        boolean autoCommit = true;
+        try {
+            current = connection();
+            autoCommit = current.getAutoCommit();
+            if (autoCommit) {
+                current.setAutoCommit(false);
+            }
+            try (PreparedStatement statement = current.prepareStatement(upsert())) {
+                long savedAt = System.currentTimeMillis();
+                for (Profile profile : profiles) {
+                    if (profile == null) {
+                        continue;
+                    }
+                    bind(statement, profile, savedAt);
+                    statement.addBatch();
+                }
+                statement.executeBatch();
+            }
+            current.commit();
         } catch (SQLException exception) {
-            plugin.getLogger().warning("Ошибка сохранения профиля " + profile.name() + ": " + exception.getMessage());
+            rollback(current);
+            plugin.getLogger().warning("Ошибка пакетного сохранения профилей: " + exception.getMessage());
+        } finally {
+            restoreAutoCommit(current, autoCommit);
+        }
+    }
+
+    private void bind(PreparedStatement statement, Profile profile, long savedAt) throws SQLException {
+        statement.setString(1, profile.uuid().toString());
+        statement.setString(2, profile.name());
+        statement.setInt(3, profile.kills());
+        statement.setInt(4, profile.deaths());
+        statement.setLong(5, profile.playtime());
+        statement.setString(6, profile.language());
+        statement.setLong(7, savedAt);
+    }
+
+    private void rollback(Connection current) {
+        if (current == null) {
+            return;
+        }
+        try {
+            current.rollback();
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Ошибка rollback SQL-транзакции: " + exception.getMessage());
+        }
+    }
+
+    private void restoreAutoCommit(Connection current, boolean autoCommit) {
+        if (current == null || !autoCommit) {
+            return;
+        }
+        try {
+            current.setAutoCommit(true);
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Ошибка восстановления auto-commit: " + exception.getMessage());
         }
     }
 
@@ -137,15 +195,16 @@ public abstract class SqlStorage implements Storage {
     }
 
     @Override
-    public synchronized List<NetworkMessage> poll(long lastId, String server) {
+    public synchronized List<NetworkMessage> poll(long lastId, String server, int limit) {
         List<NetworkMessage> messages = new ArrayList<>();
         if (!network()) {
             return messages;
         }
         try (PreparedStatement statement = connection().prepareStatement(
-                "SELECT ID, SERVER, TYPE, SENDER, PAYLOAD FROM CORE_NETWORK WHERE ID > ? AND SERVER <> ? ORDER BY ID ASC LIMIT 100")) {
+                "SELECT ID, SERVER, TYPE, SENDER, PAYLOAD FROM CORE_NETWORK WHERE ID > ? AND SERVER <> ? ORDER BY ID ASC LIMIT ?")) {
             statement.setLong(1, lastId);
             statement.setString(2, server);
+            statement.setInt(3, Math.max(1, Math.min(limit, 1000)));
             try (ResultSet result = statement.executeQuery()) {
                 while (result.next()) {
                     messages.add(new NetworkMessage(result.getLong("ID"), result.getString("SERVER"),

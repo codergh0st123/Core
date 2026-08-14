@@ -29,6 +29,7 @@ import ru.core.module.TabModule;
 import ru.core.net.Messenger;
 import ru.core.placeholder.CoreExpansion;
 import ru.core.placeholder.Placeholders;
+import ru.core.packet.scoreboard.ScoreboardNumberPackets;
 import ru.core.storage.MySqlStorage;
 import ru.core.storage.SqLiteStorage;
 import ru.core.storage.Storage;
@@ -44,6 +45,7 @@ public final class Core extends JavaPlugin {
     private Storage storage;
     private DataManager data;
     private Messenger messenger;
+    private ScoreboardNumberPackets scoreboardPackets;
     private BoardManager boards;
     private ScoreboardModule scoreboards;
     private TabModule tab;
@@ -76,7 +78,8 @@ public final class Core extends JavaPlugin {
         messenger = new Messenger(this);
         messenger.start();
 
-        boards = new BoardManager();
+        scoreboardPackets = new ScoreboardNumberPackets(this);
+        boards = new BoardManager(scoreboardPackets);
         menu = new InfoMenu(this);
         scoreboards = new ScoreboardModule(this);
         tab = new TabModule(this);
@@ -144,8 +147,11 @@ public final class Core extends JavaPlugin {
 
     public void reloadAll() {
         stopModules();
+        messenger.stop();
         configs.load();
         placeholders.rebuild();
+        data.reload();
+        messenger.start();
         startModules();
     }
 

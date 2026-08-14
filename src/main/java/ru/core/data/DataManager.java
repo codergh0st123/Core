@@ -34,8 +34,15 @@ public final class DataManager {
 
     public void start() {
         timeTask = Bukkit.getScheduler().runTaskTimer(plugin, this::tick, 20L, 20L);
-        long interval = Math.max(30L, plugin.configs().config().getLong("DATABASE.SAVE-INTERVAL", 300L));
-        saveTask = Bukkit.getScheduler().runTaskTimer(plugin, this::saveOnline, interval * 20L, interval * 20L);
+        startSaveTask();
+    }
+
+    public void reload() {
+        if (saveTask != null) {
+            saveTask.cancel();
+            saveTask = null;
+        }
+        startSaveTask();
     }
 
     public void async(Runnable task) {
@@ -77,6 +84,11 @@ public final class DataManager {
         async(() -> plugin.storage().save(profile));
     }
 
+    private void startSaveTask() {
+        long interval = Math.max(30L, plugin.configs().config().getLong("DATABASE.SAVE-INTERVAL", 300L));
+        saveTask = Bukkit.getScheduler().runTaskTimer(plugin, this::saveOnline, interval * 20L, interval * 20L);
+    }
+
     private void tick() {
         for (Player player : Bukkit.getOnlinePlayers()) {
             Profile profile = profiles.get(player.getUniqueId());
@@ -91,11 +103,7 @@ public final class DataManager {
             return;
         }
         List<Profile> snapshot = new ArrayList<>(profiles.values());
-        async(() -> {
-            for (Profile profile : snapshot) {
-                plugin.storage().save(profile);
-            }
-        });
+        async(() -> plugin.storage().saveAll(snapshot));
     }
 
     public void shutdown() {
@@ -110,11 +118,7 @@ public final class DataManager {
         List<Profile> pending = new ArrayList<>(profiles.values());
         profiles.clear();
         if (!executor.isShutdown()) {
-            executor.execute(() -> {
-                for (Profile profile : pending) {
-                    plugin.storage().save(profile);
-                }
-            });
+            executor.execute(() -> plugin.storage().saveAll(pending));
             executor.shutdown();
         }
         try {

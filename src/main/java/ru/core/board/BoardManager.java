@@ -1,6 +1,7 @@
 package ru.core.board;
 
 import org.bukkit.entity.Player;
+import ru.core.packet.scoreboard.ScoreboardNumberPackets;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,10 +11,15 @@ import java.util.UUID;
 public final class BoardManager {
 
     private final Map<UUID, PlayerBoard> boards = new HashMap<>();
+    private final ScoreboardNumberPackets numberPackets;
+
+    public BoardManager(ScoreboardNumberPackets numberPackets) {
+        this.numberPackets = numberPackets;
+    }
 
     public PlayerBoard create(Player player) {
         remove(player);
-        PlayerBoard board = new PlayerBoard(player);
+        PlayerBoard board = new PlayerBoard(player, numberPackets);
         boards.put(player.getUniqueId(), board);
         player.setScoreboard(board.scoreboard());
         return board;
