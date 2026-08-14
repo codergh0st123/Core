@@ -68,6 +68,7 @@ public final class TimeCommand implements CommandExecutor, TabCompleter {
                     Msg.send(plugin, sender, "TIME-UNKNOWN", "%player%", name);
                     return;
                 }
+                plugin.data().invalidate(name);
                 Msg.send(plugin, sender, add ? "TIME-ADD" : "TIME-SET", "%player%", name, "%time%", formatted);
             });
         });
