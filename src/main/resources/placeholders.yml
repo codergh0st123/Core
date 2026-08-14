@@ -1,0 +1,10 @@
+SPIGOT:
+  TEST:
+    - "текст"
+  NAME:
+    - "&bCore &7» &f%nick%"
+SERVER:
+  IP:
+    - "&#55FFFFplay.example.net"
+  ONLINE:
+    - "&fОнлайн: &b%online%"

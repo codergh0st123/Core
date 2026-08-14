@@ -1,0 +1,126 @@
+SERVER: "server-1"
+
+DATABASE:
+  TYPE: "SQLITE"
+  SAVE-INTERVAL: 300
+  SYNC-INTERVAL: 40
+  MYSQL:
+    HOST: "127.0.0.1"
+    PORT: 3306
+    DATABASE: "core"
+    USER: "root"
+    PASSWORD: ""
+    SSL: false
+  SQLITE:
+    FILE: "database.db"
+
+SCOREBOARD:
+  ENABLED: true
+  UPDATE: 20
+  TITLE:
+    - "<gradient:#00E5FF:#0066FF>CORE</gradient>"
+  LINES:
+    - "&7"
+    - "&fИгрок: &b%nick%"
+    - "&fОнлайн: &b%online%"
+    - "&fУбийства: &b%kills%"
+    - "&fСмерти: &b%death%"
+    - "&fВремя: &b%CORE_TIME%"
+    - "&7"
+    - "&#55FFFFplay.example.net"
+
+TAB:
+  ENABLED: true
+  UPDATE: 20
+  HEADER:
+    - ""
+    - "<gradient:#00E5FF:#0066FF>CORE</gradient>"
+    - "&7Онлайн: &f%online%"
+    - ""
+  FOOTER:
+    - ""
+    - "&7Ваше время: &f%CORE_TIME%"
+    - ""
+
+BOSSBARS:
+  ENABLED: true
+  UPDATE: 20
+  BARS:
+    MAIN:
+      ENABLED: true
+      COLOR: "BLUE"
+      STYLE: "SOLID"
+      PROGRESS: 1.0
+      TITLE:
+        - "&fОнлайн: &b%online% &8| &fВремя: &b%CORE_TIME%"
+
+NAMETAG:
+  ENABLED: true
+  MODE: "PING"
+  UPDATE: 40
+  DISPLAY:
+    - "&7ms"
+
+ANNOUNCER:
+  ENABLED: true
+  INTERVAL: 300
+  MESSAGES:
+    1:
+      - ""
+      - "&bИнформация &8» &fИспользуйте &b/core&f, чтобы посмотреть данные сервера."
+      - ""
+    2:
+      - ""
+      - "&bИнформация &8» &fИспользуйте &b/playtime&f, чтобы посмотреть наигранное время."
+      - ""
+    3:
+      - ""
+      - "&bИнформация &8» &fИспользуйте &b/lang&f, чтобы выбрать язык."
+      - ""
+
+SCREEN-TEXT:
+  ENABLED: false
+  TYPE: "ACTIONBAR"
+  UPDATE: 20
+  TEXT:
+    - "&fОнлайн: &b%online% &8| &fВремя: &b%CORE_TIME%"
+  SUBTITLE:
+    - ""
+
+MENU:
+  TITLE: "&8Данные сервера"
+  SIZE: 27
+  SLOT: 13
+  ITEM: "BARRIER"
+  NAME: "&cИнформация"
+  VERSION: "0.0.1"
+  LORE:
+    - "&7Версия ядра проекта: &f%VERSION%"
+    - "&7Загружено языков: &f%LANGS%"
+    - "&7Список локализации: &f[%LANG-LIST%]"
+
+PLAY:
+  SERVERS:
+    SERVER-1: "server-1"
+    SERVER-2: "server-2"
+
+TIME:
+  SECONDS:
+    - "%secondr% сек"
+  MINUTES:
+    - "%minutes% мин %secondr% сек"
+  HOURS:
+    - "%hourse% ч"
+  PLURAL:
+    HOURS:
+      - "час"
+      - "часа"
+      - "часов"
+    MINUTES:
+      - "минута"
+      - "минуты"
+      - "минут"
+    SECONDS:
+      - "секунда"
+      - "секунды"
+      - "секунд"

@@ -1,0 +1,14 @@
+DEFAULT: "RU"
+ENABLED:
+  - "RU"
+  - "EN"
+RU:
+  TEST:
+    - "сообщение"
+  JOIN:
+    - "&aИгрок &f%nick% &aзашёл на сервер."
+EN:
+  TEST:
+    - "text"
+  JOIN:
+    - "&aPlayer &f%nick% &ajoined the server."

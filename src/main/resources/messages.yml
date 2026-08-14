@@ -1,0 +1,52 @@
+PREFIX:
+  - "&8[&bCore&8] &r"
+NO-PERMISSION:
+  - "%PREFIX%&cНедостаточно прав."
+PLAYER-ONLY:
+  - "%PREFIX%&cКоманда доступна только игроку."
+RELOAD:
+  - "%PREFIX%&aКонфигурация перезагружена."
+CORE-USAGE:
+  - "%PREFIX%&7Использование: &f/core reload"
+PLAY-USAGE:
+  - "%PREFIX%&7Использование: &f/play <сервер>"
+PLAY-UNKNOWN:
+  - "%PREFIX%&cРежим &f%server% &cне найден."
+PLAY-CONNECT:
+  - "%PREFIX%&7Подключение к режиму &f%server%&7..."
+ALERT-USAGE:
+  - "%PREFIX%&7Использование: &f/alert <сообщение>"
+ALERT:
+  - "&7"
+  - "&c&lALERT &8» &f%message%"
+  - "&7"
+PREMIUM-USAGE:
+  - "%PREFIX%&7Использование: &f/pc <сообщение>"
+PREMIUM-CHAT:
+  - "&d[PC] &f%player% &8» &d%message%"
+STAFF-USAGE:
+  - "%PREFIX%&7Использование: &f/schat <сообщение>"
+STAFF-CHAT:
+  - "&b[SC] &f%player% &8» &b%message%"
+PLAYTIME:
+  - "%PREFIX%&7Вы наиграли: &f%hourse% &7%hourse-word% &f%minutes% &7%minutes-word% &f%secondr% &7%secondr-word%"
+LANG-USAGE:
+  - "%PREFIX%&7Использование: &f/lang <язык>"
+LANG-LIST:
+  - "%PREFIX%&7Доступные языки: &f%langs%"
+LANG-UNKNOWN:
+  - "%PREFIX%&cЯзык &f%lang% &cне найден."
+LANG-CHANGED:
+  - "%PREFIX%&aЯзык изменён на &f%lang%&a."
+TIME-USAGE:
+  - "%PREFIX%&7Использование: &f/time <add|set> <ник> <время>"
+TIME-FORMAT:
+  - "%PREFIX%&cНеверный формат времени. Пример: &f1d2h30m10s"
+TIME-UNKNOWN:
+  - "%PREFIX%&cИгрок &f%player% &cне найден в базе данных."
+TIME-ADD:
+  - "%PREFIX%&aИгроку &f%player% &aвыдано &f%time%&a."
+TIME-SET:
+  - "%PREFIX%&aИгроку &f%player% &aустановлено &f%time%&a."
+PROFILE-LOADING:
+  - "%PREFIX%&cДанные ещё загружаются, повторите попытку."

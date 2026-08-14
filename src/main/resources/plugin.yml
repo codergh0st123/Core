@@ -1,0 +1,41 @@
+name: Core
+main: ru.core.Core
+version: ${project.version}
+api-version: '1.21'
+author: gh0st
+softdepend:
+  - PlaceholderAPI
+libraries:
+  - com.mysql:mysql-connector-j:9.1.0
+  - org.xerial:sqlite-jdbc:3.47.0.0
+commands:
+  core:
+    aliases:
+      - ver
+      - version
+      - gcore
+      - bukkitcore
+      - ludocore
+      - cokcore
+      - ядросервера
+      - zlhj
+  play:
+  alert:
+  pc:
+  schat:
+  playtime:
+    aliases:
+      - времякотороетыпросрал
+  lang:
+  time:
+permissions:
+  core.reload:
+    default: op
+  core.alert:
+    default: op
+  core.time:
+    default: op
+  core.chat.premium:
+    default: op
+  core.chat.staff:
+    default: op
