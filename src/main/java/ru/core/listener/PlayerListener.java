@@ -30,6 +30,7 @@ public final class PlayerListener implements Listener {
         Player player = event.getPlayer();
         plugin.data().quit(player);
         plugin.bossBars().remove(player);
+        plugin.removePacketState(player);
         plugin.boards().remove(player);
         plugin.boards().forget(player.getName());
     }

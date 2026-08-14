@@ -5,11 +5,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 import ru.core.Core;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public final class TabModule {
 
     private final Core plugin;
+    private final Map<UUID, TabText> lastText = new HashMap<>();
     private BukkitTask task;
 
     public TabModule(Core plugin) {
@@ -29,8 +33,15 @@ public final class TabModule {
             task.cancel();
             task = null;
         }
+        lastText.clear();
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.setPlayerListHeaderFooter("", "");
+        }
+    }
+
+    public void remove(Player player) {
+        if (player != null) {
+            lastText.remove(player.getUniqueId());
         }
     }
 
@@ -38,8 +49,44 @@ public final class TabModule {
         List<String> header = plugin.configs().config().getStringList("TAB.HEADER");
         List<String> footer = plugin.configs().config().getStringList("TAB.FOOTER");
         for (Player player : Bukkit.getOnlinePlayers()) {
-            player.setPlayerListHeaderFooter(String.join("\n", plugin.placeholders().apply(player, header)),
-                    String.join("\n", plugin.placeholders().apply(player, footer)));
+            TabText text = new TabText(
+                    String.join("\n", plugin.placeholders().apply(player, header)),
+                    String.join("\n", plugin.placeholders().apply(player, footer))
+            );
+            if (text.equals(lastText.get(player.getUniqueId()))) {
+                continue;
+            }
+            player.setPlayerListHeaderFooter(text.header, text.footer);
+            lastText.put(player.getUniqueId(), text);
+        }
+    }
+
+    private static final class TabText {
+
+        private final String header;
+        private final String footer;
+
+        private TabText(String header, String footer) {
+            this.header = header;
+            this.footer = footer;
+        }
+
+        @Override
+        public boolean equals(Object object) {
+            if (this == object) {
+                return true;
+            }
+            if (!(object instanceof TabText)) {
+                return false;
+            }
+            TabText other = (TabText) object;
+            return header.equals(other.header) && footer.equals(other.footer);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = header.hashCode();
+            return 31 * result + footer.hashCode();
         }
     }
 }

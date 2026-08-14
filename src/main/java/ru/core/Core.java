@@ -28,6 +28,7 @@ import ru.core.module.TabModule;
 import ru.core.net.Messenger;
 import ru.core.placeholder.CoreExpansion;
 import ru.core.placeholder.Placeholders;
+import ru.core.packet.protocollib.ProtocolTrafficOptimizer;
 import ru.core.packet.scoreboard.ScoreboardNumberPackets;
 import ru.core.storage.MySqlStorage;
 import ru.core.storage.SqLiteStorage;
@@ -43,6 +44,7 @@ public final class Core extends JavaPlugin {
     private DataManager data;
     private Messenger messenger;
     private ScoreboardNumberPackets scoreboardPackets;
+    private ProtocolTrafficOptimizer protocolOptimizer;
     private BoardManager boards;
     private ScoreboardModule scoreboards;
     private TabModule tab;
@@ -85,6 +87,7 @@ public final class Core extends JavaPlugin {
         announcer = new AnnouncerModule(this);
         screenText = new ScreenTextModule(this);
         startModules();
+        startProtocolOptimization();
 
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
         getServer().getPluginManager().registerEvents(menu, this);
@@ -118,6 +121,7 @@ public final class Core extends JavaPlugin {
     @Override
     public void onDisable() {
         stopModules();
+        stopProtocolOptimization();
         if (boards != null) {
             boards.clear();
         }
@@ -135,12 +139,14 @@ public final class Core extends JavaPlugin {
 
     public void reloadAll() {
         stopModules();
+        stopProtocolOptimization();
         messenger.stop();
         configs.load();
         placeholders.rebuild();
         data.reload();
         messenger.start();
         startModules();
+        startProtocolOptimization();
     }
 
     private void startModules() {
@@ -150,6 +156,26 @@ public final class Core extends JavaPlugin {
         nameTags.start();
         announcer.start();
         screenText.start();
+    }
+
+    private void startProtocolOptimization() {
+        if (!getServer().getPluginManager().isPluginEnabled("ProtocolLib")) {
+            return;
+        }
+        try {
+            protocolOptimizer = new ProtocolTrafficOptimizer(this);
+            protocolOptimizer.start();
+        } catch (LinkageError | RuntimeException exception) {
+            protocolOptimizer = null;
+            getLogger().warning("ProtocolLib: оптимизация пакетов отключена: " + exception.getMessage());
+        }
+    }
+
+    private void stopProtocolOptimization() {
+        if (protocolOptimizer != null) {
+            protocolOptimizer.stop();
+            protocolOptimizer = null;
+        }
     }
 
     private void stopModules() {
@@ -215,6 +241,15 @@ public final class Core extends JavaPlugin {
 
     public BoardManager boards() {
         return boards;
+    }
+
+    public void removePacketState(Player player) {
+        if (tab != null) {
+            tab.remove(player);
+        }
+        if (protocolOptimizer != null) {
+            protocolOptimizer.remove(player);
+        }
     }
 
     public BossBarModule bossBars() {
