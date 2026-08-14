@@ -27,10 +27,10 @@ public final class ProtocolTrafficOptimizer {
     };
 
     private final Core plugin;
-    private final Map<UUID, PlayerPacketState> states = new ConcurrentHashMap<>();
+    private final Map<UUID, PacketDeduplicator> states = new ConcurrentHashMap<>();
     private ProtocolManager manager;
     private PacketListener listener;
-    private long duplicateWindowMillis;
+    private long duplicateWindowNanos;
 
     public ProtocolTrafficOptimizer(Core plugin) {
         this.plugin = plugin;
@@ -41,11 +41,12 @@ public final class ProtocolTrafficOptimizer {
         if (!plugin.configs().config().getBoolean("PROTOCOLLIB.ENABLED", true)) {
             return;
         }
-        duplicateWindowMillis = Math.max(0L,
+        long windowMillis = Math.max(0L,
                 plugin.configs().config().getLong("PROTOCOLLIB.DUPLICATE-WINDOW-MILLIS", 100L));
-        if (duplicateWindowMillis == 0L) {
+        if (windowMillis == 0L) {
             return;
         }
+        duplicateWindowNanos = windowMillis * 1_000_000L;
         manager = ProtocolLibrary.getProtocolManager();
         listener = new PacketAdapter(plugin, ListenerPriority.NORMAL, PACKET_TYPES) {
             @Override
@@ -73,44 +74,17 @@ public final class ProtocolTrafficOptimizer {
     }
 
     private void filter(PacketEvent event) {
-        if (event.isPlayerTemporary() || event.getPlayer() == null || !owns(event)) {
+        if (event.isPlayerTemporary() || event.getPlayer() == null) {
+            return;
+        }
+        String payload = event.getPacket().toString();
+        if (!payload.contains("CORE_")) {
             return;
         }
         UUID uuid = event.getPlayer().getUniqueId();
-        PacketFingerprint fingerprint = new PacketFingerprint(event.getPacket().getType(), event.getPacket().toString(),
-                System.currentTimeMillis());
-        PlayerPacketState state = states.computeIfAbsent(uuid, ignored -> new PlayerPacketState());
-        if (state.duplicate(fingerprint, duplicateWindowMillis)) {
+        PacketDeduplicator state = states.computeIfAbsent(uuid, ignored -> new PacketDeduplicator());
+        if (state.duplicate(event.getPacket().getType().toString(), payload, System.nanoTime(), duplicateWindowNanos)) {
             event.setCancelled(true);
-        }
-    }
-
-    private boolean owns(PacketEvent event) {
-        return event.getPacket().toString().contains("CORE_");
-    }
-
-    private static final class PlayerPacketState {
-
-        private final Map<PacketType, PacketFingerprint> lastPackets = new ConcurrentHashMap<>();
-
-        private boolean duplicate(PacketFingerprint fingerprint, long windowMillis) {
-            PacketFingerprint previous = lastPackets.put(fingerprint.type, fingerprint);
-            return previous != null
-                    && previous.payload.equals(fingerprint.payload)
-                    && fingerprint.sentAt - previous.sentAt <= windowMillis;
-        }
-    }
-
-    private static final class PacketFingerprint {
-
-        private final PacketType type;
-        private final String payload;
-        private final long sentAt;
-
-        private PacketFingerprint(PacketType type, String payload, long sentAt) {
-            this.type = type;
-            this.payload = payload;
-            this.sentAt = sentAt;
         }
     }
 }
