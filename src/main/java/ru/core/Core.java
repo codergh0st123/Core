@@ -1,6 +1,7 @@
 package ru.core;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
@@ -62,6 +63,7 @@ public final class Core extends JavaPlugin {
     public void onEnable() {
         configs = new Configs(this);
         configs.load();
+        applyAdvancementRules();
         animations = new AnimationManager(this);
         animations.reload(configs.animations());
 
@@ -154,6 +156,7 @@ public final class Core extends JavaPlugin {
         stopProtocolOptimization();
         messenger.stop();
         configs.load();
+        applyAdvancementRules();
         animations.reload(configs.animations());
         groups.reload(configs.groups(), configs.config().getStringList("TAB.SORTING_TYPES"));
         placeholders.rebuild();
@@ -161,6 +164,13 @@ public final class Core extends JavaPlugin {
         messenger.start();
         startModules();
         startProtocolOptimization();
+    }
+
+    private void applyAdvancementRules() {
+        if (!configs.config().getBoolean("MESSAGES.HIDE.ADVANCEMENTS", false)) {
+            return;
+        }
+        Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false));
     }
 
     private void startModules() {
