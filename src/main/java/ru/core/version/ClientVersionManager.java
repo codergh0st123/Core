@@ -21,9 +21,32 @@ public final class ClientVersionManager {
         this.plugin = plugin;
     }
 
+    public void start() {
+        if (!plugin.configs().config().getBoolean("CLIENT-VERSIONS.ENABLED", true)) {
+            return;
+        }
+        if (!plugin.getServer().getPluginManager().isPluginEnabled("ViaVersion")) {
+            plugin.getLogger().warning("Проверка версий клиентов отключена: ViaVersion не найден.");
+            return;
+        }
+        if (plugin.configs().config().getBoolean("CLIENT-VERSIONS.REQUIRE-VIABACKWARDS", true)
+                && !plugin.getServer().getPluginManager().isPluginEnabled("ViaBackwards")) {
+            plugin.getLogger().warning("Клиенты 1.16.5 не смогут подключиться: ViaBackwards не найден.");
+            return;
+        }
+        String integrations = plugin.getServer().getPluginManager().isPluginEnabled("ViaBackwards")
+                ? "ViaVersion и ViaBackwards"
+                : "ViaVersion";
+        plugin.getLogger().info(integrations + " подключены. Разрешены клиенты "
+                + plugin.configs().config().getString("CLIENT-VERSIONS.MINIMUM", "1.16.5") + "-"
+                + plugin.configs().config().getString("CLIENT-VERSIONS.MAXIMUM", "1.21.11") + ".");
+    }
+
     public void check(Player player) {
         if (!plugin.configs().config().getBoolean("CLIENT-VERSIONS.ENABLED", true)
-                || !plugin.getServer().getPluginManager().isPluginEnabled("ViaVersion")) {
+                || !plugin.getServer().getPluginManager().isPluginEnabled("ViaVersion")
+                || (plugin.configs().config().getBoolean("CLIENT-VERSIONS.REQUIRE-VIABACKWARDS", true)
+                && !plugin.getServer().getPluginManager().isPluginEnabled("ViaBackwards"))) {
             return;
         }
         long delay = Math.max(1L, plugin.configs().config().getLong("CLIENT-VERSIONS.CHECK-DELAY", 2L));

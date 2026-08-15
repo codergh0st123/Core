@@ -7,6 +7,7 @@ softdepend:
   - PlaceholderAPI
   - ProtocolLib
   - ViaVersion
+  - ViaBackwards
   - LuckPerms
   - DonationAlerts
   - FreeSystem

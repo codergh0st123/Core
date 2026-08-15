@@ -92,6 +92,7 @@ public final class Core extends JavaPlugin {
         data = new DataManager(this);
         data.start();
         clientVersions = new ClientVersionManager(this);
+        clientVersions.start();
         debug = new DebugManager(this);
         CoreDebug.register(debug);
 
@@ -175,6 +176,7 @@ public final class Core extends JavaPlugin {
         messenger.stop();
         configs.load();
         applyAdvancementRules();
+        clientVersions.start();
         animations.reload(configs.animations());
         groups.reload(configs.groups(), configs.config().getStringList("TAB.SORTING_TYPES"));
         groups.preloadOnline();

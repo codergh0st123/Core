@@ -18,6 +18,7 @@ CLIENT-VERSIONS:
   ENABLED: true
   MINIMUM: "1.16.5"
   MAXIMUM: "1.21.11"
+  REQUIRE-VIABACKWARDS: true
   CHECK-DELAY: 2
   MESSAGE:
     - "&cВерсия вашего клиента не поддерживается."
