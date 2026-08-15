@@ -52,5 +52,6 @@ public final class NameTagModule {
                 board.value(target.getName(), target.getPing());
             }
         }
+        plugin.groups().updateTags();
     }
 }

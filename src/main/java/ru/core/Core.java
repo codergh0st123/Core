@@ -124,6 +124,7 @@ public final class Core extends JavaPlugin {
             data.join(player);
             boards.create(player);
         }
+        groups.updateTags();
     }
 
     @Override

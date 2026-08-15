@@ -26,12 +26,15 @@ public final class PlayerBoard {
     private final ScoreboardNumberPackets numberPackets;
     private final List<String> lines = new ArrayList<>();
     private final Map<String, Integer> tracked = new HashMap<>();
+    private final Map<String, String> tagTeams = new HashMap<>();
+    private final Map<String, String> groupTeams = new HashMap<>();
     private Objective sidebar;
     private Objective below;
     private String title = "";
     private String display = "";
     private boolean health;
     private boolean numbersHidden;
+    private int tagSequence;
 
     public PlayerBoard(Player player, ScoreboardNumberPackets numberPackets) {
         ScoreboardManager manager = Bukkit.getScoreboardManager();
@@ -143,6 +146,52 @@ public final class PlayerBoard {
         }
     }
 
+    public void tag(String target, String group, String prefix, String suffix) {
+        String name = groupTeams.computeIfAbsent(group, ignored -> nextTagTeam());
+        String previous = tagTeams.put(target, name);
+        if (previous != null && !previous.equals(name)) {
+            Team old = scoreboard.getTeam(previous);
+            if (old != null) {
+                old.removeEntry(target);
+            }
+        }
+        Team team = scoreboard.getTeam(name);
+        if (team == null) {
+            team = scoreboard.registerNewTeam(name);
+        }
+        if (!team.hasEntry(target)) {
+            team.addEntry(target);
+        }
+        if (!team.getPrefix().equals(prefix)) {
+            team.setPrefix(prefix);
+        }
+        if (!team.getSuffix().equals(suffix)) {
+            team.setSuffix(suffix);
+        }
+    }
+
+    public void removeTag(String target) {
+        String name = tagTeams.remove(target);
+        if (name == null) {
+            return;
+        }
+        Team team = scoreboard.getTeam(name);
+        if (team != null) {
+            team.removeEntry(target);
+        }
+    }
+
+    public void removeTags() {
+        for (String name : new ArrayList<>(groupTeams.values())) {
+            Team team = scoreboard.getTeam(name);
+            if (team != null) {
+                team.unregister();
+            }
+        }
+        tagTeams.clear();
+        groupTeams.clear();
+    }
+
     public void removeBelow() {
         tracked.clear();
         if (below != null) {
@@ -155,6 +204,7 @@ public final class PlayerBoard {
     public void destroy() {
         removeSidebar();
         removeBelow();
+        removeTags();
         for (Team team : new ArrayList<>(scoreboard.getTeams())) {
             team.unregister();
         }
@@ -178,6 +228,10 @@ public final class PlayerBoard {
         if (!team.getSuffix().isEmpty()) {
             team.setSuffix("");
         }
+    }
+
+    private String nextTagTeam() {
+        return "CT" + Integer.toString(tagSequence++, 36);
     }
 
     private String team(int index) {

@@ -64,6 +64,7 @@ public final class TabModule {
             player.setPlayerListHeaderFooter(text.header, text.footer);
             lastText.put(player.getUniqueId(), text);
         }
+        plugin.groups().updateTags();
     }
 
     private static final class TabText {

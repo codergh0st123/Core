@@ -10,12 +10,12 @@ Core читает `groups.yml` и получает **primary group** уже за
 |---|---|
 | `TAB-PREFIX` | Текст перед именем игрока в tab-list. |
 | `TAB-SUFFIX` | Текст после имени игрока в tab-list. |
-| `TAG-PREFIX` | Зарезервированный формат префикса nametag группы. |
-| `TAG-SUFFIX` | Зарезервированный формат суффикса nametag группы. |
+| `TAG-PREFIX` | Текст перед ником игрока над головой. |
+| `TAG-SUFFIX` | Текст после ника игрока над головой. |
 
 Порядок задаётся в `TAB.SORTING_TYPES`. Запись `GROUPS:owner,admin,default` задаёт приоритет групп слева направо. `PLACEHOLDER_A_TO_Z:%player%` добавляет буквенный порядок внутри каждой группы. Core использует штатный `Player#setPlayerListOrder`, поэтому не создаёт scoreboard-команды и не использует NMS для сортировки.
 
-`groups.yml` поддерживает `%CORE_ANIMATION:OWNER%`, `&`, `§`, `&#RRGGBB`, `&x` и любые расширения PlaceholderAPI. Поля `%vault_prefix%`, `%vault_suffix%` и `%vault_ranksuffix%` в стандартном примере требуют установленный PlaceholderAPI и соответствующее Vault-расширение. После изменения `groups.yml`, `TAB.SORTING_TYPES` или группы игрока выполните `/core reload`.
+`groups.yml` поддерживает `%CORE_ANIMATION:OWNER%`, `&`, `§`, `&#RRGGBB`, `&x` и любые расширения PlaceholderAPI. Поля `%vault_prefix%`, `%vault_suffix%` и `%vault_ranksuffix%` в стандартном примере требуют установленный PlaceholderAPI и соответствующее Vault-расширение. Надголовные теги включаются ключом `NAMETAG.GROUPS.ENABLED` и обновляются только при изменении группы или её форматированного текста; в каждом персональном scoreboard создаётся не более одной команды на группу. После изменения `groups.yml`, `TAB.SORTING_TYPES` или группы игрока выполните `/core reload`.
 
 ## Текстовые анимации
 

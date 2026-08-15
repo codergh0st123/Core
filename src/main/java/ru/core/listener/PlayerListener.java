@@ -23,6 +23,8 @@ public final class PlayerListener implements Listener {
         Player player = event.getPlayer();
         plugin.data().join(player);
         plugin.boards().create(player);
+        plugin.groups().createTags(player);
+        plugin.groups().updateTags();
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

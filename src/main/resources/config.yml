@@ -78,6 +78,8 @@ BOSSBARS:
 
 NAMETAG:
   ENABLED: true
+  GROUPS:
+    ENABLED: true
   MODE: "PING"
   UPDATE: 40
   DISPLAY:

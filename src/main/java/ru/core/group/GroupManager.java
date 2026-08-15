@@ -5,10 +5,12 @@ import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.query.QueryOptions;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import ru.core.Core;
+import ru.core.board.PlayerBoard;
 
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -22,6 +24,7 @@ public final class GroupManager {
 
     private final Core plugin;
     private final Map<UUID, TabState> states = new LinkedHashMap<>();
+    private final Map<UUID, TagState> tagStates = new LinkedHashMap<>();
     private Map<String, GroupFormat> formats = Map.of();
     private static final int GROUP_ORDER_RANGE = 2_000_000;
 
@@ -44,6 +47,7 @@ public final class GroupManager {
         alphabetical = sortingTypes.stream().anyMatch(this::isAlphabeticalPlayerSort);
         luckPerms = resolveLuckPerms();
         states.clear();
+        tagStates.clear();
     }
 
     public void updateTab(Player player) {
@@ -72,9 +76,46 @@ public final class GroupManager {
         }
     }
 
+    public void updateTags() {
+        if (!tagEnabled()) {
+            return;
+        }
+        if (luckPerms == null) {
+            removeTags();
+            return;
+        }
+        for (Player target : Bukkit.getOnlinePlayers()) {
+            TagState state = tagState(target);
+            if (state.equals(tagStates.get(target.getUniqueId()))) {
+                continue;
+            }
+            applyTag(target, state);
+            tagStates.put(target.getUniqueId(), state);
+        }
+    }
+
+    public void createTags(Player viewer) {
+        if (!tagEnabled() || luckPerms == null) {
+            return;
+        }
+        PlayerBoard board = plugin.boards().get(viewer);
+        if (board == null) {
+            return;
+        }
+        for (Player target : Bukkit.getOnlinePlayers()) {
+            TagState state = tagState(target);
+            board.tag(target.getName(), state.group, state.prefix, state.suffix);
+        }
+    }
+
     public void remove(Player player) {
-        if (player != null) {
-            states.remove(player.getUniqueId());
+        if (player == null) {
+            return;
+        }
+        states.remove(player.getUniqueId());
+        tagStates.remove(player.getUniqueId());
+        for (PlayerBoard board : plugin.boards().all()) {
+            board.removeTag(player.getName());
         }
     }
 
@@ -84,6 +125,34 @@ public final class GroupManager {
             player.setPlayerListName(null);
         }
         states.clear();
+        removeTags();
+    }
+
+    private void applyTag(Player target, TagState state) {
+        for (PlayerBoard board : plugin.boards().all()) {
+            board.tag(target.getName(), state.group, state.prefix, state.suffix);
+        }
+    }
+
+    private void removeTags() {
+        for (PlayerBoard board : plugin.boards().all()) {
+            board.removeTags();
+        }
+        tagStates.clear();
+    }
+
+    private boolean tagEnabled() {
+        return plugin.configs().config().getBoolean("NAMETAG.GROUPS.ENABLED", true);
+    }
+
+    private TagState tagState(Player player) {
+        String group = group(player);
+        GroupFormat format = formats.getOrDefault(group, formats.getOrDefault("DEFAULT", GroupFormat.EMPTY));
+        return new TagState(
+                group,
+                plugin.placeholders().apply(player, format.tagPrefix()),
+                plugin.placeholders().apply(player, format.tagSuffix())
+        );
     }
 
     public String group(Player player) {
@@ -191,6 +260,38 @@ public final class GroupManager {
         } catch (IllegalStateException exception) {
             plugin.getLogger().warning("LuckPerms: не удалось получить API для сортировки tab-list.");
             return null;
+        }
+    }
+
+    private static final class TagState {
+
+        private final String group;
+        private final String prefix;
+        private final String suffix;
+
+        private TagState(String group, String prefix, String suffix) {
+            this.group = group;
+            this.prefix = prefix;
+            this.suffix = suffix;
+        }
+
+        @Override
+        public boolean equals(Object object) {
+            if (this == object) {
+                return true;
+            }
+            if (!(object instanceof TagState)) {
+                return false;
+            }
+            TagState other = (TagState) object;
+            return group.equals(other.group) && prefix.equals(other.prefix) && suffix.equals(other.suffix);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = group.hashCode();
+            result = 31 * result + prefix.hashCode();
+            return 31 * result + suffix.hashCode();
         }
     }
 
