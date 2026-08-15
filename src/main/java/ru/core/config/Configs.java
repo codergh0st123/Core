@@ -20,6 +20,7 @@ public final class Configs {
     private FileConfiguration messages;
     private FileConfiguration lang;
     private FileConfiguration placeholders;
+    private FileConfiguration animations;
 
     public Configs(Core plugin) {
         this.plugin = plugin;
@@ -30,6 +31,7 @@ public final class Configs {
         messages = read("messages.yml", true);
         lang = read("lang.yml", false);
         placeholders = read("placeholders.yml", false);
+        animations = read("animations.yml", true);
     }
 
     public FileConfiguration config() {
@@ -46,6 +48,10 @@ public final class Configs {
 
     public FileConfiguration placeholders() {
         return placeholders;
+    }
+
+    public FileConfiguration animations() {
+        return animations;
     }
 
     public List<String> messages(String path) {

@@ -6,6 +6,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import ru.core.animation.AnimationManager;
 import ru.core.board.BoardManager;
 import ru.core.command.AlertCommand;
 import ru.core.command.CoreCommand;
@@ -39,6 +40,7 @@ import java.util.Locale;
 public final class Core extends JavaPlugin {
 
     private Configs configs;
+    private AnimationManager animations;
     private Placeholders placeholders;
     private Storage storage;
     private DataManager data;
@@ -58,6 +60,8 @@ public final class Core extends JavaPlugin {
     public void onEnable() {
         configs = new Configs(this);
         configs.load();
+        animations = new AnimationManager(this);
+        animations.reload(configs.animations());
 
         placeholders = new Placeholders(this);
         placeholders.rebuild();
@@ -142,6 +146,7 @@ public final class Core extends JavaPlugin {
         stopProtocolOptimization();
         messenger.stop();
         configs.load();
+        animations.reload(configs.animations());
         placeholders.rebuild();
         data.reload();
         messenger.start();
@@ -225,6 +230,10 @@ public final class Core extends JavaPlugin {
 
     public Placeholders placeholders() {
         return placeholders;
+    }
+
+    public AnimationManager animations() {
+        return animations;
     }
 
     public Storage storage() {
