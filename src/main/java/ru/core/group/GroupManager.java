@@ -12,6 +12,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import ru.core.Core;
 import ru.core.board.PlayerBoard;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -41,7 +42,7 @@ public final class GroupManager {
         formats = loadFormats(configuration);
         orders = loadOrders(sortingTypes);
         priorityGroups = orders.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue())
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                 .map(Map.Entry::getKey)
                 .toList();
         alphabetical = sortingTypes.stream().anyMatch(this::isAlphabeticalPlayerSort);
@@ -201,30 +202,35 @@ public final class GroupManager {
     }
 
     private Map<String, Integer> loadOrders(List<String> sortingTypes) {
-        Map<String, Integer> loaded = new LinkedHashMap<>();
+        List<String> groups = new ArrayList<>();
         for (String type : sortingTypes) {
             if (!type.regionMatches(true, 0, "GROUPS:", 0, "GROUPS:".length())) {
                 continue;
             }
             String[] names = type.substring("GROUPS:".length()).split(",");
-            int order = 1;
             for (String name : names) {
-                String group = name.trim();
-                if (group.isEmpty()) {
-                    continue;
+                String group = name.trim().toUpperCase(Locale.ROOT);
+                if (!group.isEmpty() && !groups.contains(group)) {
+                    groups.add(group);
                 }
-                loaded.putIfAbsent(group.toUpperCase(Locale.ROOT), order++);
             }
+        }
+        Map<String, Integer> loaded = new LinkedHashMap<>();
+        int priority = 1;
+        for (int index = groups.size() - 1; index >= 0; index--) {
+            loaded.put(groups.get(index), priority++);
         }
         return Map.copyOf(loaded);
     }
 
     private int playerOrder(String group, String name) {
-        int groupOrder = orders.getOrDefault(group, orders.getOrDefault("DEFAULT", orders.size() + 1));
+        int priority = orders.getOrDefault(group, orders.getOrDefault("DEFAULT", 1));
+        int maximumPriority = orders.values().stream().mapToInt(Integer::intValue).max().orElse(1);
+        int displayOrder = maximumPriority - priority + 1;
         if (!alphabetical) {
-            return groupOrder;
+            return displayOrder;
         }
-        return groupOrder * GROUP_ORDER_RANGE + alphabeticValue(name);
+        return displayOrder * GROUP_ORDER_RANGE + alphabeticValue(name);
     }
 
     private int alphabeticValue(String name) {
