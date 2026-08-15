@@ -20,7 +20,6 @@ import java.util.Map;
 public final class PlayerBoard {
 
     private static final int LIMIT = 15;
-    private static final int PART = 64;
 
     private final Player player;
     private final Scoreboard scoreboard;
@@ -47,7 +46,7 @@ public final class PlayerBoard {
 
     public void sidebar(String title, List<String> content, boolean hideNumbers) {
         if (sidebar == null) {
-            sidebar = scoreboard.registerNewObjective("CORE_SIDEBAR", Criteria.DUMMY, cut(title, 128));
+            sidebar = scoreboard.registerNewObjective("CORE_SIDEBAR", Criteria.DUMMY, title);
             this.title = title;
             updateNumberFormat(hideNumbers);
             sidebar.setDisplaySlot(DisplaySlot.SIDEBAR);
@@ -55,7 +54,7 @@ public final class PlayerBoard {
             updateNumberFormat(hideNumbers);
         }
         if (!this.title.equals(title)) {
-            sidebar.setDisplayName(cut(title, 128));
+            sidebar.setDisplayName(title);
             this.title = title;
         }
         int size = Math.min(content.size(), LIMIT);
@@ -113,14 +112,14 @@ public final class PlayerBoard {
             removeBelow();
         }
         if (below == null) {
-            below = scoreboard.registerNewObjective("CORE_BELOW", health ? Criteria.HEALTH : Criteria.DUMMY, cut(display, 128));
+            below = scoreboard.registerNewObjective("CORE_BELOW", health ? Criteria.HEALTH : Criteria.DUMMY, display);
             below.setDisplaySlot(DisplaySlot.BELOW_NAME);
             this.health = health;
             this.display = display;
             return;
         }
         if (!this.display.equals(display)) {
-            below.setDisplayName(cut(display, 128));
+            below.setDisplayName(display);
             this.display = display;
         }
     }
@@ -173,24 +172,11 @@ public final class PlayerBoard {
     }
 
     private void write(Team team, String text) {
-        String prefix = text;
-        String suffix = "";
-        if (text.length() > PART) {
-            int split = PART;
-            if (text.charAt(split - 1) == ChatColor.COLOR_CHAR) {
-                split--;
-            }
-            prefix = text.substring(0, split);
-            suffix = ChatColor.getLastColors(prefix) + text.substring(split);
-            if (suffix.length() > PART) {
-                suffix = suffix.substring(0, PART);
-            }
+        if (!team.getPrefix().equals(text)) {
+            team.setPrefix(text);
         }
-        if (!team.getPrefix().equals(prefix)) {
-            team.setPrefix(prefix);
-        }
-        if (!team.getSuffix().equals(suffix)) {
-            team.setSuffix(suffix);
+        if (!team.getSuffix().isEmpty()) {
+            team.setSuffix("");
         }
     }
 
@@ -200,9 +186,5 @@ public final class PlayerBoard {
 
     private String entry(int index) {
         return ChatColor.COLOR_CHAR + Integer.toHexString(index) + ChatColor.RESET.toString();
-    }
-
-    private String cut(String text, int limit) {
-        return text.length() > limit ? text.substring(0, limit) : text;
     }
 }
