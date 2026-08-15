@@ -203,7 +203,7 @@ public final class GroupManager {
         }
         groups.put(uuid, group);
         updateTab(player);
-        updateTag(player);
+        refreshTag(player);
     }
 
     private void subscribeToUserDataChanges() {
@@ -238,7 +238,7 @@ public final class GroupManager {
         groups.put(uuid, group);
         pendingGroups.remove(uuid);
         updateTab(player);
-        updateTag(player);
+        refreshTag(player);
     }
 
     private String resolveGroup(User user) {
@@ -257,6 +257,17 @@ public final class GroupManager {
             player.setPlayerListOrder(0);
             player.setPlayerListName(null);
         }
+    }
+
+    private void refreshTag(Player target) {
+        if (!tagEnabled() || luckPerms == null) {
+            return;
+        }
+        tagStates.remove(target.getUniqueId());
+        for (PlayerBoard board : plugin.boards().all()) {
+            board.removeTag(target.getName());
+        }
+        updateTag(target);
     }
 
     private void updateTag(Player target) {
