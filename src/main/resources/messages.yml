@@ -8,6 +8,12 @@ RELOAD:
   - "%PREFIX%&aКонфигурация перезагружена."
 CORE-USAGE:
   - "%PREFIX%&7Использование: &f/core reload"
+LOG-USAGE:
+  - "%PREFIX%&7Использование: &f/log <on|off>"
+LOG-ON:
+  - "%PREFIX%&aОтладочные логи включены."
+LOG-OFF:
+  - "%PREFIX%&cОтладочные логи выключены."
 PLAY-USAGE:
   - "%PREFIX%&7Использование: &f/play <сервер>"
 PLAY-UNKNOWN:

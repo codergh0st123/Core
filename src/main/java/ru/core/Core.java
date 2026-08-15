@@ -12,13 +12,16 @@ import ru.core.board.BoardManager;
 import ru.core.command.AlertCommand;
 import ru.core.command.CoreCommand;
 import ru.core.command.LangCommand;
+import ru.core.command.LogCommand;
 import ru.core.command.PlayCommand;
 import ru.core.command.PlaytimeCommand;
 import ru.core.command.PremiumChatCommand;
 import ru.core.command.StaffChatCommand;
 import ru.core.command.TimeCommand;
 import ru.core.config.Configs;
+import ru.core.api.CoreDebug;
 import ru.core.data.DataManager;
+import ru.core.debug.DebugManager;
 import ru.core.gui.InfoMenu;
 import ru.core.group.GroupManager;
 import ru.core.listener.PlayerListener;
@@ -48,6 +51,7 @@ public final class Core extends JavaPlugin {
     private Placeholders placeholders;
     private Storage storage;
     private DataManager data;
+    private DebugManager debug;
     private Messenger messenger;
     private ScoreboardNumberPackets scoreboardPackets;
     private ProtocolTrafficOptimizer protocolOptimizer;
@@ -85,6 +89,8 @@ public final class Core extends JavaPlugin {
 
         data = new DataManager(this);
         data.start();
+        debug = new DebugManager(this);
+        CoreDebug.register(debug);
 
         messenger = new Messenger(this);
         messenger.start();
@@ -108,6 +114,8 @@ public final class Core extends JavaPlugin {
 
         CoreCommand core = new CoreCommand(this);
         register("core", core, core);
+        LogCommand log = new LogCommand(this);
+        register("log", log, log);
         PlayCommand play = new PlayCommand(this);
         register("play", play, play);
         register("alert", new AlertCommand(this), null);
@@ -136,6 +144,10 @@ public final class Core extends JavaPlugin {
     public void onDisable() {
         stopModules();
         stopProtocolOptimization();
+        if (debug != null) {
+            CoreDebug.unregister(debug);
+            debug.clear();
+        }
         if (groups != null) {
             groups.clear(Bukkit.getOnlinePlayers());
         }
@@ -273,6 +285,10 @@ public final class Core extends JavaPlugin {
 
     public DataManager data() {
         return data;
+    }
+
+    public DebugManager debug() {
+        return debug;
     }
 
     public Messenger messenger() {

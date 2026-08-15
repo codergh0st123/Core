@@ -53,6 +53,7 @@ public final class PlayerListener implements Listener {
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         plugin.data().quit(player);
+        plugin.debug().remove(player.getUniqueId());
         plugin.bossBars().remove(player);
         plugin.removePacketState(player);
         plugin.boards().remove(player);

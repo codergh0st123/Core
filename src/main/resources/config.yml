@@ -10,6 +10,13 @@ MESSAGES:
     JOIN: true
     QUIT: true
 
+DEBUG:
+  ENABLED: true
+  SOURCES:
+    DONATIONALERTS: true
+    FREESYSTEM: true
+    DONATEPOINTS: true
+
 ITEM-CLEANER:
   ENABLED: true
   CHECK-INTERVAL: 300

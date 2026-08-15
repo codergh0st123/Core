@@ -7,6 +7,9 @@ softdepend:
   - PlaceholderAPI
   - ProtocolLib
   - LuckPerms
+  - DonationAlerts
+  - FreeSystem
+  - DonatePoints
 libraries:
   - com.mysql:mysql-connector-j:9.1.0
   - org.xerial:sqlite-jdbc:3.47.0.0
@@ -21,6 +24,7 @@ commands:
       - cokcore
       - ядросервера
       - zlhj
+  log:
   play:
   alert:
   pc:
@@ -34,6 +38,8 @@ permissions:
   core.reload:
     default: op
   core.alert:
+    default: op
+  core.log:
     default: op
   core.time:
     default: op
