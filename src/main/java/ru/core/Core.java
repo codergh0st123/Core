@@ -19,6 +19,7 @@ import ru.core.command.TimeCommand;
 import ru.core.config.Configs;
 import ru.core.data.DataManager;
 import ru.core.gui.InfoMenu;
+import ru.core.group.GroupManager;
 import ru.core.listener.PlayerListener;
 import ru.core.module.AnnouncerModule;
 import ru.core.module.BossBarModule;
@@ -41,6 +42,7 @@ public final class Core extends JavaPlugin {
 
     private Configs configs;
     private AnimationManager animations;
+    private GroupManager groups;
     private Placeholders placeholders;
     private Storage storage;
     private DataManager data;
@@ -65,6 +67,8 @@ public final class Core extends JavaPlugin {
 
         placeholders = new Placeholders(this);
         placeholders.rebuild();
+        groups = new GroupManager(this);
+        groups.reload(configs.groups(), configs.config().getStringList("TAB.SORTING_TYPES"));
 
         storage = createStorage();
         try {
@@ -126,6 +130,9 @@ public final class Core extends JavaPlugin {
     public void onDisable() {
         stopModules();
         stopProtocolOptimization();
+        if (groups != null) {
+            groups.clear(Bukkit.getOnlinePlayers());
+        }
         if (boards != null) {
             boards.clear();
         }
@@ -147,6 +154,7 @@ public final class Core extends JavaPlugin {
         messenger.stop();
         configs.load();
         animations.reload(configs.animations());
+        groups.reload(configs.groups(), configs.config().getStringList("TAB.SORTING_TYPES"));
         placeholders.rebuild();
         data.reload();
         messenger.start();
@@ -236,6 +244,10 @@ public final class Core extends JavaPlugin {
         return animations;
     }
 
+    public GroupManager groups() {
+        return groups;
+    }
+
     public Storage storage() {
         return storage;
     }
@@ -258,6 +270,9 @@ public final class Core extends JavaPlugin {
         }
         if (protocolOptimizer != null) {
             protocolOptimizer.remove(player);
+        }
+        if (groups != null) {
+            groups.remove(player);
         }
     }
 

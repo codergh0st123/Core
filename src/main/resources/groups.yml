@@ -1,0 +1,120 @@
+RABOTNUCHEK:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_suffix%"
+OWNER:
+  TAB-PREFIX: "%CORE_ANIMATION:OWNER% &f"
+  TAB-SUFFIX: "%vault_suffix%"
+  TAG-PREFIX: "%CORE_ANIMATION:OWNER% &f"
+  TAG-SUFFIX: "%vault_suffix%"
+GLADMIN:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+ADMIN:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+MLADMIN:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+STMODER:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+MODER:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+MLMODER:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+STHELPER:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+HELPER:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+SEZON:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_suffix%"
+DIKTATOR:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+IMPERATOR:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+VLASTELIN:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+TITAN:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+FLAME:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+MANERA:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+ARES:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+KNYAZ:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+LEGEND:
+  TAB-PREFIX: "§x§8§1§E§9§0§6☆ %vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "§x§8§1§E§9§0§6☆ %vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+RICAR:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+PRINC:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+BERSERK:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_ranksuffix%%vault_suffix%"
+DEFAULT:
+  TAB-PREFIX: "%vault_prefix%"
+  TAB-SUFFIX: "%vault_suffix%"
+  TAG-PREFIX: "%vault_prefix%"
+  TAG-SUFFIX: "%vault_suffix%"

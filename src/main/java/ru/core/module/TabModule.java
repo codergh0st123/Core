@@ -34,6 +34,7 @@ public final class TabModule {
             task = null;
         }
         lastText.clear();
+        plugin.groups().clear(Bukkit.getOnlinePlayers());
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.setPlayerListHeaderFooter("", "");
         }
@@ -48,7 +49,11 @@ public final class TabModule {
     private void update() {
         List<String> header = plugin.configs().config().getStringList("TAB.HEADER");
         List<String> footer = plugin.configs().config().getStringList("TAB.FOOTER");
+        boolean groupsEnabled = plugin.configs().config().getBoolean("TAB.GROUPS.ENABLED", true);
         for (Player player : Bukkit.getOnlinePlayers()) {
+            if (groupsEnabled) {
+                plugin.groups().updateTab(player);
+            }
             TabText text = new TabText(
                     String.join("\n", plugin.placeholders().apply(player, header)),
                     String.join("\n", plugin.placeholders().apply(player, footer))

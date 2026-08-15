@@ -49,6 +49,11 @@ SCOREBOARD:
 TAB:
   ENABLED: true
   UPDATE: 20
+  GROUPS:
+    ENABLED: true
+  SORTING_TYPES:
+    - "GROUPS:rabotnuchek,owner,gladmin,admin,mladmin,stmoder,moder,mlmoder,sthelper,helper,sezon,diktator,imperator,vlastelin,titan,flame,manera,ares,knyaz,legend,ricar,princ,berserk,default"
+    - "PLACEHOLDER_A_TO_Z:%player%"
   HEADER:
     - ""
     - "<gradient:#00E5FF:#0066FF>CORE</gradient>"
