@@ -2,16 +2,20 @@ package ru.core.group;
 
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
+import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
+import net.luckperms.api.query.QueryOptions;
 import org.bukkit.entity.Player;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import ru.core.Core;
 
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 public final class GroupManager {
@@ -22,6 +26,7 @@ public final class GroupManager {
     private static final int GROUP_ORDER_RANGE = 2_000_000;
 
     private Map<String, Integer> orders = Map.of();
+    private List<String> priorityGroups = List.of();
     private boolean alphabetical;
     private LuckPerms luckPerms;
 
@@ -32,6 +37,10 @@ public final class GroupManager {
     public void reload(FileConfiguration configuration, List<String> sortingTypes) {
         formats = loadFormats(configuration);
         orders = loadOrders(sortingTypes);
+        priorityGroups = orders.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .toList();
         alphabetical = sortingTypes.stream().anyMatch(this::isAlphabeticalPlayerSort);
         luckPerms = resolveLuckPerms();
         states.clear();
@@ -82,10 +91,26 @@ public final class GroupManager {
             return "DEFAULT";
         }
         User user = luckPerms.getUserManager().getUser(player.getUniqueId());
-        if (user == null || user.getPrimaryGroup() == null || user.getPrimaryGroup().isBlank()) {
+        if (user == null) {
             return "DEFAULT";
         }
-        return user.getPrimaryGroup().toUpperCase(Locale.ROOT);
+        Set<String> inherited = new HashSet<>();
+        for (Group group : user.getInheritedGroups(QueryOptions.defaultContextualOptions())) {
+            inherited.add(group.getName().toUpperCase(Locale.ROOT));
+        }
+        return selectGroup(priorityGroups, inherited, user.getPrimaryGroup());
+    }
+
+    static String selectGroup(List<String> priorityGroups, Set<String> inherited, String primary) {
+        for (String group : priorityGroups) {
+            if (inherited.contains(group)) {
+                return group;
+            }
+        }
+        if (primary == null || primary.isBlank()) {
+            return "DEFAULT";
+        }
+        return primary.toUpperCase(Locale.ROOT);
     }
 
     private Map<String, GroupFormat> loadFormats(FileConfiguration configuration) {
