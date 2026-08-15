@@ -5,9 +5,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import ru.core.Core;
 import ru.core.storage.Profile;
@@ -59,6 +62,25 @@ public final class PlayerListener implements Listener {
         plugin.removePacketState(player);
         plugin.boards().remove(player);
         plugin.boards().forget(player.getName());
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onDamage(EntityDamageEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            plugin.nameTags().queueHealthUpdate(player);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onRegainHealth(EntityRegainHealthEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            plugin.nameTags().queueHealthUpdate(player);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onRespawn(PlayerRespawnEvent event) {
+        plugin.nameTags().queueHealthUpdate(event.getPlayer());
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

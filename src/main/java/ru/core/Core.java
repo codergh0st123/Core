@@ -309,6 +309,10 @@ public final class Core extends JavaPlugin {
         return boards;
     }
 
+    public NameTagModule nameTags() {
+        return nameTags;
+    }
+
     public void removePacketState(Player player) {
         if (tab != null) {
             tab.remove(player);

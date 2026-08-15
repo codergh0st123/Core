@@ -115,7 +115,7 @@ public final class PlayerBoard {
             removeBelow();
         }
         if (below == null) {
-            below = scoreboard.registerNewObjective("CORE_BELOW", health ? Criteria.HEALTH : Criteria.DUMMY, display);
+            below = scoreboard.registerNewObjective("CORE_BELOW", Criteria.DUMMY, display);
             below.setDisplaySlot(DisplaySlot.BELOW_NAME);
             this.health = health;
             this.display = display;
@@ -128,7 +128,7 @@ public final class PlayerBoard {
     }
 
     public void value(String name, int value) {
-        if (below == null || health) {
+        if (below == null) {
             return;
         }
         Integer previous = tracked.get(name);
@@ -141,7 +141,7 @@ public final class PlayerBoard {
 
     public void forget(String name) {
         tracked.remove(name);
-        if (below != null && !health) {
+        if (below != null) {
             scoreboard.resetScores(name);
         }
     }
