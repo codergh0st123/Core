@@ -6,6 +6,7 @@ author: gh0st
 softdepend:
   - PlaceholderAPI
   - ProtocolLib
+  - ViaVersion
   - LuckPerms
   - DonationAlerts
   - FreeSystem

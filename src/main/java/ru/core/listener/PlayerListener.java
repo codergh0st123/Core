@@ -44,6 +44,7 @@ public final class PlayerListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        plugin.clientVersions().check(player);
         plugin.data().join(player);
         plugin.boards().create(player);
         plugin.groups().preload(player);

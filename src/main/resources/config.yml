@@ -14,6 +14,15 @@ MESSAGES:
 GAME-RULES:
   LOCATOR-BAR: false
 
+CLIENT-VERSIONS:
+  ENABLED: true
+  MINIMUM: "1.16.5"
+  MAXIMUM: "1.21.11"
+  CHECK-DELAY: 2
+  MESSAGE:
+    - "&cВерсия вашего клиента не поддерживается."
+    - "&7Поддерживаемые версии: &f%MINIMUM%&7-&f%MAXIMUM%"
+
 DEBUG:
   ENABLED: true
   SOURCES:

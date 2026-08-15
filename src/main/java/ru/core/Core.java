@@ -40,6 +40,7 @@ import ru.core.packet.scoreboard.ScoreboardNumberPackets;
 import ru.core.storage.MySqlStorage;
 import ru.core.storage.SqLiteStorage;
 import ru.core.storage.Storage;
+import ru.core.version.ClientVersionManager;
 
 import java.util.Locale;
 
@@ -52,6 +53,7 @@ public final class Core extends JavaPlugin {
     private Storage storage;
     private DataManager data;
     private DebugManager debug;
+    private ClientVersionManager clientVersions;
     private Messenger messenger;
     private ScoreboardNumberPackets scoreboardPackets;
     private ProtocolTrafficOptimizer protocolOptimizer;
@@ -89,6 +91,7 @@ public final class Core extends JavaPlugin {
 
         data = new DataManager(this);
         data.start();
+        clientVersions = new ClientVersionManager(this);
         debug = new DebugManager(this);
         CoreDebug.register(debug);
 
@@ -290,6 +293,10 @@ public final class Core extends JavaPlugin {
 
     public DebugManager debug() {
         return debug;
+    }
+
+    public ClientVersionManager clientVersions() {
+        return clientVersions;
     }
 
     public Messenger messenger() {
