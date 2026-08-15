@@ -126,7 +126,7 @@ public final class Core extends JavaPlugin {
             data.join(player);
             boards.create(player);
         }
-        groups.updateTags();
+        groups.preloadOnline();
     }
 
     @Override
@@ -159,6 +159,7 @@ public final class Core extends JavaPlugin {
         applyAdvancementRules();
         animations.reload(configs.animations());
         groups.reload(configs.groups(), configs.config().getStringList("TAB.SORTING_TYPES"));
+        groups.preloadOnline();
         placeholders.rebuild();
         data.reload();
         messenger.start();

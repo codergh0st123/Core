@@ -6,9 +6,9 @@ import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.query.QueryOptions;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import ru.core.Core;
 import ru.core.board.PlayerBoard;
 
@@ -20,15 +20,18 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class GroupManager {
+
+    private static final int GROUP_ORDER_RANGE = 2_000_000;
 
     private final Core plugin;
     private final Map<UUID, TabState> states = new LinkedHashMap<>();
     private final Map<UUID, TagState> tagStates = new LinkedHashMap<>();
+    private final Map<UUID, String> groups = new ConcurrentHashMap<>();
+    private final Set<UUID> pendingGroups = ConcurrentHashMap.newKeySet();
     private Map<String, GroupFormat> formats = Map.of();
-    private static final int GROUP_ORDER_RANGE = 2_000_000;
-
     private Map<String, Integer> orders = Map.of();
     private List<String> priorityGroups = List.of();
     private boolean alphabetical;
@@ -49,6 +52,26 @@ public final class GroupManager {
         luckPerms = resolveLuckPerms();
         states.clear();
         tagStates.clear();
+        groups.clear();
+        pendingGroups.clear();
+    }
+
+    public void preload(Player player) {
+        LuckPerms api = luckPerms;
+        if (api == null || player == null) {
+            return;
+        }
+        UUID uuid = player.getUniqueId();
+        if (groups.containsKey(uuid) || !pendingGroups.add(uuid)) {
+            return;
+        }
+        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> loadGroup(api, uuid));
+    }
+
+    public void preloadOnline() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            preload(player);
+        }
     }
 
     public void updateTab(Player player) {
@@ -56,6 +79,7 @@ public final class GroupManager {
             reset(player);
             return;
         }
+        preload(player);
         String group = group(player);
         GroupFormat format = formats.getOrDefault(group, formats.getOrDefault("DEFAULT", GroupFormat.EMPTY));
         int order = playerOrder(group, player.getName());
@@ -70,13 +94,6 @@ public final class GroupManager {
         states.put(player.getUniqueId(), state);
     }
 
-    private void reset(Player player) {
-        if (states.remove(player.getUniqueId()) != null) {
-            player.setPlayerListOrder(0);
-            player.setPlayerListName(null);
-        }
-    }
-
     public void updateTags() {
         if (!tagEnabled()) {
             return;
@@ -86,12 +103,8 @@ public final class GroupManager {
             return;
         }
         for (Player target : Bukkit.getOnlinePlayers()) {
-            TagState state = tagState(target);
-            if (state.equals(tagStates.get(target.getUniqueId()))) {
-                continue;
-            }
-            applyTag(target, state);
-            tagStates.put(target.getUniqueId(), state);
+            preload(target);
+            updateTag(target);
         }
     }
 
@@ -104,6 +117,7 @@ public final class GroupManager {
             return;
         }
         for (Player target : Bukkit.getOnlinePlayers()) {
+            preload(target);
             TagState state = tagState(target);
             board.tag(target.getName(), state.group, state.prefix, state.suffix);
         }
@@ -113,8 +127,11 @@ public final class GroupManager {
         if (player == null) {
             return;
         }
-        states.remove(player.getUniqueId());
-        tagStates.remove(player.getUniqueId());
+        UUID uuid = player.getUniqueId();
+        states.remove(uuid);
+        tagStates.remove(uuid);
+        groups.remove(uuid);
+        pendingGroups.remove(uuid);
         for (PlayerBoard board : plugin.boards().all()) {
             board.removeTag(player.getName());
         }
@@ -126,13 +143,86 @@ public final class GroupManager {
             player.setPlayerListName(null);
         }
         states.clear();
+        groups.clear();
+        pendingGroups.clear();
         removeTags();
     }
 
-    private void applyTag(Player target, TagState state) {
+    public String group(Player player) {
+        if (player == null) {
+            return "DEFAULT";
+        }
+        return groups.getOrDefault(player.getUniqueId(), "DEFAULT");
+    }
+
+    static String selectGroup(List<String> priorityGroups, Set<String> inherited, String primary) {
+        for (String group : priorityGroups) {
+            if (inherited.contains(group)) {
+                return group;
+            }
+        }
+        if (primary == null || primary.isBlank()) {
+            return "DEFAULT";
+        }
+        return primary.toUpperCase(Locale.ROOT);
+    }
+
+    private void loadGroup(LuckPerms api, UUID uuid) {
+        String resolved = "DEFAULT";
+        try {
+            User user = api.getUserManager().loadUser(uuid).join();
+            resolved = resolveGroup(user);
+        } catch (RuntimeException exception) {
+            plugin.getLogger().warning("LuckPerms: не удалось загрузить группу игрока " + uuid + ".");
+        }
+        String group = resolved;
+        Bukkit.getScheduler().runTask(plugin, () -> applyLoadedGroup(uuid, group));
+    }
+
+    private void applyLoadedGroup(UUID uuid, String group) {
+        pendingGroups.remove(uuid);
+        if (!plugin.isEnabled()) {
+            return;
+        }
+        Player player = Bukkit.getPlayer(uuid);
+        if (player == null || !player.isOnline()) {
+            return;
+        }
+        groups.put(uuid, group);
+        updateTab(player);
+        updateTag(player);
+    }
+
+    private String resolveGroup(User user) {
+        if (user == null) {
+            return "DEFAULT";
+        }
+        Set<String> inherited = new HashSet<>();
+        for (Group group : user.getInheritedGroups(QueryOptions.defaultContextualOptions())) {
+            inherited.add(group.getName().toUpperCase(Locale.ROOT));
+        }
+        return selectGroup(priorityGroups, inherited, user.getPrimaryGroup());
+    }
+
+    private void reset(Player player) {
+        if (states.remove(player.getUniqueId()) != null) {
+            player.setPlayerListOrder(0);
+            player.setPlayerListName(null);
+        }
+    }
+
+    private void updateTag(Player target) {
+        if (!tagEnabled() || luckPerms == null) {
+            return;
+        }
+        TagState state = tagState(target);
+        if (state.equals(tagStates.get(target.getUniqueId()))) {
+            return;
+        }
         for (PlayerBoard board : plugin.boards().all()) {
             board.tag(target.getName(), state.group, state.prefix, state.suffix);
         }
+        tagStates.put(target.getUniqueId(), state);
     }
 
     private void removeTags() {
@@ -156,33 +246,6 @@ public final class GroupManager {
         );
     }
 
-    public String group(Player player) {
-        if (luckPerms == null || player == null) {
-            return "DEFAULT";
-        }
-        User user = luckPerms.getUserManager().getUser(player.getUniqueId());
-        if (user == null) {
-            return "DEFAULT";
-        }
-        Set<String> inherited = new HashSet<>();
-        for (Group group : user.getInheritedGroups(QueryOptions.defaultContextualOptions())) {
-            inherited.add(group.getName().toUpperCase(Locale.ROOT));
-        }
-        return selectGroup(priorityGroups, inherited, user.getPrimaryGroup());
-    }
-
-    static String selectGroup(List<String> priorityGroups, Set<String> inherited, String primary) {
-        for (String group : priorityGroups) {
-            if (inherited.contains(group)) {
-                return group;
-            }
-        }
-        if (primary == null || primary.isBlank()) {
-            return "DEFAULT";
-        }
-        return primary.toUpperCase(Locale.ROOT);
-    }
-
     private Map<String, GroupFormat> loadFormats(FileConfiguration configuration) {
         Map<String, GroupFormat> loaded = new LinkedHashMap<>();
         for (String name : configuration.getKeys(false)) {
@@ -202,7 +265,7 @@ public final class GroupManager {
     }
 
     private Map<String, Integer> loadOrders(List<String> sortingTypes) {
-        List<String> groups = new ArrayList<>();
+        List<String> configuredGroups = new ArrayList<>();
         for (String type : sortingTypes) {
             if (!type.regionMatches(true, 0, "GROUPS:", 0, "GROUPS:".length())) {
                 continue;
@@ -210,15 +273,15 @@ public final class GroupManager {
             String[] names = type.substring("GROUPS:".length()).split(",");
             for (String name : names) {
                 String group = name.trim().toUpperCase(Locale.ROOT);
-                if (!group.isEmpty() && !groups.contains(group)) {
-                    groups.add(group);
+                if (!group.isEmpty() && !configuredGroups.contains(group)) {
+                    configuredGroups.add(group);
                 }
             }
         }
         Map<String, Integer> loaded = new LinkedHashMap<>();
         int priority = 1;
-        for (int index = groups.size() - 1; index >= 0; index--) {
-            loaded.put(groups.get(index), priority++);
+        for (int index = configuredGroups.size() - 1; index >= 0; index--) {
+            loaded.put(configuredGroups.get(index), priority++);
         }
         return Map.copyOf(loaded);
     }
