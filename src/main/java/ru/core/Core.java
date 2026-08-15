@@ -183,15 +183,17 @@ public final class Core extends JavaPlugin {
     }
 
     private void applyAdvancementRules() {
-        if (!configs.config().getBoolean("MESSAGES.HIDE.ADVANCEMENTS", false)) {
-            return;
+        if (configs.config().getBoolean("MESSAGES.HIDE.ADVANCEMENTS", false)) {
+            Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false));
         }
-        Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false));
+        boolean locatorBar = configs.config().getBoolean("GAME-RULES.LOCATOR-BAR", false);
+        Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.LOCATOR_BAR, locatorBar));
     }
 
     private void startModules() {
         scoreboards.start();
         tab.start();
+        bossBars.start();
         nameTags.start();
         announcer.start();
         itemCleaner.start();
