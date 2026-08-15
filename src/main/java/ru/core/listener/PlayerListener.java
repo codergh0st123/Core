@@ -60,6 +60,13 @@ public final class PlayerListener implements Listener {
         plugin.boards().forget(player.getName());
     }
 
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onDeathMessage(PlayerDeathEvent event) {
+        if (plugin.configs().config().getBoolean("MESSAGES.HIDE.DEATHS", false)) {
+            event.setDeathMessage(null);
+        }
+    }
+
     @EventHandler(priority = EventPriority.MONITOR)
     public void onDeath(PlayerDeathEvent event) {
         Player victim = event.getEntity();

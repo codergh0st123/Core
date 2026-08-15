@@ -9,6 +9,7 @@ MESSAGES:
     ADVANCEMENTS: true
     JOIN: true
     QUIT: true
+    DEATHS: true
 
 GAME-RULES:
   LOCATOR-BAR: false
