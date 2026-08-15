@@ -225,12 +225,10 @@ public final class GroupManager {
 
     private int playerOrder(String group, String name) {
         int priority = orders.getOrDefault(group, orders.getOrDefault("DEFAULT", 1));
-        int maximumPriority = orders.values().stream().mapToInt(Integer::intValue).max().orElse(1);
-        int displayOrder = maximumPriority - priority + 1;
         if (!alphabetical) {
-            return displayOrder;
+            return priority;
         }
-        return displayOrder * GROUP_ORDER_RANGE + alphabeticValue(name);
+        return priority * GROUP_ORDER_RANGE - alphabeticValue(name);
     }
 
     private int alphabeticValue(String name) {
