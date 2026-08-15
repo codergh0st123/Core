@@ -9,6 +9,8 @@ import ru.core.storage.Profile;
 import ru.core.text.Colors;
 import ru.core.text.TimeFormat;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.regex.Pattern;
 public final class Placeholders {
 
     private static final Pattern CUSTOM = Pattern.compile("%CORE_([^%\\s]+)%", Pattern.CASE_INSENSITIVE);
+    private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("d MMMM H:mm", new Locale("ru", "RU"));
 
     private final Core plugin;
     private final Map<String, String> values = new LinkedHashMap<>();
@@ -97,6 +100,9 @@ public final class Placeholders {
         if (upper.equals("TIME")) {
             return time(player);
         }
+        if (upper.equals("DATA")) {
+            return date();
+        }
         if (upper.equals("ONLINE")) {
             return String.valueOf(Bukkit.getOnlinePlayers().size());
         }
@@ -131,6 +137,10 @@ public final class Placeholders {
     public String time(Player player) {
         Profile profile = plugin.data().profile(player);
         return TimeFormat.compact(plugin, profile == null ? 0L : profile.playtime());
+    }
+
+    public String date() {
+        return LocalDateTime.now().format(DATE_FORMAT);
     }
 
     public String language(String code, String key) {
