@@ -97,18 +97,6 @@ TAB:
     - "&7Ваше время: &f%CORE_TIME%"
     - ""
 
-BOSSBARS:
-  ENABLED: true
-  UPDATE: 20
-  BARS:
-    MAIN:
-      ENABLED: true
-      COLOR: "BLUE"
-      STYLE: "SOLID"
-      PROGRESS: 1.0
-      TITLE:
-        - "&fОнлайн: &b%online% &8| &fВремя: &b%CORE_TIME%"
-
 NAMETAG:
   ENABLED: true
   GROUPS:

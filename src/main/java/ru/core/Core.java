@@ -192,7 +192,6 @@ public final class Core extends JavaPlugin {
     private void startModules() {
         scoreboards.start();
         tab.start();
-        bossBars.start();
         nameTags.start();
         announcer.start();
         itemCleaner.start();
