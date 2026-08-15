@@ -10,6 +10,26 @@ MESSAGES:
     JOIN: true
     QUIT: true
 
+ITEM-CLEANER:
+  ENABLED: true
+  CHECK-INTERVAL: 300
+  MINIMUM-ITEMS: 50
+  CLEAR-DELAY: 30
+  WARNING-SECONDS:
+    - 30
+    - 10
+    - 5
+  MESSAGES:
+    WARNING:
+      - ""
+      - "&eОптимизация сервера &8» &fЧерез &e%SECONDS% сек. &fбудет выполнена очистка выброшенных предметов."
+      - "&7Подберите важные предметы с земли."
+      - ""
+    CLEARED:
+      - ""
+      - "&aОптимизация сервера &8» &fУдалено &a%COUNT% &fвыброшенных предметов."
+      - ""
+
 DATABASE:
   TYPE: "SQLITE"
   SAVE-INTERVAL: 300
