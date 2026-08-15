@@ -149,7 +149,7 @@ public final class Core extends JavaPlugin {
             debug.clear();
         }
         if (groups != null) {
-            groups.clear(Bukkit.getOnlinePlayers());
+            groups.shutdown(Bukkit.getOnlinePlayers());
         }
         if (boards != null) {
             boards.clear();

@@ -1,6 +1,8 @@
 package ru.core.group;
 
 import net.luckperms.api.LuckPerms;
+import net.luckperms.api.event.EventSubscription;
+import net.luckperms.api.event.user.UserDataRecalculateEvent;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
@@ -36,12 +38,14 @@ public final class GroupManager {
     private List<String> priorityGroups = List.of();
     private boolean alphabetical;
     private LuckPerms luckPerms;
+    private EventSubscription<UserDataRecalculateEvent> userDataSubscription;
 
     public GroupManager(Core plugin) {
         this.plugin = plugin;
     }
 
     public void reload(FileConfiguration configuration, List<String> sortingTypes) {
+        closeUserDataSubscription();
         formats = loadFormats(configuration);
         orders = loadOrders(sortingTypes);
         priorityGroups = orders.entrySet().stream()
@@ -50,6 +54,7 @@ public final class GroupManager {
                 .toList();
         alphabetical = sortingTypes.stream().anyMatch(this::isAlphabeticalPlayerSort);
         luckPerms = resolveLuckPerms();
+        subscribeToUserDataChanges();
         states.clear();
         tagStates.clear();
         groups.clear();
@@ -137,6 +142,11 @@ public final class GroupManager {
         }
     }
 
+    public void shutdown(Iterable<? extends Player> players) {
+        closeUserDataSubscription();
+        clear(players);
+    }
+
     public void clear(Iterable<? extends Player> players) {
         for (Player player : players) {
             player.setPlayerListOrder(0);
@@ -188,7 +198,45 @@ public final class GroupManager {
         if (player == null || !player.isOnline()) {
             return;
         }
+        if (groups.containsKey(uuid)) {
+            return;
+        }
         groups.put(uuid, group);
+        updateTab(player);
+        updateTag(player);
+    }
+
+    private void subscribeToUserDataChanges() {
+        if (luckPerms == null) {
+            return;
+        }
+        userDataSubscription = luckPerms.getEventBus().subscribe(plugin, UserDataRecalculateEvent.class, event -> {
+            UUID uuid = event.getUser().getUniqueId();
+            User user = event.getUser();
+            Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+                String group = resolveGroup(user);
+                Bukkit.getScheduler().runTask(plugin, () -> applyRecalculatedGroup(uuid, group));
+            });
+        });
+    }
+
+    private void closeUserDataSubscription() {
+        if (userDataSubscription != null) {
+            userDataSubscription.close();
+            userDataSubscription = null;
+        }
+    }
+
+    private void applyRecalculatedGroup(UUID uuid, String group) {
+        if (!plugin.isEnabled()) {
+            return;
+        }
+        Player player = Bukkit.getPlayer(uuid);
+        if (player == null || !player.isOnline()) {
+            return;
+        }
+        groups.put(uuid, group);
+        pendingGroups.remove(uuid);
         updateTab(player);
         updateTag(player);
     }
