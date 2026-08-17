@@ -13,6 +13,14 @@ VAIP:
           - "&cВАЙП &8» &fВайп сервера &c%server% &fпроизошёл!"
           - ""
 
+RESOURCE-PACK:
+  ENABLED: false
+  URL: "https://example.com/resource-pack.zip"
+  HASH: ""
+  REQUIRED: true
+  DELAY: 20
+  PROMPT: "&eДля игры необходимо принять ресурс-пак."
+
 PROTOCOLLIB:
   ENABLED: true
   DUPLICATE-WINDOW-MILLIS: 100

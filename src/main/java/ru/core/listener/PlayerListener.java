@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.PlayerResourcePackStatusEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import ru.core.Core;
 import ru.core.storage.Profile;
@@ -50,12 +51,21 @@ public final class PlayerListener implements Listener {
         plugin.clientVersions().check(player);
         plugin.data().join(player);
         plugin.presence().join(player);
+        plugin.resourcePacks().join(player);
         plugin.boards().create(player);
         plugin.groups().preload(player);
     }
 
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onResourcePackStatus(PlayerResourcePackStatusEvent event) {
+        plugin.resourcePacks().handle(event);
+    }
+
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onKick(PlayerKickEvent event) {
+        if (plugin.resourcePacks().isResourcePackKick(event.getPlayer())) {
+            return;
+        }
         String lobby = plugin.proxyConnector().fallbackServer();
         if (lobby == null) {
             return;

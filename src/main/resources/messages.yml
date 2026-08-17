@@ -32,6 +32,12 @@ PLAY-SERVER-LOST:
   - ""
 PLAY-FALLBACK:
   - "%PREFIX%&eПеренаправляем вас в лобби &f%server%&e..."
+RESOURCE-PACK-KICK:
+  - ""
+  - "&cРесурс-пак сервера обязателен."
+  - "&7Не удалось загрузить или применить ресурс-пак."
+  - "&7Причина: &f%reason%"
+  - ""
 ALERT-USAGE:
   - "%PREFIX%&7Использование: &f/alert <сообщение>"
 ALERT:

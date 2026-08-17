@@ -39,6 +39,7 @@ import ru.core.net.Messenger;
 import ru.core.net.ProxyConnector;
 import ru.core.placeholder.CoreExpansion;
 import ru.core.presence.PresenceManager;
+import ru.core.resourcepack.ResourcePackManager;
 import ru.core.placeholder.Placeholders;
 import ru.core.packet.protocollib.ProtocolTrafficOptimizer;
 import ru.core.packet.scoreboard.ScoreboardNumberPackets;
@@ -64,6 +65,7 @@ public final class Core extends JavaPlugin {
     private ProxyConnector proxyConnector;
     private WipeManager wipeManager;
     private PresenceManager presence;
+    private ResourcePackManager resourcePacks;
     private ScoreboardNumberPackets scoreboardPackets;
     private ProtocolTrafficOptimizer protocolOptimizer;
     private BoardManager boards;
@@ -113,6 +115,7 @@ public final class Core extends JavaPlugin {
         presence.start();
         wipeManager = new WipeManager(this);
         wipeManager.start();
+        resourcePacks = new ResourcePackManager(this);
 
         scoreboardPackets = new ScoreboardNumberPackets(this);
         boards = new BoardManager(scoreboardPackets);
@@ -130,6 +133,7 @@ public final class Core extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
         getServer().getPluginManager().registerEvents(menu, this);
+        resourcePacks.start();
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
         CoreCommand core = new CoreCommand(this);
@@ -179,6 +183,9 @@ public final class Core extends JavaPlugin {
         if (wipeManager != null) {
             wipeManager.shutdown();
         }
+        if (resourcePacks != null) {
+            resourcePacks.stop();
+        }
         if (presence != null) {
             presence.shutdown();
         }
@@ -218,6 +225,9 @@ public final class Core extends JavaPlugin {
         }
         if (presence != null) {
             presence.reload();
+        }
+        if (resourcePacks != null) {
+            resourcePacks.reload();
         }
         startModules();
         startProtocolOptimization();
@@ -399,6 +409,10 @@ public final class Core extends JavaPlugin {
 
     public PresenceManager presence() {
         return presence;
+    }
+
+    public ResourcePackManager resourcePacks() {
+        return resourcePacks;
     }
 
     public BoardManager boards() {
