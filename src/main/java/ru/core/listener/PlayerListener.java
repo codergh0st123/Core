@@ -1,6 +1,8 @@
 package ru.core.listener;
 
+import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -15,6 +17,7 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerResourcePackStatusEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import ru.core.Core;
+import ru.core.net.Messenger;
 import ru.core.storage.Profile;
 import ru.core.text.Msg;
 
@@ -59,6 +62,46 @@ public final class PlayerListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onResourcePackStatus(PlayerResourcePackStatusEvent event) {
         plugin.resourcePacks().handle(event);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onChat(AsyncChatEvent event) {
+        String message = PlainTextComponentSerializer.plainText().serialize(event.message());
+        String text;
+        String permission;
+        String type;
+        String usage;
+        if (message.startsWith("!!!")) {
+            text = message.substring(3).trim();
+            permission = "core.chat.staff";
+            type = Messenger.STAFF;
+            usage = "STAFF-USAGE";
+        } else if (message.startsWith("!!")) {
+            text = message.substring(2).trim();
+            permission = "core.chat.premium";
+            type = Messenger.PREMIUM;
+            usage = "PREMIUM-USAGE";
+        } else {
+            return;
+        }
+        event.setCancelled(true);
+        Player player = event.getPlayer();
+        Bukkit.getScheduler().runTask(plugin, () -> sendChatPrefix(player, permission, type, usage, text));
+    }
+
+    private void sendChatPrefix(Player player, String permission, String type, String usage, String text) {
+        if (!player.isOnline()) {
+            return;
+        }
+        if (!player.hasPermission(permission)) {
+            Msg.send(plugin, player, "NO-PERMISSION");
+            return;
+        }
+        if (text.isBlank()) {
+            Msg.send(plugin, player, usage);
+            return;
+        }
+        plugin.messenger().broadcast(type, player.getName(), text);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
