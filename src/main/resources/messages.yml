@@ -98,7 +98,7 @@ LIST-ALL-HEADER:
   - ""
   - "%PREFIX%&bОнлайн серверов:"
 LIST-ALL-LINE:
-  - "&7%server% &8- &f%online%"
+  - "&7%server% &8- &f[%players%]"
   - ""
 PLAYER-SERVER-MOVED:
   - ""

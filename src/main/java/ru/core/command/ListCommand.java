@@ -8,6 +8,8 @@ import ru.core.Core;
 import ru.core.storage.PlayerPresence;
 import ru.core.text.Msg;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -27,18 +29,22 @@ public final class ListCommand implements CommandExecutor {
         }
         long fresh = System.currentTimeMillis() - 45_000L;
         plugin.data().async(() -> {
-            Map<String, Integer> online = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+            Map<String, List<String>> online = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
             for (PlayerPresence presence : plugin.storage().presences(fresh)) {
-                online.merge(presence.server(), 1, Integer::sum);
+                online.computeIfAbsent(presence.server(), ignored -> new ArrayList<>()).add(presence.name());
+            }
+            for (List<String> players : online.values()) {
+                players.sort(String.CASE_INSENSITIVE_ORDER);
             }
             Bukkit.getScheduler().runTask(plugin, () -> {
                 if (args.length == 0) {
-                    Msg.sendCommand(plugin, sender, label, "LIST-TOTAL", "%online%", String.valueOf(online.values().stream().mapToInt(Integer::intValue).sum()));
+                    Msg.sendCommand(plugin, sender, label, "LIST-TOTAL", "%online%", String.valueOf(online.values().stream().mapToInt(List::size).sum()));
                     return;
                 }
                 Msg.sendCommand(plugin, sender, label, "LIST-ALL-HEADER");
-                for (Map.Entry<String, Integer> entry : online.entrySet()) {
-                    Msg.sendCommand(plugin, sender, label, "LIST-ALL-LINE", "%server%", entry.getKey(), "%online%", String.valueOf(entry.getValue()));
+                for (Map.Entry<String, List<String>> entry : online.entrySet()) {
+                    Msg.sendCommand(plugin, sender, label, "LIST-ALL-LINE", "%server%", entry.getKey(),
+                            "%players%", String.join(", ", entry.getValue()));
                 }
             });
         });
