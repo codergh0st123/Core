@@ -14,8 +14,8 @@ VAIP:
           - ""
 
 RESOURCE-PACK:
-  ENABLED: false
-  URL: "https://example.com/resource-pack.zip"
+  ENABLED: true
+  URL: "https://www.dropbox.com/scl/fi/bqvc84lgn0rv46k9yjjy8/RemakeAnarchyV2.zip?rlkey=upiw6jk04i8dwc3hyj6r0pe4d&st=b46hguf7&dl=1"
   HASH: ""
   REQUIRED: true
   DELAY: 20
