@@ -165,6 +165,20 @@ public final class GroupManager {
         return groups.getOrDefault(player.getUniqueId(), "DEFAULT");
     }
 
+    public String luckPermsPrefix(Player player) {
+        LuckPerms api = luckPerms;
+        if (api == null || player == null) {
+            return "";
+        }
+        User user = api.getUserManager().getUser(player.getUniqueId());
+        if (user == null) {
+            preload(player);
+            return "";
+        }
+        String prefix = user.getCachedData().getMetaData().getPrefix();
+        return prefix == null ? "" : prefix;
+    }
+
     static String selectGroup(List<String> priorityGroups, Set<String> inherited, String primary) {
         for (String group : priorityGroups) {
             if (inherited.contains(group)) {
