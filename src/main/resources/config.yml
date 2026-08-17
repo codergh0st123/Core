@@ -15,8 +15,8 @@ VAIP:
 
 RESOURCE-PACK:
   ENABLED: true
-  URL: "https://dl.dropboxusercontent.com/scl/fi/bqvc84lgn0rv46k9yjjy8/RemakeAnarchyV2.zip?rlkey=upiw6jk04i8dwc3hyj6r0pe4d&st=b46hguf7&dl=1"
-  HASH: ""
+  URL: "https://drive.usercontent.google.com/download?id=1kfnwO-B9HjhZJYK4QPC27b0KJxHPfxkx&export=download&confirm=t"
+  HASH: "07d732048c7f02147b704eb4bdbbbb2f1bcd1d05"
   REQUIRED: true
   DELAY: 20
   PROMPT: "&eДля игры необходимо принять ресурс-пак."
