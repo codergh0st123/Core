@@ -213,7 +213,7 @@ public final class InfoMenu implements Listener {
                     sound(player, argument);
                     break;
                 case "CLOSE":
-                    Bukkit.getScheduler().runTask(plugin, player::closeInventory);
+                    Bukkit.getScheduler().runTask(plugin, () -> player.closeInventory());
                     break;
                 default:
                     break;

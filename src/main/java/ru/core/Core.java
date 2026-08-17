@@ -190,12 +190,23 @@ public final class Core extends JavaPlugin {
         startProtocolOptimization();
     }
 
-    private void applyAdvancementRules() {
+    public void applyWorldRules(org.bukkit.World world) {
         if (configs.config().getBoolean("MESSAGES.HIDE.ADVANCEMENTS", false)) {
-            Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false));
+            setBooleanRule(world, "announceAdvancements", false);
         }
-        boolean locatorBar = configs.config().getBoolean("GAME-RULES.LOCATOR-BAR", false);
-        Bukkit.getWorlds().forEach(world -> world.setGameRule(GameRule.LOCATOR_BAR, locatorBar));
+        setBooleanRule(world, "locatorBar", configs.config().getBoolean("GAME-RULES.LOCATOR-BAR", false));
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    private void setBooleanRule(org.bukkit.World world, String name, boolean value) {
+        GameRule rule = GameRule.getByName(name);
+        if (rule != null) {
+            world.setGameRule(rule, value);
+        }
+    }
+
+    private void applyAdvancementRules() {
+        Bukkit.getWorlds().forEach(this::applyWorldRules);
     }
 
     private void startModules() {

@@ -1,6 +1,5 @@
 package ru.core.listener;
 
-import org.bukkit.GameRule;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -39,9 +38,7 @@ public final class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onWorldLoad(WorldLoadEvent event) {
-        if (plugin.configs().config().getBoolean("MESSAGES.HIDE.ADVANCEMENTS", false)) {
-            event.getWorld().setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
-        }
+        plugin.applyWorldRules(event.getWorld());
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
