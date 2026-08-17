@@ -81,8 +81,8 @@ public final class PlayerListener implements Listener {
         if (reason.isBlank()) {
             reason = "Неизвестная ошибка";
         }
-        Msg.send(plugin, player, "PLAY-SERVER-LOST", "%server%", plugin.messenger().server(), "%error%", reason);
-        Msg.send(plugin, player, "PLAY-FALLBACK", "%server%", lobby);
+        Msg.send(plugin, player, "PLAY-SERVER-LOST", "%server%", plugin.messenger().server(), "%error%", reason,
+                "%lobby%", lobby);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

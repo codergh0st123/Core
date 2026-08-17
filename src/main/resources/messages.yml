@@ -27,8 +27,9 @@ PLAY-ALREADY-CONNECTED:
   - "%PREFIX%&eВы уже подключены к серверу &f%server%&e."
 PLAY-SERVER-LOST:
   - ""
-  - "%PREFIX%&cВы потеряли соединение с сервером &f%server%&c."
-  - "%PREFIX%&7Причина: &f%error%"
+  - "%PREFIX%&cСоединение с сервером &f%server% &cпотеряно."
+  - "&7Причина: &f%error%"
+  - "&eПеренаправляем в лобби &f%lobby%&e..."
   - ""
 PLAY-FALLBACK:
   - "%PREFIX%&eПеренаправляем вас в лобби &f%server%&e..."

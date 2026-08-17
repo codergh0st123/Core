@@ -222,7 +222,7 @@ PLAY:
 PLAY-FALLBACK:
   ENABLED: true
   SERVER: "lobby"
-  KEEP-KICK-SCREEN: true
+  KEEP-KICK-SCREEN: false
 
 TIME:
   SECONDS:
