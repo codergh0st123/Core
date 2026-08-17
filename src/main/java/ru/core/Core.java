@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.core.animation.AnimationManager;
 import ru.core.board.BoardManager;
@@ -221,7 +222,12 @@ public final class Core extends JavaPlugin {
     }
 
     private void startProtocolOptimization() {
-        if (!getServer().getPluginManager().isPluginEnabled("ProtocolLib")) {
+        Plugin protocolLib = getServer().getPluginManager().getPlugin("ProtocolLib");
+        if (protocolLib == null || !protocolLib.isEnabled()) {
+            return;
+        }
+        if (requiresModernProtocolLib() && !supportsModernProtocolLib(protocolLib.getDescription().getVersion())) {
+            getLogger().warning("ProtocolLib: для Minecraft 26.2 используйте dev-сборку 5.5 или новее. Оптимизация пакетов отключена.");
             return;
         }
         try {
@@ -230,6 +236,34 @@ public final class Core extends JavaPlugin {
         } catch (LinkageError | RuntimeException exception) {
             protocolOptimizer = null;
             getLogger().warning("ProtocolLib: оптимизация пакетов отключена: " + exception.getMessage());
+        }
+    }
+
+    private boolean requiresModernProtocolLib() {
+        String[] parts = getServer().getMinecraftVersion().split("\\.");
+        if (parts.length < 2) {
+            return false;
+        }
+        try {
+            int major = Integer.parseInt(parts[0]);
+            int minor = Integer.parseInt(parts[1]);
+            return major > 26 || (major == 26 && minor >= 2);
+        } catch (NumberFormatException exception) {
+            return false;
+        }
+    }
+
+    private boolean supportsModernProtocolLib(String version) {
+        String[] parts = version.split("[.-]");
+        if (parts.length < 2) {
+            return false;
+        }
+        try {
+            int major = Integer.parseInt(parts[0]);
+            int minor = Integer.parseInt(parts[1]);
+            return major > 5 || (major == 5 && minor >= 5);
+        } catch (NumberFormatException exception) {
+            return false;
         }
     }
 

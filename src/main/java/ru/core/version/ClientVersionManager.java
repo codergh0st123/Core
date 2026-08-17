@@ -39,7 +39,7 @@ public final class ClientVersionManager {
                 : "ViaVersion";
         plugin.getLogger().info(integrations + " подключены. Разрешены клиенты "
                 + plugin.configs().config().getString("CLIENT-VERSIONS.MINIMUM", "1.16.5") + "-"
-                + plugin.configs().config().getString("CLIENT-VERSIONS.MAXIMUM", "1.21.11") + ".");
+                + plugin.configs().config().getString("CLIENT-VERSIONS.MAXIMUM", "26.2") + ".");
     }
 
     public void check(Player player) {
@@ -61,7 +61,7 @@ public final class ClientVersionManager {
         }
         String clientVersion = clientVersion(uuid);
         Version minimum = Version.parse(plugin.configs().config().getString("CLIENT-VERSIONS.MINIMUM", "1.16.5"));
-        Version maximum = Version.parse(plugin.configs().config().getString("CLIENT-VERSIONS.MAXIMUM", "1.21.11"));
+        Version maximum = Version.parse(plugin.configs().config().getString("CLIENT-VERSIONS.MAXIMUM", "26.2"));
         if (clientVersion == null || minimum == null || maximum == null || !allowed(clientVersion, minimum, maximum)) {
             kick(player, clientVersion);
         }
@@ -98,10 +98,10 @@ public final class ClientVersionManager {
     private void kick(Player player, String clientVersion) {
         List<String> messages = plugin.configs().config().getStringList("CLIENT-VERSIONS.MESSAGE");
         if (messages.isEmpty()) {
-            messages = List.of("&cПоддерживаемые версии: &f1.16.5-1.21.11");
+            messages = List.of("&cПоддерживаемые версии: &f1.16.5-26.2");
         }
         String reason = String.join("\n", messages).replace("%MINIMUM%", plugin.configs().config().getString("CLIENT-VERSIONS.MINIMUM", "1.16.5"))
-                .replace("%MAXIMUM%", plugin.configs().config().getString("CLIENT-VERSIONS.MAXIMUM", "1.21.11"))
+                .replace("%MAXIMUM%", plugin.configs().config().getString("CLIENT-VERSIONS.MAXIMUM", "26.2"))
                 .replace("%VERSION%", clientVersion == null ? "неизвестно" : clientVersion);
         player.kickPlayer(Colors.apply(reason));
     }
