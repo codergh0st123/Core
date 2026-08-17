@@ -1,5 +1,8 @@
 package ru.core.net;
 
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
@@ -81,7 +84,7 @@ public final class Messenger {
     }
 
     public void broadcast(String type, String sender, String message) {
-        deliver(type, sender, message);
+        deliver(type, server, sender, message);
         if (!plugin.storage().network()) {
             return;
         }
@@ -137,7 +140,7 @@ public final class Messenger {
                 return;
             }
             for (NetworkMessage message : messages) {
-                deliver(message.type(), message.sender(), message.payload());
+                deliver(message.type(), message.server(), message.sender(), message.payload());
             }
         });
     }
@@ -169,32 +172,64 @@ public final class Messenger {
         return seconds * 1000L;
     }
 
-    private void deliver(String type, String sender, String message) {
+    private void deliver(String type, String source, String sender, String message) {
         if (ALERT.equals(type)) {
-            send(null, "ALERT", sender, message);
+            send(null, "ALERT", source, sender, message, false);
         } else if (PREMIUM.equals(type)) {
-            send("core.chat.premium", "PREMIUM-CHAT", sender, message);
+            send("core.chat.premium", "PREMIUM-CHAT", source, sender, message, true);
         } else if (STAFF.equals(type)) {
-            send("core.chat.staff", "STAFF-CHAT", sender, message);
+            send("core.chat.staff", "STAFF-CHAT", source, sender, message, false);
         }
     }
 
-    private void send(String permission, String path, String sender, String message) {
+    private void send(String permission, String path, String source, String sender, String message, boolean hover) {
         List<String> lines = plugin.configs().messages(path);
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (permission != null && !player.hasPermission(permission)) {
                 continue;
             }
             for (String line : lines) {
-                player.sendMessage(insert(Msg.format(plugin, player, line), sender, message));
+                String formatted = insert(Msg.format(plugin, player, line), source, sender, message);
+                if (hover) {
+                    sendPremium(player, formatted, source);
+                } else {
+                    player.sendMessage(formatted);
+                }
             }
         }
         for (String line : lines) {
-            Bukkit.getConsoleSender().sendMessage(insert(Colors.apply(line), sender, message));
+            Bukkit.getConsoleSender().sendMessage(insert(Colors.apply(line), source, sender, message));
         }
     }
 
-    private String insert(String line, String sender, String message) {
-        return line.replace("%player%", sender).replace("%message%", Colors.apply(message));
+    private void sendPremium(Player player, String message, String source) {
+        BaseComponent[] components = TextComponent.fromLegacyText(message);
+        HoverEvent hover = new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                TextComponent.fromLegacyText(hover(player, source)));
+        for (BaseComponent component : components) {
+            component.setHoverEvent(hover);
+        }
+        player.spigot().sendMessage(components);
+    }
+
+    private String hover(Player player, String source) {
+        List<String> lines = plugin.configs().messages("PREMIUM-CHAT-HOVER");
+        if (lines.isEmpty()) {
+            return Colors.apply("&7Сервер: &f" + source);
+        }
+        StringBuilder text = new StringBuilder();
+        for (String line : lines) {
+            if (!text.isEmpty()) {
+                text.append('\n');
+            }
+            text.append(Msg.format(plugin, player, line).replace("%server%", Colors.apply(source)));
+        }
+        return text.toString();
+    }
+
+    private String insert(String line, String source, String sender, String message) {
+        return line.replace("%player%", sender)
+                .replace("%message%", Colors.apply(message))
+                .replace("%server%", Colors.apply(source));
     }
 }

@@ -28,9 +28,11 @@ ALERT:
   - "&c&lALERT &8» &f%message%"
   - "&7"
 PREMIUM-USAGE:
-  - "%PREFIX%&7Использование: &f/pc <сообщение>"
+  - "%PREFIX%&7Использование: &f/pchat <сообщение>"
 PREMIUM-CHAT:
   - "&d[PC] &f%player% &8» &d%message%"
+PREMIUM-CHAT-HOVER:
+  - "&7Сервер: &f%server%"
 STAFF-USAGE:
   - "%PREFIX%&7Использование: &f/schat <сообщение>"
 STAFF-CHAT:

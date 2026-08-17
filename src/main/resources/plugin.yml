@@ -30,6 +30,8 @@ commands:
   play:
   alert:
   pc:
+    aliases:
+      - pchat
   schat:
   playtime:
     aliases:
