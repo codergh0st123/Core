@@ -163,7 +163,7 @@ public final class Core extends JavaPlugin {
             boards.clear();
         }
         if (messenger != null) {
-            messenger.stop();
+            messenger.shutdown();
         }
         if (data != null) {
             data.shutdown();

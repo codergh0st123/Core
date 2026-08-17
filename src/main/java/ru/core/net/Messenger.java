@@ -9,6 +9,11 @@ import ru.core.text.Colors;
 import ru.core.text.Msg;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class Messenger {
 
@@ -17,6 +22,8 @@ public final class Messenger {
     public static final String STAFF = "STAFF";
 
     private final Core plugin;
+    private final ExecutorService networkExecutor;
+    private final AtomicBoolean pollPending = new AtomicBoolean();
     private volatile long session;
     private String server = "server-1";
     private long lastId;
@@ -25,27 +32,47 @@ public final class Messenger {
 
     public Messenger(Core plugin) {
         this.plugin = plugin;
+        this.networkExecutor = Executors.newSingleThreadExecutor(runnable -> {
+            Thread thread = new Thread(runnable, "Core-Network");
+            thread.setDaemon(true);
+            return thread;
+        });
     }
 
     public void start() {
         stop();
         long currentSession = ++session;
         polls = 0;
+        lastId = 0L;
         server = plugin.configs().config().getString("SERVER", "server-1");
         if (!plugin.storage().network()) {
             return;
         }
-        plugin.data().async(() -> initialize(currentSession));
-        long period = Math.max(20L, plugin.configs().config().getLong("DATABASE.SYNC-INTERVAL", 40L));
+        execute(() -> initialize(currentSession));
+        long period = Math.max(20L, plugin.configs().config().getLong("DATABASE.SYNC-INTERVAL", 20L));
         task = Bukkit.getScheduler().runTaskTimer(plugin,
-                () -> plugin.data().async(() -> poll(currentSession)), period, period);
+                () -> schedulePoll(currentSession), period, period);
     }
 
     public void stop() {
         session++;
+        pollPending.set(false);
         if (task != null) {
             task.cancel();
             task = null;
+        }
+    }
+
+    public void shutdown() {
+        stop();
+        networkExecutor.shutdown();
+        try {
+            if (!networkExecutor.awaitTermination(10L, TimeUnit.SECONDS)) {
+                networkExecutor.shutdownNow();
+            }
+        } catch (InterruptedException exception) {
+            networkExecutor.shutdownNow();
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -59,7 +86,20 @@ public final class Messenger {
             return;
         }
         String target = server;
-        plugin.data().async(() -> plugin.storage().publish(target, type, sender, message));
+        execute(() -> plugin.storage().publish(target, type, sender, message));
+    }
+
+    private void schedulePoll(long currentSession) {
+        if (!active(currentSession) || !pollPending.compareAndSet(false, true)) {
+            return;
+        }
+        execute(() -> {
+            try {
+                poll(currentSession);
+            } finally {
+                pollPending.set(false);
+            }
+        });
     }
 
     private void initialize(long currentSession) {
@@ -106,16 +146,26 @@ public final class Messenger {
         return plugin.isEnabled() && session == currentSession;
     }
 
+    private void execute(Runnable task) {
+        if (networkExecutor.isShutdown()) {
+            return;
+        }
+        try {
+            networkExecutor.execute(task);
+        } catch (RejectedExecutionException ignored) {
+        }
+    }
+
     private int messagesPerPoll() {
-        return Math.max(1, plugin.configs().config().getInt("DATABASE.SYNC.MESSAGES-PER-POLL", 100));
+        return Math.max(1, plugin.configs().config().getInt("DATABASE.SYNC.MESSAGES-PER-POLL", 250));
     }
 
     private int cleanupEveryPolls() {
-        return Math.max(1, plugin.configs().config().getInt("DATABASE.SYNC.CLEANUP-EVERY-POLLS", 50));
+        return Math.max(1, plugin.configs().config().getInt("DATABASE.SYNC.CLEANUP-EVERY-POLLS", 300));
     }
 
     private long retentionMillis() {
-        long seconds = Math.max(60L, plugin.configs().config().getLong("DATABASE.SYNC.RETENTION-SECONDS", 120L));
+        long seconds = Math.max(60L, plugin.configs().config().getLong("DATABASE.SYNC.RETENTION-SECONDS", 300L));
         return seconds * 1000L;
     }
 
