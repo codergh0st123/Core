@@ -1,5 +1,18 @@
 SERVER: "server-1"
 
+VAIP:
+  ENABLED: true
+  SERVERS:
+    SURVIVAL:
+      ID: "survival-wipe-1"
+      NAME: "Выживание"
+      TIME: "7d"
+      MESSAGES:
+        COMPLETED:
+          - ""
+          - "&cВАЙП &8» &fВайп сервера &c%server% &fпроизошёл!"
+          - ""
+
 PROTOCOLLIB:
   ENABLED: true
   DUPLICATE-WINDOW-MILLIS: 100

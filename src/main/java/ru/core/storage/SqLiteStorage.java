@@ -59,6 +59,19 @@ public final class SqLiteStorage extends SqlStorage {
     }
 
     @Override
+    protected String wipesTable() {
+        return "CREATE TABLE IF NOT EXISTS CORE_WIPES ("
+                + "ID VARCHAR(96) NOT NULL PRIMARY KEY, "
+                + "EXPIRES INTEGER NOT NULL, "
+                + "ANNOUNCED INTEGER NOT NULL DEFAULT 0)";
+    }
+
+    @Override
+    protected String wipeInsert() {
+        return "INSERT OR IGNORE INTO CORE_WIPES (ID, EXPIRES, ANNOUNCED) VALUES (?, ?, 0)";
+    }
+
+    @Override
     protected String upsert() {
         return "INSERT INTO CORE_PLAYERS (UUID, NAME, KILLS, DEATHS, PLAYTIME, LANG, LAST_SEEN) VALUES (?, ?, ?, ?, ?, ?, ?) "
                 + "ON CONFLICT(UUID) DO UPDATE SET NAME = excluded.NAME, KILLS = excluded.KILLS, DEATHS = excluded.DEATHS, "

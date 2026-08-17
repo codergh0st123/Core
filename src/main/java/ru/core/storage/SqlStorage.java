@@ -27,6 +27,10 @@ public abstract class SqlStorage implements Storage {
 
     protected abstract String networkTable();
 
+    protected abstract String wipesTable();
+
+    protected abstract String wipeInsert();
+
     protected abstract String upsert();
 
     @Override
@@ -35,6 +39,44 @@ public abstract class SqlStorage implements Storage {
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(playersTable());
             statement.executeUpdate(networkTable());
+            statement.executeUpdate(wipesTable());
+        }
+    }
+
+    @Override
+    public synchronized WipeState initializeWipe(String id, long expires) {
+        try (PreparedStatement insert = connection().prepareStatement(wipeInsert())) {
+            insert.setString(1, id);
+            insert.setLong(2, expires);
+            insert.executeUpdate();
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Ошибка создания таймера вайпа " + id + ": " + exception.getMessage());
+            return new WipeState(id, expires, false);
+        }
+        try (PreparedStatement select = connection().prepareStatement(
+                "SELECT ID, EXPIRES, ANNOUNCED FROM CORE_WIPES WHERE ID = ?")) {
+            select.setString(1, id);
+            try (ResultSet result = select.executeQuery()) {
+                if (result.next()) {
+                    return new WipeState(result.getString("ID"), result.getLong("EXPIRES"), result.getBoolean("ANNOUNCED"));
+                }
+            }
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Ошибка чтения таймера вайпа " + id + ": " + exception.getMessage());
+        }
+        return new WipeState(id, expires, false);
+    }
+
+    @Override
+    public synchronized boolean claimWipe(String id, long now) {
+        try (PreparedStatement statement = connection().prepareStatement(
+                "UPDATE CORE_WIPES SET ANNOUNCED = 1 WHERE ID = ? AND ANNOUNCED = 0 AND EXPIRES <= ?")) {
+            statement.setString(1, id);
+            statement.setLong(2, now);
+            return statement.executeUpdate() > 0;
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Ошибка объявления вайпа " + id + ": " + exception.getMessage());
+            return false;
         }
     }
 

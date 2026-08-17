@@ -23,6 +23,7 @@ public final class Messenger {
     public static final String ALERT = "ALERT";
     public static final String PREMIUM = "PREMIUM";
     public static final String STAFF = "STAFF";
+    public static final String WIPE = "WIPE";
 
     private final Core plugin;
     private final ExecutorService networkExecutor;
@@ -179,6 +180,8 @@ public final class Messenger {
             send("core.chat.premium", "PREMIUM-CHAT", source, sender, message, true);
         } else if (STAFF.equals(type)) {
             send("core.chat.staff", "STAFF-CHAT", source, sender, message, false);
+        } else if (WIPE.equals(type)) {
+            plugin.wipeManager().announce(sender);
         }
     }
 

@@ -43,6 +43,7 @@ import ru.core.storage.MySqlStorage;
 import ru.core.storage.SqLiteStorage;
 import ru.core.storage.Storage;
 import ru.core.version.ClientVersionManager;
+import ru.core.wipe.WipeManager;
 
 import java.util.Locale;
 
@@ -57,6 +58,7 @@ public final class Core extends JavaPlugin {
     private DebugManager debug;
     private ClientVersionManager clientVersions;
     private Messenger messenger;
+    private WipeManager wipeManager;
     private ScoreboardNumberPackets scoreboardPackets;
     private ProtocolTrafficOptimizer protocolOptimizer;
     private BoardManager boards;
@@ -101,6 +103,8 @@ public final class Core extends JavaPlugin {
 
         messenger = new Messenger(this);
         messenger.start();
+        wipeManager = new WipeManager(this);
+        wipeManager.start();
 
         scoreboardPackets = new ScoreboardNumberPackets(this);
         boards = new BoardManager(scoreboardPackets);
@@ -162,6 +166,9 @@ public final class Core extends JavaPlugin {
         if (boards != null) {
             boards.clear();
         }
+        if (wipeManager != null) {
+            wipeManager.shutdown();
+        }
         if (messenger != null) {
             messenger.shutdown();
         }
@@ -178,6 +185,9 @@ public final class Core extends JavaPlugin {
         stopModules();
         stopProtocolOptimization();
         messenger.stop();
+        if (wipeManager != null) {
+            wipeManager.stop();
+        }
         configs.load();
         applyAdvancementRules();
         clientVersions.start();
@@ -187,6 +197,9 @@ public final class Core extends JavaPlugin {
         placeholders.rebuild();
         data.reload();
         messenger.start();
+        if (wipeManager != null) {
+            wipeManager.reload();
+        }
         startModules();
         startProtocolOptimization();
     }
@@ -355,6 +368,10 @@ public final class Core extends JavaPlugin {
 
     public Messenger messenger() {
         return messenger;
+    }
+
+    public WipeManager wipeManager() {
+        return wipeManager;
     }
 
     public BoardManager boards() {

@@ -29,4 +29,8 @@ public interface Storage {
     long lastId();
 
     void cleanup(long created);
+
+    WipeState initializeWipe(String id, long expires);
+
+    boolean claimWipe(String id, long now);
 }

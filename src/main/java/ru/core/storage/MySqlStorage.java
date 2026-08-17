@@ -64,6 +64,20 @@ public final class MySqlStorage extends SqlStorage {
     }
 
     @Override
+    protected String wipesTable() {
+        return "CREATE TABLE IF NOT EXISTS CORE_WIPES ("
+                + "ID VARCHAR(96) NOT NULL PRIMARY KEY, "
+                + "EXPIRES BIGINT NOT NULL, "
+                + "ANNOUNCED TINYINT(1) NOT NULL DEFAULT 0) DEFAULT CHARSET utf8mb4";
+    }
+
+    @Override
+    protected String wipeInsert() {
+        return "INSERT INTO CORE_WIPES (ID, EXPIRES, ANNOUNCED) VALUES (?, ?, 0) "
+                + "ON DUPLICATE KEY UPDATE ID = VALUES(ID)";
+    }
+
+    @Override
     protected String upsert() {
         return "INSERT INTO CORE_PLAYERS (UUID, NAME, KILLS, DEATHS, PLAYTIME, LANG, LAST_SEEN) VALUES (?, ?, ?, ?, ?, ?, ?) "
                 + "ON DUPLICATE KEY UPDATE NAME = VALUES(NAME), KILLS = VALUES(KILLS), DEATHS = VALUES(DEATHS), "

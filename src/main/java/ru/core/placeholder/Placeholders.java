@@ -118,6 +118,9 @@ public final class Placeholders {
         if (upper.startsWith("ANIMATION:")) {
             return plugin.animations().text(key.substring("ANIMATION:".length()));
         }
+        if (upper.startsWith("VAIP:")) {
+            return plugin.wipeManager().remaining(key.substring("VAIP:".length()));
+        }
         if (upper.startsWith("LANG:")) {
             String rest = upper.substring(5);
             int split = rest.indexOf(':');
