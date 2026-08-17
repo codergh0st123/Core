@@ -12,6 +12,7 @@ softdepend:
   - DonationAlerts
   - FreeSystem
   - DonatePoints
+  - AuroraChat
 libraries:
   - com.mysql:mysql-connector-j:9.1.0
   - org.xerial:sqlite-jdbc:3.47.0.0

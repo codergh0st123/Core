@@ -64,7 +64,7 @@ public final class PlayerListener implements Listener {
         plugin.resourcePacks().handle(event);
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     public void onChat(AsyncChatEvent event) {
         String message = PlainTextComponentSerializer.plainText().serialize(event.message());
         String text;
