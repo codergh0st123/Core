@@ -105,7 +105,7 @@ public final class WipeManager {
         }
         long millis = Math.max(0L, wipe.state.expires() - System.currentTimeMillis());
         long seconds = (millis + 999L) / 1000L;
-        return TimeFormat.compact(plugin, seconds);
+        return TimeFormat.full(plugin, seconds);
     }
 
     public void announce(String id) {

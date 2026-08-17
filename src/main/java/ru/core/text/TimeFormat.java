@@ -21,6 +21,22 @@ public final class TimeFormat {
         return fill(plugin, pattern, seconds);
     }
 
+    public static String full(Core plugin, long seconds) {
+        long total = Math.max(0L, seconds);
+        long days = total / 86400L;
+        long hours = (total % 86400L) / 3600L;
+        long minutes = (total % 3600L) / 60L;
+        long rest = total % 60L;
+        StringBuilder result = new StringBuilder();
+        if (days > 0L) {
+            result.append(days).append(' ').append(plural(plugin, "DAYS", days)).append(' ');
+        }
+        result.append(hours).append(' ').append(plural(plugin, "HOURS", hours)).append(' ')
+                .append(minutes).append(' ').append(plural(plugin, "MINUTES", minutes)).append(' ')
+                .append(rest).append(' ').append(plural(plugin, "SECONDS", rest));
+        return result.toString();
+    }
+
     public static String fill(Core plugin, String text, long seconds) {
         long total = Math.max(0L, seconds);
         long hours = total / 3600L;

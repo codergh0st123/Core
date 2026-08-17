@@ -218,6 +218,10 @@ TIME:
   HOURS:
     - "%hourse% ч"
   PLURAL:
+    DAYS:
+      - "день"
+      - "дня"
+      - "дней"
     HOURS:
       - "час"
       - "часа"
