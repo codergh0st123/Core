@@ -63,7 +63,8 @@ public final class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onKick(PlayerKickEvent event) {
-        if (plugin.resourcePacks().isResourcePackKick(event.getPlayer())) {
+        if (plugin.resourcePacks().isResourcePackKick(event.getPlayer())
+                || plugin.configs().config().getBoolean("PLAY-FALLBACK.KEEP-KICK-SCREEN", true)) {
             return;
         }
         String lobby = plugin.proxyConnector().fallbackServer();
