@@ -10,8 +10,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 public final class Configs {
 
@@ -28,12 +30,12 @@ public final class Configs {
     }
 
     public void load() {
-        config = read("config.yml", true);
-        messages = read("messages.yml", true);
-        lang = read("lang.yml", false);
-        placeholders = read("placeholders.yml", false);
-        animations = read("animations.yml", true);
-        groups = read("groups.yml", true);
+        config = read("config.yml");
+        messages = read("messages.yml");
+        lang = read("lang.yml");
+        placeholders = read("placeholders.yml");
+        animations = read("animations.yml");
+        groups = read("groups.yml");
     }
 
     public FileConfiguration config() {
@@ -104,23 +106,37 @@ public final class Configs {
         return result;
     }
 
-    private FileConfiguration read(String name, boolean defaults) {
+    private FileConfiguration read(String name) {
         File file = new File(plugin.getDataFolder(), name);
         if (!file.exists()) {
             plugin.saveResource(name, false);
         }
         YamlConfiguration configuration = YamlConfiguration.loadConfiguration(file);
-        if (!defaults) {
+        InputStream stream = plugin.getResource(name);
+        if (stream == null) {
             return configuration;
         }
-        InputStream stream = plugin.getResource(name);
-        if (stream != null) {
-            try (InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
-                configuration.setDefaults(YamlConfiguration.loadConfiguration(reader));
-            } catch (IOException exception) {
-                plugin.getLogger().warning("Не удалось прочитать ресурс " + name + ": " + exception.getMessage());
+        try (InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
+            YamlConfiguration defaults = YamlConfiguration.loadConfiguration(reader);
+            Set<String> keys = new HashSet<>(configuration.getKeys(true));
+            configuration.setDefaults(defaults);
+            configuration.options().copyDefaults(true);
+            if (hasMissingKeys(defaults, keys)) {
+                configuration.save(file);
+                plugin.getLogger().info("Обновлена конфигурация " + name + ": добавлены отсутствующие ключи.");
             }
+        } catch (IOException exception) {
+            plugin.getLogger().warning("Не удалось обновить ресурс " + name + ": " + exception.getMessage());
         }
         return configuration;
+    }
+
+    private boolean hasMissingKeys(YamlConfiguration defaults, Set<String> keys) {
+        for (String key : defaults.getKeys(true)) {
+            if (!keys.contains(key)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
