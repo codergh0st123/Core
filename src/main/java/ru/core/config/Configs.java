@@ -1,5 +1,6 @@
 package ru.core.config;
 
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import ru.core.Core;
@@ -10,10 +11,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
 public final class Configs {
 
@@ -118,12 +117,9 @@ public final class Configs {
         }
         try (InputStreamReader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
             YamlConfiguration defaults = YamlConfiguration.loadConfiguration(reader);
-            Set<String> keys = new HashSet<>(configuration.getKeys(true));
-            configuration.setDefaults(defaults);
-            configuration.options().copyDefaults(true);
-            if (hasMissingKeys(defaults, keys)) {
+            if (addMissingRoots(configuration, defaults)) {
                 configuration.save(file);
-                plugin.getLogger().info("Обновлена конфигурация " + name + ": добавлены отсутствующие ключи.");
+                plugin.getLogger().info("Обновлена конфигурация " + name + ": добавлены отсутствующие корневые разделы.");
             }
         } catch (IOException exception) {
             plugin.getLogger().warning("Не удалось обновить ресурс " + name + ": " + exception.getMessage());
@@ -131,12 +127,33 @@ public final class Configs {
         return configuration;
     }
 
-    private boolean hasMissingKeys(YamlConfiguration defaults, Set<String> keys) {
-        for (String key : defaults.getKeys(true)) {
-            if (!keys.contains(key)) {
-                return true;
+    private boolean addMissingRoots(YamlConfiguration configuration, YamlConfiguration defaults) {
+        boolean updated = false;
+        for (String key : defaults.getKeys(false)) {
+            if (configuration.contains(key)) {
+                continue;
             }
+            ConfigurationSection source = defaults.getConfigurationSection(key);
+            if (source == null) {
+                configuration.set(key, defaults.get(key));
+            } else {
+                ConfigurationSection target = configuration.createSection(key);
+                copy(source, target);
+            }
+            updated = true;
         }
-        return false;
+        return updated;
+    }
+
+    private void copy(ConfigurationSection source, ConfigurationSection target) {
+        for (String key : source.getKeys(false)) {
+            ConfigurationSection child = source.getConfigurationSection(key);
+            if (child == null) {
+                target.set(key, source.get(key));
+                continue;
+            }
+            ConfigurationSection section = target.createSection(key);
+            copy(child, section);
+        }
     }
 }
