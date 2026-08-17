@@ -18,11 +18,10 @@ public final class Msg {
 
     public static void sendCommand(Core plugin, CommandSender sender, String label, String path,
                                    String... replacements) {
-        String[] values = new String[replacements.length + 2];
-        values[0] = "%label%";
-        values[1] = label;
-        System.arraycopy(replacements, 0, values, 2, replacements.length);
-        send(plugin, sender, path, values);
+        for (String line : plugin.configs().messages(path)) {
+            String text = line.replace("%label%", label).replace("%LABEL%", label);
+            sender.sendMessage(format(plugin, sender, text, replacements));
+        }
     }
 
     public static String format(Core plugin, CommandSender sender, String line, String... replacements) {
