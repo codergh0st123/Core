@@ -67,6 +67,21 @@ public final class SqLiteStorage extends SqlStorage {
     }
 
     @Override
+    protected String presenceTable() {
+        return "CREATE TABLE IF NOT EXISTS CORE_ONLINE ("
+                + "UUID VARCHAR(36) NOT NULL PRIMARY KEY, "
+                + "NAME VARCHAR(16) NOT NULL, "
+                + "SERVER VARCHAR(64) NOT NULL, "
+                + "UPDATED INTEGER NOT NULL)";
+    }
+
+    @Override
+    protected String presenceUpsert() {
+        return "INSERT INTO CORE_ONLINE (UUID, NAME, SERVER, UPDATED) VALUES (?, ?, ?, ?) "
+                + "ON CONFLICT(UUID) DO UPDATE SET NAME = excluded.NAME, SERVER = excluded.SERVER, UPDATED = excluded.UPDATED";
+    }
+
+    @Override
     protected String wipeInsert() {
         return "INSERT OR IGNORE INTO CORE_WIPES (ID, EXPIRES, ANNOUNCED) VALUES (?, ?, 0)";
     }

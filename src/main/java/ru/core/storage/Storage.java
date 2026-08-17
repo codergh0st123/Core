@@ -33,4 +33,14 @@ public interface Storage {
     WipeState initializeWipe(String id, long expires);
 
     boolean claimWipe(String id, long now);
+
+    void updatePresence(UUID uuid, String name, String server, long updated);
+
+    void updatePresences(Collection<PlayerPresence> players);
+
+    void removePresence(UUID uuid, String server);
+
+    void cleanupPresence(long updated);
+
+    PlayerPresence findPresence(String name, long updatedAfter);
 }

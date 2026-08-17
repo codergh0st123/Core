@@ -28,6 +28,7 @@ commands:
       - zlhj
   log:
   play:
+  find:
   alert:
   pc:
     aliases:
@@ -47,6 +48,8 @@ permissions:
     default: op
   core.time:
     default: op
+  core.find:
+    default: true
   core.chat.premium:
     default: op
   core.chat.staff:

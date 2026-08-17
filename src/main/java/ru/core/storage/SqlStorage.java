@@ -29,7 +29,11 @@ public abstract class SqlStorage implements Storage {
 
     protected abstract String wipesTable();
 
+    protected abstract String presenceTable();
+
     protected abstract String wipeInsert();
+
+    protected abstract String presenceUpsert();
 
     protected abstract String upsert();
 
@@ -40,6 +44,7 @@ public abstract class SqlStorage implements Storage {
             statement.executeUpdate(playersTable());
             statement.executeUpdate(networkTable());
             statement.executeUpdate(wipesTable());
+            statement.executeUpdate(presenceTable());
         }
     }
 
@@ -65,6 +70,71 @@ public abstract class SqlStorage implements Storage {
             plugin.getLogger().warning("Ошибка чтения таймера вайпа " + id + ": " + exception.getMessage());
         }
         return new WipeState(id, expires, false);
+    }
+
+    @Override
+    public synchronized void updatePresence(java.util.UUID uuid, String name, String server, long updated) {
+        updatePresences(java.util.List.of(new PlayerPresence(uuid, name, server, updated)));
+    }
+
+    @Override
+    public synchronized void updatePresences(java.util.Collection<PlayerPresence> players) {
+        if (players.isEmpty()) {
+            return;
+        }
+        try (PreparedStatement statement = connection().prepareStatement(presenceUpsert())) {
+            for (PlayerPresence player : players) {
+                statement.setString(1, player.uuid().toString());
+                statement.setString(2, player.name());
+                statement.setString(3, player.server());
+                statement.setLong(4, player.updated());
+                statement.addBatch();
+            }
+            statement.executeBatch();
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Ошибка обновления присутствия игроков: " + exception.getMessage());
+        }
+    }
+
+    @Override
+    public synchronized void removePresence(java.util.UUID uuid, String server) {
+        try (PreparedStatement statement = connection().prepareStatement(
+                "DELETE FROM CORE_ONLINE WHERE UUID = ? AND SERVER = ?")) {
+            statement.setString(1, uuid.toString());
+            statement.setString(2, server);
+            statement.executeUpdate();
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Ошибка удаления присутствия игрока: " + exception.getMessage());
+        }
+    }
+
+    @Override
+    public synchronized void cleanupPresence(long updated) {
+        try (PreparedStatement statement = connection().prepareStatement("DELETE FROM CORE_ONLINE WHERE UPDATED < ?")) {
+            statement.setLong(1, updated);
+            statement.executeUpdate();
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Ошибка очистки присутствия игроков: " + exception.getMessage());
+        }
+    }
+
+    @Override
+    public synchronized PlayerPresence findPresence(String name, long updatedAfter) {
+        try (PreparedStatement statement = connection().prepareStatement(
+                "SELECT UUID, NAME, SERVER, UPDATED FROM CORE_ONLINE "
+                        + "WHERE LOWER(NAME) = LOWER(?) AND UPDATED >= ? ORDER BY UPDATED DESC LIMIT 1")) {
+            statement.setString(1, name);
+            statement.setLong(2, updatedAfter);
+            try (ResultSet result = statement.executeQuery()) {
+                if (result.next()) {
+                    return new PlayerPresence(java.util.UUID.fromString(result.getString("UUID")),
+                            result.getString("NAME"), result.getString("SERVER"), result.getLong("UPDATED"));
+                }
+            }
+        } catch (SQLException | IllegalArgumentException exception) {
+            plugin.getLogger().warning("Ошибка поиска игрока " + name + ": " + exception.getMessage());
+        }
+        return null;
     }
 
     @Override

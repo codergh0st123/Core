@@ -72,6 +72,23 @@ public final class MySqlStorage extends SqlStorage {
     }
 
     @Override
+    protected String presenceTable() {
+        return "CREATE TABLE IF NOT EXISTS CORE_ONLINE ("
+                + "UUID VARCHAR(36) NOT NULL PRIMARY KEY, "
+                + "NAME VARCHAR(16) NOT NULL, "
+                + "SERVER VARCHAR(64) NOT NULL, "
+                + "UPDATED BIGINT NOT NULL, "
+                + "INDEX CORE_ONLINE_NAME (NAME), "
+                + "INDEX CORE_ONLINE_UPDATED (UPDATED)) DEFAULT CHARSET utf8mb4";
+    }
+
+    @Override
+    protected String presenceUpsert() {
+        return "INSERT INTO CORE_ONLINE (UUID, NAME, SERVER, UPDATED) VALUES (?, ?, ?, ?) "
+                + "ON DUPLICATE KEY UPDATE NAME = VALUES(NAME), SERVER = VALUES(SERVER), UPDATED = VALUES(UPDATED)";
+    }
+
+    @Override
     protected String wipeInsert() {
         return "INSERT INTO CORE_WIPES (ID, EXPIRES, ANNOUNCED) VALUES (?, ?, 0) "
                 + "ON DUPLICATE KEY UPDATE ID = VALUES(ID)";

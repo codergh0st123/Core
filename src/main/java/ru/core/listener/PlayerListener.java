@@ -46,6 +46,7 @@ public final class PlayerListener implements Listener {
         Player player = event.getPlayer();
         plugin.clientVersions().check(player);
         plugin.data().join(player);
+        plugin.presence().join(player);
         plugin.boards().create(player);
         plugin.groups().preload(player);
     }
@@ -54,6 +55,7 @@ public final class PlayerListener implements Listener {
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         plugin.data().quit(player);
+        plugin.presence().quit(player);
         plugin.debug().remove(player.getUniqueId());
         plugin.bossBars().remove(player);
         plugin.removePacketState(player);

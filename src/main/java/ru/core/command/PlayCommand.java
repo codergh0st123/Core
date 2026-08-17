@@ -40,6 +40,10 @@ public final class PlayCommand implements CommandExecutor, TabCompleter {
             return true;
         }
         Player player = (Player) sender;
+        if (target.equalsIgnoreCase(plugin.messenger().server())) {
+            Msg.send(plugin, sender, "PLAY-ALREADY-CONNECTED", "%server%", target);
+            return true;
+        }
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         try (DataOutputStream output = new DataOutputStream(buffer)) {
             output.writeUTF("Connect");

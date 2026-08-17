@@ -12,6 +12,7 @@ import ru.core.animation.AnimationManager;
 import ru.core.board.BoardManager;
 import ru.core.command.AlertCommand;
 import ru.core.command.CoreCommand;
+import ru.core.command.FindCommand;
 import ru.core.command.LangCommand;
 import ru.core.command.LogCommand;
 import ru.core.command.PlayCommand;
@@ -36,6 +37,7 @@ import ru.core.module.ScreenTextModule;
 import ru.core.module.TabModule;
 import ru.core.net.Messenger;
 import ru.core.placeholder.CoreExpansion;
+import ru.core.presence.PresenceManager;
 import ru.core.placeholder.Placeholders;
 import ru.core.packet.protocollib.ProtocolTrafficOptimizer;
 import ru.core.packet.scoreboard.ScoreboardNumberPackets;
@@ -59,6 +61,7 @@ public final class Core extends JavaPlugin {
     private ClientVersionManager clientVersions;
     private Messenger messenger;
     private WipeManager wipeManager;
+    private PresenceManager presence;
     private ScoreboardNumberPackets scoreboardPackets;
     private ProtocolTrafficOptimizer protocolOptimizer;
     private BoardManager boards;
@@ -103,6 +106,8 @@ public final class Core extends JavaPlugin {
 
         messenger = new Messenger(this);
         messenger.start();
+        presence = new PresenceManager(this);
+        presence.start();
         wipeManager = new WipeManager(this);
         wipeManager.start();
 
@@ -130,6 +135,8 @@ public final class Core extends JavaPlugin {
         register("log", log, log);
         PlayCommand play = new PlayCommand(this);
         register("play", play, play);
+        FindCommand find = new FindCommand(this);
+        register("find", find, find);
         register("alert", new AlertCommand(this), null);
         register("pc", new PremiumChatCommand(this), null);
         register("schat", new StaffChatCommand(this), null);
@@ -169,6 +176,9 @@ public final class Core extends JavaPlugin {
         if (wipeManager != null) {
             wipeManager.shutdown();
         }
+        if (presence != null) {
+            presence.shutdown();
+        }
         if (messenger != null) {
             messenger.shutdown();
         }
@@ -188,6 +198,9 @@ public final class Core extends JavaPlugin {
         if (wipeManager != null) {
             wipeManager.stop();
         }
+        if (presence != null) {
+            presence.stop();
+        }
         configs.load();
         applyAdvancementRules();
         clientVersions.start();
@@ -199,6 +212,9 @@ public final class Core extends JavaPlugin {
         messenger.start();
         if (wipeManager != null) {
             wipeManager.reload();
+        }
+        if (presence != null) {
+            presence.reload();
         }
         startModules();
         startProtocolOptimization();
@@ -372,6 +388,10 @@ public final class Core extends JavaPlugin {
 
     public WipeManager wipeManager() {
         return wipeManager;
+    }
+
+    public PresenceManager presence() {
+        return presence;
     }
 
     public BoardManager boards() {

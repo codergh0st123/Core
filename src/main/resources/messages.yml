@@ -21,6 +21,8 @@ PLAY-UNKNOWN:
   - "%PREFIX%&7Сервер &f%server% &7не найден или временно недоступен."
 PLAY-CONNECT:
   - "%PREFIX%&7Подключение к режиму &f%server%&7..."
+PLAY-ALREADY-CONNECTED:
+  - "%PREFIX%&eВы уже подключены к серверу &f%server%&e."
 ALERT-USAGE:
   - "%PREFIX%&7Использование: &f/alert <сообщение>"
 ALERT:
@@ -33,6 +35,13 @@ PREMIUM-CHAT:
   - "&d[PC] &f%player% &8» &d%message%"
 PREMIUM-CHAT-HOVER:
   - "&7Сервер: &f%server%"
+  - "&aНажмите, чтобы подключиться."
+FIND-USAGE:
+  - "%PREFIX%&7Использование: &f/find <ник>"
+FIND-FOUND:
+  - "%PREFIX%&fИгрок &b%player% &fнаходится на сервере &b%server%&f."
+FIND-NOT-FOUND:
+  - "%PREFIX%&cИгрок &f%player% &cне найден на сети."
 STAFF-USAGE:
   - "%PREFIX%&7Использование: &f/schat <сообщение>"
 STAFF-CHAT:
