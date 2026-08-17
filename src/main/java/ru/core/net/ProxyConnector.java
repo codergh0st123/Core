@@ -31,6 +31,23 @@ public final class ProxyConnector {
         return true;
     }
 
+    public boolean connectOther(Player player, String name, String server) {
+        if (name == null || name.isBlank() || server == null || server.isBlank()) {
+            return false;
+        }
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        try (DataOutputStream output = new DataOutputStream(buffer)) {
+            output.writeUTF("ConnectOther");
+            output.writeUTF(name);
+            output.writeUTF(server);
+        } catch (IOException exception) {
+            plugin.getLogger().warning("Ошибка отправки ConnectOther: " + exception.getMessage());
+            return false;
+        }
+        player.sendPluginMessage(plugin, "BungeeCord", buffer.toByteArray());
+        return true;
+    }
+
     public String fallbackServer() {
         if (!plugin.configs().config().getBoolean("PLAY-FALLBACK.ENABLED", true)) {
             return null;

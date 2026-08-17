@@ -141,6 +141,24 @@ public abstract class SqlStorage implements Storage {
     }
 
     @Override
+    public synchronized List<PlayerPresence> presences(long updatedAfter) {
+        List<PlayerPresence> players = new ArrayList<>();
+        try (PreparedStatement statement = connection().prepareStatement(
+                "SELECT UUID, NAME, SERVER, UPDATED FROM CORE_ONLINE WHERE UPDATED >= ?")) {
+            statement.setLong(1, updatedAfter);
+            try (ResultSet result = statement.executeQuery()) {
+                while (result.next()) {
+                    players.add(new PlayerPresence(UUID.fromString(result.getString("UUID")), result.getString("NAME"),
+                            result.getString("SERVER"), result.getLong("UPDATED")));
+                }
+            }
+        } catch (SQLException | IllegalArgumentException exception) {
+            plugin.getLogger().warning("Ошибка чтения сетевого онлайна: " + exception.getMessage());
+        }
+        return players;
+    }
+
+    @Override
     public synchronized boolean claimWipe(String id, long now) {
         try (PreparedStatement statement = connection().prepareStatement(
                 "UPDATE CORE_WIPES SET ANNOUNCED = 1 WHERE ID = ? AND ANNOUNCED = 0 AND EXPIRES <= ?")) {

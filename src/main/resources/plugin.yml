@@ -30,6 +30,10 @@ commands:
   log:
   play:
   find:
+  server:
+  list:
+    aliases:
+      - online
   alert:
   pc:
     aliases:
@@ -50,6 +54,10 @@ permissions:
   core.time:
     default: op
   core.find:
+    default: true
+  core.server:
+    default: op
+  core.list:
     default: true
   core.chat.premium:
     default: op

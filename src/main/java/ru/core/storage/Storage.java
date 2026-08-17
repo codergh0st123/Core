@@ -44,6 +44,8 @@ public interface Storage {
 
     PlayerPresence findPresence(String name, long updatedAfter);
 
+    List<PlayerPresence> presences(long updatedAfter);
+
     void saveReconnect(ReconnectState state);
 
     List<ReconnectState> reconnects(long now);

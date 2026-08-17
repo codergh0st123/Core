@@ -84,3 +84,23 @@ TIME-SET:
   - "%PREFIX%&aИгроку &f%player% &aустановлено &f%time%&a."
 PROFILE-LOADING:
   - "%PREFIX%&cДанные ещё загружаются, повторите попытку."
+SERVER-USAGE:
+  - "%PREFIX%&7Использование: &f/%label% <сервер> <ник>"
+SERVER-ERROR:
+  - "%PREFIX%&cНе удалось отправить запрос на перевод игрока."
+SERVER-SENT:
+  - "%PREFIX%&aИгрок &f%player% &aпереведён на режим &f%server%&a."
+LIST-USAGE:
+  - "%PREFIX%&7Использование: &f/%label% [all]"
+LIST-TOTAL:
+  - "%PREFIX%&7Общий онлайн: &f%online% &7игроков."
+LIST-ALL-HEADER:
+  - ""
+  - "%PREFIX%&bОнлайн серверов:"
+LIST-ALL-LINE:
+  - "&7%server% &8- &f%online%"
+  - ""
+PLAYER-SERVER-MOVED:
+  - ""
+  - "&eВас перекинул администратор на режим &f%server%&e."
+  - ""

@@ -19,6 +19,8 @@ import ru.core.command.PlayCommand;
 import ru.core.command.PlaytimeCommand;
 import ru.core.command.PremiumChatCommand;
 import ru.core.command.StaffChatCommand;
+import ru.core.command.ServerCommand;
+import ru.core.command.ListCommand;
 import ru.core.command.TimeCommand;
 import ru.core.config.Configs;
 import ru.core.api.CoreDebug;
@@ -151,6 +153,8 @@ public final class Core extends JavaPlugin {
         register("alert", new AlertCommand(this), null);
         register("pc", new PremiumChatCommand(this), null);
         register("schat", new StaffChatCommand(this), null);
+        register("server", new ServerCommand(this), null);
+        register("list", new ListCommand(this), null);
         register("playtime", new PlaytimeCommand(this), null);
         LangCommand lang = new LangCommand(this);
         register("lang", lang, lang);
