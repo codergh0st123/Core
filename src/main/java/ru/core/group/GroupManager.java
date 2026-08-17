@@ -6,6 +6,8 @@ import net.luckperms.api.event.user.UserDataRecalculateEvent;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
+import net.luckperms.api.node.NodeType;
+import net.luckperms.api.node.types.PrefixNode;
 import net.luckperms.api.query.QueryOptions;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
@@ -15,6 +17,7 @@ import ru.core.Core;
 import ru.core.board.PlayerBoard;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -169,6 +172,17 @@ public final class GroupManager {
         LuckPerms api = luckPerms;
         if (api == null || player == null) {
             return "";
+        }
+        Group current = api.getGroupManager().getGroup(group(player).toLowerCase(Locale.ROOT));
+        if (current != null) {
+            String prefix = current.getNodes(NodeType.PREFIX).stream()
+                    .max(Comparator.comparingInt(PrefixNode::getPriority))
+                    .map(PrefixNode::getMetaValue)
+                    .filter(value -> !value.isBlank())
+                    .orElse("");
+            if (!prefix.isEmpty()) {
+                return prefix;
+            }
         }
         User user = api.getUserManager().getUser(player.getUniqueId());
         if (user == null) {
