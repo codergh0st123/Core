@@ -43,4 +43,10 @@ public interface Storage {
     void cleanupPresence(long updated);
 
     PlayerPresence findPresence(String name, long updatedAfter);
+
+    void saveReconnect(ReconnectState state);
+
+    List<ReconnectState> reconnects(long now);
+
+    void removeReconnect(UUID uuid, String target);
 }

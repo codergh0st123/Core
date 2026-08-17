@@ -40,6 +40,7 @@ import ru.core.net.ProxyConnector;
 import ru.core.placeholder.CoreExpansion;
 import ru.core.presence.PresenceManager;
 import ru.core.resourcepack.ResourcePackManager;
+import ru.core.reconnect.ReconnectManager;
 import ru.core.placeholder.Placeholders;
 import ru.core.packet.protocollib.ProtocolTrafficOptimizer;
 import ru.core.packet.scoreboard.ScoreboardNumberPackets;
@@ -66,6 +67,7 @@ public final class Core extends JavaPlugin {
     private WipeManager wipeManager;
     private PresenceManager presence;
     private ResourcePackManager resourcePacks;
+    private ReconnectManager reconnects;
     private ScoreboardNumberPackets scoreboardPackets;
     private ProtocolTrafficOptimizer protocolOptimizer;
     private BoardManager boards;
@@ -116,6 +118,8 @@ public final class Core extends JavaPlugin {
         wipeManager = new WipeManager(this);
         wipeManager.start();
         resourcePacks = new ResourcePackManager(this);
+        reconnects = new ReconnectManager(this);
+        reconnects.start();
 
         scoreboardPackets = new ScoreboardNumberPackets(this);
         boards = new BoardManager(scoreboardPackets);
@@ -168,6 +172,9 @@ public final class Core extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        if (reconnects != null && getServer().isStopping()) {
+            reconnects.handoff();
+        }
         stopModules();
         stopProtocolOptimization();
         if (debug != null) {
@@ -185,6 +192,9 @@ public final class Core extends JavaPlugin {
         }
         if (resourcePacks != null) {
             resourcePacks.stop();
+        }
+        if (reconnects != null) {
+            reconnects.shutdown();
         }
         if (presence != null) {
             presence.shutdown();
@@ -228,6 +238,9 @@ public final class Core extends JavaPlugin {
         }
         if (resourcePacks != null) {
             resourcePacks.reload();
+        }
+        if (reconnects != null) {
+            reconnects.reload();
         }
         startModules();
         startProtocolOptimization();
@@ -413,6 +426,10 @@ public final class Core extends JavaPlugin {
 
     public ResourcePackManager resourcePacks() {
         return resourcePacks;
+    }
+
+    public ReconnectManager reconnects() {
+        return reconnects;
     }
 
     public BoardManager boards() {

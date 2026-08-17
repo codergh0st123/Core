@@ -83,6 +83,17 @@ public final class MySqlStorage extends SqlStorage {
     }
 
     @Override
+    protected String reconnectTable() {
+        return "CREATE TABLE IF NOT EXISTS CORE_RECONNECTS ("
+                + "UUID VARCHAR(36) NOT NULL PRIMARY KEY, "
+                + "NAME VARCHAR(16) NOT NULL, "
+                + "TARGET VARCHAR(64) NOT NULL, "
+                + "EXPIRES BIGINT NOT NULL, "
+                + "INDEX CORE_RECONNECTS_TARGET (TARGET), "
+                + "INDEX CORE_RECONNECTS_EXPIRES (EXPIRES)) DEFAULT CHARSET utf8mb4";
+    }
+
+    @Override
     protected String presenceUpsert() {
         return "INSERT INTO CORE_ONLINE (UUID, NAME, SERVER, UPDATED) VALUES (?, ?, ?, ?) "
                 + "ON DUPLICATE KEY UPDATE NAME = VALUES(NAME), SERVER = VALUES(SERVER), UPDATED = VALUES(UPDATED)";

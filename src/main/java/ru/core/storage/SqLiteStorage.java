@@ -76,6 +76,15 @@ public final class SqLiteStorage extends SqlStorage {
     }
 
     @Override
+    protected String reconnectTable() {
+        return "CREATE TABLE IF NOT EXISTS CORE_RECONNECTS ("
+                + "UUID VARCHAR(36) NOT NULL PRIMARY KEY, "
+                + "NAME VARCHAR(16) NOT NULL, "
+                + "TARGET VARCHAR(64) NOT NULL, "
+                + "EXPIRES INTEGER NOT NULL)";
+    }
+
+    @Override
     protected String presenceUpsert() {
         return "INSERT INTO CORE_ONLINE (UUID, NAME, SERVER, UPDATED) VALUES (?, ?, ?, ?) "
                 + "ON CONFLICT(UUID) DO UPDATE SET NAME = excluded.NAME, SERVER = excluded.SERVER, UPDATED = excluded.UPDATED";

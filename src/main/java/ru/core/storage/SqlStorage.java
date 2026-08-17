@@ -31,6 +31,8 @@ public abstract class SqlStorage implements Storage {
 
     protected abstract String presenceTable();
 
+    protected abstract String reconnectTable();
+
     protected abstract String wipeInsert();
 
     protected abstract String presenceUpsert();
@@ -45,6 +47,7 @@ public abstract class SqlStorage implements Storage {
             statement.executeUpdate(networkTable());
             statement.executeUpdate(wipesTable());
             statement.executeUpdate(presenceTable());
+            statement.executeUpdate(reconnectTable());
         }
     }
 
@@ -147,6 +150,56 @@ public abstract class SqlStorage implements Storage {
         } catch (SQLException exception) {
             plugin.getLogger().warning("Ошибка объявления вайпа " + id + ": " + exception.getMessage());
             return false;
+        }
+    }
+
+    @Override
+    public synchronized void saveReconnect(ReconnectState state) {
+        try (PreparedStatement delete = connection().prepareStatement("DELETE FROM CORE_RECONNECTS WHERE UUID = ?");
+             PreparedStatement insert = connection().prepareStatement(
+                     "INSERT INTO CORE_RECONNECTS (UUID, NAME, TARGET, EXPIRES) VALUES (?, ?, ?, ?)")) {
+            delete.setString(1, state.uuid().toString());
+            delete.executeUpdate();
+            insert.setString(1, state.uuid().toString());
+            insert.setString(2, state.name());
+            insert.setString(3, state.target());
+            insert.setLong(4, state.expires());
+            insert.executeUpdate();
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Ошибка сохранения reconnect: " + exception.getMessage());
+        }
+    }
+
+    @Override
+    public synchronized List<ReconnectState> reconnects(long now) {
+        List<ReconnectState> states = new ArrayList<>();
+        try (PreparedStatement cleanup = connection().prepareStatement("DELETE FROM CORE_RECONNECTS WHERE EXPIRES < ?");
+             PreparedStatement select = connection().prepareStatement(
+                     "SELECT UUID, NAME, TARGET, EXPIRES FROM CORE_RECONNECTS WHERE EXPIRES >= ?")) {
+            cleanup.setLong(1, now);
+            cleanup.executeUpdate();
+            select.setLong(1, now);
+            try (ResultSet result = select.executeQuery()) {
+                while (result.next()) {
+                    states.add(new ReconnectState(UUID.fromString(result.getString("UUID")), result.getString("NAME"),
+                            result.getString("TARGET"), result.getLong("EXPIRES")));
+                }
+            }
+        } catch (SQLException | IllegalArgumentException exception) {
+            plugin.getLogger().warning("Ошибка чтения reconnect: " + exception.getMessage());
+        }
+        return states;
+    }
+
+    @Override
+    public synchronized void removeReconnect(UUID uuid, String target) {
+        try (PreparedStatement statement = connection().prepareStatement(
+                "DELETE FROM CORE_RECONNECTS WHERE UUID = ? AND TARGET = ?")) {
+            statement.setString(1, uuid.toString());
+            statement.setString(2, target);
+            statement.executeUpdate();
+        } catch (SQLException exception) {
+            plugin.getLogger().warning("Ошибка удаления reconnect: " + exception.getMessage());
         }
     }
 
