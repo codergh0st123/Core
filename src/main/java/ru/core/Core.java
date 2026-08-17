@@ -27,6 +27,7 @@ import ru.core.group.GroupManager;
 import ru.core.listener.PlayerListener;
 import ru.core.module.AnnouncerModule;
 import ru.core.module.BossBarModule;
+import ru.core.module.EntityLimiterModule;
 import ru.core.module.ItemCleanerModule;
 import ru.core.module.NameTagModule;
 import ru.core.module.ScoreboardModule;
@@ -64,6 +65,7 @@ public final class Core extends JavaPlugin {
     private NameTagModule nameTags;
     private AnnouncerModule announcer;
     private ItemCleanerModule itemCleaner;
+    private EntityLimiterModule entityLimiter;
     private ScreenTextModule screenText;
     private InfoMenu menu;
 
@@ -108,6 +110,7 @@ public final class Core extends JavaPlugin {
         nameTags = new NameTagModule(this);
         announcer = new AnnouncerModule(this);
         itemCleaner = new ItemCleanerModule(this);
+        entityLimiter = new EntityLimiterModule(this);
         screenText = new ScreenTextModule(this);
         startModules();
         startProtocolOptimization();
@@ -202,6 +205,7 @@ public final class Core extends JavaPlugin {
         nameTags.start();
         announcer.start();
         itemCleaner.start();
+        entityLimiter.start();
         screenText.start();
     }
 
@@ -243,6 +247,9 @@ public final class Core extends JavaPlugin {
         }
         if (itemCleaner != null) {
             itemCleaner.stop();
+        }
+        if (entityLimiter != null) {
+            entityLimiter.stop();
         }
         if (screenText != null) {
             screenText.stop();

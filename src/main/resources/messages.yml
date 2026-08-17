@@ -17,7 +17,8 @@ LOG-OFF:
 PLAY-USAGE:
   - "%PREFIX%&7Использование: &f/play <сервер>"
 PLAY-UNKNOWN:
-  - "%PREFIX%&cРежим &f%server% &cне найден."
+  - "%PREFIX%&cНе удалось подключить вас к серверу."
+  - "%PREFIX%&7Сервер &f%server% &7не найден или временно недоступен."
 PLAY-CONNECT:
   - "%PREFIX%&7Подключение к режиму &f%server%&7..."
 ALERT-USAGE:
