@@ -36,6 +36,7 @@ import ru.core.module.ScoreboardModule;
 import ru.core.module.ScreenTextModule;
 import ru.core.module.TabModule;
 import ru.core.net.Messenger;
+import ru.core.net.ProxyConnector;
 import ru.core.placeholder.CoreExpansion;
 import ru.core.presence.PresenceManager;
 import ru.core.placeholder.Placeholders;
@@ -60,6 +61,7 @@ public final class Core extends JavaPlugin {
     private DebugManager debug;
     private ClientVersionManager clientVersions;
     private Messenger messenger;
+    private ProxyConnector proxyConnector;
     private WipeManager wipeManager;
     private PresenceManager presence;
     private ScoreboardNumberPackets scoreboardPackets;
@@ -106,6 +108,7 @@ public final class Core extends JavaPlugin {
 
         messenger = new Messenger(this);
         messenger.start();
+        proxyConnector = new ProxyConnector(this);
         presence = new PresenceManager(this);
         presence.start();
         wipeManager = new WipeManager(this);
@@ -384,6 +387,10 @@ public final class Core extends JavaPlugin {
 
     public Messenger messenger() {
         return messenger;
+    }
+
+    public ProxyConnector proxyConnector() {
+        return proxyConnector;
     }
 
     public WipeManager wipeManager() {

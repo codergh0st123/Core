@@ -1,5 +1,6 @@
 package ru.core.listener;
 
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -8,11 +9,13 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import ru.core.Core;
 import ru.core.storage.Profile;
+import ru.core.text.Msg;
 
 public final class PlayerListener implements Listener {
 
@@ -49,6 +52,26 @@ public final class PlayerListener implements Listener {
         plugin.presence().join(player);
         plugin.boards().create(player);
         plugin.groups().preload(player);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onKick(PlayerKickEvent event) {
+        String lobby = plugin.proxyConnector().fallbackServer();
+        if (lobby == null) {
+            return;
+        }
+        Player player = event.getPlayer();
+        if (!plugin.proxyConnector().connect(player, lobby)) {
+            return;
+        }
+        event.setCancelled(true);
+        String reason = PlainTextComponentSerializer.plainText().serialize(event.reason())
+                .replace('\n', ' ').replace('\r', ' ');
+        if (reason.isBlank()) {
+            reason = "Неизвестная ошибка";
+        }
+        Msg.send(plugin, player, "PLAY-SERVER-LOST", "%server%", plugin.messenger().server(), "%error%", reason);
+        Msg.send(plugin, player, "PLAY-FALLBACK", "%server%", lobby);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

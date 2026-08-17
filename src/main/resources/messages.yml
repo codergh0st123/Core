@@ -21,8 +21,17 @@ PLAY-UNKNOWN:
   - "%PREFIX%&7Сервер &f%server% &7не найден или временно недоступен."
 PLAY-CONNECT:
   - "%PREFIX%&7Подключение к режиму &f%server%&7..."
+PLAY-CONNECT-ERROR:
+  - "%PREFIX%&cНе удалось отправить запрос на подключение к серверу &f%server%&c."
 PLAY-ALREADY-CONNECTED:
   - "%PREFIX%&eВы уже подключены к серверу &f%server%&e."
+PLAY-SERVER-LOST:
+  - ""
+  - "%PREFIX%&cВы потеряли соединение с сервером &f%server%&c."
+  - "%PREFIX%&7Причина: &f%error%"
+  - ""
+PLAY-FALLBACK:
+  - "%PREFIX%&eПеренаправляем вас в лобби &f%server%&e..."
 ALERT-USAGE:
   - "%PREFIX%&7Использование: &f/alert <сообщение>"
 ALERT:

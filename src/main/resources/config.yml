@@ -207,8 +207,13 @@ MENU:
 
 PLAY:
   SERVERS:
+    LOBBY: "lobby"
     SERVER-1: "server-1"
     SERVER-2: "server-2"
+
+PLAY-FALLBACK:
+  ENABLED: true
+  SERVER: "lobby"
 
 TIME:
   SECONDS:

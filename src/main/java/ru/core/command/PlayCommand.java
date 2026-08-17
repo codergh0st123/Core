@@ -9,9 +9,6 @@ import org.bukkit.entity.Player;
 import ru.core.Core;
 import ru.core.text.Msg;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -44,16 +41,11 @@ public final class PlayCommand implements CommandExecutor, TabCompleter {
             Msg.send(plugin, sender, "PLAY-ALREADY-CONNECTED", "%server%", target);
             return true;
         }
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        try (DataOutputStream output = new DataOutputStream(buffer)) {
-            output.writeUTF("Connect");
-            output.writeUTF(target);
-        } catch (IOException exception) {
-            plugin.getLogger().warning("Ошибка отправки Connect: " + exception.getMessage());
+        if (!plugin.proxyConnector().connect(player, target)) {
+            Msg.send(plugin, sender, "PLAY-CONNECT-ERROR", "%server%", target);
             return true;
         }
         Msg.send(plugin, sender, "PLAY-CONNECT", "%server%", target);
-        player.sendPluginMessage(plugin, "BungeeCord", buffer.toByteArray());
         return true;
     }
 
