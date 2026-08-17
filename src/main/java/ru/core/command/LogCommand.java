@@ -22,28 +22,28 @@ public final class LogCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("core.log")) {
-            Msg.send(plugin, sender, "NO-PERMISSION");
+            Msg.sendCommand(plugin, sender, label, "NO-PERMISSION");
             return true;
         }
         if (!(sender instanceof Player player)) {
-            Msg.send(plugin, sender, "PLAYER-ONLY");
+            Msg.sendCommand(plugin, sender, label, "PLAYER-ONLY");
             return true;
         }
         if (args.length != 1) {
-            Msg.send(plugin, sender, "LOG-USAGE");
+            Msg.sendCommand(plugin, sender, label, "LOG-USAGE");
             return true;
         }
         if (args[0].equalsIgnoreCase("on")) {
             plugin.debug().enable(player);
-            Msg.send(plugin, sender, "LOG-ON");
+            Msg.sendCommand(plugin, sender, label, "LOG-ON");
             return true;
         }
         if (args[0].equalsIgnoreCase("off")) {
             plugin.debug().disable(player);
-            Msg.send(plugin, sender, "LOG-OFF");
+            Msg.sendCommand(plugin, sender, label, "LOG-OFF");
             return true;
         }
-        Msg.send(plugin, sender, "LOG-USAGE");
+        Msg.sendCommand(plugin, sender, label, "LOG-USAGE");
         return true;
     }
 

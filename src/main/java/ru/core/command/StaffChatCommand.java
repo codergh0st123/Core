@@ -18,11 +18,11 @@ public final class StaffChatCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("core.chat.staff")) {
-            Msg.send(plugin, sender, "NO-PERMISSION");
+            Msg.sendCommand(plugin, sender, label, "NO-PERMISSION");
             return true;
         }
         if (args.length == 0) {
-            Msg.send(plugin, sender, "STAFF-USAGE");
+            Msg.sendCommand(plugin, sender, label, "STAFF-USAGE");
             return true;
         }
         plugin.messenger().broadcast(Messenger.STAFF, sender.getName(), String.join(" ", args));

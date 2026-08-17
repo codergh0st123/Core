@@ -24,28 +24,28 @@ public final class PlayCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            Msg.send(plugin, sender, "PLAYER-ONLY");
+            Msg.sendCommand(plugin, sender, label, "PLAYER-ONLY");
             return true;
         }
         if (args.length != 1) {
-            Msg.send(plugin, sender, "PLAY-USAGE");
+            Msg.sendCommand(plugin, sender, label, "PLAY-USAGE");
             return true;
         }
         String target = resolve(args[0]);
         if (target == null) {
-            Msg.send(plugin, sender, "PLAY-UNKNOWN", "%server%", args[0]);
+            Msg.sendCommand(plugin, sender, label, "PLAY-UNKNOWN", "%server%", args[0]);
             return true;
         }
         Player player = (Player) sender;
         if (target.equalsIgnoreCase(plugin.messenger().server())) {
-            Msg.send(plugin, sender, "PLAY-ALREADY-CONNECTED", "%server%", target);
+            Msg.sendCommand(plugin, sender, label, "PLAY-ALREADY-CONNECTED", "%server%", target);
             return true;
         }
         if (!plugin.proxyConnector().connect(player, target)) {
-            Msg.send(plugin, sender, "PLAY-CONNECT-ERROR", "%server%", target);
+            Msg.sendCommand(plugin, sender, label, "PLAY-CONNECT-ERROR", "%server%", target);
             return true;
         }
-        Msg.send(plugin, sender, "PLAY-CONNECT", "%server%", target);
+        Msg.sendCommand(plugin, sender, label, "PLAY-CONNECT", "%server%", target);
         return true;
     }
 

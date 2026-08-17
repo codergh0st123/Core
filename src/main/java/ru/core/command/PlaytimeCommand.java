@@ -20,16 +20,17 @@ public final class PlaytimeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            Msg.send(plugin, sender, "PLAYER-ONLY");
+            Msg.sendCommand(plugin, sender, label, "PLAYER-ONLY");
             return true;
         }
         Profile profile = plugin.data().profile((Player) sender);
         if (profile == null) {
-            Msg.send(plugin, sender, "PROFILE-LOADING");
+            Msg.sendCommand(plugin, sender, label, "PROFILE-LOADING");
             return true;
         }
         for (String line : plugin.configs().messages("PLAYTIME")) {
-            sender.sendMessage(Msg.format(plugin, sender, TimeFormat.fill(plugin, line, profile.playtime())));
+            sender.sendMessage(Msg.format(plugin, sender, TimeFormat.fill(plugin, line, profile.playtime()),
+                    "%label%", label));
         }
         return true;
     }

@@ -25,11 +25,11 @@ public final class FindCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length != 1) {
-            Msg.send(plugin, sender, "FIND-USAGE");
+            Msg.sendCommand(plugin, sender, label, "FIND-USAGE");
             return true;
         }
         String name = args[0];
-        plugin.presence().find(name, presence -> sendResult(sender, name, presence));
+        plugin.presence().find(name, presence -> sendResult(sender, label, name, presence));
         return true;
     }
 
@@ -48,14 +48,14 @@ public final class FindCommand implements CommandExecutor, TabCompleter {
         return result;
     }
 
-    private void sendResult(CommandSender sender, String name, PlayerPresence presence) {
+    private void sendResult(CommandSender sender, String label, String name, PlayerPresence presence) {
         if (sender instanceof Player player && !player.isOnline()) {
             return;
         }
         if (presence == null) {
-            Msg.send(plugin, sender, "FIND-NOT-FOUND", "%player%", name);
+            Msg.sendCommand(plugin, sender, label, "FIND-NOT-FOUND", "%player%", name);
             return;
         }
-        Msg.send(plugin, sender, "FIND-FOUND", "%player%", presence.name(), "%server%", presence.server());
+        Msg.sendCommand(plugin, sender, label, "FIND-FOUND", "%player%", presence.name(), "%server%", presence.server());
     }
 }

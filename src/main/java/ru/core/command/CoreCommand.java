@@ -23,7 +23,7 @@ public final class CoreCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
             if (!(sender instanceof Player)) {
-                Msg.send(plugin, sender, "PLAYER-ONLY");
+                Msg.sendCommand(plugin, sender, label, "PLAYER-ONLY");
                 return true;
             }
             plugin.menu().open((Player) sender);
@@ -31,14 +31,14 @@ public final class CoreCommand implements CommandExecutor, TabCompleter {
         }
         if (args[0].equalsIgnoreCase("reload")) {
             if (!sender.hasPermission("core.reload")) {
-                Msg.send(plugin, sender, "NO-PERMISSION");
+                Msg.sendCommand(plugin, sender, label, "NO-PERMISSION");
                 return true;
             }
             plugin.reloadAll();
-            Msg.send(plugin, sender, "RELOAD");
+            Msg.sendCommand(plugin, sender, label, "RELOAD");
             return true;
         }
-        Msg.send(plugin, sender, "CORE-USAGE");
+        Msg.sendCommand(plugin, sender, label, "CORE-USAGE");
         return true;
     }
 

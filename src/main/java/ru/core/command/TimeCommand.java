@@ -27,16 +27,16 @@ public final class TimeCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("core.time")) {
-            Msg.send(plugin, sender, "NO-PERMISSION");
+            Msg.sendCommand(plugin, sender, label, "NO-PERMISSION");
             return true;
         }
         if (args.length != 3 || (!args[0].equalsIgnoreCase("add") && !args[0].equalsIgnoreCase("set"))) {
-            Msg.send(plugin, sender, "TIME-USAGE");
+            Msg.sendCommand(plugin, sender, label, "TIME-USAGE");
             return true;
         }
         long seconds = TimeParse.seconds(args[2]);
         if (seconds < 0L) {
-            Msg.send(plugin, sender, "TIME-FORMAT");
+            Msg.sendCommand(plugin, sender, label, "TIME-FORMAT");
             return true;
         }
         boolean add = args[0].equalsIgnoreCase("add");
@@ -46,7 +46,7 @@ public final class TimeCommand implements CommandExecutor, TabCompleter {
         if (online != null) {
             Profile profile = plugin.data().profile(online);
             if (profile == null) {
-                Msg.send(plugin, sender, "PROFILE-LOADING");
+                Msg.sendCommand(plugin, sender, label, "PROFILE-LOADING");
                 return true;
             }
             if (add) {
@@ -55,7 +55,7 @@ public final class TimeCommand implements CommandExecutor, TabCompleter {
                 profile.playtime(seconds);
             }
             plugin.data().async(() -> plugin.storage().save(profile));
-            Msg.send(plugin, sender, add ? "TIME-ADD" : "TIME-SET", "%player%", online.getName(), "%time%", formatted);
+            Msg.sendCommand(plugin, sender, label, add ? "TIME-ADD" : "TIME-SET", "%player%", online.getName(), "%time%", formatted);
             return true;
         }
         plugin.data().async(() -> {
@@ -65,11 +65,11 @@ public final class TimeCommand implements CommandExecutor, TabCompleter {
             }
             Bukkit.getScheduler().runTask(plugin, () -> {
                 if (!done) {
-                    Msg.send(plugin, sender, "TIME-UNKNOWN", "%player%", name);
+                    Msg.sendCommand(plugin, sender, label, "TIME-UNKNOWN", "%player%", name);
                     return;
                 }
                 plugin.data().invalidate(name);
-                Msg.send(plugin, sender, add ? "TIME-ADD" : "TIME-SET", "%player%", name, "%time%", formatted);
+                Msg.sendCommand(plugin, sender, label, add ? "TIME-ADD" : "TIME-SET", "%player%", name, "%time%", formatted);
             });
         });
         return true;

@@ -24,27 +24,27 @@ public final class LangCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            Msg.send(plugin, sender, "PLAYER-ONLY");
+            Msg.sendCommand(plugin, sender, label, "PLAYER-ONLY");
             return true;
         }
         if (args.length != 1) {
-            Msg.send(plugin, sender, "LANG-USAGE");
-            Msg.send(plugin, sender, "LANG-LIST", "%langs%", plugin.placeholders().languageList());
+            Msg.sendCommand(plugin, sender, label, "LANG-USAGE");
+            Msg.sendCommand(plugin, sender, label, "LANG-LIST", "%langs%", plugin.placeholders().languageList());
             return true;
         }
         String code = args[0].toUpperCase(Locale.ROOT);
         if (!plugin.placeholders().hasLanguage(code)) {
-            Msg.send(plugin, sender, "LANG-UNKNOWN", "%lang%", args[0]);
+            Msg.sendCommand(plugin, sender, label, "LANG-UNKNOWN", "%lang%", args[0]);
             return true;
         }
         Profile profile = plugin.data().profile((Player) sender);
         if (profile == null) {
-            Msg.send(plugin, sender, "PROFILE-LOADING");
+            Msg.sendCommand(plugin, sender, label, "PROFILE-LOADING");
             return true;
         }
         profile.language(code);
         plugin.data().async(() -> plugin.storage().save(profile));
-        Msg.send(plugin, sender, "LANG-CHANGED", "%lang%", code);
+        Msg.sendCommand(plugin, sender, label, "LANG-CHANGED", "%lang%", code);
         return true;
     }
 
