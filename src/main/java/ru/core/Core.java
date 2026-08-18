@@ -15,6 +15,7 @@ import ru.core.command.CoreCommand;
 import ru.core.command.FindCommand;
 import ru.core.command.HubCommand;
 import ru.core.command.LangCommand;
+import ru.core.command.LanguageCommand;
 import ru.core.command.LogCommand;
 import ru.core.command.PlayCommand;
 import ru.core.command.PlaytimeCommand;
@@ -28,6 +29,7 @@ import ru.core.api.CoreDebug;
 import ru.core.data.DataManager;
 import ru.core.debug.DebugManager;
 import ru.core.gui.InfoMenu;
+import ru.core.gui.LanguageMenu;
 import ru.core.group.GroupManager;
 import ru.core.listener.PlayerListener;
 import ru.core.module.AnnouncerModule;
@@ -83,6 +85,7 @@ public final class Core extends JavaPlugin {
     private EntityLimiterModule entityLimiter;
     private ScreenTextModule screenText;
     private InfoMenu menu;
+    private LanguageMenu languageMenu;
 
     @Override
     public void onEnable() {
@@ -127,6 +130,7 @@ public final class Core extends JavaPlugin {
         scoreboardPackets = new ScoreboardNumberPackets(this);
         boards = new BoardManager(scoreboardPackets);
         menu = new InfoMenu(this);
+        languageMenu = new LanguageMenu(this);
         scoreboards = new ScoreboardModule(this);
         tab = new TabModule(this);
         bossBars = new BossBarModule(this);
@@ -140,6 +144,7 @@ public final class Core extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
         getServer().getPluginManager().registerEvents(menu, this);
+        getServer().getPluginManager().registerEvents(languageMenu, this);
         resourcePacks.start();
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
@@ -160,6 +165,7 @@ public final class Core extends JavaPlugin {
         register("playtime", new PlaytimeCommand(this), null);
         LangCommand lang = new LangCommand(this);
         register("lang", lang, lang);
+        register("language", new LanguageCommand(this), null);
         TimeCommand time = new TimeCommand(this);
         register("time", time, time);
 
@@ -464,5 +470,9 @@ public final class Core extends JavaPlugin {
 
     public InfoMenu menu() {
         return menu;
+    }
+
+    public LanguageMenu languageMenu() {
+        return languageMenu;
     }
 }

@@ -72,6 +72,10 @@ LANG-UNKNOWN:
   - "%PREFIX%&cЯзык &f%lang% &cне найден."
 LANG-CHANGED:
   - "%PREFIX%&aЯзык изменён на &f%lang%&a."
+LANGUAGE-CHANGED-GUI:
+  - ""
+  - "%PREFIX%&aЯзык изменён на &f%lang%&a."
+  - ""
 TIME-USAGE:
   - "%PREFIX%&7Использование: &f/%label% <add|set> <ник> <время>"
 TIME-FORMAT:

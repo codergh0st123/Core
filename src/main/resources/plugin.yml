@@ -46,6 +46,9 @@ commands:
     aliases:
       - времякотороетыпросрал
   lang:
+  language:
+    aliases:
+      - lang-gui
   time:
 permissions:
   core.reload:
@@ -64,6 +67,8 @@ permissions:
     default: true
   core.list.all:
     default: op
+  core.language:
+    default: true
   core.chat.premium:
     default: op
   core.chat.staff:
