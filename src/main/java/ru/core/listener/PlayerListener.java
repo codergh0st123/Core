@@ -79,6 +79,9 @@ public final class PlayerListener implements Listener {
         String time = COMMAND_TIME.format(Instant.now());
         String command = event.getMessage();
         for (Player viewer : Bukkit.getOnlinePlayers()) {
+            if (viewer.getUniqueId().equals(source.getUniqueId())) {
+                continue;
+            }
             Profile profile = plugin.data().profile(viewer);
             if (profile == null || !profile.commandConsole() || !viewer.hasPermission("core.console")) {
                 continue;
