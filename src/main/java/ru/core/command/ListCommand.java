@@ -27,6 +27,10 @@ public final class ListCommand implements CommandExecutor {
             Msg.sendCommand(plugin, sender, label, "LIST-USAGE");
             return true;
         }
+        if (args.length == 1 && !sender.hasPermission("core.list.all")) {
+            Msg.sendCommand(plugin, sender, label, "NO-PERMISSION");
+            return true;
+        }
         long fresh = System.currentTimeMillis() - 45_000L;
         plugin.data().async(() -> {
             Map<String, List<String>> online = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
