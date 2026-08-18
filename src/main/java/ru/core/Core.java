@@ -248,9 +248,6 @@ public final class Core extends JavaPlugin {
         if (presence != null) {
             presence.reload();
         }
-        if (resourcePacks != null) {
-            resourcePacks.reload();
-        }
         if (reconnects != null) {
             reconnects.reload();
         }

@@ -216,6 +216,7 @@ MENU:
 LANGUAGE-MENU:
   TITLE: "&fЛокализация проекта"
   SIZE: 44
+  SELECTED-PLACEHOLDER: " &7> &a(уже выбран)"
   LANGUAGE-SLOTS:
     - 10
     - 12
@@ -224,8 +225,7 @@ LANGUAGE-MENU:
   LANGUAGES:
     DEFAULT:
       MATERIAL: "PLAYER_HEAD"
-      NAME: "&b%LANG%"
-      SELECTED-NAME: "&b%LANG% &7> &a(уже выбран)"
+      NAME: "&b%LANG%%SELECTED%"
       LORE:
         - "&7"
         - "&fЯзык поддерживается частично"
@@ -248,8 +248,7 @@ LANGUAGE-MENU:
       SLOT: 10
       MATERIAL: "PLAYER_HEAD"
       HEAD-OWNER: "MHF_Russia"
-      NAME: "&bРусский язык"
-      SELECTED-NAME: "&bРусский язык &7> &a(уже выбран)"
+      NAME: "&bРусский язык%SELECTED%"
       LORE:
         - "&7"
         - "&fОсновной язык сервера"
@@ -273,7 +272,7 @@ LANGUAGE-MENU:
       SLOT: 12
       MATERIAL: "PLAYER_HEAD"
       HEAD-OWNER: "MHF_England"
-      NAME: "&bАнглийский язык"
+      NAME: "&bАнглийский язык%SELECTED%"
       LORE:
         - "&7"
         - "&fЯзык поддерживается частично"
@@ -287,7 +286,7 @@ LANGUAGE-MENU:
       SLOT: 14
       MATERIAL: "PLAYER_HEAD"
       HEAD-OWNER: "MHF_Ukraine"
-      NAME: "&bУкраинский язык"
+      NAME: "&bУкраинский язык%SELECTED%"
       LORE:
         - "&7"
         - "&fЯзык поддерживается частично"
@@ -302,7 +301,7 @@ LANGUAGE-MENU:
       SLOT: 16
       MATERIAL: "PLAYER_HEAD"
       HEAD-OWNER: "MHF_Kazakhstan"
-      NAME: "&bКазахский язык"
+      NAME: "&bКазахский язык%SELECTED%"
       LORE:
         - "&7"
         - "&fЯзык поддерживается частично"

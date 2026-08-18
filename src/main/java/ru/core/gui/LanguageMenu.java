@@ -42,7 +42,7 @@ public final class LanguageMenu implements Listener {
         }
         int size = size(menu.getInt("SIZE", 44));
         Holder holder = new Holder();
-        Inventory inventory = Bukkit.createInventory(holder, size, parse(player, menu.getString("TITLE", "&fЛокализация проекта"), ""));
+        Inventory inventory = Bukkit.createInventory(holder, size, parse(player, menu.getString("TITLE", "&fЛокализация проекта"), "", false));
         holder.inventory = inventory;
 
         ConfigurationSection languages = menu.getConfigurationSection("LANGUAGES");
@@ -136,11 +136,15 @@ public final class LanguageMenu implements Listener {
             return item;
         }
 
-        String name = selected
-                ? value(section, "SELECTED-NAME", value(section, "NAME", "&f%LANG%"))
-                : value(section, "NAME", "&f%LANG%");
+        String name = value(section, "NAME", "&f%LANG%%SELECTED%");
+        if (selected) {
+            String selectedName = value(section, "SELECTED-NAME", "");
+            if (!selectedName.isEmpty()) {
+                name = selectedName;
+            }
+        }
         if (!name.isEmpty()) {
-            meta.setDisplayName(parse(player, name, language));
+            meta.setDisplayName(parse(player, name, language, selected));
         }
 
         List<String> rawLore = selected && section != null && section.isList("SELECTED-LORE")
@@ -149,7 +153,7 @@ public final class LanguageMenu implements Listener {
         if (!rawLore.isEmpty()) {
             List<String> lore = new ArrayList<>(rawLore.size());
             for (String line : rawLore) {
-                lore.add(parse(player, line, language));
+                lore.add(parse(player, line, language, selected));
             }
             meta.setLore(lore);
         }
@@ -178,7 +182,7 @@ public final class LanguageMenu implements Listener {
 
         String owner = value(section, "HEAD-OWNER", "");
         if (!owner.isEmpty() && meta instanceof SkullMeta) {
-            ((SkullMeta) meta).setOwningPlayer(Bukkit.getOfflinePlayer(parse(player, owner, language)));
+            ((SkullMeta) meta).setOwningPlayer(Bukkit.getOfflinePlayer(parse(player, owner, language, false)));
         }
         item.setItemMeta(meta);
         return item;
@@ -208,11 +212,16 @@ public final class LanguageMenu implements Listener {
         return section == null ? fallback : section.getBoolean(path, fallback);
     }
 
-    private String parse(Player player, String text, String language) {
+    private String parse(Player player, String text, String language, boolean selected) {
         if (text == null) {
             return "";
         }
-        return plugin.placeholders().apply(player, text.replace("%LANG%", language).replace("%LANGUAGE%", language));
+        String marker = selected
+                ? plugin.configs().config().getString("LANGUAGE-MENU.SELECTED-PLACEHOLDER", "")
+                : "";
+        return plugin.placeholders().apply(player, text.replace("%LANG%", language)
+                .replace("%LANGUAGE%", language)
+                .replace("%SELECTED%", marker));
     }
 
     private int size(int raw) {
