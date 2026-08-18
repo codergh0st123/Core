@@ -16,7 +16,7 @@ public final class ProxyConnector {
     }
 
     public boolean connect(Player player, String server) {
-        if (server == null || server.isBlank()) {
+        if (!plugin.isEnabled() || server == null || server.isBlank()) {
             return false;
         }
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
@@ -32,7 +32,7 @@ public final class ProxyConnector {
     }
 
     public boolean connectOther(Player player, String name, String server) {
-        if (name == null || name.isBlank() || server == null || server.isBlank()) {
+        if (!plugin.isEnabled() || name == null || name.isBlank() || server == null || server.isBlank()) {
             return false;
         }
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();

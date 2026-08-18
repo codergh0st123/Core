@@ -13,6 +13,7 @@ import ru.core.board.BoardManager;
 import ru.core.command.AlertCommand;
 import ru.core.command.CoreCommand;
 import ru.core.command.FindCommand;
+import ru.core.command.HubCommand;
 import ru.core.command.LangCommand;
 import ru.core.command.LogCommand;
 import ru.core.command.PlayCommand;
@@ -148,6 +149,7 @@ public final class Core extends JavaPlugin {
         register("log", log, log);
         PlayCommand play = new PlayCommand(this);
         register("play", play, play);
+        register("hub", new HubCommand(this), null);
         FindCommand find = new FindCommand(this);
         register("find", find, find);
         register("alert", new AlertCommand(this), null);

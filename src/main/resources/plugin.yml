@@ -29,6 +29,9 @@ commands:
       - zlhj
   log:
   play:
+  hub:
+    aliases:
+      - lobby
   find:
   server:
   list:
