@@ -48,6 +48,7 @@ public final class MySqlStorage extends SqlStorage {
                 + "DEATHS INT NOT NULL DEFAULT 0, "
                 + "PLAYTIME BIGINT NOT NULL DEFAULT 0, "
                 + "LANG VARCHAR(8) NOT NULL DEFAULT 'RU', "
+                + "COMMAND_CONSOLE TINYINT(1) NOT NULL DEFAULT 0, "
                 + "LAST_SEEN BIGINT NOT NULL DEFAULT 0, "
                 + "INDEX CORE_PLAYERS_NAME (NAME)) DEFAULT CHARSET utf8mb4";
     }
@@ -107,8 +108,9 @@ public final class MySqlStorage extends SqlStorage {
 
     @Override
     protected String upsert() {
-        return "INSERT INTO CORE_PLAYERS (UUID, NAME, KILLS, DEATHS, PLAYTIME, LANG, LAST_SEEN) VALUES (?, ?, ?, ?, ?, ?, ?) "
+        return "INSERT INTO CORE_PLAYERS (UUID, NAME, KILLS, DEATHS, PLAYTIME, LANG, COMMAND_CONSOLE, LAST_SEEN) VALUES (?, ?, ?, ?, ?, ?, ?, ?) "
                 + "ON DUPLICATE KEY UPDATE NAME = VALUES(NAME), KILLS = VALUES(KILLS), DEATHS = VALUES(DEATHS), "
-                + "PLAYTIME = VALUES(PLAYTIME), LANG = VALUES(LANG), LAST_SEEN = VALUES(LAST_SEEN)";
+                + "PLAYTIME = VALUES(PLAYTIME), LANG = VALUES(LANG), COMMAND_CONSOLE = VALUES(COMMAND_CONSOLE), "
+                + "LAST_SEEN = VALUES(LAST_SEEN)";
     }
 }

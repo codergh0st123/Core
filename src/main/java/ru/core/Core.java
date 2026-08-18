@@ -11,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import ru.core.animation.AnimationManager;
 import ru.core.board.BoardManager;
 import ru.core.command.AlertCommand;
+import ru.core.command.ConsoleCommand;
 import ru.core.command.CoreCommand;
 import ru.core.command.FindCommand;
 import ru.core.command.HubCommand;
@@ -152,6 +153,8 @@ public final class Core extends JavaPlugin {
         register("core", core, core);
         LogCommand log = new LogCommand(this);
         register("log", log, log);
+        ConsoleCommand console = new ConsoleCommand(this);
+        register("console", console, console);
         PlayCommand play = new PlayCommand(this);
         register("play", play, play);
         register("hub", new HubCommand(this), null);

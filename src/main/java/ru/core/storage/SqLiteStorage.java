@@ -44,6 +44,7 @@ public final class SqLiteStorage extends SqlStorage {
                 + "DEATHS INTEGER NOT NULL DEFAULT 0, "
                 + "PLAYTIME INTEGER NOT NULL DEFAULT 0, "
                 + "LANG VARCHAR(8) NOT NULL DEFAULT 'RU', "
+                + "COMMAND_CONSOLE BOOLEAN NOT NULL DEFAULT 0, "
                 + "LAST_SEEN INTEGER NOT NULL DEFAULT 0)";
     }
 
@@ -97,8 +98,9 @@ public final class SqLiteStorage extends SqlStorage {
 
     @Override
     protected String upsert() {
-        return "INSERT INTO CORE_PLAYERS (UUID, NAME, KILLS, DEATHS, PLAYTIME, LANG, LAST_SEEN) VALUES (?, ?, ?, ?, ?, ?, ?) "
+        return "INSERT INTO CORE_PLAYERS (UUID, NAME, KILLS, DEATHS, PLAYTIME, LANG, COMMAND_CONSOLE, LAST_SEEN) VALUES (?, ?, ?, ?, ?, ?, ?, ?) "
                 + "ON CONFLICT(UUID) DO UPDATE SET NAME = excluded.NAME, KILLS = excluded.KILLS, DEATHS = excluded.DEATHS, "
-                + "PLAYTIME = excluded.PLAYTIME, LANG = excluded.LANG, LAST_SEEN = excluded.LAST_SEEN";
+                + "PLAYTIME = excluded.PLAYTIME, LANG = excluded.LANG, COMMAND_CONSOLE = excluded.COMMAND_CONSOLE, "
+                + "LAST_SEEN = excluded.LAST_SEEN";
     }
 }

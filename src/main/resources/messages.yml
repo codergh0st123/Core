@@ -14,6 +14,14 @@ LOG-ON:
   - "%PREFIX%&aОтладочные логи включены."
 LOG-OFF:
   - "%PREFIX%&cОтладочные логи выключены."
+CONSOLE-USAGE:
+  - "%PREFIX%&7Использование: &f/%label% <on|off>"
+CONSOLE-ON:
+  - "%PREFIX%&aПросмотр команд игроков включён."
+CONSOLE-OFF:
+  - "%PREFIX%&cПросмотр команд игроков выключен."
+CONSOLE-COMMAND:
+  - "&8[%time%]&7 %player% &fкоманда: &b%command%"
 PLAY-USAGE:
   - "%PREFIX%&7Использование: &f/%label% <сервер>"
 PLAY-UNKNOWN:

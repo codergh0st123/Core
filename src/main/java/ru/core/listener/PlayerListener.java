@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -21,7 +22,15 @@ import ru.core.net.Messenger;
 import ru.core.storage.Profile;
 import ru.core.text.Msg;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 public final class PlayerListener implements Listener {
+
+    private static final DateTimeFormatter COMMAND_TIME = DateTimeFormatter.ofPattern("dd/MM/uuuu, HH:mm")
+            .withZone(ZoneId.systemDefault());
+    private static final String COMMAND_TOKEN = "__CORE_CONSOLE_COMMAND__";
 
     private final Core plugin;
 
@@ -62,6 +71,24 @@ public final class PlayerListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onResourcePackStatus(PlayerResourcePackStatusEvent event) {
         plugin.resourcePacks().handle(event);
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onCommand(PlayerCommandPreprocessEvent event) {
+        Player source = event.getPlayer();
+        String time = COMMAND_TIME.format(Instant.now());
+        String command = event.getMessage();
+        for (Player viewer : Bukkit.getOnlinePlayers()) {
+            Profile profile = plugin.data().profile(viewer);
+            if (profile == null || !profile.commandConsole() || !viewer.hasPermission("core.console")) {
+                continue;
+            }
+            for (String line : plugin.configs().messages("CONSOLE-COMMAND")) {
+                String text = Msg.format(plugin, viewer, line, "%time%", time, "%player%", source.getName(),
+                        "%command%", COMMAND_TOKEN).replace(COMMAND_TOKEN, command);
+                viewer.sendMessage(text);
+            }
+        }
     }
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)

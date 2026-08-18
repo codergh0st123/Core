@@ -12,14 +12,16 @@ public final class Profile {
     private final AtomicLong playtime;
     private volatile String name;
     private volatile String language;
+    private volatile boolean commandConsole;
 
-    public Profile(UUID uuid, String name, int kills, int deaths, long playtime, String language) {
+    public Profile(UUID uuid, String name, int kills, int deaths, long playtime, String language, boolean commandConsole) {
         this.uuid = uuid;
         this.name = name;
         this.kills = new AtomicInteger(kills);
         this.deaths = new AtomicInteger(deaths);
         this.playtime = new AtomicLong(playtime);
         this.language = language;
+        this.commandConsole = commandConsole;
     }
 
     public UUID uuid() {
@@ -68,5 +70,13 @@ public final class Profile {
 
     public void language(String language) {
         this.language = language;
+    }
+
+    public boolean commandConsole() {
+        return commandConsole;
+    }
+
+    public void commandConsole(boolean commandConsole) {
+        this.commandConsole = commandConsole;
     }
 }

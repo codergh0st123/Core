@@ -44,10 +44,23 @@ public abstract class SqlStorage implements Storage {
         connection = open();
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(playersTable());
+            ensureCommandConsoleColumn();
             statement.executeUpdate(networkTable());
             statement.executeUpdate(wipesTable());
             statement.executeUpdate(presenceTable());
             statement.executeUpdate(reconnectTable());
+        }
+    }
+
+    private void ensureCommandConsoleColumn() throws SQLException {
+        try (Statement statement = connection().createStatement()) {
+            statement.executeUpdate("ALTER TABLE CORE_PLAYERS ADD COLUMN COMMAND_CONSOLE BOOLEAN NOT NULL DEFAULT 0");
+        } catch (SQLException exception) {
+            String message = exception.getMessage();
+            String lower = message == null ? "" : message.toLowerCase(java.util.Locale.ROOT);
+            if (!lower.contains("duplicate column") && !lower.contains("already exists")) {
+                throw exception;
+            }
         }
     }
 
@@ -245,22 +258,23 @@ public abstract class SqlStorage implements Storage {
     @Override
     public synchronized Profile load(UUID uuid, String name, String language) {
         try (PreparedStatement statement = connection().prepareStatement(
-                "SELECT NAME, KILLS, DEATHS, PLAYTIME, LANG FROM CORE_PLAYERS WHERE UUID = ?")) {
+                "SELECT NAME, KILLS, DEATHS, PLAYTIME, LANG, COMMAND_CONSOLE FROM CORE_PLAYERS WHERE UUID = ?")) {
             statement.setString(1, uuid.toString());
             try (ResultSet result = statement.executeQuery()) {
                 if (result.next()) {
                     String stored = result.getString("LANG");
                     Profile profile = new Profile(uuid, name, result.getInt("KILLS"), result.getInt("DEATHS"),
-                            result.getLong("PLAYTIME"), stored == null || stored.isEmpty() ? language : stored);
+                            result.getLong("PLAYTIME"), stored == null || stored.isEmpty() ? language : stored,
+                            result.getBoolean("COMMAND_CONSOLE"));
                     save(profile);
                     return profile;
                 }
             }
         } catch (SQLException exception) {
             plugin.getLogger().warning("Ошибка загрузки профиля " + name + ": " + exception.getMessage());
-            return new Profile(uuid, name, 0, 0, 0L, language);
+            return new Profile(uuid, name, 0, 0, 0L, language, false);
         }
-        Profile profile = new Profile(uuid, name, 0, 0, 0L, language);
+        Profile profile = new Profile(uuid, name, 0, 0, 0L, language, false);
         save(profile);
         return profile;
     }
@@ -313,7 +327,8 @@ public abstract class SqlStorage implements Storage {
         statement.setInt(4, profile.deaths());
         statement.setLong(5, profile.playtime());
         statement.setString(6, profile.language());
-        statement.setLong(7, savedAt);
+        statement.setBoolean(7, profile.commandConsole());
+        statement.setLong(8, savedAt);
     }
 
     private void rollback(Connection current) {
