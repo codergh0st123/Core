@@ -1,6 +1,5 @@
 package ru.core.gui;
 
-import com.destroystokyo.paper.profile.ProfileProperty;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -20,6 +19,8 @@ import ru.core.Core;
 import ru.core.storage.Profile;
 import ru.core.text.Msg;
 
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -30,8 +31,12 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class LanguageMenu implements Listener {
+
+    private static final Pattern TEXTURE_URL = Pattern.compile("\"url\"\\s*:\\s*\"(https?://[^\"]+)\"");
 
     private final Core plugin;
 
@@ -204,19 +209,20 @@ public final class LanguageMenu implements Listener {
 
     private void texture(SkullMeta meta, String texture) {
         try {
-            Base64.getDecoder().decode(texture);
-        } catch (IllegalArgumentException exception) {
+            String payload = new String(Base64.getDecoder().decode(texture), StandardCharsets.UTF_8);
+            Matcher matcher = TEXTURE_URL.matcher(payload);
+            if (!matcher.find()) {
+                return;
+            }
+            org.bukkit.profile.PlayerProfile profile = Bukkit.createPlayerProfile(
+                    UUID.nameUUIDFromBytes(texture.getBytes(StandardCharsets.UTF_8)));
+            org.bukkit.profile.PlayerTextures textures = profile.getTextures();
+            textures.setSkin(URI.create(matcher.group(1)).toURL());
+            profile.setTextures(textures);
+            meta.setOwnerProfile(profile);
+        } catch (IllegalArgumentException | MalformedURLException exception) {
             return;
         }
-        org.bukkit.profile.PlayerProfile profile = Bukkit.createPlayerProfile(
-                UUID.nameUUIDFromBytes(texture.getBytes(StandardCharsets.UTF_8)));
-        if (!(profile instanceof com.destroystokyo.paper.profile.PlayerProfile)) {
-            return;
-        }
-        com.destroystokyo.paper.profile.PlayerProfile paperProfile =
-                (com.destroystokyo.paper.profile.PlayerProfile) profile;
-        paperProfile.setProperty(new ProfileProperty("textures", texture));
-        meta.setPlayerProfile(paperProfile);
     }
 
     private void select(Player player, String language) {
