@@ -30,7 +30,8 @@ public final class VanillaFeedbackPackets {
             return;
         }
         manager = ProtocolLibrary.getProtocolManager();
-        listener = new PacketAdapter(plugin, ListenerPriority.NORMAL, PacketType.Play.Server.SYSTEM_CHAT) {
+        listener = new PacketAdapter(plugin, ListenerPriority.NORMAL,
+                PacketType.Play.Server.SYSTEM_CHAT, PacketType.Play.Server.DISGUISED_CHAT) {
             @Override
             public void onPacketSending(PacketEvent event) {
                 format(event);
