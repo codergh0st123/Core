@@ -49,6 +49,7 @@ import ru.core.resourcepack.ResourcePackManager;
 import ru.core.reconnect.ReconnectManager;
 import ru.core.placeholder.Placeholders;
 import ru.core.packet.protocollib.ProtocolTrafficOptimizer;
+import ru.core.packet.protocollib.VanillaFeedbackPackets;
 import ru.core.packet.scoreboard.ScoreboardNumberPackets;
 import ru.core.storage.MySqlStorage;
 import ru.core.storage.SqLiteStorage;
@@ -76,6 +77,7 @@ public final class Core extends JavaPlugin {
     private ReconnectManager reconnects;
     private ScoreboardNumberPackets scoreboardPackets;
     private ProtocolTrafficOptimizer protocolOptimizer;
+    private VanillaFeedbackPackets vanillaFeedback;
     private BoardManager boards;
     private ScoreboardModule scoreboards;
     private TabModule tab;
@@ -303,6 +305,13 @@ public final class Core extends JavaPlugin {
             protocolOptimizer = null;
             getLogger().warning("ProtocolLib: оптимизация пакетов отключена: " + exception.getMessage());
         }
+        try {
+            vanillaFeedback = new VanillaFeedbackPackets(this);
+            vanillaFeedback.start();
+        } catch (LinkageError | RuntimeException exception) {
+            vanillaFeedback = null;
+            getLogger().warning("ProtocolLib: форматирование ванильных сообщений отключено: " + exception.getMessage());
+        }
     }
 
     private boolean requiresModernProtocolLib() {
@@ -337,6 +346,10 @@ public final class Core extends JavaPlugin {
         if (protocolOptimizer != null) {
             protocolOptimizer.stop();
             protocolOptimizer = null;
+        }
+        if (vanillaFeedback != null) {
+            vanillaFeedback.stop();
+            vanillaFeedback = null;
         }
     }
 
