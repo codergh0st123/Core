@@ -23,6 +23,7 @@ public final class Placeholders {
 
     private static final Pattern CUSTOM = Pattern.compile("%CORE_([^%\\s]+)%", Pattern.CASE_INSENSITIVE);
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("d MMMM H:mm", new Locale("ru", "RU"));
+    private static final int[] ERROR_DOTS = {0, 1, 2, 3, 4, 3, 2, 1};
 
     private final Core plugin;
     private final Map<String, String> values = new LinkedHashMap<>();
@@ -106,6 +107,9 @@ public final class Placeholders {
         if (upper.equals("ONLINE")) {
             return String.valueOf(Bukkit.getOnlinePlayers().size());
         }
+        if (upper.equals("ERROR:TEXT")) {
+            return error();
+        }
         if (upper.equals("KILLS")) {
             return String.valueOf(kills(player));
         }
@@ -150,6 +154,11 @@ public final class Placeholders {
 
     public String date() {
         return LocalDateTime.now().format(DATE_FORMAT);
+    }
+
+    private String error() {
+        int frame = (int) ((System.currentTimeMillis() / 500L) % ERROR_DOTS.length);
+        return "&4&lERROR&c" + ".".repeat(ERROR_DOTS[frame]);
     }
 
     public String language(String code, String key) {
