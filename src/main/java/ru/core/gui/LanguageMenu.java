@@ -1,5 +1,6 @@
 package ru.core.gui;
 
+import com.destroystokyo.paper.profile.ProfileProperty;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -19,13 +20,16 @@ import ru.core.Core;
 import ru.core.storage.Profile;
 import ru.core.text.Msg;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 public final class LanguageMenu implements Listener {
 
@@ -126,7 +130,10 @@ public final class LanguageMenu implements Listener {
 
     private ItemStack item(Player player, ConfigurationSection section, String language, boolean selected) {
         String materialName = value(section, "MATERIAL", value(section, "ITEM", "PLAYER_HEAD"));
-        Material material = Material.matchMaterial(materialName.toUpperCase(Locale.ROOT));
+        String texture = texture(materialName);
+        int separator = materialName.indexOf(':');
+        String materialKey = separator < 0 ? materialName : materialName.substring(0, separator);
+        Material material = Material.matchMaterial(materialKey.toUpperCase(Locale.ROOT));
         if (material == null || material.isAir()) {
             material = Material.PLAYER_HEAD;
         }
@@ -180,12 +187,36 @@ public final class LanguageMenu implements Listener {
             meta.addItemFlags(ItemFlag.values());
         }
 
-        String owner = value(section, "HEAD-OWNER", "");
-        if (!owner.isEmpty() && meta instanceof SkullMeta) {
-            ((SkullMeta) meta).setOwningPlayer(Bukkit.getOfflinePlayer(parse(player, owner, language, false)));
+        if (!texture.isEmpty() && meta instanceof SkullMeta) {
+            texture((SkullMeta) meta, texture);
         }
         item.setItemMeta(meta);
         return item;
+    }
+
+    private String texture(String material) {
+        int separator = material.indexOf(':');
+        if (separator < 0 || !material.substring(0, separator).equalsIgnoreCase("PLAYER_HEAD")) {
+            return "";
+        }
+        return material.substring(separator + 1).trim();
+    }
+
+    private void texture(SkullMeta meta, String texture) {
+        try {
+            Base64.getDecoder().decode(texture);
+        } catch (IllegalArgumentException exception) {
+            return;
+        }
+        org.bukkit.profile.PlayerProfile profile = Bukkit.createPlayerProfile(
+                UUID.nameUUIDFromBytes(texture.getBytes(StandardCharsets.UTF_8)));
+        if (!(profile instanceof com.destroystokyo.paper.profile.PlayerProfile)) {
+            return;
+        }
+        com.destroystokyo.paper.profile.PlayerProfile paperProfile =
+                (com.destroystokyo.paper.profile.PlayerProfile) profile;
+        paperProfile.setProperty(new ProfileProperty("textures", texture));
+        meta.setPlayerProfile(paperProfile);
     }
 
     private void select(Player player, String language) {

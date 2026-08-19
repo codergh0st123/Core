@@ -247,7 +247,6 @@ LANGUAGE-MENU:
     RU:
       SLOT: 10
       MATERIAL: "PLAYER_HEAD"
-      HEAD-OWNER: "MHF_Russia"
       NAME: "&bРусский язык%SELECTED%"
       LORE:
         - "&7"
@@ -271,7 +270,6 @@ LANGUAGE-MENU:
     EN:
       SLOT: 12
       MATERIAL: "PLAYER_HEAD"
-      HEAD-OWNER: "MHF_England"
       NAME: "&bАнглийский язык%SELECTED%"
       LORE:
         - "&7"
@@ -285,7 +283,6 @@ LANGUAGE-MENU:
     UK:
       SLOT: 14
       MATERIAL: "PLAYER_HEAD"
-      HEAD-OWNER: "MHF_Ukraine"
       NAME: "&bУкраинский язык%SELECTED%"
       LORE:
         - "&7"
@@ -299,7 +296,6 @@ LANGUAGE-MENU:
     KZ:
       SLOT: 16
       MATERIAL: "PLAYER_HEAD"
-      HEAD-OWNER: "MHF_Kazakhstan"
       NAME: "&bКазахский язык%SELECTED%"
       LORE:
         - "&7"
