@@ -15,8 +15,8 @@ VAIP:
 
 RESOURCE-PACK:
   ENABLED: true
-  URL: "https://drive.usercontent.google.com/download?id=1WN-jfFFUdL9FAn-olAtU1pS0TYzTPFmP&export=download&confirm=t"
-  HASH: "07d732048c7f02147b704eb4bdbbbb2f1bcd1d05"
+  URL: "https://drive.usercontent.google.com/download?id=1YWic1GIdsnjrJzXFSVlJGCzsyI233xLp&export=download&confirm=t"
+  HASH: ""
   REQUIRED: true
   DELAY: 20
   PROMPT: "&eДля игры необходимо принять ресурс-пак."
