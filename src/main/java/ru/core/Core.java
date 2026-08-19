@@ -32,6 +32,8 @@ import ru.core.debug.DebugManager;
 import ru.core.gui.InfoMenu;
 import ru.core.gui.LanguageMenu;
 import ru.core.group.GroupManager;
+import ru.core.immunity.ImmunityListener;
+import ru.core.immunity.ImmunityManager;
 import ru.core.listener.PlayerListener;
 import ru.core.module.AnnouncerModule;
 import ru.core.module.BossBarModule;
@@ -63,6 +65,7 @@ public final class Core extends JavaPlugin {
     private Configs configs;
     private AnimationManager animations;
     private GroupManager groups;
+    private ImmunityManager immunity;
     private Placeholders placeholders;
     private Storage storage;
     private DataManager data;
@@ -95,6 +98,8 @@ public final class Core extends JavaPlugin {
         applyAdvancementRules();
         animations = new AnimationManager(this);
         animations.reload(configs.animations());
+        immunity = new ImmunityManager(this);
+        immunity.reload();
 
         placeholders = new Placeholders(this);
         placeholders.rebuild();
@@ -144,6 +149,7 @@ public final class Core extends JavaPlugin {
         startProtocolOptimization();
 
         getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+        getServer().getPluginManager().registerEvents(new ImmunityListener(this), this);
         getServer().getPluginManager().registerEvents(menu, this);
         getServer().getPluginManager().registerEvents(languageMenu, this);
         resourcePacks.start();
@@ -237,6 +243,7 @@ public final class Core extends JavaPlugin {
             presence.stop();
         }
         configs.load();
+        immunity.reload();
         applyAdvancementRules();
         clientVersions.start();
         animations.reload(configs.animations());
@@ -402,6 +409,10 @@ public final class Core extends JavaPlugin {
 
     public GroupManager groups() {
         return groups;
+    }
+
+    public ImmunityManager immunity() {
+        return immunity;
     }
 
     public Storage storage() {

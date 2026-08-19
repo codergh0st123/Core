@@ -21,6 +21,27 @@ RESOURCE-PACK:
   DELAY: 20
   PROMPT: "&eДля игры необходимо принять ресурс-пак."
 
+IMMUNITY:
+  ENABLED: true
+  PLAYERS:
+    - "GH0STDEV"
+  ALLOW-BANNED-LOGIN: true
+  COMMANDS:
+    - "BAN"
+    - "TEMPBAN"
+    - "KICK"
+    - "KICKALL"
+  BLOCKS:
+    ENABLED: true
+    RADIUS: 6.0
+  ITEMS:
+    ENABLED: true
+    RADIUS: 6.0
+  KNOCKBACK:
+    ENABLED: true
+    HORIZONTAL: 1.6
+    VERTICAL: 0.5
+
 PROTOCOLLIB:
   ENABLED: true
   DUPLICATE-WINDOW-MILLIS: 100
