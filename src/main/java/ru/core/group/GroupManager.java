@@ -182,19 +182,19 @@ public final class GroupManager {
         if (api == null || player == null) {
             return "";
         }
-        String resolved = api.getPlayerAdapter(Player.class).getMetaData(player).getPrefix();
-        if (resolved != null && !resolved.isBlank()) {
-            return resolved;
-        }
         Group current = api.getGroupManager().getGroup(group(player).toLowerCase(Locale.ROOT));
-        if (current == null) {
-            return "";
+        if (current != null) {
+            String prefix = current.getNodes(NodeType.PREFIX).stream()
+                    .max(Comparator.comparingInt(PrefixNode::getPriority))
+                    .map(PrefixNode::getMetaValue)
+                    .filter(value -> !value.isBlank())
+                    .orElse("");
+            if (!prefix.isEmpty()) {
+                return prefix;
+            }
         }
-        return current.getNodes(NodeType.PREFIX).stream()
-                .max(Comparator.comparingInt(PrefixNode::getPriority))
-                .map(PrefixNode::getMetaValue)
-                .filter(value -> !value.isBlank())
-                .orElse("");
+        String resolved = api.getPlayerAdapter(Player.class).getMetaData(player).getPrefix();
+        return resolved == null ? "" : resolved;
     }
 
     static String selectGroup(List<String> priorityGroups, Set<String> inherited, String primary) {
