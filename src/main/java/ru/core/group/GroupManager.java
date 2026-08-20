@@ -370,10 +370,11 @@ public final class GroupManager {
 
     private int playerOrder(String group, String name) {
         int priority = orders.getOrDefault(group, orders.getOrDefault("DEFAULT", 1));
+        int groupOrder = Math.max(1, orders.size() - priority + 1);
         if (!alphabetical) {
-            return priority;
+            return groupOrder;
         }
-        return priority * GROUP_ORDER_RANGE - alphabeticValue(name);
+        return groupOrder * GROUP_ORDER_RANGE + alphabeticValue(name);
     }
 
     private int alphabeticValue(String name) {
