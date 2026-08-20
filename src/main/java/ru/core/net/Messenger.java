@@ -18,6 +18,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class Messenger {
 
@@ -25,6 +27,9 @@ public final class Messenger {
     public static final String PREMIUM = "PREMIUM";
     public static final String STAFF = "STAFF";
     public static final String WIPE = "WIPE";
+
+    private static final char PREFIX_SEPARATOR = '\u001F';
+    private static final Pattern LUCKPERMS_PREFIX = Pattern.compile("%CORE_LUCKPERMS:GROUP:PREFIX%", Pattern.CASE_INSENSITIVE);
 
     private final Core plugin;
     private final ExecutorService networkExecutor;
@@ -92,6 +97,11 @@ public final class Messenger {
         }
         String target = server;
         execute(() -> plugin.storage().publish(target, type, sender, message));
+    }
+
+    public void broadcast(String type, Player sender, String message) {
+        String prefix = plugin.groups().luckPermsPrefix(sender);
+        broadcast(type, sender.getName(), encode(prefix, message));
     }
 
     private void schedulePoll(long currentSession) {
@@ -176,24 +186,26 @@ public final class Messenger {
 
     private void deliver(String type, String source, String sender, String message) {
         if (ALERT.equals(type)) {
-            send(null, "ALERT", source, sender, message, false);
+            send(null, "ALERT", source, sender, "", message, false);
         } else if (PREMIUM.equals(type)) {
-            send("core.chat.premium", "PREMIUM-CHAT", source, sender, message, true);
+            ChatMessage chat = decode(message);
+            send("core.chat.premium", "PREMIUM-CHAT", source, sender, chat.prefix, chat.message, true);
         } else if (STAFF.equals(type)) {
-            send("core.chat.staff", "STAFF-CHAT", source, sender, message, false);
+            ChatMessage chat = decode(message);
+            send("core.chat.staff", "STAFF-CHAT", source, sender, chat.prefix, chat.message, false);
         } else if (WIPE.equals(type)) {
             plugin.wipeManager().announce(sender);
         }
     }
 
-    private void send(String permission, String path, String source, String sender, String message, boolean hover) {
+    private void send(String permission, String path, String source, String sender, String prefix, String message, boolean hover) {
         List<String> lines = plugin.configs().messages(path);
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (permission != null && !player.hasPermission(permission)) {
                 continue;
             }
             for (String line : lines) {
-                String formatted = insert(Msg.format(plugin, player, line), source, sender, message);
+                String formatted = insert(Msg.format(plugin, player, replacePrefix(line, prefix)), source, sender, message);
                 if (hover) {
                     sendPremium(player, formatted, source);
                 } else {
@@ -202,7 +214,7 @@ public final class Messenger {
             }
         }
         for (String line : lines) {
-            Bukkit.getConsoleSender().sendMessage(insert(Colors.apply(line), source, sender, message));
+            Bukkit.getConsoleSender().sendMessage(insert(Colors.apply(replacePrefix(line, prefix)), source, sender, message));
         }
     }
 
@@ -232,9 +244,36 @@ public final class Messenger {
         return text.toString();
     }
 
+    private String encode(String prefix, String message) {
+        return prefix + PREFIX_SEPARATOR + message;
+    }
+
+    private ChatMessage decode(String message) {
+        int separator = message.indexOf(PREFIX_SEPARATOR);
+        if (separator < 0) {
+            return new ChatMessage("", message);
+        }
+        return new ChatMessage(message.substring(0, separator), message.substring(separator + 1));
+    }
+
+    private String replacePrefix(String line, String prefix) {
+        return LUCKPERMS_PREFIX.matcher(line).replaceAll(Matcher.quoteReplacement(prefix));
+    }
+
     private String insert(String line, String source, String sender, String message) {
         return line.replace("%player%", sender)
                 .replace("%message%", Colors.apply(message))
                 .replace("%server%", Colors.apply(source));
+    }
+
+    private static final class ChatMessage {
+
+        private final String prefix;
+        private final String message;
+
+        private ChatMessage(String prefix, String message) {
+            this.prefix = prefix;
+            this.message = message;
+        }
     }
 }

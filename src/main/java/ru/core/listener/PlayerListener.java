@@ -131,7 +131,7 @@ public final class PlayerListener implements Listener {
             Msg.send(plugin, player, usage);
             return;
         }
-        plugin.messenger().broadcast(type, player.getName(), text);
+        plugin.messenger().broadcast(type, player, text);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)

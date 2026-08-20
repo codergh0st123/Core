@@ -3,6 +3,7 @@ package ru.core.command;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import ru.core.Core;
 import ru.core.net.Messenger;
 import ru.core.text.Msg;
@@ -25,7 +26,11 @@ public final class StaffChatCommand implements CommandExecutor {
             Msg.sendCommand(plugin, sender, label, "STAFF-USAGE");
             return true;
         }
-        plugin.messenger().broadcast(Messenger.STAFF, sender.getName(), String.join(" ", args));
+        if (sender instanceof Player player) {
+            plugin.messenger().broadcast(Messenger.STAFF, player, String.join(" ", args));
+        } else {
+            plugin.messenger().broadcast(Messenger.STAFF, sender.getName(), String.join(" ", args));
+        }
         return true;
     }
 }

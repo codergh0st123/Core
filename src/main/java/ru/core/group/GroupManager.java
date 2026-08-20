@@ -173,24 +173,24 @@ public final class GroupManager {
         if (api == null || player == null) {
             return "";
         }
-        Group current = api.getGroupManager().getGroup(group(player).toLowerCase(Locale.ROOT));
-        if (current != null) {
-            String prefix = current.getNodes(NodeType.PREFIX).stream()
-                    .max(Comparator.comparingInt(PrefixNode::getPriority))
-                    .map(PrefixNode::getMetaValue)
-                    .filter(value -> !value.isBlank())
-                    .orElse("");
-            if (!prefix.isEmpty()) {
-                return prefix;
-            }
-        }
         User user = api.getUserManager().getUser(player.getUniqueId());
         if (user == null) {
             preload(player);
             return "";
         }
-        String prefix = user.getCachedData().getMetaData().getPrefix();
-        return prefix == null ? "" : prefix;
+        String resolved = user.getCachedData().getMetaData().getPrefix();
+        if (resolved != null && !resolved.isBlank()) {
+            return resolved;
+        }
+        Group current = api.getGroupManager().getGroup(group(player).toLowerCase(Locale.ROOT));
+        if (current == null) {
+            return "";
+        }
+        return current.getNodes(NodeType.PREFIX).stream()
+                .max(Comparator.comparingInt(PrefixNode::getPriority))
+                .map(PrefixNode::getMetaValue)
+                .filter(value -> !value.isBlank())
+                .orElse("");
     }
 
     static String selectGroup(List<String> priorityGroups, Set<String> inherited, String primary) {
