@@ -83,6 +83,9 @@ public final class GroupManager {
     }
 
     public void updateTab(Player player) {
+        if (plugin.externalTab()) {
+            return;
+        }
         if (luckPerms == null) {
             reset(player);
             return;
@@ -103,7 +106,7 @@ public final class GroupManager {
     }
 
     public void updateTags() {
-        if (!tagEnabled()) {
+        if (plugin.externalTab() || !tagEnabled()) {
             return;
         }
         if (luckPerms == null) {
@@ -117,7 +120,7 @@ public final class GroupManager {
     }
 
     public void createTags(Player viewer) {
-        if (!tagEnabled() || luckPerms == null) {
+        if (plugin.externalTab() || !tagEnabled() || luckPerms == null) {
             return;
         }
         PlayerBoard board = plugin.boards().get(viewer);
@@ -140,8 +143,10 @@ public final class GroupManager {
         tagStates.remove(uuid);
         groups.remove(uuid);
         pendingGroups.remove(uuid);
-        for (PlayerBoard board : plugin.boards().all()) {
-            board.removeTag(player.getName());
+        if (!plugin.externalTab()) {
+            for (PlayerBoard board : plugin.boards().all()) {
+                board.removeTag(player.getName());
+            }
         }
     }
 
@@ -151,14 +156,18 @@ public final class GroupManager {
     }
 
     public void clear(Iterable<? extends Player> players) {
-        for (Player player : players) {
-            player.setPlayerListOrder(0);
-            player.setPlayerListName(null);
+        if (!plugin.externalTab()) {
+            for (Player player : players) {
+                player.setPlayerListOrder(0);
+                player.setPlayerListName(null);
+            }
+            removeTags();
+        } else {
+            tagStates.clear();
         }
         states.clear();
         groups.clear();
         pendingGroups.clear();
-        removeTags();
     }
 
     public String group(Player player) {

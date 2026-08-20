@@ -64,7 +64,9 @@ public final class PlayerListener implements Listener {
         plugin.data().join(player);
         plugin.presence().join(player);
         plugin.resourcePacks().join(player);
-        plugin.boards().create(player);
+        if (!plugin.externalTab()) {
+            plugin.boards().create(player);
+        }
         plugin.groups().preload(player);
     }
 

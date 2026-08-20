@@ -181,7 +181,9 @@ public final class Core extends JavaPlugin {
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             data.join(player);
-            boards.create(player);
+            if (!externalTab()) {
+                boards.create(player);
+            }
         }
         groups.preloadOnline();
     }
@@ -278,11 +280,20 @@ public final class Core extends JavaPlugin {
         Bukkit.getWorlds().forEach(this::applyWorldRules);
     }
 
+    public boolean externalTab() {
+        Plugin tabPlugin = getServer().getPluginManager().getPlugin("TAB");
+        return tabPlugin != null && tabPlugin.isEnabled();
+    }
+
     private void startModules() {
-        scoreboards.start();
-        tab.start();
+        if (externalTab()) {
+            getLogger().info("TAB обнаружен: управление TAB, nametag и scoreboard оставлено внешнему плагину.");
+        } else {
+            scoreboards.start();
+            tab.start();
+            nameTags.start();
+        }
         bossBars.start();
-        nameTags.start();
         announcer.start();
         itemCleaner.start();
         entityLimiter.start();
