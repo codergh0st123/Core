@@ -277,8 +277,18 @@ public final class GroupManager {
         if (user == null) {
             return "DEFAULT";
         }
+        List<Group> inheritedGroups = new ArrayList<>(user.getInheritedGroups(QueryOptions.defaultContextualOptions()));
+        if (plugin.externalTab()) {
+            Group selected = inheritedGroups.stream()
+                    .max(Comparator.comparingInt((Group group) -> group.getWeight().orElse(0))
+                            .thenComparing(Group::getName, String.CASE_INSENSITIVE_ORDER))
+                    .orElse(null);
+            if (selected != null) {
+                return selected.getName().toUpperCase(Locale.ROOT);
+            }
+        }
         Set<String> inherited = new HashSet<>();
-        for (Group group : user.getInheritedGroups(QueryOptions.defaultContextualOptions())) {
+        for (Group group : inheritedGroups) {
             inherited.add(group.getName().toUpperCase(Locale.ROOT));
         }
         return selectGroup(priorityGroups, inherited, user.getPrimaryGroup());
