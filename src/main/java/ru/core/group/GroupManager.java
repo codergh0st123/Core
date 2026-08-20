@@ -173,12 +173,7 @@ public final class GroupManager {
         if (api == null || player == null) {
             return "";
         }
-        User user = api.getUserManager().getUser(player.getUniqueId());
-        if (user == null) {
-            preload(player);
-            return "";
-        }
-        String resolved = user.getCachedData().getMetaData().getPrefix();
+        String resolved = api.getPlayerAdapter(Player.class).getMetaData(player).getPrefix();
         if (resolved != null && !resolved.isBlank()) {
             return resolved;
         }
