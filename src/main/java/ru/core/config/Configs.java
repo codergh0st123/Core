@@ -118,6 +118,13 @@ public final class Configs {
         }
 
         YamlConfiguration configuration = loadConfiguration(file, name);
+        if (configuration == null) {
+            return new YamlConfiguration();
+        }
+        if (name.equals("lang.yml")) {
+            return configuration;
+        }
+
         InputStream stream = plugin.getResource(name);
         if (stream == null) {
             return configuration;
@@ -143,8 +150,9 @@ public final class Configs {
             if (name.equals("lang.yml") && repairLanguageIndentation(file)) {
                 return loadConfiguration(file, name);
             }
-            plugin.getLogger().severe("Не удалось загрузить " + name + ": " + exception.getMessage());
-            return configuration;
+            plugin.getLogger().severe("Не удалось загрузить " + name + ": " + exception.getMessage()
+                    + ". Пользовательский файл оставлен без изменений.");
+            return null;
         }
     }
 
