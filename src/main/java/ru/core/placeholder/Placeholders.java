@@ -73,6 +73,10 @@ public final class Placeholders {
     }
 
     public String apply(Player player, String input) {
+        return Colors.apply(expand(player, input));
+    }
+
+    private String expand(Player player, String input) {
         if (input == null || input.isEmpty()) {
             return "";
         }
@@ -84,7 +88,7 @@ public final class Placeholders {
                 text = PlaceholderAPI.setPlaceholders(player, text);
             }
         }
-        return Colors.apply(text);
+        return text;
     }
 
     public List<String> apply(Player player, List<String> input) {
@@ -192,7 +196,7 @@ public final class Placeholders {
         }
 
         try {
-            return apply(player, value);
+            return expand(player, value);
         } finally {
             resolving.remove(id);
             if (resolving.isEmpty()) {
