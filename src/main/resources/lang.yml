@@ -1231,6 +1231,8 @@ RU:
     - "%CORE_PREFIX:NAME:SERVER%&fРежим шпиона уже включен!"
   AURORACHAT_TEXT_#39:
     - "%CORE_PREFIX:NAME:SERVER%&fРежим шпиона уже выключен!"
+  AUTOCHAT_CHAT_EXAMPLE_MESSAGE:
+    - "§r\n §fਕ §fХочешь поддержать проект? \n §fਕ §fТогда покупай §6донат на сайте! \n §fਕ §6(Сайт) \n §r"
 EN:
   TEST:
     - "text"
@@ -2460,3 +2462,5 @@ EN:
     - "%CORE_PREFIX:NAME:SERVER%&fSpy mode is already enabled!"
   AURORACHAT_TEXT_#39:
     - "%CORE_PREFIX:NAME:SERVER%&fSpy mode is already disabled!"
+  AUTOCHAT_CHAT_EXAMPLE_MESSAGE:
+    - "§r\n §fਕ §fWant to support the project? \n §fਕ §fThen buy §6a rank on the website! \n §fਕ §6(Website) \n §r"
