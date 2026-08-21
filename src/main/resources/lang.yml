@@ -1273,6 +1273,532 @@ RU:
     - "%CORE_PREFIX:NAME:SERVER%&fВы выдали игроку &#E32636{player} &fрежим PvP."
   POWERANTIRELOG_TEXT_#20:
     - "%CORE_PREFIX:NAME:SERVER%&fИгрок &e{player}&f не найден."
+  CLANS_CLAN_CHAT:
+    - "{name}&7 > [{rank}&7] &e{player}&7: &f{msg}"
+  CLANS_CLAN_MAX_LEVEL:
+    - "&c&lМАКСИМУМ"
+  CLANS_GUI_STORAGE_TITLE:
+    - "{clanName} &8| &eМесто хранения"
+  CLANS_PERK_NAMES_#1:
+    - "&eКол-во участников"
+  CLANS_PERK_NAMES_#2:
+    - "&eБазовый показатель"
+  CLANS_PERK_NAMES_#3:
+    - "&eМетка"
+  CLANS_PERK_NAMES_#4:
+    - "&eМОТД"
+  CLANS_PERK_NAMES_#5:
+    - "&eМножитель"
+  CLANS_PLAYER_STATUS_#1:
+    - "&aОнлайн"
+  CLANS_PLAYER_STATUS_#2:
+    - "&cНе в сети"
+  CLANS_PLAYER_JOIN_LEAVE_SERVER_#1:
+    - "{clanName} &7> &fИгрок &e{playerName} &fприсоединился к серверу!"
+  CLANS_PLAYER_JOIN_LEAVE_SERVER_#2:
+    - "{clanName} &7> &fИгрок &e{playerName} &cпокинул сервер!"
+  CLANS_CLAN_LEVEL_UP_CHAT_#1:
+    - ""
+  CLANS_CLAN_LEVEL_UP_CHAT_#2:
+    - "{center}&e&l&k!!!&r {clanName} &e&l&k!!!"
+  CLANS_CLAN_LEVEL_UP_CHAT_#3:
+    - "{center}&bУровень до &e&l{level}&r&b!"
+  CLANS_CLAN_LEVEL_UP_CHAT_#4:
+    - ""
+  CLANS_CLAN_LEVEL_UP_TITLE:
+    - "{clanName}"
+  CLANS_CLAN_LEVEL_UP_SUB_TITLE:
+    - "&7{oldLevel} ≫ &9{newLevel} ⭐"
+  CLANS_CLAN_TYPE_#1:
+    - "&cЧастный"
+  CLANS_CLAN_TYPE_#2:
+    - "&aОбщественный"
+  CLANS_CLAN_TYPE_#3:
+    - "&aВКЛ"
+  CLANS_CLAN_TYPE_#4:
+    - "&cВЫКЛ"
+  CLANS_CLAN_TYPE_#5:
+    - "&aY"
+  CLANS_CLAN_TYPE_#6:
+    - "&cN"
+  CLANS_CLAN_TYPE_#7:
+    - " &a●"
+  CLANS_CLAN_TYPE_#8:
+    - " &c●"
+  CLANS_GUI_CONFIRMATION_#1:
+    - "&8Подтверждение действия"
+  CLANS_GUI_CONFIRMATION_#2:
+    - "&cРасформировать клан: &7{clanName}"
+  CLANS_GUI_CONFIRMATION_#3:
+    - "&cИсключить игрока: &7{player}"
+  CLANS_GUI_CONFIRMATION_#4:
+    - "&cНЕТ"
+  CLANS_GUI_CONFIRMATION_#5:
+    - "&aДА"
+  CLANS_CLAN_CREATE_#1:
+    - "&aКлан '{clanName}&a' был создан!"
+  CLANS_CLAN_CREATE_#2:
+    - "&eВеди название клана в чат!"
+  CLANS_CLAN_CREATE_#3:
+    - "&aНовый клан"
+  CLANS_CLAN_CREATE_#4:
+    - "&fВведите название вашего клана"
+  CLANS_CLAN_CREATE_#5:
+    - "&cСоздание клана отменено!"
+  CLANS_CLAN_CREATE_#6:
+    - "&aКлан создан"
+  CLANS_CLAN_CREATE_#7:
+    - "{clanName}"
+  CLANS_NEW_CLAN_CREATE_MESSAGE:
+    - "\n&c&l╔═══════════════╗\n\n  &fВведите название клана в чате\n  &fЧтобы отменить&r <click:cancel>\n\n&c&l╚═══════════════╝\n"
+  CLANS_NEW_CLAN_CREATE_CLICKABLE_CANCEL_TEXT:
+    - "&c[click here]"
+  CLANS_NEW_CLAN_CREATE_CLICKABLE_CANCEL_HOVER:
+    - "&aНажмите, чтобы отменить создание клана"
+  CLANS_CLAN_TAG_#1:
+    - "{clanName} &7> &aВы установили клановый тег: {newTag}"
+  CLANS_CLAN_TAG_#2:
+    - "{clanName} &7> &aВы сбросили клановый тег!"
+  CLANS_CLAN_MOTD_#1:
+    - "{clanName} &7> &aВы обновили приветственное сообщение для клана"
+  CLANS_CLAN_MOTD_#2:
+    - "&6Приветственное сообщение клана:"
+  CLANS_CLAN_INVITE_#1:
+    - "{clanName} &7> &aПриглашение, отправленное по адресу &e{playerName}&a!"
+  CLANS_CLAN_INVITE_#2:
+    - "&e{playerName} &7> &aВы получили приглашение вступить в клан {clanName}"
+  CLANS_CLAN_INVITE_#3:
+    - "&cПриглашение вступить в клан {clanName}&c истек срок годности!"
+  CLANS_CLAN_ACCEPT_DENY_#1:
+    - "&cПриглашение вступить в клан {clanName}&c истек срок годности!"
+  CLANS_CLAN_ACCEPT_DENY_#2:
+    - "{clanName} &7> &aИгрок &e{playerName} &aвступил в клан!"
+  CLANS_CLAN_ACCEPT_DENY_#3:
+    - "&aВы отклонили приглашение"
+  CLANS_CLAN_ACCEPT_DENY_#4:
+    - "&cИгрок &e{playerName}&c отклонил приглашение вашего клана!"
+  CLANS_CLAN_TRANSFER_#1:
+    - "{clanName} &7> &e{oldLeader} &aпередача прав лидера клана игроку &b{newLeader}"
+  CLANS_CLAN_PERMS_#1:
+    - "&e{clanName} &7> &aВы выдали право &b{perms}&a игроку &e{playerName}"
+  CLANS_CLAN_PERMS_#2:
+    - "&e{clanName} &7> &cВы убрали право &b{perms}&c у игрока &e{playerName}"
+  CLANS_CLAN_PERMS_#3:
+    - "&e{clanName} &7> &cУ игрока уже есть это право"
+  CLANS_CLAN_PERMS_#4:
+    - "&e{clanName} &7> &cУ игрока уже нет этого права"
+  CLANS_CLAN_INVITE_BUTTONS_ACCEPT:
+    - "&a&l[Принять]"
+  CLANS_CLAN_INVITE_BUTTONS_DENY:
+    - "&c&l[Отклонить]"
+  CLANS_CLAN_INVITE_BUTTONS_ACCEPT_HOVER:
+    - "&aНажмите, чтобы принять приглашение в клан"
+  CLANS_CLAN_INVITE_BUTTONS_DENY_HOVER:
+    - "&cНажмите, чтобы отклонить приглашение в клан"
+  CLANS_GUI_PAGINATION_#1:
+    - "&aСледующая страница"
+  CLANS_GUI_PAGINATION_#2:
+    - "&7Перейти на страницу &a{currentPage}&7/{pageAmount}"
+  CLANS_GUI_PAGINATION_#3:
+    - "&cСтраниц больше нет"
+  CLANS_GUI_PAGINATION_#4:
+    - "&aПредыдущая страница"
+  CLANS_GUI_PAGINATION_#5:
+    - "&7Перейти на страницу &a{currentPage}&7/{pageAmount}"
+  CLANS_GUI_PAGINATION_#6:
+    - "&cТы не можешь вернуться в прошлое"
+  CLANS_GUI_PAGINATION_#7:
+    - "&c<- Back"
+  CLANS_BASE_CREATE_#1:
+    - "{clanName} &7> &aВы создали базу: &f{baseName}"
+  CLANS_BASE_DELETE_#1:
+    - "{clanName} &7> &aБаза &e{baseName} &aбыла удалена!"
+  CLANS_TP_TO_BASE_#1:
+    - "{clanName} &7> &eТелепортация начнется через {sec}s. Не двигайся!"
+  CLANS_TP_TO_BASE_#2:
+    - "{clanName} &7> &aВы были телепортированы на базу: &e{baseName}"
+  CLANS_CLAN_RENAME_#1:
+    - "{clanName} &7> &aЛидер клана изменил название клана на - {newName}"
+  CLANS_CLAN_TOGGLE_#1:
+    - "{clanName} &7> &fЛидер создал клан: &aОбщественный"
+  CLANS_CLAN_TOGGLE_#2:
+    - "{clanName} &7> &fЛидер создал клан: &cЧастный"
+  CLANS_CLAN_TOGGLE_#3:
+    - "{clanName} &7> &fЛидер &aвключил&f Клановое PVP"
+  CLANS_CLAN_TOGGLE_#4:
+    - "{clanName} &7> &fЛидер &cотключил&f Клановое PVP"
+  CLANS_CLAN_DISBAND_#1:
+    - "{clanName} &7> &aКлан был расформирован."
+  CLANS_CLAN_PLAYER_KICK_#1:
+    - "{clanName} &7> &cИгрок &e{playerName} &cбыл исключен!"
+  CLANS_CLAN_PLAYER_PROMOTE_DEMOTE_#1:
+    - "{clanName} &7> &aИгрок {playerName} был повышен до {rank}&a!"
+  CLANS_CLAN_PLAYER_PROMOTE_DEMOTE_#2:
+    - "{clanName} &7> &aИгрок {playerName} был понижен в должности до {rank}&a!"
+  CLANS_DEPOSIT_WITHDRAW_#1:
+    - "{clanName} &7> &aВы отправили &6{coins}⛃ &aв клан"
+  CLANS_DEPOSIT_WITHDRAW_#2:
+    - "{clanName} &7> &aВы вывели &6{coins}⛃ &aиз клана"
+  CLANS_CLAN_PLAYER_LEAVE_#1:
+    - "{clanName} &7> &cИгрок &e{playerName}&c покинул клан!"
+  CLANS_CLAN_PERKS_#1:
+    - "&a&lПОЛНОСТЬЮ ОБНОВЛЕННЫЙ"
+  CLANS_CLAN_PERKS_#2:
+    - "{clanName} &7> &aЛидер клана повысил эту привилегию: {perkName}"
+  CLANS_CLAN_PERKS_#3:
+    - "&aНажмите, чтобы обновить &6{coins} ⛃"
+  CLANS_CLAN_PERKS_#4:
+    - "&cКлановый уровень &9{level}&c требуется для разблокировки этого перка!"
+  CLANS_HELP_HEADER:
+    - "&8« &6Клан: Команды &7(Page {page}/{total}) &8»"
+  CLANS_HELP_FOOTER:
+    - "&8« {prev_page} &7| &6Страница {page}/{total} &7| {next_page} &8»"
+  CLANS_HELP_PREV_PAGE:
+    - "&7← Назад"
+  CLANS_HELP_NEXT_PAGE:
+    - "&7Следующая →"
+  CLANS_HELP_PREV_PAGE_COMMAND:
+    - "&eНажмите, чтобы перейти на предыдущую страницу"
+  CLANS_HELP_NEXT_PAGE_COMMAND:
+    - "&eНажмите, чтобы перейти на следующую страницу"
+  CLANS_HELP_CMD_#1:
+    - "&e/clan create &7- Создайте клан"
+  CLANS_HELP_CMD_#2:
+    - "&e/clan menu &7- Клановое меню"
+  CLANS_HELP_CMD_#3:
+    - "&e/clan perms <player> <perms> <true/false> &7- Установите пользовательские разрешения для плеера"
+  CLANS_HELP_CMD_#4:
+    - "&e/clan storage &7- Откройте клановое хранилище"
+  CLANS_HELP_CMD_#5:
+    - "&e/clan deposit <amount> &7- Внесите деньги на баланс клана"
+  CLANS_HELP_CMD_#6:
+    - "&e/clan withdraw <amount> &7- Выводить монеты с баланса клана"
+  CLANS_HELP_CMD_#7:
+    - "&e/clan disband &7- Распустить клан"
+  CLANS_HELP_CMD_#8:
+    - "&e/clan leave &7- Покинуть клан"
+  CLANS_HELP_CMD_#9:
+    - "&e/clan pvp &7- ON/OFF clan damage"
+  CLANS_HELP_CMD_#10:
+    - "&e/clan public &7- Установите клан &aОбщественный"
+  CLANS_HELP_CMD_#11:
+    - "&e/clan private &7- Установите клан &cЧастный"
+  CLANS_HELP_CMD_#12:
+    - "&e/clan invite <player> &7- Пригласите игрока в клан"
+  CLANS_HELP_CMD_#13:
+    - "&e/clan accept <player> &7- Примите приглашение в клан"
+  CLANS_HELP_CMD_#14:
+    - "&e/clan deny <player> &7- Отклонить приглашение в клан"
+  CLANS_HELP_CMD_#15:
+    - "&e/clan kick <player> &7- Исключить игрока из клана"
+  CLANS_HELP_CMD_#16:
+    - "&e/clan promote <player> &7- Повысьте игрока до офицера"
+  CLANS_HELP_CMD_#17:
+    - "&e/clan demote <player> &7- Понизить должностное лицо до рядового"
+  CLANS_HELP_CMD_#18:
+    - "&e/clan transfer <player> &7- Передача лидерства игроку"
+  CLANS_HELP_CMD_#19:
+    - "&e/clan rename <name> &7- Переименуйте клан"
+  CLANS_HELP_CMD_#20:
+    - "&e/clan tag <tag> &7- Установите тег клана"
+  CLANS_HELP_CMD_#21:
+    - "&e/clan motd &7- Отредактируйте строку приветственного сообщения"
+  CLANS_HELP_CMD_#22:
+    - "&e/clan setbase <name> &7- Установите базу клана"
+  CLANS_HELP_CMD_#23:
+    - "&e/clan base tp <name> &7- Телепортируйтесь на базу"
+  CLANS_HELP_CMD_#24:
+    - "&e/clan base delete <name> &7- Удалите базу"
+  CLANS_HELP_CMD_#25:
+    - "&e/cc <msg> &7- Клановый чат"
+  CLANS_MOTD_HELP_CMD_#1:
+    - "&6Usage:"
+  CLANS_MOTD_HELP_CMD_#2:
+    - "&e/clan motd add [text] &7- Добавьте строку"
+  CLANS_MOTD_HELP_CMD_#3:
+    - "&e/clan motd edit [number] [text] &7- Редактировать строку"
+  CLANS_MOTD_HELP_CMD_#4:
+    - "&e/clan motd remove [number] &7- Удаление строки"
+  CLANS_MOTD_HELP_CMD_#5:
+    - "&e/clan motd clear &7- Очистите приветствие"
+  CLANS_MOTD_HELP_CMD_#6:
+    - "&e/clan motd preview &7- Покажите приветствие"
+  CLANS_ALL_ERRORS_#1:
+    - "&cНедопустимое использование команды! Type /clan help for help."
+  CLANS_ALL_ERRORS_#2:
+    - "&cУ вас нет разрешения на выполнение этой команды!"
+  CLANS_ALL_ERRORS_#3:
+    - "&cИгрок не найден!"
+  CLANS_ALL_ERRORS_#4:
+    - "&cУ вас нет разрешения!"
+  CLANS_ALL_ERRORS_#5:
+    - "&cДлина должна быть между {min} и {max} персонажи!"
+  CLANS_ALL_ERRORS_#6:
+    - "&cРазрешены только буквы!"
+  CLANS_ALL_ERRORS_#7:
+    - "&cНе удалось выполнить действие."
+  CLANS_ALL_ERRORS_#8:
+    - "&cВы уже состоите в клане!"
+  CLANS_ALL_ERRORS_#9:
+    - "&cУ вас недостаточно денег для создания клана!"
+  CLANS_ALL_ERRORS_#10:
+    - "&cВремя действовать истекло"
+  CLANS_ALL_ERRORS_#11:
+    - "{clanName} &7> &cУ клана недостаточно &6coins&c чтобы приступить к выполнению этого действия."
+  CLANS_ALL_ERRORS_#12:
+    - "{clanName} &7> &cВашему клану не хватает &6coins&c чтобы улучшить этот перк!"
+  CLANS_ALL_ERRORS_#13:
+    - "{clanName} &7> &cПривилегия не разблокирована: {perkName}"
+  CLANS_ALL_ERRORS_#14:
+    - "{clanName} &7> &cВведите действительную сумму!"
+  CLANS_ALL_ERRORS_#15:
+    - "{clanName} &7> &cУ вас не хватает денег!"
+  CLANS_ALL_ERRORS_#16:
+    - "{clanName} &7> &fДневной лимит &6сбора&f достигнут! Оставшийся лимит на сегодня: &6{limit}⛃"
+  CLANS_ALL_ERRORS_#17:
+    - "{clanName} &7> &cВ казне клана недостаточно монет для вывода!"
+  CLANS_ALL_ERRORS_#18:
+    - "&cВы не состоите в клане!"
+  CLANS_ALL_ERRORS_#19:
+    - "{clanName} &7> &cВы не можете создать базу в этом мире!"
+  CLANS_ALL_ERRORS_#20:
+    - "{clanName} &7> &cБаза с таким названием уже существует!"
+  CLANS_ALL_ERRORS_#21:
+    - "{clanName} &7> &cЛимит для данной льготы достигнут: {perkName}"
+  CLANS_ALL_ERRORS_#22:
+    - "{clanName} &7> &cБаза с таким названием уже существует!"
+  CLANS_ALL_ERRORS_#23:
+    - "{clanName} &7> &cБаза с названием &e{baseName}&c не найдено!"
+  CLANS_ALL_ERRORS_#24:
+    - "{clanName} &7> &cТелепортация отменена! Вы переместились!"
+  CLANS_ALL_ERRORS_#25:
+    - "{clanName} &7> &cИгрок &e{playerName}&c не принадлежит к вашему клану!"
+  CLANS_ALL_ERRORS_#26:
+    - "{clanName} &7> &cИгрок уже имеет это звание."
+  CLANS_ALL_ERRORS_#27:
+    - "{clanName} &7> &cИгрок не состоит в вашем клане!"
+  CLANS_ALL_ERRORS_#28:
+    - "{clanName} &7> &cВы не можете ударить игрока с таким же или более высоким рангом!"
+  CLANS_ALL_ERRORS_#29:
+    - "{clanName} &7> &cЛидер не может покинуть клан! Передайте лидерство другому игроку или расформируйте клан!"
+  CLANS_ALL_ERRORS_#30:
+    - "{clanName} &7> &cИгрок уже состоит в клане!"
+  CLANS_ALL_ERRORS_#31:
+    - "{clanName} &7> &cПожалуйста подождите &e{sec}s&c перед отправкой нового приглашения этому игроку."
+  CLANS_ALL_ERRORS_#32:
+    - "&cУ вас нет активных приглашений"
+  CLANS_ALL_ERRORS_#33:
+    - "&cКлана больше не существует"
+  CLANS_ALL_ERRORS_#34:
+    - "&cНазвание клана уже занято другим кланом"
+  CLANS_ALL_ERRORS_#35:
+    - "&cВы можете вступить в частный клан только по приглашению!"
+  CLANS_ALL_ERRORS_#36:
+    - "&cВ клане достигнут лимит участников"
+  CLANS_ALL_ERRORS_#37:
+    - "{clanName} &7> &cНеверный номер строки! Доступно: от 1 до {max}"
+  CLANS_ALL_ERRORS_#38:
+    - "{clanName} &7> &cНомер строки должен быть числом!"
+  CLANS_ALL_ERRORS_#39:
+    - "{clanName} &7> &cПриветственное сообщение для клана пустое!"
+  CLANS_ADMIN_CLAN_NOT_FOUND:
+    - "&cКлан с таким названием '{clan_name}' не найден!"
+  CLANS_ADMIN_USAGE_INFO:
+    - "&cИспользуй: /clan admin info <clan_name>"
+  CLANS_ADMIN_USAGE_DELETE:
+    - "&cИспользуй: /clan admin delete <clan_name>"
+  CLANS_ADMIN_USAGE_RENAME:
+    - "&cИспользуй: /clan admin rename <clan_name> <new_name>"
+  CLANS_ADMIN_USAGE_COINS_ADD:
+    - "&cИспользуй: /clan admin money add <clan_name> <amount>"
+  CLANS_ADMIN_USAGE_COINS_SET:
+    - "&Используй: /clan admin money set <clan_name> <amount>"
+  CLANS_ADMIN_USAGE_COINS_TAKE:
+    - "&cИспользуй: /clan admin money take <clan_name> <amount>"
+  CLANS_ADMIN_USAGE_SETLEVEL:
+    - "&cИспользуй: /clan admin setlevel <clan_name> <level>"
+  CLANS_ADMIN_USAGE_BASE_LIST:
+    - "&cИспользуй: /clan admin base list <clan_name>"
+  CLANS_ADMIN_USAGE_BASE_TELEPORT:
+    - "&Используй: /clan admin base teleport <clan_name> <base_name>"
+  CLANS_ADMIN_USAGE_BASE_DELETE:
+    - "&cИспользуй: /clan admin base delete <clan_name> <base_name>"
+  CLANS_ADMIN_CLAN_INFO_#1:
+    - "&8&m----------------------------------------"
+  CLANS_ADMIN_CLAN_INFO_#2:
+    - "&6&lИнформация о клане: {clan_name}"
+  CLANS_ADMIN_CLAN_INFO_#3:
+    - "&8&m----------------------------------------"
+  CLANS_ADMIN_CLAN_INFO_#4:
+    - "&6Идентификатор клана: &f{clan_uuid}"
+  CLANS_ADMIN_CLAN_INFO_#5:
+    - "{clan_tag}"
+  CLANS_ADMIN_CLAN_INFO_#6:
+    - "{clan_description}"
+  CLANS_ADMIN_CLAN_INFO_#7:
+    - "&6Дата создания: &f{clan_created}"
+  CLANS_ADMIN_CLAN_INFO_#8:
+    - "&6Уровень: &f{clan_level}"
+  CLANS_ADMIN_CLAN_INFO_#9:
+    - "&6Опыт: &f{clan_experience}"
+  CLANS_ADMIN_CLAN_INFO_#10:
+    - "&6Монеты: &f{clan_coins}"
+  CLANS_ADMIN_CLAN_INFO_#11:
+    - ""
+  CLANS_ADMIN_CLAN_INFO_#12:
+    - "&6Настройки:"
+  CLANS_ADMIN_CLAN_INFO_#13:
+    - "  &7Частный: &f{clan_private}"
+  CLANS_ADMIN_CLAN_INFO_#14:
+    - "  &7PvP: &f{clan_damage_players}"
+  CLANS_ADMIN_CLAN_INFO_#15:
+    - ""
+  CLANS_ADMIN_CLAN_INFO_#16:
+    - "&6Надбавки:"
+  CLANS_ADMIN_CLAN_INFO_#17:
+    - "  &7Множитель опыта: &f{exp_multiplier}x"
+  CLANS_ADMIN_CLAN_INFO_#18:
+    - "  &7Максимальные основания: &f{max_homes}"
+  CLANS_ADMIN_CLAN_INFO_#19:
+    - "  &7Максимальное количество участников: &f{max_members}"
+  CLANS_ADMIN_CLAN_INFO_#20:
+    - "  &7Тег: &f{perk_tag}"
+  CLANS_ADMIN_CLAN_INFO_#21:
+    - "  &7Цвет тега: &f{perk_tag_color}"
+  CLANS_ADMIN_CLAN_INFO_#22:
+    - "  &7МОТД: &f{perk_motd}"
+  CLANS_ADMIN_CLAN_INFO_#23:
+    - ""
+  CLANS_ADMIN_CLAN_INFO_#24:
+    - "&Основы &7({base_count}/{max_homes}):"
+  CLANS_ADMIN_CLAN_INFO_#25:
+    - "{bases_list}"
+  CLANS_ADMIN_CLAN_INFO_#26:
+    - ""
+  CLANS_ADMIN_CLAN_INFO_#27:
+    - "{motd_section}"
+  CLANS_ADMIN_CLAN_INFO_#28:
+    - ""
+  CLANS_ADMIN_CLAN_INFO_#29:
+    - "&6Участники &7({member_count}/{max_members}):"
+  CLANS_ADMIN_CLAN_INFO_#30:
+    - "{leader_section}"
+  CLANS_ADMIN_CLAN_INFO_#31:
+    - "{officers_section}"
+  CLANS_ADMIN_CLAN_INFO_#32:
+    - "{members_section}"
+  CLANS_ADMIN_CLAN_INFO_#33:
+    - "&8&m----------------------------------------"
+  CLANS_ADMIN_CLAN_INFO_TAG:
+    - "&6Тег: {clan_tag_color}{clan_tag}"
+  CLANS_ADMIN_CLAN_INFO_DESCRIPTION:
+    - "&6Описание: &f{clan_description}"
+  CLANS_ADMIN_CLAN_INFO_NO_BASES:
+    - "  &7В клане нет баз"
+  CLANS_ADMIN_CLAN_INFO_BASE_ITEM:
+    - "  &7• &f{base_name} &7({world}, {x}, {y}, {z})"
+  CLANS_ADMIN_CLAN_INFO_MOTD_HEADER:
+    - "&6MOTD:"
+  CLANS_ADMIN_CLAN_INFO_MOTD_ITEM:
+    - "  &7{index}. &f{motd_text}"
+  CLANS_ADMIN_CLAN_INFO_LEADER:
+    - "  &c• &fLeader: {player_name} &7(XP: {player_exp}, J: {player_joined}){online_status}"
+  CLANS_ADMIN_CLAN_INFO_OFFICERS_HEADER:
+    - "  &6Офицеры:"
+  CLANS_ADMIN_CLAN_INFO_OFFICER_ITEM:
+    - "    &6• &f{player_name} &7(XP: {player_exp}, J: {player_joined}){online_status}"
+  CLANS_ADMIN_CLAN_INFO_MEMBERS_HEADER:
+    - "  &7Участники:"
+  CLANS_ADMIN_CLAN_INFO_MEMBER_ITEM:
+    - "    &7• &f{player_name} &7(XP: {player_exp}, J: {player_joined}){online_status}"
+  CLANS_ADMIN_CLAN_DELETE_SUCCESS:
+    - "&aКлан '{clan_name}' был успешно удален!"
+  CLANS_ADMIN_CLAN_DELETE_NOTIFY_MEMBERS:
+    - "&cВаш клан был удален администратором!"
+  CLANS_ADMIN_CLAN_RENAME_SUCCESS:
+    - "&aКлан переименован из '{oldName}&a' в '{newClanName}&a' успешно!"
+  CLANS_ADMIN_CLAN_RENAME_ERROR:
+    - "&cКлан с таким названием '{newClanName}&c' уже существует!"
+  CLANS_ADMIN_CLAN_SET_LEVEL_SUCCESS:
+    - "&aВы сами устанавливаете уровень клана '{clan_name}&a' to &f{level}"
+  CLANS_ADMIN_CLAN_SET_LEVEL_INVALID_LEVEL:
+    - "&cУровень должен быть положительным числом!"
+  CLANS_ADMIN_CLAN_SET_LEVEL_MAX_LEVEL:
+    - "&cМаксимальный уровень клана составляет: {maxLevel}"
+  CLANS_ADMIN_CLAN_SET_LEVEL_INCORRECT_LEVEL:
+    - "&cНедопустимый уровень! Пожалуйста, введите целое число"
+  CLANS_ADMIN_CLAN_COINS_ERROR_INVALID_AMOUNT_POSITIVE:
+    - "&cСумма должна быть положительным числом!"
+  CLANS_ADMIN_CLAN_COINS_ERROR_INVALID_AMOUNT_INTEGER:
+    - "&cНеверная сумма! Пожалуйста, введите целое число."
+  CLANS_ADMIN_CLAN_COINS_ADD_SUCCESS:
+    - "&aВы добавили &6{coins} монет &aв клан '{clan_name}&a'!"
+  CLANS_ADMIN_CLAN_COINS_SET_SUCCESS:
+    - "&aТы создал клан '{clan_name}&a' баланс  &6{coins} монет&a!"
+  CLANS_ADMIN_CLAN_COINS_TAKE_SUCCESS:
+    - "&aТы взял &6{coins} монет &aиз клана '{clan_name}&a'!"
+  CLANS_ADMIN_CLAN_COINS_TAKE_NOT_ENOUGH_COINS:
+    - "&cУ клана недостаточно денег! Текущий баланс: &6{coins} монет"
+  CLANS_ADMIN_CLAN_BASE_LIST_#1:
+    - "&6=== Клановые базы '{clan_name}&6' ==="
+  CLANS_ADMIN_CLAN_BASE_LIST_#2:
+    - "&7Общее количество баз: &f{base_count} &7/ &f{max_homes}"
+  CLANS_ADMIN_CLAN_BASE_LIST_#3:
+    - "{bases_list}"
+  CLANS_ADMIN_CLAN_BASE_ITEM_#1:
+    - "&a{index}. &f{base_name}"
+  CLANS_ADMIN_CLAN_BASE_ITEM_#2:
+    - "   &7Мир: &f{world}"
+  CLANS_ADMIN_CLAN_BASE_ITEM_#3:
+    - "   &7Координаты: &f{x}, {y}, {z}"
+  CLANS_ADMIN_CLAN_BASE_ITEM_#4:
+    - ""
+  CLANS_ADMIN_CLAN_BASE_SUCCESS_TELEPORT:
+    - "&aВы были телепортированы на базу '{base_name}' из клана '{clan_name}'!"
+  CLANS_ADMIN_CLAN_BASE_SUCCESS_DELETE:
+    - "&aОснова '{base_name}' успешно удален из клана '{clan_name}'!"
+  CLANS_ADMIN_CLAN_BASE_NOT_FOUND:
+    - "&cБаза с названием '{base_name}' не найден в клане '{clan_name}'!"
+  CLANS_ADMIN_CLAN_BASE_WORLD_NOT_FOUND:
+    - "&cМир для основания '{base_name}' не найден! Возможно, мир был удален."
+  CLANS_ADMIN_CLAN_BASE_NO_BASES:
+    - "&cКлан '{clan_name}' не имеет никаких оснований."
+  CLANS_ADMIN_CLAN_BASE_ERROR:
+    - "&cНе удалось удалить базу '{base_name}' из клана '{clan_name}'!"
+  CLANS_ADMIN_HELP_CMD_#1:
+    - "&e/clan admin info <clan> &7- Подробная информация о клане"
+  CLANS_ADMIN_HELP_CMD_#2:
+    - "&e/clan admin delete <clan> &7- Удалить клан"
+  CLANS_ADMIN_HELP_CMD_#3:
+    - "&e/clan admin rename <clan> <new_name> &7- Переименовать клан"
+  CLANS_ADMIN_HELP_CMD_#4:
+    - "&e/clan admin setlevel <clan> <level> &7- Установите уровень клана"
+  CLANS_ADMIN_HELP_CMD_#5:
+    - "&e/clan admin money add <clan> <amount> &7- Добавляйте деньги в клан"
+  CLANS_ADMIN_HELP_CMD_#6:
+    - "&e/clan admin money set <clan> <amount> &7- Установите баланс в клане"
+  CLANS_ADMIN_HELP_CMD_#7:
+    - "&e/clan admin money take <clan> <amount> &7- Брать деньги у клана"
+  CLANS_ADMIN_HELP_CMD_#8:
+    - "&e/clan admin base list <clan> &7- Перечислите все клановые базы"
+  CLANS_ADMIN_HELP_CMD_#9:
+    - "&e/clan admin base teleport <clan> <base> &7- Телепортируйтесь на базу клана"
+  CLANS_ADMIN_HELP_CMD_#10:
+    - "&e/clan admin base delete <clan> <base> &7- Удалить базу клана"
+  CLANS_ADMIN_HELP_HEADER:
+    - "&8« &6Администратор клана: Команды &7(Page {page}/{total}) &8»"
+  CLANS_ADMIN_HELP_FOOTER:
+    - "&8« {prev_page} &7| &6Страница {page}/{total} &7| {next_page} &8»"
+  CLANS_ADMIN_HELP_PREV_PAGE:
+    - "&7← Назад"
+  CLANS_ADMIN_HELP_NEXT_PAGE:
+    - "&7Вперед →"
+  CLANS_ADMIN_HELP_PREV_PAGE_COMMAND:
+    - "&Нажмите, чтобы перейти на предыдущую страницу"
+  CLANS_ADMIN_HELP_NEXT_PAGE_COMMAND:
+    - "&Нажмите, чтобы перейти на следующую страницу"
+  CLANS_ADMIN_ERROR_COMMAND:
+    - "&cНеизвестная команда! Воспользуйся /clan admin help for assistance"
 EN:
   TEST:
     - "text"
@@ -2544,3 +3070,529 @@ EN:
     - "%CORE_PREFIX:NAME:SERVER%&fYou gave the player &#E32636{player} &fPvP mode."
   POWERANTIRELOG_TEXT_#20:
     - "%CORE_PREFIX:NAME:SERVER%&fPlayer &e{player}&f was not found."
+  CLANS_CLAN_CHAT:
+    - "{name}&7 > [{rank}&7] &e{player}&7: &f{msg}"
+  CLANS_CLAN_MAX_LEVEL:
+    - "&c&lMAXIMUM"
+  CLANS_GUI_STORAGE_TITLE:
+    - "{clanName} &8| &eStorage"
+  CLANS_PERK_NAMES_#1:
+    - "&eNumber of members"
+  CLANS_PERK_NAMES_#2:
+    - "&eBase value"
+  CLANS_PERK_NAMES_#3:
+    - "&eTag"
+  CLANS_PERK_NAMES_#4:
+    - "&eMOTD"
+  CLANS_PERK_NAMES_#5:
+    - "&eMultiplier"
+  CLANS_PLAYER_STATUS_#1:
+    - "&aOnline"
+  CLANS_PLAYER_STATUS_#2:
+    - "&cOffline"
+  CLANS_PLAYER_JOIN_LEAVE_SERVER_#1:
+    - "{clanName} &7> &fPlayer &e{playerName} &fjoined the server!"
+  CLANS_PLAYER_JOIN_LEAVE_SERVER_#2:
+    - "{clanName} &7> &fPlayer &e{playerName} &cleft the server!"
+  CLANS_CLAN_LEVEL_UP_CHAT_#1:
+    - ""
+  CLANS_CLAN_LEVEL_UP_CHAT_#2:
+    - "{center}&e&l&k!!!&r {clanName} &e&l&k!!!"
+  CLANS_CLAN_LEVEL_UP_CHAT_#3:
+    - "{center}&bLevel up to &e&l{level}&r&b!"
+  CLANS_CLAN_LEVEL_UP_CHAT_#4:
+    - ""
+  CLANS_CLAN_LEVEL_UP_TITLE:
+    - "{clanName}"
+  CLANS_CLAN_LEVEL_UP_SUB_TITLE:
+    - "&7{oldLevel} ≫ &9{newLevel} ⭐"
+  CLANS_CLAN_TYPE_#1:
+    - "&cPrivate"
+  CLANS_CLAN_TYPE_#2:
+    - "&aPublic"
+  CLANS_CLAN_TYPE_#3:
+    - "&aON"
+  CLANS_CLAN_TYPE_#4:
+    - "&cOFF"
+  CLANS_CLAN_TYPE_#5:
+    - "&aY"
+  CLANS_CLAN_TYPE_#6:
+    - "&cN"
+  CLANS_CLAN_TYPE_#7:
+    - " &a●"
+  CLANS_CLAN_TYPE_#8:
+    - " &c●"
+  CLANS_GUI_CONFIRMATION_#1:
+    - "&8Action confirmation"
+  CLANS_GUI_CONFIRMATION_#2:
+    - "&cDisband clan: &7{clanName}"
+  CLANS_GUI_CONFIRMATION_#3:
+    - "&cKick player: &7{player}"
+  CLANS_GUI_CONFIRMATION_#4:
+    - "&cNO"
+  CLANS_GUI_CONFIRMATION_#5:
+    - "&aYES"
+  CLANS_CLAN_CREATE_#1:
+    - "&aClan '{clanName}&a' has been created!"
+  CLANS_CLAN_CREATE_#2:
+    - "&eType the clan name in chat!"
+  CLANS_CLAN_CREATE_#3:
+    - "&aNew clan"
+  CLANS_CLAN_CREATE_#4:
+    - "&fEnter your clan name"
+  CLANS_CLAN_CREATE_#5:
+    - "&cClan creation canceled!"
+  CLANS_CLAN_CREATE_#6:
+    - "&aClan created"
+  CLANS_CLAN_CREATE_#7:
+    - "{clanName}"
+  CLANS_NEW_CLAN_CREATE_MESSAGE:
+    - "\n&c&l╔═══════════════╗\n\n  &fEnter the clan name in chat\n  &fTo cancel&r <click:cancel>\n\n&c&l╚═══════════════╝\n"
+  CLANS_NEW_CLAN_CREATE_CLICKABLE_CANCEL_TEXT:
+    - "&c[click here]"
+  CLANS_NEW_CLAN_CREATE_CLICKABLE_CANCEL_HOVER:
+    - "&aClick to cancel clan creation"
+  CLANS_CLAN_TAG_#1:
+    - "{clanName} &7> &aYou set the clan tag: {newTag}"
+  CLANS_CLAN_TAG_#2:
+    - "{clanName} &7> &aYou reset the clan tag!"
+  CLANS_CLAN_MOTD_#1:
+    - "{clanName} &7> &aYou updated the clan welcome message"
+  CLANS_CLAN_MOTD_#2:
+    - "&6Clan welcome message:"
+  CLANS_CLAN_INVITE_#1:
+    - "{clanName} &7> &aInvitation sent to &e{playerName}&a!"
+  CLANS_CLAN_INVITE_#2:
+    - "&e{playerName} &7> &aYou received an invitation to join the clan {clanName}"
+  CLANS_CLAN_INVITE_#3:
+    - "&cThe invitation to join clan {clanName}&c has expired!"
+  CLANS_CLAN_ACCEPT_DENY_#1:
+    - "&cThe invitation to join clan {clanName}&c has expired!"
+  CLANS_CLAN_ACCEPT_DENY_#2:
+    - "{clanName} &7> &aPlayer &e{playerName} &ajoined the clan!"
+  CLANS_CLAN_ACCEPT_DENY_#3:
+    - "&aYou declined the invitation"
+  CLANS_CLAN_ACCEPT_DENY_#4:
+    - "&cPlayer &e{playerName}&c declined your clan's invitation!"
+  CLANS_CLAN_TRANSFER_#1:
+    - "{clanName} &7> &e{oldLeader} &atransfer of clan leader rights to player &b{newLeader}"
+  CLANS_CLAN_PERMS_#1:
+    - "&e{clanName} &7> &aYou granted the permission &b{perms}&a to player &e{playerName}"
+  CLANS_CLAN_PERMS_#2:
+    - "&e{clanName} &7> &cYou removed the permission &b{perms}&c from player &e{playerName}"
+  CLANS_CLAN_PERMS_#3:
+    - "&e{clanName} &7> &cThe player already has that permission"
+  CLANS_CLAN_PERMS_#4:
+    - "&e{clanName} &7> &cThe player no longer has that permission"
+  CLANS_CLAN_INVITE_BUTTONS_ACCEPT:
+    - "&a&l[Accept]"
+  CLANS_CLAN_INVITE_BUTTONS_DENY:
+    - "&c&l[Decline]"
+  CLANS_CLAN_INVITE_BUTTONS_ACCEPT_HOVER:
+    - "&aClick to accept the clan invitation"
+  CLANS_CLAN_INVITE_BUTTONS_DENY_HOVER:
+    - "&cClick to decline the clan invitation"
+  CLANS_GUI_PAGINATION_#1:
+    - "&aNext page"
+  CLANS_GUI_PAGINATION_#2:
+    - "&7Go to page &a{currentPage}&7/{pageAmount}"
+  CLANS_GUI_PAGINATION_#3:
+    - "&cNo more pages"
+  CLANS_GUI_PAGINATION_#4:
+    - "&aPrevious page"
+  CLANS_GUI_PAGINATION_#5:
+    - "&7Go to page &a{currentPage}&7/{pageAmount}"
+  CLANS_GUI_PAGINATION_#6:
+    - "&cYou can't go back in time"
+  CLANS_GUI_PAGINATION_#7:
+    - "&c<- Back"
+  CLANS_BASE_CREATE_#1:
+    - "{clanName} &7> &aYou created a base: &f{baseName}"
+  CLANS_BASE_DELETE_#1:
+    - "{clanName} &7> &aBase &e{baseName} &ahas been deleted!"
+  CLANS_TP_TO_BASE_#1:
+    - "{clanName} &7> &eTeleportation will begin in {sec}s. Don't move!"
+  CLANS_TP_TO_BASE_#2:
+    - "{clanName} &7> &aYou have been teleported to base: &e{baseName}"
+  CLANS_CLAN_RENAME_#1:
+    - "{clanName} &7> &aThe clan leader changed the clan name to - {newName}"
+  CLANS_CLAN_TOGGLE_#1:
+    - "{clanName} &7> &fThe leader created clan: &aPublic"
+  CLANS_CLAN_TOGGLE_#2:
+    - "{clanName} &7> &fThe leader created clan: &cPrivate"
+  CLANS_CLAN_TOGGLE_#3:
+    - "{clanName} &7> &fThe leader &aenabled&f Clan PvP"
+  CLANS_CLAN_TOGGLE_#4:
+    - "{clanName} &7> &fThe leader &cdisabled&f Clan PvP"
+  CLANS_CLAN_DISBAND_#1:
+    - "{clanName} &7> &aThe clan has been disbanded."
+  CLANS_CLAN_PLAYER_KICK_#1:
+    - "{clanName} &7> &cPlayer &e{playerName} &cwas kicked!"
+  CLANS_CLAN_PLAYER_PROMOTE_DEMOTE_#1:
+    - "{clanName} &7> &aPlayer {playerName} was promoted to {rank}&a!"
+  CLANS_CLAN_PLAYER_PROMOTE_DEMOTE_#2:
+    - "{clanName} &7> &aPlayer {playerName} was demoted to {rank}&a!"
+  CLANS_DEPOSIT_WITHDRAW_#1:
+    - "{clanName} &7> &aYou sent &6{coins}⛃ &a to the clan"
+  CLANS_DEPOSIT_WITHDRAW_#2:
+    - "{clanName} &7> &aYou withdrew &6{coins}⛃ &a from the clan"
+  CLANS_CLAN_PLAYER_LEAVE_#1:
+    - "{clanName} &7> &cPlayer &e{playerName}&c left the clan!"
+  CLANS_CLAN_PERKS_#1:
+    - "&a&lFULLY UPDATED"
+  CLANS_CLAN_PERKS_#2:
+    - "{clanName} &7> &aThe clan leader increased this perk: {perkName}"
+  CLANS_CLAN_PERKS_#3:
+    - "&aClick to upgrade &6{coins} ⛃"
+  CLANS_CLAN_PERKS_#4:
+    - "&cClan level &9{level}&c is required to unlock this perk!"
+  CLANS_HELP_HEADER:
+    - "&8« &6Clan: Commands &7(Page {page}/{total}) &8»"
+  CLANS_HELP_FOOTER:
+    - "&8« {prev_page} &7| &6Page {page}/{total} &7| {next_page} &8»"
+  CLANS_HELP_PREV_PAGE:
+    - "&7← Back"
+  CLANS_HELP_NEXT_PAGE:
+    - "&7Next →"
+  CLANS_HELP_PREV_PAGE_COMMAND:
+    - "&eClick to go to the previous page"
+  CLANS_HELP_NEXT_PAGE_COMMAND:
+    - "&eClick to go to the next page"
+  CLANS_HELP_CMD_#1:
+    - "&e/clan create &7 - Create a clan"
+  CLANS_HELP_CMD_#2:
+    - "&e/clan menu &7 - Clan menu"
+  CLANS_HELP_CMD_#3:
+    - "&e/clan perms <player> <perms> <true/false> &7 - Set custom permissions for a player"
+  CLANS_HELP_CMD_#4:
+    - "&e/clan storage &7 - Open clan storage"
+  CLANS_HELP_CMD_#5:
+    - "&e/clan deposit <amount> &7 - Deposit money into the clan balance"
+  CLANS_HELP_CMD_#6:
+    - "&e/clan withdraw <amount> &7 - Withdraw coins from the clan balance"
+  CLANS_HELP_CMD_#7:
+    - "&e/clan disband &7 - Disband the clan"
+  CLANS_HELP_CMD_#8:
+    - "&e/clan leave &7 - Leave the clan"
+  CLANS_HELP_CMD_#9:
+    - "&e/clan pvp &7 - Toggle clan PvP"
+  CLANS_HELP_CMD_#10:
+    - "&e/clan public &7 - Set clan &aPublic"
+  CLANS_HELP_CMD_#11:
+    - "&e/clan private &7 - Set clan &cPrivate"
+  CLANS_HELP_CMD_#12:
+    - "&e/clan invite <player> &7 - Invite a player to the clan"
+  CLANS_HELP_CMD_#13:
+    - "&e/clan accept <player> &7 - Accept a clan invitation"
+  CLANS_HELP_CMD_#14:
+    - "&e/clan deny <player> &7 - Deny a clan invitation"
+  CLANS_HELP_CMD_#15:
+    - "&e/clan kick <player> &7 - Kick a player from the clan"
+  CLANS_HELP_CMD_#16:
+    - "&e/clan promote <player> &7 - Promote a player to officer"
+  CLANS_HELP_CMD_#17:
+    - "&e/clan demote <player> &7 - Demote an officer to member"
+  CLANS_HELP_CMD_#18:
+    - "&e/clan transfer <player> &7 - Transfer leadership to a player"
+  CLANS_HELP_CMD_#19:
+    - "&e/clan rename <name> &7 - Rename the clan"
+  CLANS_HELP_CMD_#20:
+    - "&e/clan tag <tag> &7 - Set the clan tag"
+  CLANS_HELP_CMD_#21:
+    - "&e/clan motd &7 - Edit the clan MOTD"
+  CLANS_HELP_CMD_#22:
+    - "&e/clan setbase <name> &7 - Set the clan base"
+  CLANS_HELP_CMD_#23:
+    - "&e/clan base tp <name> &7 - Teleport to the base"
+  CLANS_HELP_CMD_#24:
+    - "&e/clan base delete <name> &7 - Delete the base"
+  CLANS_HELP_CMD_#25:
+    - "&e/cc <msg> &7 - Clan chat"
+  CLANS_MOTD_HELP_CMD_#1:
+    - "&6Usage:"
+  CLANS_MOTD_HELP_CMD_#2:
+    - "&e/clan motd add [text] &7- Add a line"
+  CLANS_MOTD_HELP_CMD_#3:
+    - "&e/clan motd edit [number] [text] &7- Edit a line"
+  CLANS_MOTD_HELP_CMD_#4:
+    - "&e/clan motd remove [number] &7- Remove a line"
+  CLANS_MOTD_HELP_CMD_#5:
+    - "&e/clan motd clear &7- Clear the welcome message"
+  CLANS_MOTD_HELP_CMD_#6:
+    - "&e/clan motd preview &7- Preview the welcome message"
+  CLANS_ALL_ERRORS_#1:
+    - "&cInvalid command usage! Type /clan help for help."
+  CLANS_ALL_ERRORS_#2:
+    - "&cYou don't have permission to execute this command!"
+  CLANS_ALL_ERRORS_#3:
+    - "&cPlayer not found!"
+  CLANS_ALL_ERRORS_#4:
+    - "&cYou don't have permission!"
+  CLANS_ALL_ERRORS_#5:
+    - "&cLength must be between {min} and {max} characters!"
+  CLANS_ALL_ERRORS_#6:
+    - "&cOnly letters are allowed!"
+  CLANS_ALL_ERRORS_#7:
+    - "&cCould not complete the action."
+  CLANS_ALL_ERRORS_#8:
+    - "&cYou are already in a clan!"
+  CLANS_ALL_ERRORS_#9:
+    - "&cYou do not have enough money to create a clan!"
+  CLANS_ALL_ERRORS_#10:
+    - "&cAction timed out"
+  CLANS_ALL_ERRORS_#11:
+    - "{clanName} &7> &cYour clan does not have enough &6coins&c to perform this action."
+  CLANS_ALL_ERRORS_#12:
+    - "{clanName} &7> &cYour clan doesn't have enough &6coins&c to upgrade this perk!"
+  CLANS_ALL_ERRORS_#13:
+    - "{clanName} &7> &cPrivilege not unlocked: {perkName}"
+  CLANS_ALL_ERRORS_#14:
+    - "{clanName} &7> &cEnter a valid amount!"
+  CLANS_ALL_ERRORS_#15:
+    - "{clanName} &7> &cYou don't have enough money!"
+  CLANS_ALL_ERRORS_#16:
+    - "{clanName} &7> &fDaily limit &6collection&f reached! Remaining limit for today: &6{limit}⛃"
+  CLANS_ALL_ERRORS_#17:
+    - "{clanName} &7> &cNot enough coins in the clan vault to withdraw!"
+  CLANS_ALL_ERRORS_#18:
+    - "&cYou are not in a clan!"
+  CLANS_ALL_ERRORS_#19:
+    - "{clanName} &7> &cYou cannot create a base in this world!"
+  CLANS_ALL_ERRORS_#20:
+    - "{clanName} &7> &cA base with that name already exists!"
+  CLANS_ALL_ERRORS_#21:
+    - "{clanName} &7> &cThe limit for this perk has been reached: {perkName}"
+  CLANS_ALL_ERRORS_#22:
+    - "{clanName} &7> &cA base with that name already exists!"
+  CLANS_ALL_ERRORS_#23:
+    - "{clanName} &7> &cNo base named &e{baseName}&c was found!"
+  CLANS_ALL_ERRORS_#24:
+    - "{clanName} &7> &cTeleportation cancelled! You moved!"
+  CLANS_ALL_ERRORS_#25:
+    - "{clanName} &7> &cPlayer &e{playerName}&c is not a member of your clan!"
+  CLANS_ALL_ERRORS_#26:
+    - "{clanName} &7> &cPlayer already has this rank."
+  CLANS_ALL_ERRORS_#27:
+    - "{clanName} &7> &cPlayer is not in your clan!"
+  CLANS_ALL_ERRORS_#28:
+    - "{clanName} &7> &cYou cannot hit a player with the same or higher rank!"
+  CLANS_ALL_ERRORS_#29:
+    - "{clanName} &7> &cThe leader cannot leave the clan! Transfer leadership to another player or disband the clan!"
+  CLANS_ALL_ERRORS_#30:
+    - "{clanName} &7> &cPlayer is already in a clan!"
+  CLANS_ALL_ERRORS_#31:
+    - "{clanName} &7> &cPlease wait &e{sec}s&c before sending a new invitation to this player."
+  CLANS_ALL_ERRORS_#32:
+    - "&cYou have no active invitations"
+  CLANS_ALL_ERRORS_#33:
+    - "&cThe clan no longer exists"
+  CLANS_ALL_ERRORS_#34:
+    - "&cThis clan name is already taken by another clan"
+  CLANS_ALL_ERRORS_#35:
+    - "&cYou can only join a private clan by invitation!"
+  CLANS_ALL_ERRORS_#36:
+    - "&cThe clan has reached the member limit"
+  CLANS_ALL_ERRORS_#37:
+    - "{clanName} &7> &cInvalid line number! Available: from 1 to {max}"
+  CLANS_ALL_ERRORS_#38:
+    - "{clanName} &7> &cLine number must be a number!"
+  CLANS_ALL_ERRORS_#39:
+    - "{clanName} &7> &cThe clan welcome message is empty!"
+  CLANS_ADMIN_CLAN_NOT_FOUND:
+    - "&cClan with name '{clan_name}' not found!"
+  CLANS_ADMIN_USAGE_INFO:
+    - "&cUse: /clan admin info <clan_name>"
+  CLANS_ADMIN_USAGE_DELETE:
+    - "&cUse: /clan admin delete <clan_name>"
+  CLANS_ADMIN_USAGE_RENAME:
+    - "&cUse: /clan admin rename <clan_name> <new_name>"
+  CLANS_ADMIN_USAGE_COINS_ADD:
+    - "&cUse: /clan admin money add <clan_name> <amount>"
+  CLANS_ADMIN_USAGE_COINS_SET:
+    - "&Use: /clan admin money set <clan_name> <amount>"
+  CLANS_ADMIN_USAGE_COINS_TAKE:
+    - "&cUse: /clan admin money take <clan_name> <amount>"
+  CLANS_ADMIN_USAGE_SETLEVEL:
+    - "&cUse: /clan admin setlevel <clan_name> <level>"
+  CLANS_ADMIN_USAGE_BASE_LIST:
+    - "&cUse: /clan admin base list <clan_name>"
+  CLANS_ADMIN_USAGE_BASE_TELEPORT:
+    - "&Use: /clan admin base teleport <clan_name> <base_name>"
+  CLANS_ADMIN_USAGE_BASE_DELETE:
+    - "&cUse: /clan admin base delete <clan_name> <base_name>"
+  CLANS_ADMIN_CLAN_INFO_#1:
+    - "&8&m----------------------------------------"
+  CLANS_ADMIN_CLAN_INFO_#2:
+    - "&6&lClan information: {clan_name}"
+  CLANS_ADMIN_CLAN_INFO_#3:
+    - "&8&m----------------------------------------"
+  CLANS_ADMIN_CLAN_INFO_#4:
+    - "&6Clan ID: &f{clan_uuid}"
+  CLANS_ADMIN_CLAN_INFO_#5:
+    - "{clan_tag}"
+  CLANS_ADMIN_CLAN_INFO_#6:
+    - "{clan_description}"
+  CLANS_ADMIN_CLAN_INFO_#7:
+    - "&6Creation date: &f{clan_created}"
+  CLANS_ADMIN_CLAN_INFO_#8:
+    - "&6Level: &f{clan_level}"
+  CLANS_ADMIN_CLAN_INFO_#9:
+    - "&6Experience: &f{clan_experience}"
+  CLANS_ADMIN_CLAN_INFO_#10:
+    - "&6Coins: &f{clan_coins}"
+  CLANS_ADMIN_CLAN_INFO_#11:
+    - ""
+  CLANS_ADMIN_CLAN_INFO_#12:
+    - "&6Settings:"
+  CLANS_ADMIN_CLAN_INFO_#13:
+    - "  &7Private: &f{clan_private}"
+  CLANS_ADMIN_CLAN_INFO_#14:
+    - "  &7PvP: &f{clan_damage_players}"
+  CLANS_ADMIN_CLAN_INFO_#15:
+    - ""
+  CLANS_ADMIN_CLAN_INFO_#16:
+    - "&6Bonuses:"
+  CLANS_ADMIN_CLAN_INFO_#17:
+    - "  &7Experience multiplier: &f{exp_multiplier}x"
+  CLANS_ADMIN_CLAN_INFO_#18:
+    - "  &7Maximum bases: &f{max_homes}"
+  CLANS_ADMIN_CLAN_INFO_#19:
+    - "  &7Maximum members: &f{max_members}"
+  CLANS_ADMIN_CLAN_INFO_#20:
+    - "  &7Tag: &f{perk_tag}"
+  CLANS_ADMIN_CLAN_INFO_#21:
+    - "  &7Tag color: &f{perk_tag_color}"
+  CLANS_ADMIN_CLAN_INFO_#22:
+    - "  &7MOTD: &f{perk_motd}"
+  CLANS_ADMIN_CLAN_INFO_#23:
+    - ""
+  CLANS_ADMIN_CLAN_INFO_#24:
+    - "Bases &7({base_count}/{max_homes}):"
+  CLANS_ADMIN_CLAN_INFO_#25:
+    - "{bases_list}"
+  CLANS_ADMIN_CLAN_INFO_#26:
+    - ""
+  CLANS_ADMIN_CLAN_INFO_#27:
+    - "{motd_section}"
+  CLANS_ADMIN_CLAN_INFO_#28:
+    - ""
+  CLANS_ADMIN_CLAN_INFO_#29:
+    - "&6Members &7({member_count}/{max_members}):"
+  CLANS_ADMIN_CLAN_INFO_#30:
+    - "{leader_section}"
+  CLANS_ADMIN_CLAN_INFO_#31:
+    - "{officers_section}"
+  CLANS_ADMIN_CLAN_INFO_#32:
+    - "{members_section}"
+  CLANS_ADMIN_CLAN_INFO_#33:
+    - "&8&m----------------------------------------"
+  CLANS_ADMIN_CLAN_INFO_TAG:
+    - "&6Tag: {clan_tag_color}{clan_tag}"
+  CLANS_ADMIN_CLAN_INFO_DESCRIPTION:
+    - "&6Description: &f{clan_description}"
+  CLANS_ADMIN_CLAN_INFO_NO_BASES:
+    - "  &7This clan has no bases"
+  CLANS_ADMIN_CLAN_INFO_BASE_ITEM:
+    - "  &7• &f{base_name} &7({world}, {x}, {y}, {z}) "
+  CLANS_ADMIN_CLAN_INFO_MOTD_HEADER:
+    - "&6MOTD:"
+  CLANS_ADMIN_CLAN_INFO_MOTD_ITEM:
+    - "  &7{index}. &f{motd_text}"
+  CLANS_ADMIN_CLAN_INFO_LEADER:
+    - "  &c• &fLeader: {player_name} &7(XP: {player_exp}, J: {player_joined}){online_status}"
+  CLANS_ADMIN_CLAN_INFO_OFFICERS_HEADER:
+    - "  &6Officers:"
+  CLANS_ADMIN_CLAN_INFO_OFFICER_ITEM:
+    - "    &6• &f{player_name} &7(XP: {player_exp}, J: {player_joined}){online_status}"
+  CLANS_ADMIN_CLAN_INFO_MEMBERS_HEADER:
+    - "  &7Members:"
+  CLANS_ADMIN_CLAN_INFO_MEMBER_ITEM:
+    - "    &7• &f{player_name} &7(XP: {player_exp}, J: {player_joined}){online_status}"
+  CLANS_ADMIN_CLAN_DELETE_SUCCESS:
+    - "&aClan '{clan_name}' was successfully deleted!"
+  CLANS_ADMIN_CLAN_DELETE_NOTIFY_MEMBERS:
+    - "&cYour clan was deleted by an administrator!"
+  CLANS_ADMIN_CLAN_RENAME_SUCCESS:
+    - "&aClan renamed from '{oldName}&a' to '{newClanName}&a' successfully!"
+  CLANS_ADMIN_CLAN_RENAME_ERROR:
+    - "&cA clan with the name '{newClanName}&c' already exists!"
+  CLANS_ADMIN_CLAN_SET_LEVEL_SUCCESS:
+    - "&aYou set the clan level of '{clan_name}&a' to &f{level}"
+  CLANS_ADMIN_CLAN_SET_LEVEL_INVALID_LEVEL:
+    - "&cLevel must be a positive number!"
+  CLANS_ADMIN_CLAN_SET_LEVEL_MAX_LEVEL:
+    - "&cThe maximum clan level is: {maxLevel}"
+  CLANS_ADMIN_CLAN_SET_LEVEL_INCORRECT_LEVEL:
+    - "&cInvalid level! Please enter an integer"
+  CLANS_ADMIN_CLAN_COINS_ERROR_INVALID_AMOUNT_POSITIVE:
+    - "&cThe amount must be a positive number!"
+  CLANS_ADMIN_CLAN_COINS_ERROR_INVALID_AMOUNT_INTEGER:
+    - "&cInvalid amount! Please enter an integer."
+  CLANS_ADMIN_CLAN_COINS_ADD_SUCCESS:
+    - "&aYou added &6{coins} coins &ato clan '{clan_name}&a'!"
+  CLANS_ADMIN_CLAN_COINS_SET_SUCCESS:
+    - "&aYou created clan '{clan_name}&a' with balance &6{coins} coins&a!"
+  CLANS_ADMIN_CLAN_COINS_TAKE_SUCCESS:
+    - "&aYou took &6{coins} coins &afrom clan '{clan_name}&a'!"
+  CLANS_ADMIN_CLAN_COINS_TAKE_NOT_ENOUGH_COINS:
+    - "&cThe clan doesn't have enough money! Current balance: &6{coins} coins"
+  CLANS_ADMIN_CLAN_BASE_LIST_#1:
+    - "&6=== Clan bases '{clan_name}&6' ==="
+  CLANS_ADMIN_CLAN_BASE_LIST_#2:
+    - "&7Total bases: &f{base_count} &7/ &f{max_homes}"
+  CLANS_ADMIN_CLAN_BASE_LIST_#3:
+    - "{bases_list}"
+  CLANS_ADMIN_CLAN_BASE_ITEM_#1:
+    - "&a{index}. &f{base_name}"
+  CLANS_ADMIN_CLAN_BASE_ITEM_#2:
+    - "   &7World: &f{world}"
+  CLANS_ADMIN_CLAN_BASE_ITEM_#3:
+    - "   &7Coordinates: &f{x}, {y}, {z}"
+  CLANS_ADMIN_CLAN_BASE_ITEM_#4:
+    - ""
+  CLANS_ADMIN_CLAN_BASE_SUCCESS_TELEPORT:
+    - "&aYou have been teleported to the base '{base_name}' of clan '{clan_name}'!"
+  CLANS_ADMIN_CLAN_BASE_SUCCESS_DELETE:
+    - "&aBase '{base_name}' successfully removed from clan '{clan_name}'!"
+  CLANS_ADMIN_CLAN_BASE_NOT_FOUND:
+    - "&cA base named '{base_name}' was not found in clan '{clan_name}'!"
+  CLANS_ADMIN_CLAN_BASE_WORLD_NOT_FOUND:
+    - "&cWorld for base '{base_name}' not found! The world may have been deleted."
+  CLANS_ADMIN_CLAN_BASE_NO_BASES:
+    - "&cClan '{clan_name}' has no bases."
+  CLANS_ADMIN_CLAN_BASE_ERROR:
+    - "&cFailed to remove base '{base_name}' from clan '{clan_name}'!"
+  CLANS_ADMIN_HELP_CMD_#1:
+    - "&e/clan admin info <clan> &7- Detailed clan information"
+  CLANS_ADMIN_HELP_CMD_#2:
+    - "&e/clan admin delete <clan> &7- Delete clan"
+  CLANS_ADMIN_HELP_CMD_#3:
+    - "&e/clan admin rename <clan> <new_name> &7- Rename clan"
+  CLANS_ADMIN_HELP_CMD_#4:
+    - "&e/clan admin setlevel <clan> <level> &7- Set clan level"
+  CLANS_ADMIN_HELP_CMD_#5:
+    - "&e/clan admin money add <clan> <amount> &7- Add money to the clan"
+  CLANS_ADMIN_HELP_CMD_#6:
+    - "&e/clan admin money set <clan> <amount> &7- Set the clan's balance"
+  CLANS_ADMIN_HELP_CMD_#7:
+    - "&e/clan admin money take <clan> <amount> &7- Take money from the clan"
+  CLANS_ADMIN_HELP_CMD_#8:
+    - "&e/clan admin base list <clan> &7- List all clan bases"
+  CLANS_ADMIN_HELP_CMD_#9:
+    - "&e/clan admin base teleport <clan> <base> &7- Teleport to a clan base"
+  CLANS_ADMIN_HELP_CMD_#10:
+    - "&e/clan admin base delete <clan> <base> &7- Delete a clan base"
+  CLANS_ADMIN_HELP_HEADER:
+    - "&8« &6Clan Admin: Commands &7(Page {page}/{total}) &8»"
+  CLANS_ADMIN_HELP_FOOTER:
+    - "&8« {prev_page} &7| &6Page {page}/{total} &7| {next_page} &8»"
+  CLANS_ADMIN_HELP_PREV_PAGE:
+    - "&7← Back"
+  CLANS_ADMIN_HELP_NEXT_PAGE:
+    - "&7Forward →"
+  CLANS_ADMIN_HELP_PREV_PAGE_COMMAND:
+    - "Click to go to the previous page"
+  CLANS_ADMIN_HELP_NEXT_PAGE_COMMAND:
+    - "Click to go to the next page"
+  CLANS_ADMIN_ERROR_COMMAND:
+    - "&cUnknown command! Use /clan admin help for assistance"
