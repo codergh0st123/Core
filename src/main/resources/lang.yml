@@ -1233,6 +1233,46 @@ RU:
     - "%CORE_PREFIX:NAME:SERVER%&fРежим шпиона уже выключен!"
   AUTOCHAT_CHAT_EXAMPLE_MESSAGE:
     - "§r\n §fਕ §fХочешь поддержать проект? \n §fਕ §fТогда покупай §6донат на сайте! \n §fਕ §6(Сайт) \n §r"
+  POWERANTIRELOG_TEXT_#1:
+    - "&fРежим &#E32636PvP &f— &#E32636{time} сек."
+  POWERANTIRELOG_TEXT_#2:
+    - "&fДо окончания &#E32636PvP &fосталось &#E32636{time} сек."
+  POWERANTIRELOG_TEXT_#3:
+    - "&cВнимание: PvP закончится через &#E32636{time} сек."
+  POWERANTIRELOG_TEXT_#4:
+    - "&#11C7EAН&#15C6EAу&#18C6EAж&#1CC5EAн&#20C4EBа &#27C3EBп&#2BC3EBо&#2FC2EBм&#32C1EBо&#36C1ECщ&#3AC0ECь&#3DBFEC? &#45BEECН&#48BEECа&#4CBDEDп&#50BCEDи&#53BCEDш&#57BBEDи&#5BBAEDт&#5FBAEDе &#66B9EE/&#6AB8EEh&#6DB7EEe&#71B7EEl&#75B6EEp &#7CB5EF— &#84B4EFп&#87B3EFо&#8BB2EFд&#8FB2EFс&#92B1F0к&#96B0F0а&#9AB0F0ж&#9DAFF0е&#A1AEF0м &#A8ADF1и &#B0ACF1п&#B4ABF1о&#B7ABF1м&#BBAAF1о&#BFA9F2ж&#C2A9F2е&#C6A8F2м &#CDA7F2р&#D1A6F2а&#D5A6F3з&#D8A5F3о&#DCA4F3б&#E0A4F3р&#E4A3F3а&#E7A3F3т&#EBA2F4ь&#EFA1F4с&#F2A1F4я&#F6A0F4"
+  POWERANTIRELOG_TEXT_#5:
+    - "&#4D67BFС&#4F6EBEк&#5175BDи&#537BBCд&#5582BBк&#5789BAа &#5B97B81&#5C9DB65&#5EA4B5% &#62B2B3д&#64B9B2е&#66BFB1й&#68C6B0с&#6ACDAFт&#6ACDAEв&#6ACDADу&#6ACDABе&#6BCCAAт &#6BCCA8п&#6BCCA6о &#6BCCA4п&#6BCCA3р&#6BCCA1о&#6CCBA0м&#6CCB9Fо&#6CCB9Eк&#6CCB9Cо&#6CCB9Bд&#6CCB9Aу &#6DCB98⦓&#6DCA96N&#6DCA95e&#6DCA94w&#6DCA93⦔ &#6DCA90- &#6EC98Eу&#6EC98Cс&#6EC98Bп&#6EC98Aе&#6EC989й &#6EC986к&#6EC985у&#6FC884п&#6FC882и&#6FC881т&#6FC880ь"
+  POWERANTIRELOG_TEXT_#6:
+    - "&#FDCDCDУ&#FACCD1с&#F8CBD5п&#F5CAD9е&#F3C9DDй&#F0C8E1т&#EEC7E5е &#E8C4ECк&#E6C3F0у&#E3C2F4п&#E1C1F8и&#DEC0FCт&#DDC0FCь &#DAC0FCп&#D9C0FCр&#D7C0FCи&#D6C0FCв&#D5C0FCи&#D3C0FCл&#D2C0FCе&#D1C0FCг&#CFC0FCи&#CEC0FCю&#CBC0FC, &#C5C0FCп&#C2C0FCо&#BFC0FCк&#BDC0FCа &#B7C0FCд&#B4C0FCе&#B1C0FCй&#AEC0FCс&#ACC3FBт&#AAC6F9в&#A8C8F8у&#A5CBF6ю&#A3CEF5т &#9FD3F2с&#9DD6F0к&#9BD9EFи&#98DCEDд&#96DEECк&#94E1EAи"
+  POWERANTIRELOG_TEXT_#7:
+    - "&#E32636PvP &fИнформация"
+  POWERANTIRELOG_TEXT_#8:
+    - "&#E32636&l| &fНапал: &f{attacker}"
+  POWERANTIRELOG_TEXT_#9:
+    - "&#E32636&l| &fДо конца: &f{time} сек."
+  POWERANTIRELOG_TEXT_#10:
+    - "%CORE_PREFIX:NAME:SERVER%&fИгрок &#E32636{player} &fпокинул сервер во время PvP!"
+  POWERANTIRELOG_TEXT_#11:
+    - "%CORE_PREFIX:NAME:SERVER%&fВы начали PvP!"
+  POWERANTIRELOG_TEXT_#12:
+    - "%CORE_PREFIX:NAME:SERVER%&fВы больше не находитесь в бою."
+  POWERANTIRELOG_TEXT_#13:
+    - "%CORE_PREFIX:NAME:SERVER%&fВы не можете делать это в режиме PvP!"
+  POWERANTIRELOG_TEXT_#14:
+    - "%CORE_PREFIX:NAME:SERVER%&fПодождите &#E32636{time}&f сек., чтобы использовать этот предмет!"
+  POWERANTIRELOG_TEXT_#15:
+    - "&7- &#E32636/powerantirelog help &7- &fСписок команд"
+  POWERANTIRELOG_TEXT_#16:
+    - "&7- &#E32636/powerantirelog reload &7- &fПерезагружает конфигурацию"
+  POWERANTIRELOG_TEXT_#17:
+    - "&7- &#E32636/powerantirelog test {игрок} &7- &fВыдаёт игроку режим боя"
+  POWERANTIRELOG_TEXT_#18:
+    - "%CORE_PREFIX:NAME:SERVER%&fКонфигурация перезагружена"
+  POWERANTIRELOG_TEXT_#19:
+    - "%CORE_PREFIX:NAME:SERVER%&fВы выдали игроку &#E32636{player} &fрежим PvP."
+  POWERANTIRELOG_TEXT_#20:
+    - "%CORE_PREFIX:NAME:SERVER%&fИгрок &e{player}&f не найден."
 EN:
   TEST:
     - "text"
@@ -2464,3 +2504,43 @@ EN:
     - "%CORE_PREFIX:NAME:SERVER%&fSpy mode is already disabled!"
   AUTOCHAT_CHAT_EXAMPLE_MESSAGE:
     - "§r\n §fਕ §fWant to support the project? \n §fਕ §fThen buy §6a rank on the website! \n §fਕ §6(Website) \n §r"
+  POWERANTIRELOG_TEXT_#1:
+    - "&fMode &#E32636PvP &f— &#E32636{time} sec."
+  POWERANTIRELOG_TEXT_#2:
+    - "&fTime left until &#E32636PvP &f: &#E32636{time} sec."
+  POWERANTIRELOG_TEXT_#3:
+    - "&cWarning: PvP will end in &#E32636{time} sec."
+  POWERANTIRELOG_TEXT_#4:
+    - "&#11C7EANeed&#15C6EA &#18C6EAhelp&#1CC5EA?&#20C4EB &#27C3EBType&#2BC3EB &#2FC2EB/&#32C1EBh&#36C1ECe&#3AC0ECl&#3DBFECp&#45BEEC &#48BEEC—&#4CBDED &#50BCEDwe'll&#53BCED &#57BBEDgive&#5BBAED &#5FBAEDtips&#66B9EE &#6AB8EEand&#6DB7EE &#71B7EEhelp&#75B6EE &#7CB5EFyou&#84B4EF &#87B3EFfigure&#8BB2EF &#8FB2EFit&#92B1F0 &#96B0F0out&#9AB0F0!&#9DAFF0&#A1AEF0&#A8ADF1&#B0ACF1&#B4ABF1&#B7ABF1&#BBAAF1&#BFA9F2&#C2A9F2&#C6A8F2&#CDA7F2&#D1A6F2&#D5A6F3&#D8A5F3&#DCA4F3&#E0A4F3&#E4A3F3&#E7A3F3&#EBA2F4&#EFA1F4&#F2A1F4&#F6A0F4"
+  POWERANTIRELOG_TEXT_#5:
+    - "&#4D67BFA&#4F6EBE &#5175BD15&#537BBC%&#5582BB &#5789BAdiscount&#5B97B8 &#5C9DB6applies&#5EA4B5 &#62B2B3with&#64B9B2 &#66BFB1promo&#68C6B0 &#6ACDAFcode&#6ACDAE &#6ACDAD⦓&#6ACDABN&#6BCCAAe&#6BCCA8w&#6BCCA6⦔&#6BCCA4 &#6BCCA3-&#6BCCA1 &#6CCBA0hurry&#6CCB9F &#6CCB9Eto&#6CCB9C &#6CCB9Bbuy&#6CCB9A&#6DCB98&#6DCA96&#6DCA95&#6DCA94&#6DCA93&#6DCA90&#6EC98E&#6EC98C&#6EC98B&#6EC98A&#6EC989&#6EC986&#6EC985&#6FC884&#6FC882&#6FC881&#6FC880"
+  POWERANTIRELOG_TEXT_#6:
+    - "&#FDCDCDHurry&#FACCD1 &#F8CBD5and&#F5CAD9 &#F3C9DDbuy&#F0C8E1 &#EEC7E5the&#E8C4EC &#E6C3F0rank&#E3C2F4 &#E1C1F8while&#DEC0FC &#DDC0FCdiscounts&#DAC0FC &#D9C0FCare&#D7C0FC &#D6C0FCactive&#D5C0FC &#D3C0FC&#D2C0FC&#D1C0FC&#CFC0FC&#CEC0FC&#CBC0FC&#C5C0FC&#C2C0FC&#BFC0FC&#BDC0FC&#B7C0FC&#B4C0FC&#B1C0FC&#AEC0FC&#ACC3FB&#AAC6F9&#A8C8F8&#A5CBF6&#A3CEF5&#9FD3F2&#9DD6F0&#9BD9EF&#98DCED&#96DEEC&#94E1EA"
+  POWERANTIRELOG_TEXT_#7:
+    - "&#E32636PvP &fInformation"
+  POWERANTIRELOG_TEXT_#8:
+    - "&#E32636&l| &fAttacked: &f{attacker}"
+  POWERANTIRELOG_TEXT_#9:
+    - "&#E32636&l| &fTime left: &f{time} sec."
+  POWERANTIRELOG_TEXT_#10:
+    - "%CORE_PREFIX:NAME:SERVER%&fPlayer &#E32636{player} &fleft the server during PvP!"
+  POWERANTIRELOG_TEXT_#11:
+    - "%CORE_PREFIX:NAME:SERVER%&fYou have entered PvP!"
+  POWERANTIRELOG_TEXT_#12:
+    - "%CORE_PREFIX:NAME:SERVER%&fYou are no longer in combat."
+  POWERANTIRELOG_TEXT_#13:
+    - "%CORE_PREFIX:NAME:SERVER%&fYou cannot do that while in PvP!"
+  POWERANTIRELOG_TEXT_#14:
+    - "%CORE_PREFIX:NAME:SERVER%&fWait &#E32636{time}&f sec. to use this item!"
+  POWERANTIRELOG_TEXT_#15:
+    - "&7- &#E32636/powerantirelog help &7- &fList of commands"
+  POWERANTIRELOG_TEXT_#16:
+    - "&7- &#E32636/powerantirelog reload &7- &fReloads the configuration"
+  POWERANTIRELOG_TEXT_#17:
+    - "&7- &#E32636/powerantirelog test {игрок} &7- &fGives the player PvP mode"
+  POWERANTIRELOG_TEXT_#18:
+    - "%CORE_PREFIX:NAME:SERVER%&fConfiguration reloaded"
+  POWERANTIRELOG_TEXT_#19:
+    - "%CORE_PREFIX:NAME:SERVER%&fYou gave the player &#E32636{player} &fPvP mode."
+  POWERANTIRELOG_TEXT_#20:
+    - "%CORE_PREFIX:NAME:SERVER%&fPlayer &e{player}&f was not found."
