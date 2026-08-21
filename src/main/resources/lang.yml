@@ -25,6 +25,38 @@ RU:
     - "%CORE_PREFIX:NAME:SERVER%&fКонфигурация перезагружена."
   SPAWNPROTECT_USAGE:
     - "%CORE_PREFIX:NAME:SERVER%&fПерезагрузка кфг: &e/spawnprotect reload"
+  SCOREBOARD_1_20_3_HEADER:
+    - "  &fȎ&#D09F5Eᴀ&#CE9675ɴ&#CC8E8Dᴀ&#CA85A4ʀ&#C87CBBᴄ&#C674D3ʜ&#C46BEAʏ  "
+  SCOREBOARD_1_20_3_EMPTY_#1:
+    - ""
+  SCOREBOARD_1_20_3_ICON:
+    - "樂"
+  SCOREBOARD_1_20_3_NICK:
+    - "ԅ &fНик&7: &#EA94F3%player_name%"
+  SCOREBOARD_1_20_3_CLAN:
+    - "ԇ &fКлан&7: %clans_clan_name%"
+  SCOREBOARD_1_20_3_ANIMATION_#1:
+    - "%animation:animation3%"
+  SCOREBOARD_1_20_3_RANK:
+    - "Ԇ &fРанг&7: &f%CORE_LUCKPERMS:GROUP:PREFIX%"
+  SCOREBOARD_1_20_3_EMPTY_#2:
+    - ""
+  SCOREBOARD_1_20_3_GOLD:
+    - "Ԉ &fЗолото&7: &#E29228%vault_eco_balance_fixed%&fਉ"
+  SCOREBOARD_1_20_3_CRYSTALS:
+    - "ԉ &fКристаллы&7: %coinsengine_balance_coins%"
+  SCOREBOARD_1_20_3_SOULS:
+    - "Ԋ &fДуши&7: %coinsengine_balance_money%"
+  SCOREBOARD_1_20_3_EMPTY_#3:
+    - ""
+  SCOREBOARD_1_20_3_ANIMATION_#2:
+    - "%animation:animation1%"
+  SCOREBOARD_1_20_3_ONLINE:
+    - "ԋ &fОнлайн&7: &#E27328%online%"
+  SCOREBOARD_1_20_3_ANIMATION_#3:
+    - "%animation:animation2%"
+  SCOREBOARD_1_20_3_EMPTY_#4:
+    - ""
 EN:
   TEST:
     - "text"
@@ -48,3 +80,35 @@ EN:
     - "%CORE_PREFIX:NAME:SERVER%&fConfiguration reloaded."
   SPAWNPROTECT_USAGE:
     - "%CORE_PREFIX:NAME:SERVER%&fConfig reload: &e/spawnprotect reload"
+  SCOREBOARD_1_20_3_HEADER:
+    - "  &fȎ&#D09F5Eᴀ&#CE9675ɴ&#CC8E8Dᴀ&#CA85A4ʀ&#C87CBBᴄ&#C674D3ʜ&#C46BEAʏ  "
+  SCOREBOARD_1_20_3_EMPTY_#1:
+    - ""
+  SCOREBOARD_1_20_3_ICON:
+    - "樂"
+  SCOREBOARD_1_20_3_NICK:
+    - "ԅ &fNick&7: &#EA94F3%player_name%"
+  SCOREBOARD_1_20_3_CLAN:
+    - "ԇ &fClan&7: %clans_clan_name%"
+  SCOREBOARD_1_20_3_ANIMATION_#1:
+    - "%animation:animation3%"
+  SCOREBOARD_1_20_3_RANK:
+    - "Ԇ &fRank&7: &f%CORE_LUCKPERMS:GROUP:PREFIX%"
+  SCOREBOARD_1_20_3_EMPTY_#2:
+    - ""
+  SCOREBOARD_1_20_3_GOLD:
+    - "Ԉ &fGold&7: &#E29228%vault_eco_balance_fixed%&fਉ"
+  SCOREBOARD_1_20_3_CRYSTALS:
+    - "ԉ &fCrystals&7: %coinsengine_balance_coins%"
+  SCOREBOARD_1_20_3_SOULS:
+    - "Ԋ &fSouls&7: %coinsengine_balance_money%"
+  SCOREBOARD_1_20_3_EMPTY_#3:
+    - ""
+  SCOREBOARD_1_20_3_ANIMATION_#2:
+    - "%animation:animation1%"
+  SCOREBOARD_1_20_3_ONLINE:
+    - "ԋ &fOnline&7: &#E27328%online%"
+  SCOREBOARD_1_20_3_ANIMATION_#3:
+    - "%animation:animation2%"
+  SCOREBOARD_1_20_3_EMPTY_#4:
+    - ""
