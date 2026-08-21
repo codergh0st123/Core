@@ -767,6 +767,394 @@ RU:
     - "&#21D3E3М&#2FC5E0а&#3CB7DDг&#4AA9DAи&#589BD7ч&#658DD4е&#737FD1с&#8171CEк&#8E63CBи&#9C55C8й&f Ларец &7- &#E37F21&l1х&f - &#DEC660&l30&f руб."
   DECENT_ANIMATION_DONATE3_STEP_#2:
     - "&fֆ &f150 &#E37F21К&#DB7A34р&#D37646и&#CB7159с&#C36C6Bт&#BC687Eа&#B46390л&#AC5EA3л&#A45AB5о&#9C55C8в &7- &#DEC660&l 550&f руб."
+  DONATECASE_MAG_TEXT_#1:
+    - "&fଅ #21D3E3М#2FC5E0а#3CB7DDг#4AA9DAи#589BD7ч#658DD4е#737FD1с#8171CEк#8E63CBи#9C55C8й&f Ларец ଅ"
+  DONATECASE_MAG_TEXT_#2:
+    - "&fਕ &fУ вас нет ключей от этого #F66E4BЛарца&f! "
+  DONATECASE_MAG_TEXT_#3:
+    - "&fਕ &fПокупка #E7A466Ключей&f на сайте &e➥ &6(сайт) "
+  DONATECASE_MAG_TEXT_#4:
+    - "&fॴ #21D3E3М#2FC5E0а#3CB7DDг#4AA9DAи#589BD7ч#658DD4е#737FD1с#8171CEк#8E63CBи#9C55C8й&f Ларец ॴ"
+  DONATECASE_MAG_TEXT_#5:
+    - "&dЧарка &5x10"
+  DONATECASE_MAG_TEXT_#6:
+    - "&fॴ #21D3E3М#2FC5E0а#3CB7DDг#4AA9DAи#589BD7ч#658DD4е#737FD1с#8171CEк#8E63CBи#9C55C8й&f Ларец ॴ;&fВы получили %groupdisplayname%"
+  DONATECASE_MAG_TEXT_#7:
+    - "&e➥ &fИгрок #F17934%player% &fполучил %groupdisplayname% &fоткрыв &fॴ #21D3E3М#2FC5E0а#3CB7DDг#4AA9DAи#589BD7ч#658DD4е#737FD1с#8171CEк#8E63CBи#9C55C8й&f Ларец ॴ"
+  DONATECASE_MAG_TEXT_#8:
+    - "#EE9E50Ш#ED9A51л#EC9651е#EB9352м #EA8B53Д#E98753р#E88354е#E77F54в#E67C55н#E57855е#E47456г#E37056о #E26857В#E16558о#E06158и#DF5D59н#DE5959а"
+  DONATECASE_MAG_TEXT_#9:
+    - "&eТотем &6x4"
+  DONATECASE_MAG_TEXT_#10:
+    - "#F37777Н#F37373а#F36E6Eг#F36A6Aр#F46565у#F46161д#F45C5Cн#F45858и#F45454к #F44B4BЛ#F54646о#F54242р#F53D3Dд#F53939а "
+  DONATECASE_MAG_TEXT_#11:
+    - "#54DAF4П#54D4F1о#54CEEEн#54C7EBо#54C1E8ж#54BBE5и #547DC6Р#5477C2ы#5471BFц#546ABCа#5464B9р#545EB6я "
+  DONATECASE_MAG_TEXT_#12:
+    - "#DBF2F6Б#D7EDF6о#D3E8F5т#CFE3F5и#CBDEF5н#C7D9F4к#C3D4F4и #BBCBF4Р#B6C6F3е#B2C1F3й#AEBCF3н#AAB7F2д#A6B2F2ж#A2ADF2е#9EA8F1р#9AA3F1а "
+  DONATECASE_MAG_TEXT_#13:
+    - "#80E5F6М#7DDCF6е#7BD3F7ч#78CAF7ь #73B8F8Х#71AFF9р#6EA5F9а#6C9CFAн#6993FAи#678AFBт#6481FBе#6278FCл#5F6FFCя "
+  DONATECASE_MAG_TEXT_#14:
+    - "#B8B7B5К#BCB4AAи#BFB19Eр#C3AE93к#C6AB87а #CEA671Ш#D1A365а#D5A05Aх#D89D4Eт#DC9A43е#DF9737р#E3942Cа "
+  DONATECASE_SOKR1_TEXT_#1:
+    - "&fҾ Сокровищница &61 ур. &fҾ"
+  DONATECASE_SOKR1_TEXT_#2:
+    - "&fԈ &fУ вас нет ключа от этой #F66E4BСокровищницы&f! "
+  DONATECASE_SOKR1_TEXT_#3:
+    - "&fԉ &fЧтобы его получить, проходите задания #FB6654Ш#FC635Aо#FD5F5Fна&r, &f "
+  DONATECASE_SOKR1_TEXT_#4:
+    - "&fԉ &fОбменивайте его у &6Канцлера,&f либо выйграйте его &f "
+  DONATECASE_SOKR1_TEXT_#5:
+    - "&fԊ &fВ &cивентах&f сервера! &f "
+  DONATECASE_SOKR1_TEXT_#6:
+    - "&f蘿 &fЗолотое яблоко &5x5"
+  DONATECASE_SOKR1_TEXT_#7:
+    - "&fҾ Сокровище &61 ур. &fҾ;&fВы получили %groupdisplayname%"
+  DONATECASE_SOKR1_TEXT_#8:
+    - "&e➥ &fИгрок #F17934%player% &fполучил %groupdisplayname% &fоткрыв &fҾ Сокровищницу &61-го ур. &fҾ"
+  DONATECASE_SOKR1_TEXT_#9:
+    - "&f蘿 &fЗолотое яблоко &5x10"
+  DONATECASE_SOKR1_TEXT_#10:
+    - "&f蘿 &fАлмазы &5x20"
+  DONATECASE_SOKR1_TEXT_#11:
+    - "&f蘿 &fЗолотой слиток &5x40"
+  DONATECASE_SOKR1_TEXT_#12:
+    - "&f蘿 &fРудное золото &5x32"
+  DONATECASE_SOKR1_TEXT_#13:
+    - "&f蘿 &fИзумруд &5x45"
+  DONATECASE_SOKR1_TEXT_#14:
+    - "&f蘿 &fНезеритовый слиток &5x5"
+  DONATECASE_SOKR1_TEXT_#15:
+    - "&f蘿 &fЧарка &5x3"
+  DONATECASE_SOKR1_TEXT_#16:
+    - "&f蘿 &7Обычный&f приват &5x1"
+  DONATECASE_SOKR1_TEXT_#17:
+    - "&f蘿 &cСфера Лучника &5x1"
+  DONATECASE_SOKR1_TEXT_#18:
+    - "&f蘿 &cРеликвия Нечести &5x1"
+  DONATECASE_SOKR1_TEXT_#19:
+    - "&f蘿 &fЖелезо &5x128"
+  DONATECASE_SOKR1_TEXT_#20:
+    - "&f蘿 &fЯйцо Кадавра &5x1"
+  DONATECASE_SOKR1_TEXT_#21:
+    - "&f蘿 &fЯйцо Гаста &5x1"
+  DONATECASE_SOKR1_TEXT_#22:
+    - "&f蘿 &fЯйцо Медведя &5x1"
+  DONATECASE_SOKR1_TEXT_#23:
+    - "&f蘿 &fЭндер жемчуг &5x16"
+  DONATECASE_SOKR1_TEXT_#24:
+    - "&f蘿 &fХорус &5x64"
+  DONATECASE_SOKR2_TEXT_#1:
+    - "&fҾ Сокровищница &62 ур. &fҾ"
+  DONATECASE_SOKR2_TEXT_#2:
+    - "&fԈ &fУ вас нет ключа от этой #F66E4BСокровищницы&f! "
+  DONATECASE_SOKR2_TEXT_#3:
+    - "&fԉ &fЧтобы его получить, проходите задания #FB6654Ш#FC635Aо#FD5F5Fна&r, &f "
+  DONATECASE_SOKR2_TEXT_#4:
+    - "&fԉ &fОбменивайте его у &6Канцлера,&f либо выйграйте его &f "
+  DONATECASE_SOKR2_TEXT_#5:
+    - "&fԊ &fВ &cивентах&f сервера! &f "
+  DONATECASE_SOKR2_TEXT_#6:
+    - "&f蘿 &fЗолотое яблоко &5x10"
+  DONATECASE_SOKR2_TEXT_#7:
+    - "&fҾ Сокровище &62 ур. &fҾ;&fВы получили %groupdisplayname%"
+  DONATECASE_SOKR2_TEXT_#8:
+    - "&e➥ &fИгрок #F17934%player% &fполучил %groupdisplayname% &fоткрыв &fҾ Сокровищницу &62-го ур. &fҾ"
+  DONATECASE_SOKR2_TEXT_#9:
+    - "&f蘿 &fЗолотое яблоко &5x20"
+  DONATECASE_SOKR2_TEXT_#10:
+    - "&f蘿 &fАлмазы &5x35"
+  DONATECASE_SOKR2_TEXT_#11:
+    - "&f蘿 &fЗолотой слиток &5x64"
+  DONATECASE_SOKR2_TEXT_#12:
+    - "&f蘿 &fРудное золото &5x64"
+  DONATECASE_SOKR2_TEXT_#13:
+    - "&f蘿 &fИзумруд &5x64"
+  DONATECASE_SOKR2_TEXT_#14:
+    - "&f蘿 &fНезеритовый слиток &5x15"
+  DONATECASE_SOKR2_TEXT_#15:
+    - "&f蘿 &fЧарка &5x8"
+  DONATECASE_SOKR2_TEXT_#16:
+    - "&f蘿 &7Обычный&f приват &5x1"
+  DONATECASE_SOKR2_TEXT_#17:
+    - "&f蘿 &cДревний&f приват &5x1"
+  DONATECASE_SOKR2_TEXT_#18:
+    - "&f蘿 &cСфера Лучника &5x1"
+  DONATECASE_SOKR2_TEXT_#19:
+    - "&f蘿 &cРеликвия Нечести &5x1"
+  DONATECASE_SOKR2_TEXT_#20:
+    - "&f蘿 &aСосуд Опыта I &5x1"
+  DONATECASE_SOKR2_TEXT_#21:
+    - "&f蘿 &cКамень Атаки &5x1"
+  DONATECASE_SOKR2_TEXT_#22:
+    - "&f蘿 &fЖелезо &5x128"
+  DONATECASE_SOKR2_TEXT_#23:
+    - "&f蘿 &fЯйцо Кадавра &5x1"
+  DONATECASE_SOKR2_TEXT_#24:
+    - "&f蘿 &fЯйцо Гаста &5x1"
+  DONATECASE_SOKR2_TEXT_#25:
+    - "&f蘿 &fЯйцо Медведя &5x1"
+  DONATECASE_SOKR2_TEXT_#26:
+    - "&f蘿 &fЭндер жемчуг &5x16"
+  DONATECASE_SOKR2_TEXT_#27:
+    - "&f蘿 &fХорус &5x64"
+  DONATECASE_SOKR2_TEXT_#28:
+    - "&f蘿 &bМаяк &5x1"
+  DONATECASE_SOKR3_TEXT_#1:
+    - "&fҾ Сокровищница &63 ур. &fҾ"
+  DONATECASE_SOKR3_TEXT_#2:
+    - "&fԈ &fУ вас нет ключа от этой #F66E4BСокровищницы&f! "
+  DONATECASE_SOKR3_TEXT_#3:
+    - "&fԉ &fЧтобы его получить, проходите задания #FB6654Ш#FC635Aо#FD5F5Fна&r, &f "
+  DONATECASE_SOKR3_TEXT_#4:
+    - "&fԉ &fОбменивайте его у &6Канцлера,&f либо выйграйте его &f "
+  DONATECASE_SOKR3_TEXT_#5:
+    - "&fԊ &fВ &cивентах&f сервера! &f "
+  DONATECASE_SOKR3_TEXT_#6:
+    - "&f蘿 &fЗолотое яблоко &5x20"
+  DONATECASE_SOKR3_TEXT_#7:
+    - "&fҾ Сокровище &63 ур. &fҾ;&fВы получили %groupdisplayname%"
+  DONATECASE_SOKR3_TEXT_#8:
+    - "&e➥ &fИгрок #F17934%player% &fполучил %groupdisplayname% &fоткрыв &fҾ Сокровищницу &63-го ур. &fҾ"
+  DONATECASE_SOKR3_TEXT_#9:
+    - "&f蘿 &fЗолотое яблоко &5x40"
+  DONATECASE_SOKR3_TEXT_#10:
+    - "&f蘿 &fАлмазы &5x64"
+  DONATECASE_SOKR3_TEXT_#11:
+    - "&f蘿 &fЗолотой слиток &5x64"
+  DONATECASE_SOKR3_TEXT_#12:
+    - "&f蘿 &fРудное золото &5x128"
+  DONATECASE_SOKR3_TEXT_#13:
+    - "&f蘿 &fИзумруд &5x128"
+  DONATECASE_SOKR3_TEXT_#14:
+    - "&f蘿 &fНезеритовый слиток &5x35"
+  DONATECASE_SOKR3_TEXT_#15:
+    - "&f蘿 &fЧарка &5x12"
+  DONATECASE_SOKR3_TEXT_#16:
+    - "&f蘿 &7Обычный&f приват &5x1"
+  DONATECASE_SOKR3_TEXT_#17:
+    - "&f蘿 &cДревний&f приват &5x1"
+  DONATECASE_SOKR3_TEXT_#18:
+    - "&f蘿 &dТаинственный&f приват &5x1"
+  DONATECASE_SOKR3_TEXT_#19:
+    - "&f蘿 &cСфера Лучника &5x1"
+  DONATECASE_SOKR3_TEXT_#20:
+    - "&f蘿 &cРеликвия Нечести &5x1"
+  DONATECASE_SOKR3_TEXT_#21:
+    - "&f蘿 &aСосуд Опыта I &5x1"
+  DONATECASE_SOKR3_TEXT_#22:
+    - "&f蘿 &aСосуд Опыта II &5x1"
+  DONATECASE_SOKR3_TEXT_#23:
+    - "&f蘿 &cКамень Атаки &5x1"
+  DONATECASE_SOKR3_TEXT_#24:
+    - "&f蘿 &aПротивоядие &5x1"
+  DONATECASE_SOKR3_TEXT_#25:
+    - "&f蘿 &fЖелезо &5x192"
+  DONATECASE_SOKR3_TEXT_#26:
+    - "&f蘿 &fЯйцо Кадавра &5x1"
+  DONATECASE_SOKR3_TEXT_#27:
+    - "&f蘿 &fЯйцо Гаста &5x1"
+  DONATECASE_SOKR3_TEXT_#28:
+    - "&f蘿 &fЯйцо Медведя &5x1"
+  DONATECASE_SOKR3_TEXT_#29:
+    - "&f蘿 &fЭндер жемчуг &5x16"
+  DONATECASE_SOKR3_TEXT_#30:
+    - "&f蘿 &fХорус &5x64"
+  DONATECASE_SOKR3_TEXT_#31:
+    - "&f蘿 &bМаяк &5x1"
+  DONATECASE_SOKR3_TEXT_#32:
+    - "&f蘿 &fЯйцо Скелета &5x1"
+  DONATECASE_SOKR3_TEXT_#33:
+    - "&f蘿 &fЯйцо Поборника &5x1"
+  DONATECASE_SOKR4_TEXT_#1:
+    - "&fҾ Сокровищница &64 ур. &fҾ"
+  DONATECASE_SOKR4_TEXT_#2:
+    - "&fԈ &fУ вас нет ключа от этой #F66E4BСокровищницы&f! "
+  DONATECASE_SOKR4_TEXT_#3:
+    - "&fԉ &fЧтобы его получить, проходите задания #FB6654Ш#FC635Aо#FD5F5Fна&r, &f "
+  DONATECASE_SOKR4_TEXT_#4:
+    - "&fԉ &fОбменивайте его у &6Канцлера,&f либо выйграйте его &f "
+  DONATECASE_SOKR4_TEXT_#5:
+    - "&fԊ &fВ &cивентах&f сервера! &f "
+  DONATECASE_SOKR4_TEXT_#6:
+    - "&f蘿 &fЗолотое яблоко &5x30"
+  DONATECASE_SOKR4_TEXT_#7:
+    - "&fҾ Сокровище &64 ур. &fҾ;&fВы получили %groupdisplayname%"
+  DONATECASE_SOKR4_TEXT_#8:
+    - "&e➥ &fИгрок #F17934%player% &fполучил %groupdisplayname% &fоткрыв &fҾ Сокровищницу &64-го ур. &fҾ"
+  DONATECASE_SOKR4_TEXT_#9:
+    - "&f蘿 &fЗолотое яблоко &5x40"
+  DONATECASE_SOKR4_TEXT_#10:
+    - "&f蘿 &fАлмазы &5x64"
+  DONATECASE_SOKR4_TEXT_#11:
+    - "&f蘿 &fЗолотой слиток &5x128"
+  DONATECASE_SOKR4_TEXT_#12:
+    - "&f蘿 &fРудное золото &5x128"
+  DONATECASE_SOKR4_TEXT_#13:
+    - "&f蘿 &fИзумруд &5x128"
+  DONATECASE_SOKR4_TEXT_#14:
+    - "&f蘿 &fНезеритовый слиток &5x45"
+  DONATECASE_SOKR4_TEXT_#15:
+    - "&f蘿 &fЧарка &5x20"
+  DONATECASE_SOKR4_TEXT_#16:
+    - "&f蘿 &7Обычный&f приват &5x1"
+  DONATECASE_SOKR4_TEXT_#17:
+    - "&f蘿 &cДревний&f приват &5x1"
+  DONATECASE_SOKR4_TEXT_#18:
+    - "&f蘿 &dТаинственный&f приват &5x1"
+  DONATECASE_SOKR4_TEXT_#19:
+    - "&f蘿 &cСфера Лучника &5x1"
+  DONATECASE_SOKR4_TEXT_#20:
+    - "&f蘿 &cРеликвия Нечести &5x1"
+  DONATECASE_SOKR4_TEXT_#21:
+    - "&f蘿 &aСосуд Опыта I &5x1"
+  DONATECASE_SOKR4_TEXT_#22:
+    - "&f蘿 &aСосуд Опыта II &5x1"
+  DONATECASE_SOKR4_TEXT_#23:
+    - "&f蘿 &cКамень Атаки &5x1"
+  DONATECASE_SOKR4_TEXT_#24:
+    - "&f蘿 &aПротивоядие &5x1"
+  DONATECASE_SOKR4_TEXT_#25:
+    - "&f蘿 &dРуна Моря &5x1"
+  DONATECASE_SOKR4_TEXT_#26:
+    - "&f蘿 &cОстанки Древнего &5x1"
+  DONATECASE_SOKR4_TEXT_#27:
+    - "&f蘿 &fЖелезо &5x192"
+  DONATECASE_SOKR4_TEXT_#28:
+    - "&f蘿 &fЯйцо Кадавра &5x1"
+  DONATECASE_SOKR4_TEXT_#29:
+    - "&f蘿 &fЯйцо Гаста &5x1"
+  DONATECASE_SOKR4_TEXT_#30:
+    - "&f蘿 &fЭндер жемчуг &5x32"
+  DONATECASE_SOKR4_TEXT_#31:
+    - "&f蘿 &fХорус &5x64"
+  DONATECASE_SOKR4_TEXT_#32:
+    - "&f蘿 &bМаяк &5x1"
+  DONATECASE_SOKR4_TEXT_#33:
+    - "&f蘿 &fЯйцо Скелета &5x1"
+  DONATECASE_SOKR4_TEXT_#34:
+    - "&f蘿 &fЯйцо Поборника &5x1"
+  DONATECASE_SOKR4_TEXT_#35:
+    - "&f蘿 &fЯйцо Паука &5x1"
+  DONATECASE_SOKR4_TEXT_#36:
+    - "&f蘿 &fЯйцо Эндермена &5x1"
+  DONATECASE_SOKR4_TEXT_#37:
+    - "&f蘿 &fЯйцо Слизня &5x1"
+  DONATECASE_SOKR4_TEXT_#38:
+    - "&f蘿 &eТотем Бессмертия &5x1"
+  DONATECASE_SOKR4_TEXT_#39:
+    - "&fҾ Сокровище &65 ур. &fҾ;&fВы получили %groupdisplayname%"
+  DONATECASE_SOKR4_TEXT_#40:
+    - "&e➥ &fИгрок #F17934%player% &fполучил %groupdisplayname% &fоткрыв &fҾ Сокровищницу &65-го ур. &fҾ"
+  DONATECASE_SOKR5_TEXT_#1:
+    - "&fҾ Сокровищница &65 ур. &fҾ"
+  DONATECASE_SOKR5_TEXT_#2:
+    - "&fԈ &fУ вас нет ключа от этой #F66E4BСокровищницы&f! "
+  DONATECASE_SOKR5_TEXT_#3:
+    - "&fԉ &fЧтобы его получить, проходите задания #FB6654Ш#FC635Aо#FD5F5Fна&r, &f "
+  DONATECASE_SOKR5_TEXT_#4:
+    - "&fԉ &fОбменивайте его у &6Канцлера,&f либо выйграйте его &f "
+  DONATECASE_SOKR5_TEXT_#5:
+    - "&fԊ &fВ &cивентах&f сервера! &f "
+  DONATECASE_SOKR5_TEXT_#6:
+    - "&f蘿 &fЗолотое яблоко &5x40"
+  DONATECASE_SOKR5_TEXT_#7:
+    - "&fҾ Сокровище &65 ур. &fҾ;&fВы получили %groupdisplayname%"
+  DONATECASE_SOKR5_TEXT_#8:
+    - "&e➥ &fИгрок #F17934%player% &fполучил %groupdisplayname% &fоткрыв &fҾ Сокровищницу &65-го ур. &fҾ"
+  DONATECASE_SOKR5_TEXT_#9:
+    - "&f蘿 &fЗолотое яблоко &5x50"
+  DONATECASE_SOKR5_TEXT_#10:
+    - "&f蘿 &fАлмазы &5x128"
+  DONATECASE_SOKR5_TEXT_#11:
+    - "&f蘿 &fЗолотой слиток &5x128"
+  DONATECASE_SOKR5_TEXT_#12:
+    - "&f蘿 &fРудное золото &5x128"
+  DONATECASE_SOKR5_TEXT_#13:
+    - "&f蘿 &fИзумруд &5x128"
+  DONATECASE_SOKR5_TEXT_#14:
+    - "&f蘿 &fНезеритовый слиток &5x64"
+  DONATECASE_SOKR5_TEXT_#15:
+    - "&f蘿 &fЧарка &5x30"
+  DONATECASE_SOKR5_TEXT_#16:
+    - "&f蘿 &7Обычный&f приват &5x3"
+  DONATECASE_SOKR5_TEXT_#17:
+    - "&f蘿 &cДревний&f приват &5x3"
+  DONATECASE_SOKR5_TEXT_#18:
+    - "&f蘿 &dТаинственный&f приват &5x3"
+  DONATECASE_SOKR5_TEXT_#19:
+    - "&f蘿 &cСфера Лучника &5x1"
+  DONATECASE_SOKR5_TEXT_#20:
+    - "&f蘿 &cРеликвия Нечести &5x1"
+  DONATECASE_SOKR5_TEXT_#21:
+    - "&f蘿 &aСосуд Опыта I &5x1"
+  DONATECASE_SOKR5_TEXT_#22:
+    - "&f蘿 &aСосуд Опыта II &5x1"
+  DONATECASE_SOKR5_TEXT_#23:
+    - "&f蘿 &cКамень Атаки &5x1"
+  DONATECASE_SOKR5_TEXT_#24:
+    - "&f蘿 &aПротивоядие &5x1"
+  DONATECASE_SOKR5_TEXT_#25:
+    - "&f蘿 &dРуна Моря &5x1"
+  DONATECASE_SOKR5_TEXT_#26:
+    - "&f蘿 &cОстанки Древнего &5x1"
+  DONATECASE_SOKR5_TEXT_#27:
+    - "&e➥ &fИгрок #F17934%player% &fполучил %groupdisplayname% &fоткрыв &fҾ Сокровищницу &64-го ур. &fҾ"
+  DONATECASE_SOKR5_TEXT_#28:
+    - "&f蘿 &cРеликвия Ярости &5x1"
+  DONATECASE_SOKR5_TEXT_#29:
+    - "&f蘿 &fЖелезо &5x192"
+  DONATECASE_SOKR5_TEXT_#30:
+    - "&f蘿 &fЯйцо Кадавра &5x3"
+  DONATECASE_SOKR5_TEXT_#31:
+    - "&f蘿 &fЯйцо Гаста &5x3"
+  DONATECASE_SOKR5_TEXT_#32:
+    - "&f蘿 &fЭндер жемчуг &5x32"
+  DONATECASE_SOKR5_TEXT_#33:
+    - "&f蘿 &fХорус &5x64"
+  DONATECASE_SOKR5_TEXT_#34:
+    - "&f蘿 &bМаяк &5x3"
+  DONATECASE_SOKR5_TEXT_#35:
+    - "&f蘿 &fЯйцо Скелета &5x3"
+  DONATECASE_SOKR5_TEXT_#36:
+    - "&f蘿 &fЯйцо Поборника &5x3"
+  DONATECASE_SOKR5_TEXT_#37:
+    - "&f蘿 &fЯйцо Паука &5x1"
+  DONATECASE_SOKR5_TEXT_#38:
+    - "&f蘿 &fЯйцо Эндермена &5x1"
+  DONATECASE_SOKR5_TEXT_#39:
+    - "&f蘿 &fЯйцо Слизня &5x1"
+  DONATECASE_SOKR5_TEXT_#40:
+    - "&f蘿 &eТотем Бессмертия &5x4"
+  DONATECASE_SOKR5_TEXT_#41:
+    - "&f蘿 &6Донатный &fприват &5x1"
+  DONATECASE_CASE_TEXT_#1:
+    - "&fॴ #C325A5Р#BD2CAAа#B833AFн#B23AB4г#AD40B9о#A747BEв#A24EC3ы#9C55C8й&f Ларец ॴ"
+  DONATECASE_CASE_TEXT_#2:
+    - "&fਕ &fУ вас нет ключей от этого #F66E4BЛарца&f! "
+  DONATECASE_CASE_TEXT_#3:
+    - "&fਕ &fПокупка #E7A466Ключей&f на сайте &e➥ &6(сайт) "
+  DONATECASE_CASE_TEXT_#4:
+    - "&fॴ #C325A5Р#BD2CAAа#B833AFн#B23AB4г#AD40B9о#A747BEв#A24EC3ы#9C55C8й&f Ларец ॴ;&fВы получили %groupdisplayname%"
+  DONATECASE_CASE_TEXT_#5:
+    - "&e➥ &fИгрок #F17934%player% &fполучил ранг %groupdisplayname% &fоткрыв &fॴ #C325A5Р#BD2CAAа#B833AFн#B23AB4г#AD40B9о#A747BEв#A24EC3ы#9C55C8й&f Ларец ॴ"
+  DONATECASE_CASE_TEXT_#6:
+    - "&r   &fВы уже имеете этот &dранг&f! Ваша привилегия осталась прежней."
+  DONATECASE_CASE_TEXT_#7:
+    - "&r   &fВы уже имеете этот &aранг&f! Ваша привилегия осталась прежней."
+  DONATECASE_CASE_TEXT_#8:
+    - "&r   &fВы уже имеете этот &eранг&f! Ваша привилегия осталась прежней."
+  DONATECASE_CASE_TEXT_#9:
+    - "&r   &fВы уже имеете этот &5ранг&f! Ваша привилегия осталась прежней."
+  DONATECASE_KRISTAL_TEXT_#1:
+    - "&fਈ #E37F21К#DC7B32р#D57742и#CE7253с#C76E64т#C06A75а#B86685л#B16296ь#AA5DA7н#A359B7ы#9C55C8й&f Ларец ਈ"
+  DONATECASE_KRISTAL_TEXT_#2:
+    - "&fਕ &fУ вас нет ключей от этого #F66E4BЛарца&f! "
+  DONATECASE_KRISTAL_TEXT_#3:
+    - "&fਕ &fПокупка #E7A466Ключей&f на сайте &e➥ &6(сайт) "
+  DONATECASE_KRISTAL_TEXT_#4:
+    - "&fਈ #E37F21К#DC7B32р#D57742и#CE7253с#C76E64т#C06A75а#B86685л#B16296ь#AA5DA7н#A359B7ы#9C55C8й&f Ларец ਈ;&fВы получили %groupdisplayname%"
+  DONATECASE_KRISTAL_TEXT_#5:
+    - "&e➥ &fИгрок #F17934%player% &fполучил %groupdisplayname% &fоткрыв &fਈ #E37F21К#DC7B32р#D57742и#CE7253с#C76E64т#C06A75а#B86685л#B16296ь#AA5DA7н#A359B7ы#9C55C8й&f Ларец ਈ"
 EN:
   TEST:
     - "text"
@@ -1532,3 +1920,391 @@ EN:
     - "&#21D3E3M&#3CB7DDa&#589BD7g&#8171CEi&#9C55C8c&f Chest&7- &#E37F21&l1x&f - &#DEC660&l30&f rub."
   DECENT_ANIMATION_DONATE3_STEP_#2:
     - "&fֆ &f150 &#E37F21C&#DB7A34r&#CB7159y&#C36C6Bs&#BC687Et&#B46390a&#A45AB5l&#9C55C8s&7- &#DEC660&l 550&f rub."
+  DONATECASE_MAG_TEXT_#1:
+    - "&fଅ #21D3E3#2FC5E0#3CB7DD#4AA9DA#589BD7#658DD4#737FD1#8171CE#8E63CB#9C55C8&f Magical Chest ଅ"
+  DONATECASE_MAG_TEXT_#2:
+    - "&fਕ &fYou don't have keys for this #F66E4BChest&f! "
+  DONATECASE_MAG_TEXT_#3:
+    - "&fਕ &fPurchase #E7A466Keys&f on the website &e➥ &6(site) "
+  DONATECASE_MAG_TEXT_#4:
+    - "&fॴ #21D3E3#2FC5E0#3CB7DD#4AA9DA#589BD7#658DD4#737FD1#8171CE#8E63CB#9C55C8&f Magical Chest ॴ"
+  DONATECASE_MAG_TEXT_#5:
+    - "&dShot &5x10"
+  DONATECASE_MAG_TEXT_#6:
+    - "&fॴ #21D3E3#2FC5E0#3CB7DD#4AA9DA#589BD7#658DD4#737FD1#8171CE#8E63CB#9C55C8&f Magical Chest ॴ;&fYou received %groupdisplayname%"
+  DONATECASE_MAG_TEXT_#7:
+    - "&e➥ &fPlayer #F17934%player% &freceived %groupdisplayname% &fby opening &fॴ #21D3E3#2FC5E0#3CB7DD#4AA9DA#589BD7#658DD4#737FD1#8171CE#8E63CB#9C55C8&f Magical Chest ॴ"
+  DONATECASE_MAG_TEXT_#8:
+    - "#EE9E50#ED9A51#EC9651#EB9352#EA8B53#E98753#E88354#E77F54#E67C55#E57855#E47456#E37056#E26857#E16558#E06158#DF5D59#DE5959 Ancient Warrior Helmet"
+  DONATECASE_MAG_TEXT_#9:
+    - "&eTotem &6x4"
+  DONATECASE_MAG_TEXT_#10:
+    - "#F37777#F37373#F36E6E#F36A6A#F46565#F46161#F45C5C#F45858#F45454#F44B4B#F54646#F54242#F53D3D#F53939 Lord's Chestplate "
+  DONATECASE_MAG_TEXT_#11:
+    - "#54DAF4#54D4F1#54CEEE#54C7EB#54C1E8#54BBE5#547DC6#5477C2#5471BF#546ABC#5464B9#545EB6 Knight's Leggings "
+  DONATECASE_MAG_TEXT_#12:
+    - "#DBF2F6#D7EDF6#D3E8F5#CFE3F5#CBDEF5#C7D9F4#C3D4F4#BBCBF4#B6C6F3#B2C1F3#AEBCF3#AAB7F2#A6B2F2#A2ADF2#9EA8F1#9AA3F1 Ranger Boots "
+  DONATECASE_MAG_TEXT_#13:
+    - "#80E5F6Guardian's Sword #7DDCF6#7BD3F7#78CAF7#73B8F8#71AFF9#6EA5F9#6C9CFA#6993FA#678AFB#6481FB#6278FC#5F6FFC "
+  DONATECASE_MAG_TEXT_#14:
+    - "#B8B7B5Miner's Pickaxe #BCB4AA#BFB19E#C3AE93#C6AB87 #CEA671#D1A365#D5A05A#D89D4E#DC9A43#DF9737#E3942C "
+  DONATECASE_SOKR1_TEXT_#1:
+    - "&fҾ Treasure Chest &6Level 1 &fҾ"
+  DONATECASE_SOKR1_TEXT_#2:
+    - "&fԈ &fYou don't have a key for this #F66E4BTreasure Chest&f! "
+  DONATECASE_SOKR1_TEXT_#3:
+    - "&fԉ &fTo get it, complete the quests of #FB6654Shon#FC635A#FD5F5F&r, &f "
+  DONATECASE_SOKR1_TEXT_#4:
+    - "&fԉ &fExchange it with the &6Chancellor,&f or win it &f "
+  DONATECASE_SOKR1_TEXT_#5:
+    - "&fԊ &fDuring &cserver events&f! &f "
+  DONATECASE_SOKR1_TEXT_#6:
+    - "&f蘿 &fGolden Apple &5x5"
+  DONATECASE_SOKR1_TEXT_#7:
+    - "&fҾ Treasure &6Level 1 &fҾ;&fYou received %groupdisplayname%"
+  DONATECASE_SOKR1_TEXT_#8:
+    - "&e➥ &fPlayer #F17934%player% &freceived %groupdisplayname% &fby opening &fҾ Treasure Chest &6Level 1 &fҾ"
+  DONATECASE_SOKR1_TEXT_#9:
+    - "&f蘿 &fGolden Apple &5x10"
+  DONATECASE_SOKR1_TEXT_#10:
+    - "&f蘿 &fDiamonds &5x20"
+  DONATECASE_SOKR1_TEXT_#11:
+    - "&f蘿 &fGold Ingot &5x40"
+  DONATECASE_SOKR1_TEXT_#12:
+    - "&f蘿 &fGold Ore &5x32"
+  DONATECASE_SOKR1_TEXT_#13:
+    - "&f蘿 &fEmerald &5x45"
+  DONATECASE_SOKR1_TEXT_#14:
+    - "&f蘿 &fNetherite Ingot &5x5"
+  DONATECASE_SOKR1_TEXT_#15:
+    - "&f蘿 &fFlask &5x3"
+  DONATECASE_SOKR1_TEXT_#16:
+    - "&f蘿 &7Basic&f claim &5x1"
+  DONATECASE_SOKR1_TEXT_#17:
+    - "&f蘿 &cArcher's Sphere &5x1"
+  DONATECASE_SOKR1_TEXT_#18:
+    - "&f蘿 &cRelic of the Unholy &5x1"
+  DONATECASE_SOKR1_TEXT_#19:
+    - "&f蘿 &fIron Ingot &5x128"
+  DONATECASE_SOKR1_TEXT_#20:
+    - "&f蘿 &fCadaver Egg &5x1"
+  DONATECASE_SOKR1_TEXT_#21:
+    - "&f蘿 &fGhast Egg &5x1"
+  DONATECASE_SOKR1_TEXT_#22:
+    - "&f蘿 &fBear Egg &5x1"
+  DONATECASE_SOKR1_TEXT_#23:
+    - "&f蘿 &fEnder Pearl &5x16"
+  DONATECASE_SOKR1_TEXT_#24:
+    - "&f蘿 &fChorus Fruit &5x64"
+  DONATECASE_SOKR2_TEXT_#1:
+    - "&fҾ Treasure Vault &6Level 2 &fҾ"
+  DONATECASE_SOKR2_TEXT_#2:
+    - "&fԈ &fYou don't have a key for this #F66E4BTreasure Vault&f! "
+  DONATECASE_SOKR2_TEXT_#3:
+    - "&fԉ &fTo obtain it, complete #FB6654Sh#FC635Aaw#FD5F5Fn's quests&r, &f "
+  DONATECASE_SOKR2_TEXT_#4:
+    - "&fԉ &fExchange it with &6the Chancellor,&f or win it &f "
+  DONATECASE_SOKR2_TEXT_#5:
+    - "&fԊ &fIn the server &cevents&f! &f "
+  DONATECASE_SOKR2_TEXT_#6:
+    - "&f蘿 &fGolden Apple &5x10"
+  DONATECASE_SOKR2_TEXT_#7:
+    - "&fҾ Treasure &6Level 2 &fҾ;&fYou received %groupdisplayname%"
+  DONATECASE_SOKR2_TEXT_#8:
+    - "&e➥ &fPlayer #F17934%player% &freceived %groupdisplayname% &fby opening &fҾ Treasure Vault &6Level 2 &fҾ"
+  DONATECASE_SOKR2_TEXT_#9:
+    - "&f蘿 &fGolden Apple &5x20"
+  DONATECASE_SOKR2_TEXT_#10:
+    - "&f蘿 &fDiamonds &5x35"
+  DONATECASE_SOKR2_TEXT_#11:
+    - "&f蘿 &fGold Ingot &5x64"
+  DONATECASE_SOKR2_TEXT_#12:
+    - "&f蘿 &fRaw Gold &5x64"
+  DONATECASE_SOKR2_TEXT_#13:
+    - "&f蘿 &fEmerald &5x64"
+  DONATECASE_SOKR2_TEXT_#14:
+    - "&f蘿 &fNetherite Ingot &5x15"
+  DONATECASE_SOKR2_TEXT_#15:
+    - "&f蘿 &fGoblet &5x8"
+  DONATECASE_SOKR2_TEXT_#16:
+    - "&f蘿 &7Basic&f claim &5x1"
+  DONATECASE_SOKR2_TEXT_#17:
+    - "&f蘿 &cAncient&f claim &5x1"
+  DONATECASE_SOKR2_TEXT_#18:
+    - "&f蘿 &cArcher's Sphere &5x1"
+  DONATECASE_SOKR2_TEXT_#19:
+    - "&f蘿 &cRelic of the Unholy &5x1"
+  DONATECASE_SOKR2_TEXT_#20:
+    - "&f蘿 &aExperience Vessel I &5x1"
+  DONATECASE_SOKR2_TEXT_#21:
+    - "&f蘿 &cAttack Stone &5x1"
+  DONATECASE_SOKR2_TEXT_#22:
+    - "&f蘿 &fIron &5x128"
+  DONATECASE_SOKR2_TEXT_#23:
+    - "&f蘿 &fCadaver Egg &5x1"
+  DONATECASE_SOKR2_TEXT_#24:
+    - "&f蘿 &fGhast Egg &5x1"
+  DONATECASE_SOKR2_TEXT_#25:
+    - "&f蘿 &fBear Egg &5x1"
+  DONATECASE_SOKR2_TEXT_#26:
+    - "&f蘿 &fEnder Pearl &5x16"
+  DONATECASE_SOKR2_TEXT_#27:
+    - "&f蘿 &fChorus &5x64"
+  DONATECASE_SOKR2_TEXT_#28:
+    - "&f蘿 &bBeacon &5x1"
+  DONATECASE_SOKR3_TEXT_#1:
+    - "&fҾ Treasure Chest &6Lvl. 3 &fҾ"
+  DONATECASE_SOKR3_TEXT_#2:
+    - "&fԈ &fYou don't have a key for this #F66E4BTreasure Chest&f! "
+  DONATECASE_SOKR3_TEXT_#3:
+    - "&fԉ &fTo obtain it, complete the #FB6654Sh#FC635Ao#FD5F5Fna&r quests, &f "
+  DONATECASE_SOKR3_TEXT_#4:
+    - "&fԉ &fExchange it with the &6Chancellor,&f or win it &f "
+  DONATECASE_SOKR3_TEXT_#5:
+    - "&fԊ &fIn &cevents&f of the server! &f "
+  DONATECASE_SOKR3_TEXT_#6:
+    - "&f蘿 &fGolden Apple &5x20"
+  DONATECASE_SOKR3_TEXT_#7:
+    - "&fҾ Treasure &63rd lvl. &fҾ;&fYou received %groupdisplayname%"
+  DONATECASE_SOKR3_TEXT_#8:
+    - "&e➥ &fPlayer #F17934%player% &freceived %groupdisplayname% &fby opening &fҾ Treasure Chest &63rd lvl. &fҾ"
+  DONATECASE_SOKR3_TEXT_#9:
+    - "&f蘿 &fGolden Apple &5x40"
+  DONATECASE_SOKR3_TEXT_#10:
+    - "&f蘿 &fDiamonds &5x64"
+  DONATECASE_SOKR3_TEXT_#11:
+    - "&f蘿 &fGold Ingot &5x64"
+  DONATECASE_SOKR3_TEXT_#12:
+    - "&f蘿 &fGold Ore &5x128"
+  DONATECASE_SOKR3_TEXT_#13:
+    - "&f蘿 &fEmerald &5x128"
+  DONATECASE_SOKR3_TEXT_#14:
+    - "&f蘿 &fNetherite Ingot &5x35"
+  DONATECASE_SOKR3_TEXT_#15:
+    - "&f蘿 &fExperience Bottle &5x12"
+  DONATECASE_SOKR3_TEXT_#16:
+    - "&f蘿 &7Regular&f claim &5x1"
+  DONATECASE_SOKR3_TEXT_#17:
+    - "&f蘿 &cAncient&f claim &5x1"
+  DONATECASE_SOKR3_TEXT_#18:
+    - "&f蘿 &dMysterious&f claim &5x1"
+  DONATECASE_SOKR3_TEXT_#19:
+    - "&f蘿 &cArcher's Sphere &5x1"
+  DONATECASE_SOKR3_TEXT_#20:
+    - "&f蘿 &cRelic of the Unholy &5x1"
+  DONATECASE_SOKR3_TEXT_#21:
+    - "&f蘿 &aExperience Vessel I &5x1"
+  DONATECASE_SOKR3_TEXT_#22:
+    - "&f蘿 &aExperience Vessel II &5x1"
+  DONATECASE_SOKR3_TEXT_#23:
+    - "&f蘿 &cAttack Stone &5x1"
+  DONATECASE_SOKR3_TEXT_#24:
+    - "&f蘿 &aAntidote &5x1"
+  DONATECASE_SOKR3_TEXT_#25:
+    - "&f蘿 &fIron &5x192"
+  DONATECASE_SOKR3_TEXT_#26:
+    - "&f蘿 &fCadaver Egg &5x1"
+  DONATECASE_SOKR3_TEXT_#27:
+    - "&f蘿 &fGhast Egg &5x1"
+  DONATECASE_SOKR3_TEXT_#28:
+    - "&f蘿 &fBear Egg &5x1"
+  DONATECASE_SOKR3_TEXT_#29:
+    - "&f蘿 &fEnder Pearl &5x16"
+  DONATECASE_SOKR3_TEXT_#30:
+    - "&f蘿 &fChorus Fruit &5x64"
+  DONATECASE_SOKR3_TEXT_#31:
+    - "&f蘿 &bBeacon &5x1"
+  DONATECASE_SOKR3_TEXT_#32:
+    - "&f蘿 &fSkeleton Spawn Egg &5x1"
+  DONATECASE_SOKR3_TEXT_#33:
+    - "&f蘿 &fVindicator Spawn Egg &5x1"
+  DONATECASE_SOKR4_TEXT_#1:
+    - "&fҾ Treasure Chest &6level 4 &fҾ"
+  DONATECASE_SOKR4_TEXT_#2:
+    - "&fԈ &fYou don't have a key to this #F66E4BTreasure Chest&f! "
+  DONATECASE_SOKR4_TEXT_#3:
+    - "&fԉ &fTo obtain it, complete #FB6654Sh#FC635Aaw#FD5F5Fn's quests&r, &f "
+  DONATECASE_SOKR4_TEXT_#4:
+    - "&fԉ &fExchange it with the &6Chancellor,&f or win it &f "
+  DONATECASE_SOKR4_TEXT_#5:
+    - "&fԊ &fIn the &cevents&f of the server! &f "
+  DONATECASE_SOKR4_TEXT_#6:
+    - "&f蘿 &fGolden Apple &5x30"
+  DONATECASE_SOKR4_TEXT_#7:
+    - "&fҾ Treasure &6level 4 &fҾ;&fYou received %groupdisplayname%"
+  DONATECASE_SOKR4_TEXT_#8:
+    - "&e➥ &fPlayer #F17934%player% &freceived %groupdisplayname% &fby opening &fҾ Treasure Chest &6level 4 &fҾ"
+  DONATECASE_SOKR4_TEXT_#9:
+    - "&f蘿 &fGolden Apple &5x40"
+  DONATECASE_SOKR4_TEXT_#10:
+    - "&f蘿 &fDiamonds &5x64"
+  DONATECASE_SOKR4_TEXT_#11:
+    - "&f蘿 &fGold Ingot &5x128"
+  DONATECASE_SOKR4_TEXT_#12:
+    - "&f蘿 &fRaw Gold &5x128"
+  DONATECASE_SOKR4_TEXT_#13:
+    - "&f蘿 &fEmerald &5x128"
+  DONATECASE_SOKR4_TEXT_#14:
+    - "&f蘿 &fNetherite Ingot &5x45"
+  DONATECASE_SOKR4_TEXT_#15:
+    - "&f蘿 &fShot &5x20"
+  DONATECASE_SOKR4_TEXT_#16:
+    - "&f蘿 &7Common&f claim &5x1"
+  DONATECASE_SOKR4_TEXT_#17:
+    - "&f蘿 &cAncient&f claim &5x1"
+  DONATECASE_SOKR4_TEXT_#18:
+    - "&f蘿 &dMysterious&f claim &5x1"
+  DONATECASE_SOKR4_TEXT_#19:
+    - "&f蘿 &cArcher's Sphere &5x1"
+  DONATECASE_SOKR4_TEXT_#20:
+    - "&f蘿 &cRelic of the Unholy &5x1"
+  DONATECASE_SOKR4_TEXT_#21:
+    - "&f蘿 &aExperience Vessel I &5x1"
+  DONATECASE_SOKR4_TEXT_#22:
+    - "&f蘿 &aExperience Vessel II &5x1"
+  DONATECASE_SOKR4_TEXT_#23:
+    - "&f蘿 &cAttack Stone &5x1"
+  DONATECASE_SOKR4_TEXT_#24:
+    - "&f蘿 &aAntidote &5x1"
+  DONATECASE_SOKR4_TEXT_#25:
+    - "&f蘿 &dSea Rune &5x1"
+  DONATECASE_SOKR4_TEXT_#26:
+    - "&f蘿 &cAncient Remains &5x1"
+  DONATECASE_SOKR4_TEXT_#27:
+    - "&f蘿 &fIron &5x192"
+  DONATECASE_SOKR4_TEXT_#28:
+    - "&f蘿 &fCadaver Egg &5x1"
+  DONATECASE_SOKR4_TEXT_#29:
+    - "&f蘿 &fGhast Egg &5x1"
+  DONATECASE_SOKR4_TEXT_#30:
+    - "&f蘿 &fEnder Pearl &5x32"
+  DONATECASE_SOKR4_TEXT_#31:
+    - "&f蘿 &fChorus &5x64"
+  DONATECASE_SOKR4_TEXT_#32:
+    - "&f蘿 &bBeacon &5x1"
+  DONATECASE_SOKR4_TEXT_#33:
+    - "&f蘿 &fSkeleton Egg &5x1"
+  DONATECASE_SOKR4_TEXT_#34:
+    - "&f蘿 &fVindicator Spawn Egg &5x1"
+  DONATECASE_SOKR4_TEXT_#35:
+    - "&f蘿 &fSpider Spawn Egg &5x1"
+  DONATECASE_SOKR4_TEXT_#36:
+    - "&f蘿 &fEnderman Spawn Egg &5x1"
+  DONATECASE_SOKR4_TEXT_#37:
+    - "&f蘿 &fSlime Spawn Egg &5x1"
+  DONATECASE_SOKR4_TEXT_#38:
+    - "&f蘿 &eTotem of Undying &5x1"
+  DONATECASE_SOKR4_TEXT_#39:
+    - "&fҾ Treasure &6Lv. 5 &fҾ;&fYou received %groupdisplayname%"
+  DONATECASE_SOKR4_TEXT_#40:
+    - "&e➥ &fPlayer #F17934%player% &freceived %groupdisplayname% &fby opening &fҾ Treasure &6Lv. 5 &fҾ"
+  DONATECASE_SOKR5_TEXT_#1:
+    - "&fҾ Treasure &6Lv. 5 &fҾ"
+  DONATECASE_SOKR5_TEXT_#2:
+    - "&fԈ &fYou don't have a key for this #F66E4BTreasure&f!"
+  DONATECASE_SOKR5_TEXT_#3:
+    - "&fԉ &fTo get it, complete the quests #FB6654Sh#FC635Ao#FD5F5Fna&r, &f"
+  DONATECASE_SOKR5_TEXT_#4:
+    - "&fԉ &fExchange it at the &6Chancellor,&f or win it &f"
+  DONATECASE_SOKR5_TEXT_#5:
+    - "&fԊ &fIn the server's &cevents&f! &f"
+  DONATECASE_SOKR5_TEXT_#6:
+    - "&f蘿 &fGolden Apple &5x40"
+  DONATECASE_SOKR5_TEXT_#7:
+    - "&fҾ Treasure &6Level 5 &fҾ;&fYou received %groupdisplayname%"
+  DONATECASE_SOKR5_TEXT_#8:
+    - "&e➥ &fPlayer #F17934%player% &freceived %groupdisplayname% &fby opening &fҾ Treasure Chest &6Level 5 &fҾ"
+  DONATECASE_SOKR5_TEXT_#9:
+    - "&f蘿 &fGolden Apple &5x50"
+  DONATECASE_SOKR5_TEXT_#10:
+    - "&f蘿 &fDiamonds &5x128"
+  DONATECASE_SOKR5_TEXT_#11:
+    - "&f蘿 &fGold Ingot &5x128"
+  DONATECASE_SOKR5_TEXT_#12:
+    - "&f蘿 &fRaw Gold &5x128"
+  DONATECASE_SOKR5_TEXT_#13:
+    - "&f蘿 &fEmerald &5x128"
+  DONATECASE_SOKR5_TEXT_#14:
+    - "&f蘿 &fNetherite Ingot &5x64"
+  DONATECASE_SOKR5_TEXT_#15:
+    - "&f蘿 &fPotion &5x30"
+  DONATECASE_SOKR5_TEXT_#16:
+    - "&f蘿 &7Regular&f private &5x3"
+  DONATECASE_SOKR5_TEXT_#17:
+    - "&f蘿 &cAncient&f private &5x3"
+  DONATECASE_SOKR5_TEXT_#18:
+    - "&f蘿 &dMysterious&f claim &5x3"
+  DONATECASE_SOKR5_TEXT_#19:
+    - "&f蘿 &cArcher's Sphere &5x1"
+  DONATECASE_SOKR5_TEXT_#20:
+    - "&f蘿 &cRelic of the Unholy &5x1"
+  DONATECASE_SOKR5_TEXT_#21:
+    - "&f蘿 &aExperience Vessel I &5x1"
+  DONATECASE_SOKR5_TEXT_#22:
+    - "&f蘿 &aExperience Vessel II &5x1"
+  DONATECASE_SOKR5_TEXT_#23:
+    - "&f蘿 &cAttack Stone &5x1"
+  DONATECASE_SOKR5_TEXT_#24:
+    - "&f蘿 &aAntidote &5x1"
+  DONATECASE_SOKR5_TEXT_#25:
+    - "&f蘿 &dSea Rune &5x1"
+  DONATECASE_SOKR5_TEXT_#26:
+    - "&f蘿 &cAncient Remains &5x1"
+  DONATECASE_SOKR5_TEXT_#27:
+    - "&e➥ &fPlayer #F17934%player% &freceived %groupdisplayname% &fupon opening &fҾ Treasure &6level 4 &fҾ"
+  DONATECASE_SOKR5_TEXT_#28:
+    - "&f蘿 &cRelic of Fury &5x1"
+  DONATECASE_SOKR5_TEXT_#29:
+    - "&f蘿 &fIron &5x192"
+  DONATECASE_SOKR5_TEXT_#30:
+    - "&f蘿 &fCadaver Spawn Egg &5x3"
+  DONATECASE_SOKR5_TEXT_#31:
+    - "&f蘿 &fGhast Spawn Egg &5x3"
+  DONATECASE_SOKR5_TEXT_#32:
+    - "&f蘿 &fEnder Pearl &5x32"
+  DONATECASE_SOKR5_TEXT_#33:
+    - "&f蘿 &fChorus Fruit &5x64"
+  DONATECASE_SOKR5_TEXT_#34:
+    - "&f蘿 &bBeacon &5x3"
+  DONATECASE_SOKR5_TEXT_#35:
+    - "&f蘿 &fSkeleton Spawn Egg &5x3"
+  DONATECASE_SOKR5_TEXT_#36:
+    - "&f蘿 &fVindicator Spawn Egg &5x3"
+  DONATECASE_SOKR5_TEXT_#37:
+    - "&f蘿 &fSpider Spawn Egg &5x1"
+  DONATECASE_SOKR5_TEXT_#38:
+    - "&f蘿 &fEnderman Spawn Egg &5x1"
+  DONATECASE_SOKR5_TEXT_#39:
+    - "&f蘿 &fSlime Spawn Egg &5x1"
+  DONATECASE_SOKR5_TEXT_#40:
+    - "&f蘿 &eTotem of Undying &5x4"
+  DONATECASE_SOKR5_TEXT_#41:
+    - "&f蘿 &6Donator &fclaim &5x1"
+  DONATECASE_CASE_TEXT_#1:
+    - "&fॴ #C325A5Ranked#BD2CAA#B833AF#B23AB4#AD40B9#A747BE#A24EC3#9C55C8&f Chest ॴ"
+  DONATECASE_CASE_TEXT_#2:
+    - "&fਕ &fYou don't have keys for this #F66E4BChest&f! "
+  DONATECASE_CASE_TEXT_#3:
+    - "&fਕ &fPurchase #E7A466Keys&f on the site &e➥ &6(site) "
+  DONATECASE_CASE_TEXT_#4:
+    - "&fॴ #C325A5Ranked#BD2CAA#B833AF#B23AB4#AD40B9#A747BE#A24EC3#9C55C8&f Chest ॴ;&fYou received %groupdisplayname%"
+  DONATECASE_CASE_TEXT_#5:
+    - "&e➥ &fPlayer #F17934%player% &freceived the rank %groupdisplayname% &fby opening &fॴ #C325A5Ranked#BD2CAA#B833AF#B23AB4#AD40B9#A747BE#A24EC3#9C55C8&f Chest ॴ"
+  DONATECASE_CASE_TEXT_#6:
+    - "&r   &fYou already have this &drank&f! Your privilege remains unchanged."
+  DONATECASE_CASE_TEXT_#7:
+    - "&r   &fYou already have this &arank&f! Your privilege remains unchanged."
+  DONATECASE_CASE_TEXT_#8:
+    - "&r   &fYou already have this &erank&f! Your privilege remains unchanged."
+  DONATECASE_CASE_TEXT_#9:
+    - "&r   &fYou already have this &5rank&f! Your privilege remains unchanged."
+  DONATECASE_KRISTAL_TEXT_#1:
+    - "&fਈ #E37F21Crystal#DC7B32#D57742#CE7253#C76E64#C06A75#B86685#B16296#AA5DA7#A359B7#9C55C8&f Chest ਈ"
+  DONATECASE_KRISTAL_TEXT_#2:
+    - "&fਕ &fYou don't have keys for this #F66E4BChest&f! "
+  DONATECASE_KRISTAL_TEXT_#3:
+    - "&fਕ &fPurchase #E7A466Keys&f on the site &e➥ &6(site) "
+  DONATECASE_KRISTAL_TEXT_#4:
+    - "&fਈ #E37F21C#DC7B32r#D57742y#CE7253s#C76E64t#C06A75a#B86685l#B16296 #AA5DA7#A359B7#9C55C8&f Chest ਈ;&fYou received %groupdisplayname%"
+  DONATECASE_KRISTAL_TEXT_#5:
+    - "&e➥ &fPlayer #F17934%player% &freceived %groupdisplayname% &fopening &fਈ #E37F21C#DC7B32r#D57742y#CE7253s#C76E64t#C06A75a#B86685l#B16296#AA5DA7#A359B7#9C55C8&f Chest ਈ"
