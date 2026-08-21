@@ -1809,6 +1809,252 @@ RU:
     - "&7Нет"
   CLANS_MAIN_PAPI_NO_TOP:
     - "&7Еще нет"
+  CLANS_GUI_ADMIN_MENU_TITLE:
+    - "&cАдминистратор клана"
+  CLANS_GUI_ADMIN_MENU_ITEMS_CLAN_SETTINGS_NAME:
+    - "&eНастройки клана"
+  CLANS_GUI_ADMIN_MENU_ITEMS_CLAN_SETTINGS_LORE_#2:
+    - " &8> &fНажмите, чтобы открыть"
+  CLANS_GUI_ADMIN_MENU_ITEMS_CLAN_PERKS_NAME:
+    - "&eКлановые льготы"
+  CLANS_GUI_ADMIN_MENU_ITEMS_CLAN_PERKS_LORE_#2:
+    - " &8>&f Нажмите, чтобы открыть"
+  CLANS_GUI_ADMIN_MENU_ITEMS_BACK_NAME:
+    - "&c<- вернуться "
+  CLANS_GUI_BASES_TITLE:
+    - "&eКлановые базы"
+  CLANS_GUI_BASES_TP_TO_BASE:
+    - "&aЛКМ&f, для телепорта"
+  CLANS_GUI_BASES_DELETE_BASE:
+    - "&cПКМ&f, удалить базу"
+  CLANS_GUI_BASES_ITEMS_ACCESSIBLE_SLOT_NAME:
+    - "&aДоступный слот"
+  CLANS_GUI_BASES_ITEMS_NOT_AVAILABLE_SLOT_NAME:
+    - "&cНедоступный слот"
+  CLANS_GUI_BASES_ITEMS_NOT_AVAILABLE_SLOT_LORE_#2:
+    - " &fУлучшите клан "
+  CLANS_GUI_BASES_ITEMS_NOT_AVAILABLE_SLOT_LORE_#3:
+    - " &fЧтобы получить слот! "
+  CLANS_GUI_BASES_ITEMS_BACK_NAME:
+    - "&c<- вернуться "
+  CLANS_GUI_CLAN_LIST_TITLE:
+    - "&eСписок кланов"
+  CLANS_GUI_CLAN_LIST_SORT_BY_#1:
+    - "&9ЛВЛ"
+  CLANS_GUI_CLAN_LIST_SORT_BY_#2:
+    - "&bУчастники"
+  CLANS_GUI_CLAN_LIST_SORT_BY_#3:
+    - "&6Золото"
+  CLANS_GUI_CLAN_LIST_SORT_BY_#4:
+    - "&cУбийства"
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#2:
+    - " &fЛидер клана: &a{clan_leader} "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#3:
+    - " &fЧлены клана: &b{clan_members}&f/{clan_members_max} "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#5:
+    - " &fКлановый уровень: &9{clan_level} ⭐ "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#6:
+    - " &fКлановый тег: {clan_tag} "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#7:
+    - " &fКлан K/D: &a{clan_kills}&f/&c{clan_deaths} &7({clan_kdr}) ⚔ "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#9:
+    - " &fКлановые монеты: &6{clan_coins} ⛃ "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#10:
+    - " &fКлановый множитель XP: &9x{clan_multiplier_xp} ⚡ "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#12:
+    - "&6Нажмите, чтобы присоединиться к этому клану! "
+  CLANS_GUI_CLAN_LIST_ITEMS_SORT_CLANS_NAME:
+    - "&eСортировать"
+  CLANS_GUI_CLAN_LIST_ITEMS_SORT_CLANS_LORE_#2:
+    - "&8>&f Сортировать по: {sort}"
+  CLANS_GUI_CLAN_LIST_ITEMS_SORT_CLANS_LORE_#3:
+    - "&8>&f ПКМ, сбросить сортировку "
+  CLANS_GUI_MAIN_TITLE:
+    - "&eКлан &7- {clan_name}"
+  CLANS_GUI_MAIN_PROMOTE_PLAYER:
+    - "&aЩелкните левой кнопкой мыши, чтобы перейти к {rank}"
+  CLANS_GUI_MAIN_DEMOTE_PLAYER:
+    - "&cЩелкните левой кнопкой мыши, чтобы понизить значение до {rank}"
+  CLANS_GUI_MAIN_KICK_PLAYER:
+    - "&cЩелкните правой кнопкой мыши, чтобы выйти из клана"
+  CLANS_GUI_MAIN_SORT_BY_#1:
+    - "&eРангу"
+  CLANS_GUI_MAIN_SORT_BY_#2:
+    - "&6Золоту"
+  CLANS_GUI_MAIN_SORT_BY_#4:
+    - "&cКилам"
+  CLANS_GUI_MAIN_SORT_BY_#5:
+    - "&bОнлайну"
+  CLANS_GUI_MAIN_SORT_BY_#6:
+    - "&7Оффлайну"
+  CLANS_GUI_MAIN_ITEMS_ADMIN_MENU_NAME:
+    - "&eНастройки клана"
+  CLANS_GUI_MAIN_ITEMS_ADMIN_MENU_LORE_#2:
+    - " &fНастройки и улучшения клана"
+  CLANS_GUI_MAIN_ITEMS_ADMIN_MENU_LORE_#4:
+    - " &8> &fНажмите, чтобы &bоткрыть&f меню"
+  CLANS_GUI_MAIN_ITEMS_PLAYER_LORE_#2:
+    - " &fРанг: {rank}"
+  CLANS_GUI_MAIN_ITEMS_PLAYER_LORE_#3:
+    - " &fМонеты: &6{coins} ⛃"
+  CLANS_GUI_MAIN_ITEMS_PLAYER_LORE_#8:
+    - " &fПоследний раз в Сети: &6{last} ⌛"
+  CLANS_GUI_MAIN_ITEMS_PLAYER_LORE_#9:
+    - " &fПрисоединился: &6{joined} ⌛"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_NAME:
+    - "&eИнформация о клане"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#2:
+    - " &fНазвание: {clan_name}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#3:
+    - " &fТег: {clan_tag}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#5:
+    - " &fЛидер: &a{clan_leader}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#7:
+    - " &fЛевел: &e{clan_level} ⭐"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#9:
+    - " &fПрогресс: {progress} &7{percent}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#11:
+    - " &fМонеты: &6{clan_coins} ⛃"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#12:
+    - " &fМножитель XP: &9x{clan_multiplier_ex}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#14:
+    - " &fКлановое K/D: &a{clan_kills}&f/&c{clan_deaths} &7({clan_kdr}) ⚔"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#16:
+    - " &fКлановый тип: {clan_type}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#17:
+    - " &fКлановое PVP: {clan_pvp}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#19:
+    - " &fСоздан: &b{clan_created} ⌛ "
+  CLANS_GUI_MAIN_ITEMS_CLAN_MEMBERS_NAME:
+    - "&eУчастник клана"
+  CLANS_GUI_MAIN_ITEMS_CLAN_MEMBERS_LORE_#2:
+    - " &fУчастники: &b{clan_members}&f/{clan_members_max} "
+  CLANS_GUI_MAIN_ITEMS_CLAN_MEMBERS_LORE_#3:
+    - " &fОфицеры: &e{clan_officers} "
+  CLANS_GUI_MAIN_ITEMS_CLAN_MEMBERS_LORE_#5:
+    - " &fОнлайн: &6{clan_online} "
+  CLANS_GUI_MAIN_ITEMS_CLAN_POSITION_NAME:
+    - "&eПозиция в таблице лидеров"
+  CLANS_GUI_MAIN_ITEMS_CLAN_POSITION_LORE_#2:
+    - " &fПо уровню: &9{clan_pos_level} ⭐ "
+  CLANS_GUI_MAIN_ITEMS_CLAN_POSITION_LORE_#3:
+    - " &fПо золоту: &6{clan_pos_coins} ⛃ "
+  CLANS_GUI_MAIN_ITEMS_CLAN_POSITION_LORE_#4:
+    - " &fПо убийствам: &c{clan_pos_kills} ☠ "
+  CLANS_GUI_MAIN_ITEMS_CLAN_BASES_NAME:
+    - "&eКлановые базы"
+  CLANS_GUI_MAIN_ITEMS_CLAN_BASES_LORE_#2:
+    - " &fБазы: &6{clan_bases}&7/{clan_bases_max} "
+  CLANS_GUI_MAIN_ITEMS_CLAN_BASES_LORE_#4:
+    - " &8>&f Нажмите, чтобы &bоткрыть&f меню "
+  CLANS_GUI_MAIN_ITEMS_SORT_PLAYERS_NAME:
+    - "&eСортировать"
+  CLANS_GUI_MAIN_ITEMS_SORT_PLAYERS_LORE_#2:
+    - " &8>&f Отсортировать по: {sort} "
+  CLANS_GUI_MAIN_ITEMS_SORT_PLAYERS_LORE_#3:
+    - " &8> &bПКМ&f, сбросить сортировку "
+  CLANS_GUI_NO_CLAN_TITLE:
+    - "&cСоздай свой клан!"
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_NAME:
+    - " &6У тебя нет клана! "
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_LORE_#2:
+    - " &fСоздай свой клан! "
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_LORE_#3:
+    - " &fЧтобы получить &bдоступ "
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_LORE_#4:
+    - " &fКо всем функциям! "
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_LORE_#6:
+    - " &fСтоимость: &610,000&f золота "
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_LORE_#8:
+    - " &bНажмите, чтобы создать клан "
+  CLANS_GUI_NO_CLAN_ITEMS_ALL_CLANS_NAME:
+    - "&6Все кланы"
+  CLANS_GUI_NO_CLAN_ITEMS_ALL_CLANS_LORE_#2:
+    - " &fНажмите, чтобы открыть меню "
+  CLANS_GUI_NO_CLAN_ITEMS_CLAN_HELP_NAME:
+    - "&6Клановые приказы"
+  CLANS_GUI_NO_CLAN_ITEMS_CLAN_HELP_LORE_#2:
+    - " &fКликни, чтобы просмотреть "
+  CLANS_GUI_NO_CLAN_ITEMS_CLAN_HELP_LORE_#3:
+    - " &fсписок &bкоманд "
+  CLANS_GUI_PERKS_TITLE:
+    - "&6Клановые льготы"
+  CLANS_GUI_PERKS_ITEMS_COUNT_MEMBER_NAME:
+    - "&eЭлемент подсчета"
+  CLANS_GUI_PERKS_ITEMS_COUNT_MEMBER_LORE_#2:
+    - " &fТекущий: &6{current_members}&7/&4{max_members}"
+  CLANS_GUI_PERKS_ITEMS_COUNT_BASES_NAME:
+    - "&eОснования для подсчета"
+  CLANS_GUI_PERKS_ITEMS_COUNT_BASES_LORE_#2:
+    - " &fТекущий: &6{current_bases}&7/&4{max_bases}"
+  CLANS_GUI_PERKS_ITEMS_CLAN_TAG_NAME:
+    - "&eКлановый ТЕГ"
+  CLANS_GUI_PERKS_ITEMS_CLAN_TAG_LORE_#2:
+    - " &fПозволяет вам создать пользовательский"
+  CLANS_GUI_PERKS_ITEMS_CLAN_TAG_LORE_#3:
+    - " &fтег для вашего клана."
+  CLANS_GUI_PERKS_ITEMS_CLAN_MOTD_NAME:
+    - "&eКлан MOTD"
+  CLANS_GUI_PERKS_ITEMS_CLAN_MOTD_LORE_#2:
+    - " &fПозволяет вам настроить приветственное сообщение"
+  CLANS_GUI_PERKS_ITEMS_CLAN_MOTD_LORE_#3:
+    - " &fкогда игрок присоединяется к серверу."
+  CLANS_GUI_PERKS_ITEMS_CLAN_MULTIPLIER_NAME:
+    - "&eКлановый множитель"
+  CLANS_GUI_PERKS_ITEMS_CLAN_MULTIPLIER_LORE_#2:
+    - " &fУвеличивает численность клана XP"
+  CLANS_GUI_PERKS_ITEMS_CLAN_MULTIPLIER_LORE_#3:
+    - " &fзаработанные в результате различных видов деятельности."
+  CLANS_GUI_PERKS_ITEMS_CLAN_MULTIPLIER_LORE_#5:
+    - " &fТекущий: &9x{multiplier_xp}"
+  CLANS_GUI_PERKS_ITEMS_BACK_NAME:
+    - "&c<- вернуться "
+  CLANS_GUI_SETTINGS_TITLE:
+    - "&cНастройки клана"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PUBLIC_NAME:
+    - "&eКлановый тип: &6Публичный"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PUBLIC_LORE_#2:
+    - " &fВ &6Публичном&7 режиме, игроки могут"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PUBLIC_LORE_#3:
+    - " &fсвободно вступайте в свой клан."
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PUBLIC_LORE_#5:
+    - " &8>&f Нажмите, чтобы сделать &bПриватным"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PRIVATE_NAME:
+    - "&eКлановый тип: &bПриватный"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PRIVATE_LORE_#2:
+    - " &fВ &bПриватном&7 режиме, игроки не могут"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PRIVATE_LORE_#3:
+    - " &fвступайте в свой клан без приглашения."
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PRIVATE_LORE_#5:
+    - " &f> Нажмите, чтобы сделать его &6Публичным"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_ON_NAME:
+    - "&eКлан PVP: &6Включен"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_ON_LORE_#2:
+    - " &fУчастники клана могут нанести урон"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_ON_LORE_#3:
+    - " &fдруг с другом в бою."
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_ON_LORE_#5:
+    - " &8>&f Нажмите, чтобы &bвыключить"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_OFF_NAME:
+    - "&eКлан PVP: &bВыключен"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_OFF_LORE_#2:
+    - " &fУчастники клана не могут"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_OFF_LORE_#3:
+    - " &fнаносят ущерб друг другу."
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_OFF_LORE_#5:
+    - " &8>&f Нажмите, чтобы &6включить"
+  CLANS_GUI_SETTINGS_ITEMS_DISBAND_CLAN_NAME:
+    - "&c&lРасформировать клан"
+  CLANS_GUI_SETTINGS_ITEMS_DISBAND_CLAN_LORE_#2:
+    - " &fЭто приведет к необратимому удалению"
+  CLANS_GUI_SETTINGS_ITEMS_DISBAND_CLAN_LORE_#3:
+    - " &fваш клан и все его данные."
+  CLANS_GUI_SETTINGS_ITEMS_DISBAND_CLAN_LORE_#5:
+    - " &c⚠ &cЭто действие не может быть отменено!"
+  CLANS_GUI_SETTINGS_ITEMS_DISBAND_CLAN_LORE_#7:
+    - " &8> &fНажмите, чтобы подтвердить расформирование"
+  CLANS_GUI_SETTINGS_ITEMS_BACK_NAME:
+    - "&c<- вернуться "
 EN:
   TEST:
     - "text"
@@ -3616,3 +3862,249 @@ EN:
     - "&7None"
   CLANS_MAIN_PAPI_NO_TOP:
     - "&7No results yet"
+  CLANS_GUI_ADMIN_MENU_TITLE:
+    - "&cClan Administrator"
+  CLANS_GUI_ADMIN_MENU_ITEMS_CLAN_SETTINGS_NAME:
+    - "&eClan Settings"
+  CLANS_GUI_ADMIN_MENU_ITEMS_CLAN_SETTINGS_LORE_#2:
+    - " &8> &fClick to open"
+  CLANS_GUI_ADMIN_MENU_ITEMS_CLAN_PERKS_NAME:
+    - "&eClan Perks"
+  CLANS_GUI_ADMIN_MENU_ITEMS_CLAN_PERKS_LORE_#2:
+    - " &8>&f Click to open"
+  CLANS_GUI_ADMIN_MENU_ITEMS_BACK_NAME:
+    - "&c<- Back "
+  CLANS_GUI_BASES_TITLE:
+    - "&eClan Bases"
+  CLANS_GUI_BASES_TP_TO_BASE:
+    - "&aLMB&f, to teleport"
+  CLANS_GUI_BASES_DELETE_BASE:
+    - "&cRMB&f, remove base"
+  CLANS_GUI_BASES_ITEMS_ACCESSIBLE_SLOT_NAME:
+    - "&aAvailable slot"
+  CLANS_GUI_BASES_ITEMS_NOT_AVAILABLE_SLOT_NAME:
+    - "&cUnavailable slot"
+  CLANS_GUI_BASES_ITEMS_NOT_AVAILABLE_SLOT_LORE_#2:
+    - " &fUpgrade your clan "
+  CLANS_GUI_BASES_ITEMS_NOT_AVAILABLE_SLOT_LORE_#3:
+    - " &fTo get a slot! "
+  CLANS_GUI_BASES_ITEMS_BACK_NAME:
+    - "&c<- Back "
+  CLANS_GUI_CLAN_LIST_TITLE:
+    - "&eClan List"
+  CLANS_GUI_CLAN_LIST_SORT_BY_#1:
+    - "&9LVL"
+  CLANS_GUI_CLAN_LIST_SORT_BY_#2:
+    - "&bMembers"
+  CLANS_GUI_CLAN_LIST_SORT_BY_#3:
+    - "&6Gold"
+  CLANS_GUI_CLAN_LIST_SORT_BY_#4:
+    - "&cKills"
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#2:
+    - " &fClan leader: &a{clan_leader} "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#3:
+    - " &fClan members: &b{clan_members}&f/{clan_members_max} "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#5:
+    - " &fClan level: &9{clan_level} ⭐ "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#6:
+    - " &fClan tag: {clan_tag} "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#7:
+    - " &fClan K/D: &a{clan_kills}&f/&c{clan_deaths} &7({clan_kdr}) ⚔ "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#9:
+    - " &fClan coins: &6{clan_coins} ⛃ "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#10:
+    - " &fClan XP multiplier: &9x{clan_multiplier_xp} ⚡ "
+  CLANS_GUI_CLAN_LIST_ITEMS_CLAN_ACTION_LORE_#12:
+    - "&6Click to join this clan! "
+  CLANS_GUI_CLAN_LIST_ITEMS_SORT_CLANS_NAME:
+    - "&eSort"
+  CLANS_GUI_CLAN_LIST_ITEMS_SORT_CLANS_LORE_#2:
+    - "&8>&f Sort by: {sort}"
+  CLANS_GUI_CLAN_LIST_ITEMS_SORT_CLANS_LORE_#3:
+    - "&8>&f RMB, reset sorting "
+  CLANS_GUI_MAIN_TITLE:
+    - "&eClan &7- {clan_name}"
+  CLANS_GUI_MAIN_PROMOTE_PLAYER:
+    - "&aLMB to go to {rank}"
+  CLANS_GUI_MAIN_DEMOTE_PLAYER:
+    - "&cLMB to decrease value to {rank}"
+  CLANS_GUI_MAIN_KICK_PLAYER:
+    - "&cRMB to leave clan"
+  CLANS_GUI_MAIN_SORT_BY_#1:
+    - "&eRank"
+  CLANS_GUI_MAIN_SORT_BY_#2:
+    - "&6Gold"
+  CLANS_GUI_MAIN_SORT_BY_#4:
+    - "&cKills"
+  CLANS_GUI_MAIN_SORT_BY_#5:
+    - "&bOnline"
+  CLANS_GUI_MAIN_SORT_BY_#6:
+    - "&7Offline"
+  CLANS_GUI_MAIN_ITEMS_ADMIN_MENU_NAME:
+    - "&eClan settings"
+  CLANS_GUI_MAIN_ITEMS_ADMIN_MENU_LORE_#2:
+    - " &fClan settings & upgrades"
+  CLANS_GUI_MAIN_ITEMS_ADMIN_MENU_LORE_#4:
+    - " &8> &fClick to &bopen&f menu"
+  CLANS_GUI_MAIN_ITEMS_PLAYER_LORE_#2:
+    - " &fRank: {rank}"
+  CLANS_GUI_MAIN_ITEMS_PLAYER_LORE_#3:
+    - " &fCoins: &6{coins} ⛃"
+  CLANS_GUI_MAIN_ITEMS_PLAYER_LORE_#8:
+    - " &fLast online: &6{last} ⌛"
+  CLANS_GUI_MAIN_ITEMS_PLAYER_LORE_#9:
+    - " &fJoined: &6{joined} ⌛"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_NAME:
+    - "&eClan info"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#2:
+    - " &fName: {clan_name}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#3:
+    - " &fTag: {clan_tag}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#5:
+    - " &fLeader: &a{clan_leader}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#7:
+    - " &fLevel: &e{clan_level} ⭐"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#9:
+    - " &fProgress: {progress} &7{percent}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#11:
+    - " &fCoins: &6{clan_coins} ⛃"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#12:
+    - " &fXP multiplier: &9x{clan_multiplier_ex}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#14:
+    - " &fClan K/D: &a{clan_kills}&f/&c{clan_deaths} &7({clan_kdr}) ⚔"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#16:
+    - " &fClan type: {clan_type}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#17:
+    - " &fClan PvP: {clan_pvp}"
+  CLANS_GUI_MAIN_ITEMS_CLAN_INFORMATION_LORE_#19:
+    - " &fCreated: &b{clan_created} ⌛ "
+  CLANS_GUI_MAIN_ITEMS_CLAN_MEMBERS_NAME:
+    - "&eClan member"
+  CLANS_GUI_MAIN_ITEMS_CLAN_MEMBERS_LORE_#2:
+    - " &fMembers: &b{clan_members}&f/{clan_members_max} "
+  CLANS_GUI_MAIN_ITEMS_CLAN_MEMBERS_LORE_#3:
+    - " &fOfficers: &e{clan_officers} "
+  CLANS_GUI_MAIN_ITEMS_CLAN_MEMBERS_LORE_#5:
+    - " &fOnline: &6{clan_online} "
+  CLANS_GUI_MAIN_ITEMS_CLAN_POSITION_NAME:
+    - "&ePosition on the leaderboard"
+  CLANS_GUI_MAIN_ITEMS_CLAN_POSITION_LORE_#2:
+    - " &fBy level: &9{clan_pos_level} ⭐ "
+  CLANS_GUI_MAIN_ITEMS_CLAN_POSITION_LORE_#3:
+    - " &fBy gold: &6{clan_pos_coins} ⛃ "
+  CLANS_GUI_MAIN_ITEMS_CLAN_POSITION_LORE_#4:
+    - " &fBy kills: &c{clan_pos_kills} ☠ "
+  CLANS_GUI_MAIN_ITEMS_CLAN_BASES_NAME:
+    - "&eClan bases"
+  CLANS_GUI_MAIN_ITEMS_CLAN_BASES_LORE_#2:
+    - " &fBases: &6{clan_bases}&7/{clan_bases_max} "
+  CLANS_GUI_MAIN_ITEMS_CLAN_BASES_LORE_#4:
+    - " &8>&f Click to &bopen&f menu "
+  CLANS_GUI_MAIN_ITEMS_SORT_PLAYERS_NAME:
+    - "&eSort"
+  CLANS_GUI_MAIN_ITEMS_SORT_PLAYERS_LORE_#2:
+    - " &8>&f Sort by: {sort} "
+  CLANS_GUI_MAIN_ITEMS_SORT_PLAYERS_LORE_#3:
+    - " &8> &bRMB&f, reset sorting "
+  CLANS_GUI_NO_CLAN_TITLE:
+    - "&cCreate your own clan!"
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_NAME:
+    - " &6You don't have a clan! "
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_LORE_#2:
+    - " &fCreate your own clan! "
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_LORE_#3:
+    - " &fTo get &baccess "
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_LORE_#4:
+    - " &fto all features! "
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_LORE_#6:
+    - " &fCost: &610,000&f gold "
+  CLANS_GUI_NO_CLAN_ITEMS_NO_CLAN_LORE_#8:
+    - " &bClick to create a clan "
+  CLANS_GUI_NO_CLAN_ITEMS_ALL_CLANS_NAME:
+    - "&6All clans"
+  CLANS_GUI_NO_CLAN_ITEMS_ALL_CLANS_LORE_#2:
+    - " &fClick to open the menu "
+  CLANS_GUI_NO_CLAN_ITEMS_CLAN_HELP_NAME:
+    - "&6Clan orders"
+  CLANS_GUI_NO_CLAN_ITEMS_CLAN_HELP_LORE_#2:
+    - " &fClick to view "
+  CLANS_GUI_NO_CLAN_ITEMS_CLAN_HELP_LORE_#3:
+    - " &flist of &bcommands "
+  CLANS_GUI_PERKS_TITLE:
+    - "&6Clan perks"
+  CLANS_GUI_PERKS_ITEMS_COUNT_MEMBER_NAME:
+    - "&eCounted element"
+  CLANS_GUI_PERKS_ITEMS_COUNT_MEMBER_LORE_#2:
+    - " &fCurrent: &6{current_members}&7/&4{max_members}"
+  CLANS_GUI_PERKS_ITEMS_COUNT_BASES_NAME:
+    - "&eCounting criteria"
+  CLANS_GUI_PERKS_ITEMS_COUNT_BASES_LORE_#2:
+    - " &fCurrent: &6{current_bases}&7/&4{max_bases}"
+  CLANS_GUI_PERKS_ITEMS_CLAN_TAG_NAME:
+    - "&eClan tag"
+  CLANS_GUI_PERKS_ITEMS_CLAN_TAG_LORE_#2:
+    - " &fAllows you to create a custom"
+  CLANS_GUI_PERKS_ITEMS_CLAN_TAG_LORE_#3:
+    - " &ftag for your clan."
+  CLANS_GUI_PERKS_ITEMS_CLAN_MOTD_NAME:
+    - "&eClan MOTD"
+  CLANS_GUI_PERKS_ITEMS_CLAN_MOTD_LORE_#2:
+    - " &fAllows you to configure the welcome message"
+  CLANS_GUI_PERKS_ITEMS_CLAN_MOTD_LORE_#3:
+    - " &fwhen a player joins the server."
+  CLANS_GUI_PERKS_ITEMS_CLAN_MULTIPLIER_NAME:
+    - "&eClan multiplier"
+  CLANS_GUI_PERKS_ITEMS_CLAN_MULTIPLIER_LORE_#2:
+    - " &fIncreases clan XP"
+  CLANS_GUI_PERKS_ITEMS_CLAN_MULTIPLIER_LORE_#3:
+    - " &fearned from various activities."
+  CLANS_GUI_PERKS_ITEMS_CLAN_MULTIPLIER_LORE_#5:
+    - " &fCurrent: &9x{multiplier_xp}"
+  CLANS_GUI_PERKS_ITEMS_BACK_NAME:
+    - "&c<- back "
+  CLANS_GUI_SETTINGS_TITLE:
+    - "&cClan settings"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PUBLIC_NAME:
+    - "&eClan type: &6Public"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PUBLIC_LORE_#2:
+    - " &fIn &6Public&7 mode, players can"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PUBLIC_LORE_#3:
+    - " &ffreely join your clan."
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PUBLIC_LORE_#5:
+    - " &8>&f Click to make &bPrivate"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PRIVATE_NAME:
+    - "&eClan type: &bPrivate"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PRIVATE_LORE_#2:
+    - " &fIn &bPrivate&7 mode, players cannot"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PRIVATE_LORE_#3:
+    - " &fjoin your clan without an invite."
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_PRIVATE_LORE_#5:
+    - " &f> Click to make it &6Public"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_ON_NAME:
+    - "&eClan PvP: &6Enabled"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_ON_LORE_#2:
+    - " &fClan members can deal damage"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_ON_LORE_#3:
+    - " &fto each other in combat."
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_ON_LORE_#5:
+    - " &8>&f Click to &bdisable"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_OFF_NAME:
+    - "&eClan PvP: &bDisabled"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_OFF_LORE_#2:
+    - " &fClan members cannot"
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_OFF_LORE_#3:
+    - " &fdeal damage to each other."
+  CLANS_GUI_SETTINGS_ITEMS_CLAN_DAMAGE_OFF_LORE_#5:
+    - " &8>&f Click to &6enable"
+  CLANS_GUI_SETTINGS_ITEMS_DISBAND_CLAN_NAME:
+    - "&c&lDisband clan"
+  CLANS_GUI_SETTINGS_ITEMS_DISBAND_CLAN_LORE_#2:
+    - " &fThis will irreversibly delete"
+  CLANS_GUI_SETTINGS_ITEMS_DISBAND_CLAN_LORE_#3:
+    - " &fyour clan and all its data."
+  CLANS_GUI_SETTINGS_ITEMS_DISBAND_CLAN_LORE_#5:
+    - " &c⚠ &cThis action cannot be undone!"
+  CLANS_GUI_SETTINGS_ITEMS_DISBAND_CLAN_LORE_#7:
+    - " &8> &fClick to confirm disband"
+  CLANS_GUI_SETTINGS_ITEMS_BACK_NAME:
+    - "&c<- back "
