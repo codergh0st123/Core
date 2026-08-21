@@ -1153,6 +1153,84 @@ RU:
     - "&fਈ #E37F21К#DC7B32р#D57742и#CE7253с#C76E64т#C06A75а#B86685л#B16296ь#AA5DA7н#A359B7ы#9C55C8й&f Ларец ਈ;&fВы получили %groupdisplayname%"
   DONATECASE_KRISTAL_TEXT_#5:
     - "&e➥ &fИгрок #F17934%player% &fполучил %groupdisplayname% &fоткрыв &fਈ #E37F21К#DC7B32р#D57742и#CE7253с#C76E64т#C06A75а#B86685л#B16296ь#AA5DA7н#A359B7ы#9C55C8й&f Ларец ਈ"
+  AURORACHAT_TEXT_#1:
+    - "%CORE_PREFIX:NAME:SERVER%&fВы написали недопустимый символ."
+  AURORACHAT_TEXT_#2:
+    - "%CORE_PREFIX:NAME:SERVER%&fпоставить цвет сообщения: &e/aurorachat setcolor &7[ник] [цвет]"
+  AURORACHAT_TEXT_#3:
+    - "%CORE_PREFIX:NAME:SERVER%&fЦвет или градиент не может быть пустым и длиннее 128 символов."
+  AURORACHAT_TEXT_#4:
+    - "%CORE_PREFIX:NAME:SERVER%&fИгроку &e{ИГРОК} &fназначен цвет сообщения: {ЦВЕТ}"
+  AURORACHAT_TEXT_#5:
+    - "%CORE_PREFIX:NAME:SERVER%&fВы успешно изменили цвет сообщения чата!"
+  AURORACHAT_TEXT_#6:
+    - "%CORE_PREFIX:NAME:SERVER%&fСтиль чата {СТИЛЬ} &fне найден."
+  AURORACHAT_TEXT_#7:
+    - "%CORE_PREFIX:NAME:SERVER%&fстиль чата: &e/aurorachat set &7[ник] [стиль]"
+  AURORACHAT_TEXT_#8:
+    - "%CORE_PREFIX:NAME:SERVER%&fИгроку &e{ИГРОК}&f назначен стиль чата: {СТИЛЬ}."
+  AURORACHAT_TEXT_#9:
+    - "%CORE_PREFIX:NAME:SERVER%&fИгроку &e{ИГРОК}&f возвращен обычный режим чата."
+  AURORACHAT_TEXT_#10:
+    - "%CORE_PREFIX:NAME:SERVER%&fчат стилей: &e/aurorachat set &7[тип_стиля]"
+  AURORACHAT_TEXT_#11:
+    - "%CORE_PREFIX:NAME:SERVER%&fДоступные стили: {СТИЛИ}"
+  AURORACHAT_TEXT_#12:
+    - "%CORE_PREFIX:NAME:SERVER%&fВы выбрали стиль чата"
+  AURORACHAT_TEXT_#13:
+    - "%CORE_PREFIX:NAME:SERVER%&fСтиль чата {СТИЛЬ}&f не найден."
+  AURORACHAT_TEXT_#14:
+    - "&6ᴛ &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок}: {сообщение}"
+  AURORACHAT_TEXT_#15:
+    - "&eᴛ &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок}: {сообщение}"
+  AURORACHAT_TEXT_#16:
+    - "&#E5AA09🄶 &c❤ &f%CORE_LUCKPERMS:GROUP:PREFIX% &e♨{игрок}♨ &8➞ &f{сообщение}"
+  AURORACHAT_TEXT_#17:
+    - "&#098CE5🄻 &c❤ &f%CORE_LUCKPERMS:GROUP:PREFIX% &e♨{игрок}♨ &8➞ &f{сообщение}"
+  AURORACHAT_TEXT_#18:
+    - "&#860EDD🅖 &c❤ &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#19:
+    - "&#0EB3DD🅛 &c❤ &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#20:
+    - "&#0E35DDɢ &6ਉ%vault_eco_balance_fixed% &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#21:
+    - "&#0EC4DDʟ &6ਉ%vault_eco_balance_fixed% &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#22:
+    - "&#DD0E73Ⓖ &c❤ &d%coinsengine_balance_coins% &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#23:
+    - "&#0EC4DDⓁ &c❤ &d%coinsengine_balance_coins% &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#24:
+    - "&cɢ &7[%clans_clan_name%&7] &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок}: {сообщение}"
+  AURORACHAT_TEXT_#25:
+    - "&7ʟ &7[%clans_clan_name%&7] &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок}: {сообщение}"
+  AURORACHAT_TEXT_#26:
+    - "%CORE_PREFIX:NAME:SERVER%&fписать личные сообщение игроку: &e/pm &7[ник] [сообщение]"
+  AURORACHAT_TEXT_#27:
+    - "%CORE_PREFIX:NAME:SERVER%&fВы прошептали: &6{получатель}&7: &f{сообщение}"
+  AURORACHAT_TEXT_#28:
+    - "%CORE_PREFIX:NAME:SERVER%&fИгрок &6{отправитель}&f прошептал вам: {сообщение}"
+  AURORACHAT_TEXT_#29:
+    - "Только для игроков"
+  AURORACHAT_TEXT_#30:
+    - "%CORE_PREFIX:NAME:SERVER%&fИгрок не найден или оффлайн!"
+  AURORACHAT_TEXT_#31:
+    - "%CORE_PREFIX:NAME:SERVER%&fВы не можете отправить сообщение самому себе!"
+  AURORACHAT_TEXT_#32:
+    - "%CORE_PREFIX:NAME:SERVER%&fУ вас нет прав!"
+  AURORACHAT_TEXT_#33:
+    - "&9Выберите звук личных сообщений"
+  AURORACHAT_TEXT_#34:
+    - "&aВы выбрали звук: {звук}"
+  AURORACHAT_TEXT_#35:
+    - "%CORE_PREFIX:NAME:SERVER%&fРежим шпиона: &e/spy &7[on/off]"
+  AURORACHAT_TEXT_#36:
+    - "%CORE_PREFIX:NAME:SERVER%&fРежим шпиона включен!"
+  AURORACHAT_TEXT_#37:
+    - "%CORE_PREFIX:NAME:SERVER%&fРежим шпиона выключен!"
+  AURORACHAT_TEXT_#38:
+    - "%CORE_PREFIX:NAME:SERVER%&fРежим шпиона уже включен!"
+  AURORACHAT_TEXT_#39:
+    - "%CORE_PREFIX:NAME:SERVER%&fРежим шпиона уже выключен!"
 EN:
   TEST:
     - "text"
@@ -2304,3 +2382,81 @@ EN:
     - "&fਈ #E37F21C#DC7B32r#D57742y#CE7253s#C76E64t#C06A75a#B86685l#B16296 #AA5DA7#A359B7#9C55C8&f Chest ਈ;&fYou received %groupdisplayname%"
   DONATECASE_KRISTAL_TEXT_#5:
     - "&e➥ &fPlayer #F17934%player% &freceived %groupdisplayname% &fopening &fਈ #E37F21C#DC7B32r#D57742y#CE7253s#C76E64t#C06A75a#B86685l#B16296#AA5DA7#A359B7#9C55C8&f Chest ਈ"
+  AURORACHAT_TEXT_#1:
+    - "%CORE_PREFIX:NAME:SERVER%&fYou typed an invalid character."
+  AURORACHAT_TEXT_#2:
+    - "%CORE_PREFIX:NAME:SERVER%&fSet message color: &e/aurorachat setcolor &7[nick] [color]"
+  AURORACHAT_TEXT_#3:
+    - "%CORE_PREFIX:NAME:SERVER%&fColor or gradient cannot be empty or longer than 128 characters."
+  AURORACHAT_TEXT_#4:
+    - "%CORE_PREFIX:NAME:SERVER%&fPlayer &e{ИГРОК} &fhas been assigned message color: {ЦВЕТ}"
+  AURORACHAT_TEXT_#5:
+    - "%CORE_PREFIX:NAME:SERVER%&fYou have successfully changed the chat message color!"
+  AURORACHAT_TEXT_#6:
+    - "%CORE_PREFIX:NAME:SERVER%&fChat style {СТИЛЬ} &f not found."
+  AURORACHAT_TEXT_#7:
+    - "%CORE_PREFIX:NAME:SERVER%&fChat style: &e/aurorachat set &7[nick] [style]"
+  AURORACHAT_TEXT_#8:
+    - "%CORE_PREFIX:NAME:SERVER%&fPlayer &e{ИГРОК}&f has been assigned chat style: {СТИЛЬ}."
+  AURORACHAT_TEXT_#9:
+    - "%CORE_PREFIX:NAME:SERVER%&fPlayer &e{ИГРОК}&f has been returned to normal chat mode."
+  AURORACHAT_TEXT_#10:
+    - "%CORE_PREFIX:NAME:SERVER%&fChat styles: &e/aurorachat set &7[style_type]"
+  AURORACHAT_TEXT_#11:
+    - "%CORE_PREFIX:NAME:SERVER%&fAvailable styles: {СТИЛИ}"
+  AURORACHAT_TEXT_#12:
+    - "%CORE_PREFIX:NAME:SERVER%&fYou have selected a chat style"
+  AURORACHAT_TEXT_#13:
+    - "%CORE_PREFIX:NAME:SERVER%&fChat style {СТИЛЬ}&f not found."
+  AURORACHAT_TEXT_#14:
+    - "&6ᴛ &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок}: {сообщение}"
+  AURORACHAT_TEXT_#15:
+    - "&eᴛ &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок}: {сообщение}"
+  AURORACHAT_TEXT_#16:
+    - "&#E5AA09🄶 &c❤ &f%CORE_LUCKPERMS:GROUP:PREFIX% &e♨{игрок}♨ &8➞ &f{сообщение}"
+  AURORACHAT_TEXT_#17:
+    - "&#098CE5🄻 &c❤ &f%CORE_LUCKPERMS:GROUP:PREFIX% &e♨{игрок}♨ &8➞ &f{сообщение}"
+  AURORACHAT_TEXT_#18:
+    - "&#860EDD🅖 &c❤ &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#19:
+    - "&#0EB3DD🅛 &c❤ &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#20:
+    - "&#0E35DDɢ &6ਉ%vault_eco_balance_fixed% &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#21:
+    - "&#0EC4DDʟ &6ਉ%vault_eco_balance_fixed% &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#22:
+    - "&#DD0E73Ⓖ &c❤ &d%coinsengine_balance_coins% &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#23:
+    - "&#0EC4DDⓁ &c❤ &d%coinsengine_balance_coins% &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок} &8» &f{сообщение}"
+  AURORACHAT_TEXT_#24:
+    - "&cɢ &7[%clans_clan_name%&7] &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок}: {сообщение}"
+  AURORACHAT_TEXT_#25:
+    - "&7ʟ &7[%clans_clan_name%&7] &f%CORE_LUCKPERMS:GROUP:PREFIX% &f{игрок}: {сообщение}"
+  AURORACHAT_TEXT_#26:
+    - "%CORE_PREFIX:NAME:SERVER%&fSend a private message to a player: &e/pm &7[nick] [message]"
+  AURORACHAT_TEXT_#27:
+    - "%CORE_PREFIX:NAME:SERVER%&fYou whispered: &6{получатель}&7: &f{сообщение}"
+  AURORACHAT_TEXT_#28:
+    - "%CORE_PREFIX:NAME:SERVER%&fPlayer &6{отправитель}&f whispered to you: {сообщение}"
+  AURORACHAT_TEXT_#29:
+    - "Only for players"
+  AURORACHAT_TEXT_#30:
+    - "%CORE_PREFIX:NAME:SERVER%&fPlayer not found or offline!"
+  AURORACHAT_TEXT_#31:
+    - "%CORE_PREFIX:NAME:SERVER%&fYou cannot send a message to yourself!"
+  AURORACHAT_TEXT_#32:
+    - "%CORE_PREFIX:NAME:SERVER%&fYou do not have permission!"
+  AURORACHAT_TEXT_#33:
+    - "&9Choose the private message sound"
+  AURORACHAT_TEXT_#34:
+    - "&aYou have chosen the sound: {звук}"
+  AURORACHAT_TEXT_#35:
+    - "%CORE_PREFIX:NAME:SERVER%&fSpy mode: &e/spy &7[on/off]"
+  AURORACHAT_TEXT_#36:
+    - "%CORE_PREFIX:NAME:SERVER%&fSpy mode enabled!"
+  AURORACHAT_TEXT_#37:
+    - "%CORE_PREFIX:NAME:SERVER%&fSpy mode disabled!"
+  AURORACHAT_TEXT_#38:
+    - "%CORE_PREFIX:NAME:SERVER%&fSpy mode is already enabled!"
+  AURORACHAT_TEXT_#39:
+    - "%CORE_PREFIX:NAME:SERVER%&fSpy mode is already disabled!"
