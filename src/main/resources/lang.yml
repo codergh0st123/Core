@@ -1799,6 +1799,16 @@ RU:
     - "&Нажмите, чтобы перейти на следующую страницу"
   CLANS_ADMIN_ERROR_COMMAND:
     - "&cНеизвестная команда! Воспользуйся /clan admin help for assistance"
+  CLANS_MAIN_ROLE_LEADER:
+    - "&cЛидер"
+  CLANS_MAIN_ROLE_OFFICER:
+    - "&6Офицер"
+  CLANS_MAIN_ROLE_MEMBER:
+    - "&7Участник"
+  CLANS_MAIN_PAPI_NO_CLAN:
+    - "&7Нет"
+  CLANS_MAIN_PAPI_NO_TOP:
+    - "&7Еще нет"
 EN:
   TEST:
     - "text"
@@ -3596,3 +3606,13 @@ EN:
     - "Click to go to the next page"
   CLANS_ADMIN_ERROR_COMMAND:
     - "&cUnknown command! Use /clan admin help for assistance"
+  CLANS_MAIN_ROLE_LEADER:
+    - "&cLeader"
+  CLANS_MAIN_ROLE_OFFICER:
+    - "&6Officer"
+  CLANS_MAIN_ROLE_MEMBER:
+    - "&7Member"
+  CLANS_MAIN_PAPI_NO_CLAN:
+    - "&7None"
+  CLANS_MAIN_PAPI_NO_TOP:
+    - "&7No results yet"
