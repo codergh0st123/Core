@@ -7,38 +7,44 @@ RU:
     - "сообщение"
   JOIN:
     - "&aИгрок &f%nick% &aзашёл на сервер."
-  MESSAGES:
-    DENIED:
-      CHAT:
-        - "&cВы не можете изменять блоки в регионе &#FF8A00spawn&c."
-        - "&7Обратитесь к администрации, если это необходимо."
-      TITLE:
-        - "&#FF3D3D&lЗАЩИЩЕНО"
-      SUBTITLE:
-        - "&fУ вас нет доступа к изменению блоков."
-    NO-PERMISSION:
-      - "&cУ вас нет прав на выполнение этой команды."
-    RELOADED:
-      - "&aКонфигурация SpawnProtect успешно перезагружена."
-    USAGE:
-      - "&7Использование: &f/spawnprotect reload"
+  SPAWNPROTECT_EDIT_MESSAGE_#1:
+    - ""
+  SPAWNPROTECT_EDIT_MESSAGE_#2:
+    - " %CORE_PREFIX:NAME:SERVER%&fВы не можете редактировать спавн."
+  SPAWNPROTECT_EDIT_MESSAGE_#3:
+    - " %CORE_PREFIX:NAME:SERVER%&fВы не такой крутой, чтобы так делать."
+  SPAWNPROTECT_EDIT_MESSAGE_#4:
+    - ""
+  SPAWNPROTECT_EDIT_TITLE:
+    - "&4Нельзя"
+  SPAWNPROTECT_EDIT_SUBTITLE:
+    - "&cПосмотрите в чат"
+  SPAWNPROTECT_NO_PERMISSION:
+    - "%CORE_PREFIX:NAME:SERVER%&fУ вас нет прав!"
+  SPAWNPROTECT_RELOADED:
+    - "%CORE_PREFIX:NAME:SERVER%&fКонфигурация перезагружена."
+  SPAWNPROTECT_USAGE:
+    - "%CORE_PREFIX:NAME:SERVER%&fПерезагрузка кфг: &e/spawnprotect reload"
 EN:
   TEST:
     - "text"
   JOIN:
     - "&aPlayer &f%nick% &ajoined the server."
-  MESSAGES:
-    DENIED:
-      CHAT:
-        - "&cYou cannot modify blocks in the &#FF8A00spawn&c region."
-        - "&7Contact the administration if this is necessary."
-      TITLE:
-        - "&#FF3D3D&lPROTECTED"
-      SUBTITLE:
-        - "&fYou do not have permission to modify blocks."
-    NO-PERMISSION:
-      - "&cYou do not have permission to use this command."
-    RELOADED:
-      - "&aSpawnProtect configuration reloaded successfully."
-    USAGE:
-      - "&7Usage: &f/spawnprotect reload"
+  SPAWNPROTECT_EDIT_MESSAGE_#1:
+    - ""
+  SPAWNPROTECT_EDIT_MESSAGE_#2:
+    - " %CORE_PREFIX:NAME:SERVER%&fYou cannot edit the spawn."
+  SPAWNPROTECT_EDIT_MESSAGE_#3:
+    - " %CORE_PREFIX:NAME:SERVER%&fYou are not cool enough to do that."
+  SPAWNPROTECT_EDIT_MESSAGE_#4:
+    - ""
+  SPAWNPROTECT_EDIT_TITLE:
+    - "&4Not allowed"
+  SPAWNPROTECT_EDIT_SUBTITLE:
+    - "&cCheck the chat"
+  SPAWNPROTECT_NO_PERMISSION:
+    - "%CORE_PREFIX:NAME:SERVER%&fYou do not have permission!"
+  SPAWNPROTECT_RELOADED:
+    - "%CORE_PREFIX:NAME:SERVER%&fConfiguration reloaded."
+  SPAWNPROTECT_USAGE:
+    - "%CORE_PREFIX:NAME:SERVER%&fConfig reload: &e/spawnprotect reload"
