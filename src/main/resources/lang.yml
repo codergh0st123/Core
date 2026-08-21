@@ -57,6 +57,26 @@ RU:
     - "%animation:animation2%"
   SCOREBOARD_1_20_3_EMPTY_#4:
     - ""
+  ANIMATION_1_TEXT_#1:
+    - "&fԂ &fУбийств&7: &#E29228%statistic_player_kills%"
+  ANIMATION_1_TEXT_#2:
+    - "&fԄ &fСмертей&7: &#E29228%statistic_deaths%"
+  ANIMATION_1_TEXT_#3:
+    - "&fՔ &fОтыграно&7: &#E29228%CORE_TIME%"
+  ANIMATION_2_TEXT_#1:
+    - "Ԍ &fМеню &#E27328/help"
+  ANIMATION_2_TEXT_#2:
+    - "Ԍ &fМеню &#E27328/menu"
+  ANIMATION_2_TEXT_#3:
+    - "Ԍ &fСкиллы &#E27328/sk"
+  ANIMATION_2_TEXT_#4:
+    - "Ԍ &fАукцион &#E27328/ah"
+  ANIMATION_2_TEXT_#5:
+    - "Ԍ &fКланы &#E27328/clan"
+  ANIMATION_3_TEXT_#1:
+    - "&fਖ Мана&7: &b%auraskills_mana_int%&7/&b%auraskills_mana_max_int%"
+  ANIMATION_3_TEXT_#2:
+    - "&fਗ &fМастерство&7: &#F6CF49%auraskills_average_int%&f ур&#F6CF49."
 EN:
   TEST:
     - "text"
@@ -112,3 +132,23 @@ EN:
     - "%animation:animation2%"
   SCOREBOARD_1_20_3_EMPTY_#4:
     - ""
+  ANIMATION_1_TEXT_#1:
+    - "&fԂ &fKills&7: &#E29228%statistic_player_kills%"
+  ANIMATION_1_TEXT_#2:
+    - "&fԄ &fDeaths&7: &#E29228%statistic_deaths%"
+  ANIMATION_1_TEXT_#3:
+    - "&fՔ &fTime played&7: &#E29228%CORE_TIME%"
+  ANIMATION_2_TEXT_#1:
+    - "Ԍ &fMenu &#E27328/help"
+  ANIMATION_2_TEXT_#2:
+    - "Ԍ &fMenu &#E27328/menu"
+  ANIMATION_2_TEXT_#3:
+    - "Ԍ &fSkills &#E27328/sk"
+  ANIMATION_2_TEXT_#4:
+    - "Ԍ &fAuction &#E27328/ah"
+  ANIMATION_2_TEXT_#5:
+    - "Ԍ &fClans &#E27328/clan"
+  ANIMATION_3_TEXT_#1:
+    - "&fਖ Mana&7: &b%auraskills_mana_int%&7/&b%auraskills_mana_max_int%"
+  ANIMATION_3_TEXT_#2:
+    - "&fਗ &fMastery&7: &#F6CF49%auraskills_average_int%&f lvl&#F6CF49."
