@@ -77,6 +77,32 @@ RU:
     - "&fਖ Мана&7: &b%auraskills_mana_int%&7/&b%auraskills_mana_max_int%"
   ANIMATION_3_TEXT_#2:
     - "&fਗ &fМастерство&7: &#F6CF49%auraskills_average_int%&f ур&#F6CF49."
+  TAB_HEADER_#1:
+    - "                                                                                  "
+  TAB_HEADER_#2:
+    - ""
+  TAB_HEADER_#3:
+    - "&fȎ&#F49B62◈ &#F1BC47ᴠ&#F1B846ᴇ&#F1B344ʟ&#F0AF43ᴏ&#F0AA41ʀ&#F0A640ɪ&#EF983Bᴀ&#EF9138ᴍ&#EF8936ɪ&#EE8233ɴ&#EE7B31ᴇ &#F58A701&#F68177.&#F7797E2&#F871841&#F8688B.&#F960924 &#F49B62 ▸ &#F1BC47ᴍᴄ.ᴠᴇʟᴏʀɪᴀᴍɪɴᴇ.ʀᴜ &#F49B62◈&fȎ"
+  TAB_HEADER_#4:
+    - ""
+  TAB_HEADER_#5:
+    - "  &#F6F6E3С&#F5F2DEе&#F4EED9р&#F3EAD4в&#F3E6D0е&#F2E1CBр&#F1DDC6а &#EFD5BCб&#EED1B7е&#EECDB3з &#ECC5A9м&#EBC0A4у&#EABC9Fс&#E9B89Aо&#E9B496р&#E8B091а &#E6A887и &#E49F7Dг&#E49B79р&#E39774я&#E2936Fз&#E18F6Aи "
+  TAB_HEADER_#6:
+    - ""
+  TAB_HEADER_#7:
+    - ""
+  TAB_FOOTER_#1:
+    - ""
+  TAB_FOOTER_#2:
+    - ""
+  TAB_FOOTER_#3:
+    - "  &#BCBEFAО&#BFBBF0н&#C1B7E5л&#C4B4DBа&#C7B1D1й&#C9ADC7н &#CFA7B2п&#D1A3A8р&#D4A09Dо&#D69C93е&#D99989к&#DC967Fт&#DE9274а&#E18F6A: &#BCBEFA%online%"
+  TAB_FOOTER_#4:
+    - "  &#BCBEFAП&#C5B2D6и&#CFA7B2н&#D89B8Eг&#E18F6A: &#BCBEFA%ping%"
+  TAB_FOOTER_#5:
+    - ""
+  TAB_FOOTER_#6:
+    - ""
 EN:
   TEST:
     - "text"
@@ -152,3 +178,29 @@ EN:
     - "&fਖ Mana&7: &b%auraskills_mana_int%&7/&b%auraskills_mana_max_int%"
   ANIMATION_3_TEXT_#2:
     - "&fਗ &fMastery&7: &#F6CF49%auraskills_average_int%&f lvl&#F6CF49."
+  TAB_HEADER_#1:
+    - "                                                                                  "
+  TAB_HEADER_#2:
+    - ""
+  TAB_HEADER_#3:
+    - "&fȎ&#F49B62◈ &#F1BC47ᴠ&#F1B846ᴇ&#F1B344ʟ&#F0AF43ᴏ&#F0AA41ʀ&#F0A640ɪ&#EF983Bᴀ&#EF9138ᴍ&#EF8936ɪ&#EE8233ɴ&#EE7B31ᴇ &#F58A701&#F68177.&#F7797E2&#F871841&#F8688B.&#F960924 &#F49B62 ▸ &#F1BC47ᴍᴄ.ᴠᴇʟᴏʀɪᴀᴍɪɴᴇ.ʀᴜ &#F49B62◈&fȎ"
+  TAB_HEADER_#4:
+    - ""
+  TAB_HEADER_#5:
+    - "  &#F6F6E3A&#F5F2DE &#F4EED9s&#F3EAD4e&#F3E6D0r&#F2E1CBv&#F1DDC6e&#EFD5BCr &#EECDB3w&#ECC5A9i&#EBC0A4t&#EABC9Fh&#E9B89Ao&#E9B496u&#E8B091t &#E6A887t&#E49F7Dr&#E49B79a&#E39774s&#E2936Fh &#E18F6Aand dirt"
+  TAB_HEADER_#6:
+    - ""
+  TAB_HEADER_#7:
+    - ""
+  TAB_FOOTER_#1:
+    - ""
+  TAB_FOOTER_#2:
+    - ""
+  TAB_FOOTER_#3:
+    - "  &#BCBEFAO&#BFBBF0n&#C1B7E5l&#C4B4DBi&#C7B1D1n&#C9ADC7e &#CFA7B2p&#D1A3A8r&#D4A09Do&#D69C93j&#D99989e&#DC967Fc&#DE9274t&#E18F6A: &#BCBEFA%online%"
+  TAB_FOOTER_#4:
+    - "  &#BCBEFAP&#C5B2D6i&#CFA7B2n&#D89B8Eg&#E18F6A: &#BCBEFA%ping%"
+  TAB_FOOTER_#5:
+    - ""
+  TAB_FOOTER_#6:
+    - ""
