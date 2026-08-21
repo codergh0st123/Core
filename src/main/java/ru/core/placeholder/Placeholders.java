@@ -146,6 +146,14 @@ public final class Placeholders {
             }
             return language(player, language(player), rest);
         }
+        if (upper.startsWith("LANG_RAW:")) {
+            String rest = upper.substring(9);
+            int split = rest.indexOf(':');
+            if (split > 0) {
+                return languageRaw(player, rest.substring(0, split), rest.substring(split + 1));
+            }
+            return languageRaw(player, language(player), rest);
+        }
         String value = values.get(upper);
         if (value != null) {
             return value;
@@ -179,6 +187,14 @@ public final class Placeholders {
 
     public String language(String code, String key) {
         return language(null, code, key);
+    }
+
+    private String languageRaw(Player player, String code, String key) {
+        Map<String, String> keys = languages.get(code.toUpperCase(Locale.ROOT));
+        if (keys == null) {
+            return null;
+        }
+        return keys.get(key.toUpperCase(Locale.ROOT));
     }
 
     private String language(Player player, String code, String key) {
