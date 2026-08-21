@@ -13,9 +13,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,6 +31,8 @@ public final class Placeholders {
     private final Core plugin;
     private final Map<String, String> values = new LinkedHashMap<>();
     private final Map<String, Map<String, String>> languages = new LinkedHashMap<>();
+    private final ThreadLocal<Set<String>> resolvingLanguages = ThreadLocal.withInitial(LinkedHashSet::new);
+    private final Set<String> warnedLanguageCycles = ConcurrentHashMap.newKeySet();
     private boolean hooked;
 
     public Placeholders(Core plugin) {
@@ -41,6 +46,7 @@ public final class Placeholders {
     public void rebuild() {
         values.clear();
         languages.clear();
+        warnedLanguageCycles.clear();
         flatten(plugin.configs().placeholders(), "", values);
         for (String code : plugin.configs().languages()) {
             ConfigurationSection section = plugin.configs().lang().getConfigurationSection(code);
@@ -132,9 +138,9 @@ public final class Placeholders {
             String rest = upper.substring(5);
             int split = rest.indexOf(':');
             if (split > 0) {
-                return language(rest.substring(0, split), rest.substring(split + 1));
+                return language(player, rest.substring(0, split), rest.substring(split + 1));
             }
-            return language(language(player), rest);
+            return language(player, language(player), rest);
         }
         String value = values.get(upper);
         if (value != null) {
@@ -142,7 +148,7 @@ public final class Placeholders {
         }
         int split = upper.indexOf(':');
         if (split > 0) {
-            return language(upper.substring(0, split), upper.substring(split + 1));
+            return language(player, upper.substring(0, split), upper.substring(split + 1));
         }
         return null;
     }
@@ -162,11 +168,37 @@ public final class Placeholders {
     }
 
     public String language(String code, String key) {
+        return language(null, code, key);
+    }
+
+    private String language(Player player, String code, String key) {
         Map<String, String> keys = languages.get(code.toUpperCase(Locale.ROOT));
         if (keys == null) {
             return null;
         }
-        return keys.get(key.toUpperCase(Locale.ROOT));
+
+        String value = keys.get(key.toUpperCase(Locale.ROOT));
+        if (value == null || value.isEmpty()) {
+            return value;
+        }
+
+        String id = code.toUpperCase(Locale.ROOT) + ":" + key.toUpperCase(Locale.ROOT);
+        Set<String> resolving = resolvingLanguages.get();
+        if (!resolving.add(id)) {
+            if (warnedLanguageCycles.add(id)) {
+                plugin.getLogger().warning("Обнаружена циклическая ссылка в lang.yml: " + id);
+            }
+            return "";
+        }
+
+        try {
+            return apply(player, value);
+        } finally {
+            resolving.remove(id);
+            if (resolving.isEmpty()) {
+                resolvingLanguages.remove();
+            }
+        }
     }
 
     public String language(Player player) {
