@@ -7,8 +7,38 @@ RU:
     - "сообщение"
   JOIN:
     - "&aИгрок &f%nick% &aзашёл на сервер."
+  MESSAGES:
+    DENIED:
+      CHAT:
+        - "&cВы не можете изменять блоки в регионе &#FF8A00spawn&c."
+        - "&7Обратитесь к администрации, если это необходимо."
+      TITLE:
+        - "&#FF3D3D&lЗАЩИЩЕНО"
+      SUBTITLE:
+        - "&fУ вас нет доступа к изменению блоков."
+    NO-PERMISSION:
+      - "&cУ вас нет прав на выполнение этой команды."
+    RELOADED:
+      - "&aКонфигурация SpawnProtect успешно перезагружена."
+    USAGE:
+      - "&7Использование: &f/spawnprotect reload"
 EN:
   TEST:
     - "text"
   JOIN:
     - "&aPlayer &f%nick% &ajoined the server."
+  MESSAGES:
+    DENIED:
+      CHAT:
+        - "&cYou cannot modify blocks in the &#FF8A00spawn&c region."
+        - "&7Contact the administration if this is necessary."
+      TITLE:
+        - "&#FF3D3D&lPROTECTED"
+      SUBTITLE:
+        - "&fYou do not have permission to modify blocks."
+    NO-PERMISSION:
+      - "&cYou do not have permission to use this command."
+    RELOADED:
+      - "&aSpawnProtect configuration reloaded successfully."
+    USAGE:
+      - "&7Usage: &f/spawnprotect reload"
