@@ -150,6 +150,12 @@ public final class Placeholders {
         if (value != null) {
             return value;
         }
+
+        String localized = language(player, language(player), key);
+        if (localized != null) {
+            return localized;
+        }
+
         int split = upper.indexOf(':');
         if (split > 0) {
             return language(player, upper.substring(0, split), upper.substring(split + 1));
@@ -206,6 +212,10 @@ public final class Placeholders {
     }
 
     public String language(Player player) {
+        if (player == null) {
+            return plugin.configs().defaultLanguage();
+        }
+
         Profile profile = plugin.data().profile(player);
         if (profile == null || profile.language() == null) {
             return plugin.configs().defaultLanguage();
