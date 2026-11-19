@@ -73,8 +73,28 @@ public final class ProtocolTrafficOptimizer {
         }
     }
 
+    /**
+     * Cheap check on top-level string fields (objective/team names) so that
+     * the costly reflective toString() runs only for packets owned by Core.
+     */
+    private static boolean touchesCoreResource(PacketEvent event) {
+        try {
+            for (String value : event.getPacket().getStrings().getValues()) {
+                if (value != null && value.startsWith("CORE_")) {
+                    return true;
+                }
+            }
+            return false;
+        } catch (RuntimeException exception) {
+            return true;
+        }
+    }
+
     private void filter(PacketEvent event) {
         if (event.isPlayerTemporary() || event.getPlayer() == null) {
+            return;
+        }
+        if (!touchesCoreResource(event)) {
             return;
         }
         String payload = event.getPacket().toString();

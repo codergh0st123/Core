@@ -19,6 +19,7 @@ libraries:
   - org.xerial:sqlite-jdbc:3.47.0.0
 commands:
   core:
+    description: Core plugin info and reload
     aliases:
       - ver
       - version
@@ -29,29 +30,43 @@ commands:
       - ядросервера
       - zlhj
   log:
+    description: Server log tools
   console:
+    description: Console tools
   play:
+    description: Connect to a game server
   hub:
+    description: Return to the lobby
     aliases:
       - lobby
   find:
+    description: Find which server a player is on
   server:
+    description: Switch or view servers
   list:
+    description: Show online players
     aliases:
       - online
   alert:
+    description: Broadcast a network alert
   pc:
+    description: Premium chat
     aliases:
       - pchat
   schat:
+    description: Staff chat
   playtime:
+    description: Show your playtime
     aliases:
       - времякотороетыпросрал
   lang:
+    description: Change language
   language:
+    description: Open language menu
     aliases:
       - lang-gui
   time:
+    description: Change world time
 permissions:
   core.reload:
     default: op

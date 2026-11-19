@@ -17,13 +17,29 @@ import ru.core.Core;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class EntityLimiterModule {
 
     private final Core plugin;
+    private static final Comparator<Entity> OLDEST_FIRST = Comparator.comparingInt(Entity::getTicksLived).reversed();
+    private static final Limits DISABLED = new Limits(false, 0, 0, 0, 0, 0, 0);
+
+    private final Map<String, Limits> limitsByWorld = new HashMap<>();
+    private final List<Entity> items = new ArrayList<>();
+    private final List<Entity> experience = new ArrayList<>();
+    private final List<Entity> projectiles = new ArrayList<>();
+    private final List<Entity> fallingBlocks = new ArrayList<>();
+    private final List<Entity> monsters = new ArrayList<>();
+    private final List<Entity> animals = new ArrayList<>();
     private BukkitTask task;
     private int minimumAge;
+
+    private record Limits(boolean enabled, int items, int experience, int projectiles,
+                          int fallingBlocks, int monsters, int animals) {
+    }
 
     public EntityLimiterModule(Core plugin) {
         this.plugin = plugin;
@@ -34,6 +50,7 @@ public final class EntityLimiterModule {
             return;
         }
         minimumAge = Math.max(0, plugin.configs().config().getInt("ENTITY-LIMITER.MINIMUM-AGE", 600));
+        limitsByWorld.clear();
         long interval = Math.max(20L, plugin.configs().config().getLong("ENTITY-LIMITER.CHECK-INTERVAL", 60L) * 20L);
         task = Bukkit.getScheduler().runTaskTimer(plugin, this::limit, interval, interval);
     }
@@ -43,30 +60,51 @@ public final class EntityLimiterModule {
             task.cancel();
             task = null;
         }
+        limitsByWorld.clear();
+        clearBuckets();
     }
 
     private void limit() {
         for (World world : Bukkit.getWorlds()) {
-            ConfigurationSection rules = rules(world);
-            if (rules == null || !rules.getBoolean("ENABLED", true)) {
+            Limits limits = limitsByWorld.computeIfAbsent(world.getName(), name -> readLimits(world));
+            if (!limits.enabled()) {
                 continue;
             }
-            List<Entity> items = new ArrayList<>();
-            List<Entity> experience = new ArrayList<>();
-            List<Entity> projectiles = new ArrayList<>();
-            List<Entity> fallingBlocks = new ArrayList<>();
-            List<Entity> monsters = new ArrayList<>();
-            List<Entity> animals = new ArrayList<>();
+            clearBuckets();
             for (Entity entity : world.getEntities()) {
                 classify(entity, items, experience, projectiles, fallingBlocks, monsters, animals);
             }
-            trim(items, rules.getInt("MAX-ITEMS", 100));
-            trim(experience, rules.getInt("MAX-EXPERIENCE", 100));
-            trim(projectiles, rules.getInt("MAX-PROJECTILES", 100));
-            trim(fallingBlocks, rules.getInt("MAX-FALLING-BLOCKS", 25));
-            trim(monsters, rules.getInt("MAX-MONSTERS", 150));
-            trim(animals, rules.getInt("MAX-ANIMALS", 80));
+            trim(items, limits.items());
+            trim(experience, limits.experience());
+            trim(projectiles, limits.projectiles());
+            trim(fallingBlocks, limits.fallingBlocks());
+            trim(monsters, limits.monsters());
+            trim(animals, limits.animals());
         }
+        clearBuckets();
+    }
+
+    private void clearBuckets() {
+        items.clear();
+        experience.clear();
+        projectiles.clear();
+        fallingBlocks.clear();
+        monsters.clear();
+        animals.clear();
+    }
+
+    private Limits readLimits(World world) {
+        ConfigurationSection rules = rules(world);
+        if (rules == null || !rules.getBoolean("ENABLED", true)) {
+            return DISABLED;
+        }
+        return new Limits(true,
+                rules.getInt("MAX-ITEMS", 100),
+                rules.getInt("MAX-EXPERIENCE", 100),
+                rules.getInt("MAX-PROJECTILES", 100),
+                rules.getInt("MAX-FALLING-BLOCKS", 25),
+                rules.getInt("MAX-MONSTERS", 150),
+                rules.getInt("MAX-ANIMALS", 80));
     }
 
     private ConfigurationSection rules(World world) {
@@ -109,7 +147,7 @@ public final class EntityLimiterModule {
         if (maximum < 0 || entities.size() <= maximum) {
             return;
         }
-        entities.sort(Comparator.comparingInt(Entity::getTicksLived).reversed());
+        entities.sort(OLDEST_FIRST);
         int remove = entities.size() - maximum;
         for (Entity entity : entities) {
             if (remove == 0) {

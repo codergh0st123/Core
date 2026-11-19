@@ -60,12 +60,13 @@ public final class ScoreboardModule {
         if (frame >= titles.size()) {
             frame = 0;
         }
+        boolean hidden = hideNumbers();
         for (Player player : batch.next(Bukkit.getOnlinePlayers(), playersPerUpdate())) {
             PlayerBoard board = plugin.boards().get(player);
             if (board == null) {
                 continue;
             }
-            board.sidebar(plugin.placeholders().apply(player, title), plugin.placeholders().apply(player, content), hideNumbers());
+            board.sidebar(plugin.placeholders().apply(player, title), plugin.placeholders().apply(player, content), hidden);
         }
     }
 }

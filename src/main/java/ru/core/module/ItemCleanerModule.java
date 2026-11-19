@@ -2,7 +2,6 @@ package ru.core.module;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
@@ -95,11 +94,7 @@ public final class ItemCleanerModule {
     private int countItems() {
         int count = 0;
         for (World world : Bukkit.getWorlds()) {
-            for (Entity entity : world.getEntities()) {
-                if (entity instanceof Item) {
-                    count++;
-                }
-            }
+            count += world.getEntitiesByClass(Item.class).size();
         }
         return count;
     }
@@ -107,10 +102,7 @@ public final class ItemCleanerModule {
     private void clearItems() {
         int cleared = 0;
         for (World world : Bukkit.getWorlds()) {
-            for (Entity entity : world.getEntities()) {
-                if (!(entity instanceof Item item)) {
-                    continue;
-                }
+            for (Item item : world.getEntitiesByClass(Item.class)) {
                 item.remove();
                 cleared++;
             }

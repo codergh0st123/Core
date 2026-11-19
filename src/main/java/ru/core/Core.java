@@ -232,7 +232,9 @@ public final class Core extends JavaPlugin {
     public void reloadAll() {
         stopModules();
         stopProtocolOptimization();
-        messenger.stop();
+        if (messenger != null) {
+            messenger.stop();
+        }
         if (wipeManager != null) {
             wipeManager.stop();
         }
@@ -247,7 +249,9 @@ public final class Core extends JavaPlugin {
         groups.preloadOnline();
         placeholders.rebuild();
         data.reload();
-        messenger.start();
+        if (messenger != null) {
+            messenger.start();
+        }
         if (wipeManager != null) {
             wipeManager.reload();
         }

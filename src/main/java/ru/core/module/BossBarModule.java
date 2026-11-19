@@ -11,9 +11,12 @@ import ru.core.Core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 public final class BossBarModule {
@@ -21,6 +24,7 @@ public final class BossBarModule {
     private final Core plugin;
     private final Map<UUID, Map<String, BossBar>> bars = new HashMap<>();
     private BukkitTask task;
+    private List<Definition> definitions;
 
     public BossBarModule(Core plugin) {
         this.plugin = plugin;
@@ -30,6 +34,7 @@ public final class BossBarModule {
         if (!plugin.configs().config().getBoolean("BOSSBARS.ENABLED", false)) {
             return;
         }
+        definitions = definitions();
         long period = Math.max(1L, plugin.configs().config().getLong("BOSSBARS.UPDATE", 20L));
         task = Bukkit.getScheduler().runTaskTimer(plugin, this::update, 20L, period);
     }
@@ -45,6 +50,7 @@ public final class BossBarModule {
             }
         }
         bars.clear();
+        definitions = null;
     }
 
     public void remove(Player player) {
@@ -57,56 +63,82 @@ public final class BossBarModule {
         }
     }
 
-    private void update() {
+    private record Definition(String key, boolean enabled, String title, BarColor color, BarStyle style, double progress) {
+    }
+
+    private List<Definition> definitions() {
         ConfigurationSection section = plugin.configs().config().getConfigurationSection("BOSSBARS.BARS");
         if (section == null) {
+            return null;
+        }
+        List<Definition> result = new ArrayList<>();
+        for (String key : section.getKeys(false)) {
+            ConfigurationSection bar = section.getConfigurationSection(key);
+            if (bar == null) {
+                continue;
+            }
+            List<String> titles = bar.getStringList("TITLE");
+            result.add(new Definition(key,
+                    bar.getBoolean("ENABLED", true),
+                    titles.isEmpty() ? "" : titles.get(0),
+                    color(bar.getString("COLOR", "WHITE")),
+                    style(bar.getString("STYLE", "SOLID")),
+                    Math.max(0.0D, Math.min(1.0D, bar.getDouble("PROGRESS", 1.0D)))));
+        }
+        return result;
+    }
+
+    private void update() {
+        if (definitions == null) {
+            definitions = definitions();
+        }
+        List<Definition> current = definitions;
+        if (current == null) {
             return;
+        }
+        Set<String> known = new HashSet<>();
+        for (Definition definition : current) {
+            known.add(definition.key());
         }
         for (Player player : Bukkit.getOnlinePlayers()) {
             Map<String, BossBar> owned = bars.computeIfAbsent(player.getUniqueId(), key -> new HashMap<>());
-            for (String key : section.getKeys(false)) {
-                ConfigurationSection bar = section.getConfigurationSection(key);
-                if (bar == null) {
-                    continue;
-                }
-                if (!bar.getBoolean("ENABLED", true)) {
-                    BossBar disabled = owned.remove(key);
+            for (Definition definition : current) {
+                if (!definition.enabled()) {
+                    BossBar disabled = owned.remove(definition.key());
                     if (disabled != null) {
                         disabled.removeAll();
                     }
                     continue;
                 }
-                List<String> titles = bar.getStringList("TITLE");
-                String title = titles.isEmpty() ? "" : plugin.placeholders().apply(player, titles.get(0));
-                BossBar current = owned.get(key);
-                if (current == null) {
-                    current = Bukkit.createBossBar(title, color(bar.getString("COLOR", "WHITE")), style(bar.getString("STYLE", "SOLID")));
-                    current.addPlayer(player);
-                    owned.put(key, current);
-                } else if (!current.getTitle().equals(title)) {
-                    current.setTitle(title);
+                String title = definition.title().isEmpty() ? "" : plugin.placeholders().apply(player, definition.title());
+                BossBar bar = owned.get(definition.key());
+                if (bar == null) {
+                    bar = Bukkit.createBossBar(title, definition.color(), definition.style());
+                    bar.addPlayer(player);
+                    owned.put(definition.key(), bar);
+                } else if (!bar.getTitle().equals(title)) {
+                    bar.setTitle(title);
                 }
-                BarColor color = color(bar.getString("COLOR", "WHITE"));
-                if (current.getColor() != color) {
-                    current.setColor(color);
+                if (bar.getColor() != definition.color()) {
+                    bar.setColor(definition.color());
                 }
-                BarStyle style = style(bar.getString("STYLE", "SOLID"));
-                if (current.getStyle() != style) {
-                    current.setStyle(style);
+                if (bar.getStyle() != definition.style()) {
+                    bar.setStyle(definition.style());
                 }
-                double progress = Math.max(0.0D, Math.min(1.0D, bar.getDouble("PROGRESS", 1.0D)));
-                if (current.getProgress() != progress) {
-                    current.setProgress(progress);
+                if (bar.getProgress() != definition.progress()) {
+                    bar.setProgress(definition.progress());
                 }
-                if (!current.isVisible()) {
-                    current.setVisible(true);
+                if (!bar.isVisible()) {
+                    bar.setVisible(true);
                 }
             }
-            for (String key : new ArrayList<>(owned.keySet())) {
-                if (!section.contains(key)) {
-                    BossBar removed = owned.remove(key);
-                    if (removed != null) {
-                        removed.removeAll();
+            if (owned.size() > known.size() || !known.containsAll(owned.keySet())) {
+                Iterator<Map.Entry<String, BossBar>> iterator = owned.entrySet().iterator();
+                while (iterator.hasNext()) {
+                    Map.Entry<String, BossBar> entry = iterator.next();
+                    if (!known.contains(entry.getKey())) {
+                        entry.getValue().removeAll();
+                        iterator.remove();
                     }
                 }
             }

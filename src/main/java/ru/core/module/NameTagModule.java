@@ -6,6 +6,7 @@ import org.bukkit.scheduler.BukkitTask;
 import ru.core.Core;
 import ru.core.board.PlayerBoard;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -58,15 +59,27 @@ public final class NameTagModule {
         boolean health = healthMode();
         List<String> lines = plugin.configs().config().getStringList("NAMETAG.DISPLAY");
         String raw = lines.isEmpty() ? "" : lines.get(0);
-        for (Player player : Bukkit.getOnlinePlayers()) {
+        Collection<? extends Player> online = Bukkit.getOnlinePlayers();
+        int capacity = online.size();
+        String[] names = new String[capacity];
+        int[] values = new int[capacity];
+        int count = 0;
+        for (Player target : online) {
+            if (count >= capacity) {
+                break;
+            }
+            names[count] = target.getName();
+            values[count] = health ? health(target) : target.getPing();
+            count++;
+        }
+        for (Player player : online) {
             PlayerBoard board = plugin.boards().get(player);
             if (board == null) {
                 continue;
             }
             board.below(plugin.placeholders().apply(player, raw), health);
-            for (Player target : Bukkit.getOnlinePlayers()) {
-                int value = health ? health(target) : target.getPing();
-                board.value(target.getName(), value);
+            for (int index = 0; index < count; index++) {
+                board.value(names[index], values[index]);
             }
         }
         plugin.groups().updateTags();

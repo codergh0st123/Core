@@ -20,6 +20,15 @@ import java.util.Map;
 public final class PlayerBoard {
 
     private static final int LIMIT = 15;
+    private static final String[] TEAM_NAMES = new String[LIMIT];
+    private static final String[] ENTRIES = new String[LIMIT];
+
+    static {
+        for (int index = 0; index < LIMIT; index++) {
+            TEAM_NAMES[index] = "CORE_LINE_" + index;
+            ENTRIES[index] = ChatColor.COLOR_CHAR + Integer.toHexString(index) + ChatColor.RESET.toString();
+        }
+    }
 
     private final Player player;
     private final Scoreboard scoreboard;
@@ -235,10 +244,12 @@ public final class PlayerBoard {
     }
 
     private String team(int index) {
-        return "CORE_LINE_" + index;
+        return index >= 0 && index < LIMIT ? TEAM_NAMES[index] : "CORE_LINE_" + index;
     }
 
     private String entry(int index) {
-        return ChatColor.COLOR_CHAR + Integer.toHexString(index) + ChatColor.RESET.toString();
+        return index >= 0 && index < LIMIT
+                ? ENTRIES[index]
+                : ChatColor.COLOR_CHAR + Integer.toHexString(index) + ChatColor.RESET.toString();
     }
 }
